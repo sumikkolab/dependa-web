@@ -23,6 +23,9 @@
   .nav-links { margin-bottom: 24px; font-size: 0.85rem; }
   .nav-links a { color: #6366f1; text-decoration: none; margin-right: 16px; }
   .nav-links a:hover { text-decoration: underline; }
+  .disclaimer-box { background: #fef2f2; border: 2px solid #fca5a5; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .disclaimer-box h3 { color: #991b1b; }
+  .disclaimer-box p, .disclaimer-box li { color: #7f1d1d; }
 </style>
 </head>
 <body>
@@ -49,21 +52,23 @@
     <p>本アプリは、ソフトウェアプロジェクトが利用する依存ライブラリの脆弱性およびライセンスリスクの検出を<strong>補助</strong>するツールです。</p>
 
     <h2>3. 免責事項</h2>
-    <h3>3.1 検出精度に関する免責</h3>
-    <ul>
-      <li>本アプリは脆弱性およびライセンスリスクの<strong>完全な検出を保証するものではありません</strong>。</li>
-      <li>脆弱性データベースおよびライセンス情報は定期的に更新されますが、最新の情報を網羅していない場合があります。</li>
-      <li>スキャン結果は参考情報としてご利用ください。</li>
-    </ul>
+    <div class="disclaimer-box">
+      <h3>3.1 検出精度に関する免責</h3>
+      <ul>
+        <li>本アプリは脆弱性およびライセンスリスクの<strong>完全な検出を保証するものではありません</strong>。</li>
+        <li>脆弱性データベースおよびライセンス情報は定期的に更新されますが、最新の情報を網羅していない場合があります。</li>
+        <li>スキャン結果は参考情報としてご利用ください。</li>
+      </ul>
 
-    <h3>3.2 判断責任に関する免責</h3>
-    <ul>
-      <li>セキュリティ上の判断および法務上の判断の<strong>最終責任は利用者</strong>にあります。</li>
-      <li>本アプリのスキャン結果のみに基づく意思決定により生じた損害について、開発者は責任を負いません。</li>
-    </ul>
+      <h3>3.2 判断責任に関する免責</h3>
+      <ul>
+        <li>セキュリティ上の判断および法務上の判断の<strong>最終責任は利用者</strong>にあります。</li>
+        <li>本アプリのスキャン結果のみに基づく意思決定により生じた損害について、開発者は責任を負いません。</li>
+      </ul>
 
-    <h3>3.3 損害に関する免責</h3>
-    <p>本アプリの使用または使用不能により生じた直接的・間接的・偶発的・特別な損害について、開発者は一切の責任を負いません。これには、データの損失、利益の逸失、業務の中断等を含みますが、これらに限定されません。</p>
+      <h3>3.3 損害賠償の制限</h3>
+      <p><strong>本アプリの使用または使用不能により生じた直接的・間接的・偶発的・結果的・特別な損害について、開発者は一切の責任を負いません。</strong>これには、データの損失、利益の逸失、業務の中断、セキュリティ侵害に起因する損害等を含みますが、これらに限定されません。本アプリは「現状のまま（AS IS）」で提供され、明示的・黙示的を問わず、商品性、特定目的への適合性、正確性に関するいかなる保証も行いません。</p>
+    </div>
 
     <h2>4. ライセンスモデル</h2>
     <h3>4.1 Free 版</h3>
@@ -115,21 +120,23 @@
     <p>The App is a tool designed to <strong>assist</strong> in detecting vulnerability and license risks in dependency libraries used by software projects.</p>
 
     <h2>3. Disclaimer</h2>
-    <h3>3.1 Detection Accuracy</h3>
-    <ul>
-      <li>The App <strong>does not guarantee complete detection</strong> of all vulnerabilities or license risks.</li>
-      <li>Vulnerability databases and license information are updated periodically but may not cover all the latest data.</li>
-      <li>Scan results should be used as reference information only.</li>
-    </ul>
+    <div class="disclaimer-box">
+      <h3>3.1 Detection Accuracy</h3>
+      <ul>
+        <li>The App <strong>does not guarantee complete detection</strong> of all vulnerabilities or license risks.</li>
+        <li>Vulnerability databases and license information are updated periodically but may not cover all the latest data.</li>
+        <li>Scan results should be used as reference information only.</li>
+      </ul>
 
-    <h3>3.2 Decision Responsibility</h3>
-    <ul>
-      <li><strong>Final responsibility</strong> for security and legal decisions rests with the user.</li>
-      <li>The developer shall not be liable for any damages resulting from decisions made solely based on the App's scan results.</li>
-    </ul>
+      <h3>3.2 Decision Responsibility</h3>
+      <ul>
+        <li><strong>Final responsibility</strong> for security and legal decisions rests with the user.</li>
+        <li>The developer shall not be liable for any damages resulting from decisions made solely based on the App's scan results.</li>
+      </ul>
 
-    <h3>3.3 Limitation of Liability</h3>
-    <p>The developer shall not be liable for any direct, indirect, incidental, or consequential damages arising from the use or inability to use the App. This includes, but is not limited to, loss of data, loss of profits, and business interruption.</p>
+      <h3>3.3 Limitation of Liability</h3>
+      <p><strong>The developer shall not be liable for any direct, indirect, incidental, consequential, or special damages arising from the use or inability to use the App.</strong> This includes, but is not limited to, loss of data, loss of profits, business interruption, and damages arising from security breaches. The App is provided "AS IS" without warranties of any kind, whether express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or accuracy.</p>
+    </div>
 
     <h2>4. License Model</h2>
     <h3>4.1 Free Edition</h3>
