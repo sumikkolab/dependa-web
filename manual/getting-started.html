@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1: Getting Started — Dependa | SumikkoLab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>Chapter 1: はじめに</h1>
+    <p class="subtitle">インストール・初回起動・画面構成</p>
+
+    <h2>動作要件</h2>
+    <table class="manual-table">
+      <tr><th>項目</th><th>要件</th></tr>
+      <tr><td>OS</td><td>Windows 10 Version 2004 以降 / Windows 11</td></tr>
+      <tr><td>ランタイム</td><td>WebView2 Runtime（通常は OS に同梱済み）</td></tr>
+      <tr><td>ディスク容量</td><td>約 50 MB</td></tr>
+      <tr><td>インターネット</td><td>オフラインでも基本機能は利用可能（オンライン照合は Pro 機能）</td></tr>
+    </table>
+
+    <h2>インストール方法</h2>
+
+    <h3>方法 1: Microsoft Store からインストール（推奨）</h3>
+    <ol>
+      <li>Microsoft Store を開き、「Dependa」を検索します。</li>
+      <li>「入手」ボタンをクリックしてインストールします。</li>
+      <li>インストール完了後、スタートメニューから「Dependa」を起動できます。</li>
+    </ol>
+
+    <h3>方法 2: MSIX サイドロード</h3>
+    <ol>
+      <li>配布された <code>.msix</code> ファイルをダブルクリックします。</li>
+      <li>アプリ インストーラーが起動するので、「インストール」をクリックします。</li>
+    </ol>
+    <div class="info-box">
+      <p>サイドロードには、Windows の設定で「開発者モード」または「サイドロード アプリ」が有効になっている必要があります。</p>
+    </div>
+
+    <h2>初回起動と利用規約</h2>
+    <ol>
+      <li>Dependa を初めて起動すると、利用規約（Terms of Use）の同意画面が表示されます。</li>
+      <li>内容を確認し、「同意する」をクリックすると、メイン画面に進みます。</li>
+      <li>同意しない場合、アプリは終了します。</li>
+    </ol>
+
+    <h2>画面構成の概要</h2>
+    <p>Dependa は 4 つのメイン画面で構成されています。</p>
+    <table class="manual-table">
+      <tr><th>画面</th><th>説明</th></tr>
+      <tr><td>ホーム</td><td>アプリの概要とクイックアクション。直近のスキャン情報も表示されます。</td></tr>
+      <tr><td>スキャン</td><td>プロジェクトのパスを指定してスキャンを実行し、結果を確認する画面です。</td></tr>
+      <tr><td>レポート</td><td>生成された HTML レポートや SBOM を閲覧・管理できます。</td></tr>
+      <tr><td>設定</td><td>言語の切替、オンライン機能の ON/OFF、Pro ライセンスの管理を行います。</td></tr>
+    </table>
+
+    <div class="info-box">
+      <p>左側のナビゲーションバーから各画面にいつでも切り替えられます。</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span></span>
+      <a href="scanning.html">次へ: スキャン機能 &rarr;</a>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Table of Contents</a>
+      <a href="../support.html?lang=en">Support</a>
+    </div>
+
+    <h1>Chapter 1: Getting Started</h1>
+    <p class="subtitle">Installation, first launch, and screen overview</p>
+
+    <h2>System Requirements</h2>
+    <table class="manual-table">
+      <tr><th>Item</th><th>Requirement</th></tr>
+      <tr><td>OS</td><td>Windows 10 Version 2004 or later / Windows 11</td></tr>
+      <tr><td>Runtime</td><td>WebView2 Runtime (usually included with the OS)</td></tr>
+      <tr><td>Disk Space</td><td>Approximately 50 MB</td></tr>
+      <tr><td>Internet</td><td>Basic features work offline (online lookups are Pro features)</td></tr>
+    </table>
+
+    <h2>Installation</h2>
+
+    <h3>Option 1: Install from Microsoft Store (Recommended)</h3>
+    <ol>
+      <li>Open the Microsoft Store and search for "Dependa".</li>
+      <li>Click "Get" to install the app.</li>
+      <li>After installation, launch "Dependa" from the Start menu.</li>
+    </ol>
+
+    <h3>Option 2: MSIX Sideload</h3>
+    <ol>
+      <li>Double-click the distributed <code>.msix</code> file.</li>
+      <li>The App Installer will open. Click "Install".</li>
+    </ol>
+    <div class="info-box">
+      <p>Sideloading requires "Developer Mode" or "Sideload apps" to be enabled in Windows Settings.</p>
+    </div>
+
+    <h2>First Launch and Terms of Use</h2>
+    <ol>
+      <li>When you launch Dependa for the first time, the Terms of Use acceptance screen is displayed.</li>
+      <li>Review the terms and click "Accept" to proceed to the main screen.</li>
+      <li>If you decline, the app will close.</li>
+    </ol>
+
+    <h2>Screen Overview</h2>
+    <p>Dependa consists of four main screens.</p>
+    <table class="manual-table">
+      <tr><th>Screen</th><th>Description</th></tr>
+      <tr><td>Home</td><td>App overview and quick actions. Recent scan information is also shown.</td></tr>
+      <tr><td>Scan</td><td>Specify a project path, run a scan, and review results.</td></tr>
+      <tr><td>Reports</td><td>View and manage generated HTML reports and SBOM files.</td></tr>
+      <tr><td>Settings</td><td>Switch language, toggle online features, and manage your Pro license.</td></tr>
+    </table>
+
+    <div class="info-box">
+      <p>You can switch between screens at any time using the navigation bar on the left.</p>
+    </div>
+
+    <div class="chapter-nav">
+      <span></span>
+      <a href="scanning.html?lang=en">Next: Scanning &rarr;</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. Dependa.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

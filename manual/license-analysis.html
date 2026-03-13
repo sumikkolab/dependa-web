@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 4: License Analysis — Dependa | SumikkoLab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>Chapter 4: ライセンス分析</h1>
+    <p class="subtitle">ライセンスリスクを自動分類</p>
+
+    <h2>ライセンスとは</h2>
+    <p>ソフトウェアライセンスとは、そのソフトウェアをどのように使ってよいかを定めたルール（使用許諾条件）のことです。外部のライブラリを自分のプロジェクトに組み込んで使う場合、そのライブラリのライセンス条件を守る必要があります。</p>
+    <p>たとえば、あるライセンスでは「商用利用禁止」「ソースコードの公開義務」などの制約がある場合があります。こうした条件を知らずに使うと、法的なリスクが発生する可能性があります。</p>
+    <p>Dependa は依存ライブラリのライセンスを自動的に特定し、リスクの度合いに応じて分類してくれます。</p>
+
+    <h2>4 段階のライセンス分類</h2>
+    <p>Dependa は SPDX ID（ライセンスの国際標準識別子）をもとに、各ライセンスを以下の 4 段階に分類します。</p>
+    <table class="manual-table">
+      <tr><th>分類</th><th>意味</th><th>代表的なライセンス</th></tr>
+      <tr>
+        <td style="color:#16a34a;font-weight:600;">Approved</td>
+        <td>商用利用を含め、一般的に安全に利用できるライセンスです。</td>
+        <td>MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC</td>
+      </tr>
+      <tr>
+        <td style="color:#ca8a04;font-weight:600;">Caution</td>
+        <td>利用は可能ですが、条件（ソースコード公開義務など）に注意が必要です。</td>
+        <td>LGPL-2.1, LGPL-3.0, MPL-2.0, EPL-2.0</td>
+      </tr>
+      <tr>
+        <td style="color:#dc2626;font-weight:600;">Prohibited</td>
+        <td>商用利用の制限や強いコピーレフト条件があり、組み込みは推奨されません。</td>
+        <td>GPL-3.0, AGPL-3.0, CC-BY-NC-4.0, SSPL-1.0</td>
+      </tr>
+      <tr>
+        <td style="color:#64748b;font-weight:600;">Unknown</td>
+        <td>ライセンスを特定できなかったパッケージです。手動確認を推奨します。</td>
+        <td>（ライセンス情報なし）</td>
+      </tr>
+    </table>
+
+    <div class="info-box">
+      <p>分類は一般的な判断基準に基づいています。組織の法務方針によっては、異なる判断が必要な場合があります。</p>
+    </div>
+
+    <h2>オンラインライセンス補完（PyPI API）<span class="pro-badge">PRO</span></h2>
+    <p>Pro プランでは、依存定義ファイルだけではライセンスが特定できない場合に、PyPI API を使ってライセンス情報を補完します。</p>
+    <ul>
+      <li>ローカルのファイルにライセンス情報がないパッケージに対して自動的に問い合わせます。</li>
+      <li>Unknown の数を減らし、より正確な分析結果を得られます。</li>
+      <li>設定画面の「オンラインライセンス補完」を ON にすると有効になります。</li>
+    </ul>
+
+    <h2>ポリシー判定ルール</h2>
+    <p>Dependa はライセンス分類に基づき、自動的にポリシー判定を行います。</p>
+    <div class="warn-box">
+      <p><strong>FAIL になる条件:</strong> Prohibited に分類されるライセンスが 1 件でも検出された場合、ポリシー判定は FAIL となります。</p>
+    </div>
+    <p>Caution のライセンスがある場合は PASS となりますが、利用条件を確認した上での使用を推奨します。</p>
+
+    <div class="chapter-nav">
+      <a href="vulnerability-analysis.html">&larr; 前へ: 脆弱性分析</a>
+      <a href="reports.html">次へ: レポートと SBOM &rarr;</a>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Table of Contents</a>
+      <a href="../support.html?lang=en">Support</a>
+    </div>
+
+    <h1>Chapter 4: License Analysis</h1>
+    <p class="subtitle">Automatically classify license risks</p>
+
+    <h2>What Are Licenses?</h2>
+    <p>A software license defines the rules (terms and conditions) governing how software may be used. When you incorporate external libraries into your project, you must comply with each library's license terms.</p>
+    <p>For example, some licenses may include restrictions such as "no commercial use" or "source code disclosure required." Using libraries without being aware of these conditions can create legal risks.</p>
+    <p>Dependa automatically identifies the licenses of your dependency libraries and classifies them by risk level.</p>
+
+    <h2>Four-Level License Classification</h2>
+    <p>Dependa classifies each license into one of four levels based on SPDX IDs (international standard license identifiers).</p>
+    <table class="manual-table">
+      <tr><th>Classification</th><th>Meaning</th><th>Example Licenses</th></tr>
+      <tr>
+        <td style="color:#16a34a;font-weight:600;">Approved</td>
+        <td>Generally safe for use, including commercial use.</td>
+        <td>MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC</td>
+      </tr>
+      <tr>
+        <td style="color:#ca8a04;font-weight:600;">Caution</td>
+        <td>Can be used, but conditions (such as source code disclosure) require attention.</td>
+        <td>LGPL-2.1, LGPL-3.0, MPL-2.0, EPL-2.0</td>
+      </tr>
+      <tr>
+        <td style="color:#dc2626;font-weight:600;">Prohibited</td>
+        <td>Has commercial use restrictions or strong copyleft conditions. Not recommended for inclusion.</td>
+        <td>GPL-3.0, AGPL-3.0, CC-BY-NC-4.0, SSPL-1.0</td>
+      </tr>
+      <tr>
+        <td style="color:#64748b;font-weight:600;">Unknown</td>
+        <td>License could not be identified. Manual verification is recommended.</td>
+        <td>(No license information)</td>
+      </tr>
+    </table>
+
+    <div class="info-box">
+      <p>Classifications are based on general criteria. Your organization's legal policies may require different assessments.</p>
+    </div>
+
+    <h2>Online License Lookup (PyPI API) <span class="pro-badge">PRO</span></h2>
+    <p>With the Pro plan, when license information cannot be determined from dependency files alone, the PyPI API is used to supplement license data.</p>
+    <ul>
+      <li>Automatically queries packages that have no license information in local files.</li>
+      <li>Reduces the number of Unknown results for more accurate analysis.</li>
+      <li>Enable "Online License Lookup" in the Settings screen to activate.</li>
+    </ul>
+
+    <h2>Policy Rules</h2>
+    <p>Dependa automatically evaluates policy based on license classifications.</p>
+    <div class="warn-box">
+      <p><strong>FAIL condition:</strong> If even one Prohibited license is detected, the policy result will be FAIL.</p>
+    </div>
+    <p>If Caution licenses are present, the result is still PASS. However, reviewing the specific license terms before use is recommended.</p>
+
+    <div class="chapter-nav">
+      <a href="vulnerability-analysis.html?lang=en">&larr; Previous: Vulnerability Analysis</a>
+      <a href="reports.html?lang=en">Next: Reports &amp; SBOM &rarr;</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. Dependa.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

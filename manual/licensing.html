@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 9: Licensing — Dependa | SumikkoLab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>Chapter 9: ライセンスと購入</h1>
+    <p class="subtitle">Free / Pro プランの違いと Pro の購入方法</p>
+
+    <h2>Free / Pro プラン比較</h2>
+    <table class="manual-table">
+      <tr><th>機能</th><th>Free</th><th>Pro</th></tr>
+      <tr><td>Python スキャン（requirements.txt, pyproject.toml, poetry.lock, uv.lock）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>ローカル脆弱性データベースによる照合</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>ローカルライセンスデータベースによる分類</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>基本レポート（JSON エクスポート）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>ポリシー判定（PASS / FAIL）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>SBOM 生成（CycloneDX 1.5 JSON）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Node.js スキャン（package.json, package-lock.json）</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>OSV API オンライン脆弱性照合</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>PyPI API オンラインライセンス補完</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Delta Scan（差分スキャン）</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>AI プロンプト生成（脆弱性修正）</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>AI プロンプト生成（ライセンス確認）</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>AI プロンプト生成（Delta Scan レビュー）</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>高度な脆弱性分析レポート</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>高度なライセンス分析レポート</td><td>&#8212;</td><td>&#10003;</td></tr>
+    </table>
+
+    <h2>Pro の購入方法</h2>
+    <ol>
+      <li>Dependa を起動し、<strong>設定画面</strong>（歯車アイコン）を開きます。</li>
+      <li>「<strong>Pro にアップグレード</strong>」ボタンをクリックします。</li>
+      <li>Microsoft Store の購入画面が表示されます。</li>
+      <li>Microsoft アカウントでサインインし、購入を完了します。</li>
+      <li>購入後、アプリを再起動すると Pro 機能が有効になります。</li>
+    </ol>
+    <div class="info-box">
+      <p>Pro ライセンスは Microsoft Store のアプリ内購入（Add-on）として提供されます。一度購入すると永続的に利用できます（Durable タイプ）。</p>
+    </div>
+
+    <h2>返金ポリシー</h2>
+    <p>Pro ライセンスの返金は <strong>Microsoft Store の返金ポリシー</strong> に準じます。</p>
+    <ul>
+      <li>購入後一定期間内であれば、Microsoft Store の注文履歴から返金をリクエストできます。</li>
+      <li>詳細は <a href="https://support.microsoft.com/ja-jp/account-billing" target="_blank" rel="noopener">Microsoft サポート</a> をご確認ください。</li>
+    </ul>
+
+    <h2>ライセンスの確認</h2>
+    <p>現在のライセンス状態は設定画面で確認できます。Pro が有効な場合は「Pro」バッジが表示されます。</p>
+
+    <div class="chapter-nav">
+      <a href="cli-reference.html">&larr; Chapter 8: CLI リファレンス</a>
+      <a href="troubleshooting.html">Chapter 10: トラブルシューティング &rarr;</a>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Table of Contents</a>
+      <a href="../support.html?lang=en">Support</a>
+    </div>
+
+    <h1>Chapter 9: Licensing &amp; Purchase</h1>
+    <p class="subtitle">Free vs Pro plan differences and how to purchase Pro</p>
+
+    <h2>Free / Pro Plan Comparison</h2>
+    <table class="manual-table">
+      <tr><th>Feature</th><th>Free</th><th>Pro</th></tr>
+      <tr><td>Python Scanning (requirements.txt, pyproject.toml, poetry.lock, uv.lock)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Local vulnerability database lookup</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Local license database classification</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Basic reports (JSON export)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Policy verdict (PASS / FAIL)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>SBOM generation (CycloneDX 1.5 JSON)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Node.js Scanning (package.json, package-lock.json)</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>OSV API online vulnerability lookup</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>PyPI API online license metadata</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Delta Scan</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>AI Prompt — Vulnerability Remediation</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>AI Prompt — License Review</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>AI Prompt — Delta Scan Review</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Advanced vulnerability analysis report</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Advanced license analysis report</td><td>&#8212;</td><td>&#10003;</td></tr>
+    </table>
+
+    <h2>How to Purchase Pro</h2>
+    <ol>
+      <li>Open Dependa and go to <strong>Settings</strong> (gear icon).</li>
+      <li>Click the <strong>"Upgrade to Pro"</strong> button.</li>
+      <li>The Microsoft Store purchase page will appear.</li>
+      <li>Sign in with your Microsoft account and complete the purchase.</li>
+      <li>After purchasing, restart the app to activate Pro features.</li>
+    </ol>
+    <div class="info-box">
+      <p>The Pro license is offered as a Microsoft Store in-app purchase (Add-on). Once purchased, it is permanently available (Durable type).</p>
+    </div>
+
+    <h2>Refund Policy</h2>
+    <p>Refunds for the Pro license follow the <strong>Microsoft Store refund policy</strong>.</p>
+    <ul>
+      <li>Within a certain period after purchase, you can request a refund from your Microsoft Store order history.</li>
+      <li>For details, see <a href="https://support.microsoft.com/en-us/account-billing" target="_blank" rel="noopener">Microsoft Support</a>.</li>
+    </ul>
+
+    <h2>Checking Your License</h2>
+    <p>You can check your current license status in the Settings panel. If Pro is active, a "Pro" badge will be displayed.</p>
+
+    <div class="chapter-nav">
+      <a href="cli-reference.html?lang=en">&larr; Chapter 8: CLI Reference</a>
+      <a href="troubleshooting.html?lang=en">Chapter 10: Troubleshooting &rarr;</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. Dependa.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

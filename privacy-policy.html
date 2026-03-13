@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Dependa | SumikkoLab</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Yu Gothic UI', sans-serif; line-height: 1.7; color: #1a1a2e; background: #f8f9fa; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 1.5rem; margin-bottom: 8px; color: #0f172a; }
+  .subtitle { font-size: 0.85rem; color: #64748b; margin-bottom: 32px; }
+  h2 { font-size: 1.1rem; margin: 28px 0 8px; color: #312e81; border-left: 3px solid #6366f1; padding-left: 10px; }
+  h3 { font-size: 1rem; margin: 20px 0 6px; color: #312e81; }
+  p, li { font-size: 0.95rem; margin-bottom: 8px; }
+  ul { padding-left: 20px; margin-bottom: 12px; }
+  .lang-toggle { text-align: right; margin-bottom: 20px; }
+  .lang-toggle button { background: #e2e8f0; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+  .lang-toggle button.active { background: #6366f1; color: #fff; }
+  .section-ja, .section-en { display: none; }
+  .section-ja.visible, .section-en.visible { display: block; }
+  .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; text-align: center; }
+  code { background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+  .nav-links { margin-bottom: 24px; font-size: 0.85rem; }
+  .nav-links a { color: #6366f1; text-decoration: none; margin-right: 16px; }
+  .nav-links a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">製品情報</a>
+      <a href="support.html">サポート</a>
+    </div>
+
+    <h1>プライバシーポリシー</h1>
+    <p class="subtitle">Dependa — SumikkoLab｜最終更新日: 2026-03-13</p>
+
+    <h2>1. はじめに</h2>
+    <p>本プライバシーポリシーは、デスクトップアプリケーション「Dependa」（以下「本アプリ」）における情報の取り扱いについて説明します。</p>
+
+    <h2>2. 本アプリが収集しない情報</h2>
+    <p>本アプリは以下の情報を<strong>収集しません</strong>。</p>
+    <ul>
+      <li>氏名、メールアドレス、電話番号等の個人情報</li>
+      <li>位置情報</li>
+      <li>利用状況の統計データ（テレメトリ）</li>
+      <li>Cookie やトラッキング情報</li>
+      <li>プロジェクトのソースコード</li>
+    </ul>
+
+    <h2>3. ローカルに保存される情報</h2>
+    <p>本アプリは以下の情報をお使いの端末にローカル保存します。外部サーバーへの送信は行いません。</p>
+    <ul>
+      <li><strong>アプリ設定</strong>: 言語設定、オンライン機能の有効/無効、利用規約の同意状態</li>
+      <li><strong>ライセンス状態</strong>: Free / Pro の状態</li>
+      <li><strong>スキャン結果</strong>: SBOM ファイル、HTML レポート（いずれもユーザーが指定した出力先に保存）</li>
+    </ul>
+    <p>保存先: <code>%LocalAppData%\Dependa\settings.json</code></p>
+
+    <h2>4. オンライン機能利用時の通信</h2>
+    <p>本アプリにはオプションのオンライン機能があります。いずれも<strong>ユーザーが明示的に有効化した場合のみ</strong>動作します。</p>
+
+    <h3>4.1 OSV API（脆弱性照合）</h3>
+    <ul>
+      <li>通信先: <code>https://api.osv.dev/</code>（Google が運営する OSV データベース）</li>
+      <li>送信内容: パッケージ名、バージョン番号、エコシステム名（例: PyPI, npm）</li>
+      <li>目的: 最新の既知脆弱性情報の照合</li>
+      <li>個人情報の送信: なし</li>
+    </ul>
+
+    <h3>4.2 PyPI API（ライセンス情報補完）</h3>
+    <ul>
+      <li>通信先: <code>https://pypi.org/</code>（Python Package Index）</li>
+      <li>送信内容: パッケージ名</li>
+      <li>目的: ライセンス情報の補完取得</li>
+      <li>個人情報の送信: なし</li>
+    </ul>
+
+    <h3>4.3 通信の無効化</h3>
+    <p>上記のオンライン機能はいずれも設定画面から無効化できます。無効時はインターネット通信を一切行いません。</p>
+
+    <h2>5. 課金に関する情報</h2>
+    <p>Pro 機能の購入は Microsoft Store の仕組みを通じて行われます。決済情報は Microsoft が管理し、本アプリの開発者が直接取得することはありません。</p>
+
+    <h2>6. 第三者への提供</h2>
+    <p>本アプリが取得または生成した情報を第三者に提供することはありません。</p>
+
+    <h2>7. サポート時のデータ取り扱い</h2>
+    <p>不具合調査のために提供されたデータは、調査目的以外に使用せず、調査完了後速やかに（原則 30 日以内）破棄します。</p>
+
+    <h2>8. お子様のプライバシー</h2>
+    <p>本アプリは開発者向けのツールであり、13 歳未満のお子様を対象としていません。</p>
+
+    <h2>9. 変更について</h2>
+    <p>本プライバシーポリシーは必要に応じて更新される場合があります。重要な変更がある場合はアプリ内で通知します。</p>
+
+    <h2>10. お問い合わせ</h2>
+    <p>プライバシーに関するお問い合わせは以下までお願いします。</p>
+    <p><strong>support@sumikkolab.com</strong></p>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html">Product Info</a>
+      <a href="support.html">Support</a>
+    </div>
+
+    <h1>Privacy Policy</h1>
+    <p class="subtitle">Dependa — SumikkoLab | Last updated: March 13, 2026</p>
+
+    <h2>1. Introduction</h2>
+    <p>This Privacy Policy explains how information is handled in the desktop application "Dependa" (hereinafter "the App").</p>
+
+    <h2>2. Information We Do Not Collect</h2>
+    <p>The App does <strong>not</strong> collect any of the following:</p>
+    <ul>
+      <li>Personal information such as names, email addresses, or phone numbers</li>
+      <li>Location data</li>
+      <li>Usage statistics or telemetry</li>
+      <li>Cookies or tracking information</li>
+      <li>Project source code</li>
+    </ul>
+
+    <h2>3. Information Stored Locally</h2>
+    <p>The App stores the following information locally on your device. No data is sent to external servers.</p>
+    <ul>
+      <li><strong>App settings</strong>: Language preference, online feature toggle, terms acceptance status</li>
+      <li><strong>License state</strong>: Free / Pro status</li>
+      <li><strong>Scan results</strong>: SBOM files and HTML reports (saved to user-specified output locations)</li>
+    </ul>
+    <p>Storage location: <code>%LocalAppData%\Dependa\settings.json</code></p>
+
+    <h2>4. Network Communication for Online Features</h2>
+    <p>The App includes optional online features. All online features operate <strong>only when explicitly enabled by the user</strong>.</p>
+
+    <h3>4.1 OSV API (Vulnerability Lookup)</h3>
+    <ul>
+      <li>Endpoint: <code>https://api.osv.dev/</code> (OSV database operated by Google)</li>
+      <li>Data sent: Package name, version number, ecosystem name (e.g., PyPI, npm)</li>
+      <li>Purpose: Matching against the latest known vulnerability data</li>
+      <li>Personal information sent: None</li>
+    </ul>
+
+    <h3>4.2 PyPI API (License Metadata)</h3>
+    <ul>
+      <li>Endpoint: <code>https://pypi.org/</code> (Python Package Index)</li>
+      <li>Data sent: Package name</li>
+      <li>Purpose: Supplemental license information retrieval</li>
+      <li>Personal information sent: None</li>
+    </ul>
+
+    <h3>4.3 Disabling Online Features</h3>
+    <p>All online features listed above can be disabled from the Settings screen. When disabled, the App makes no internet connections whatsoever.</p>
+
+    <h2>5. Billing Information</h2>
+    <p>Pro feature purchases are processed through the Microsoft Store platform. Payment information is managed by Microsoft, and the App developer does not directly access any billing data.</p>
+
+    <h2>6. Third-Party Sharing</h2>
+    <p>The App does not share any collected or generated information with third parties.</p>
+
+    <h2>7. Data Handling During Support</h2>
+    <p>Data provided for investigation purposes will not be used for any other purpose and will be promptly destroyed (within 30 days) after investigation is complete.</p>
+
+    <h2>8. Children's Privacy</h2>
+    <p>The App is a developer tool and is not intended for children under the age of 13.</p>
+
+    <h2>9. Changes to This Policy</h2>
+    <p>This Privacy Policy may be updated as needed. Users will be notified within the App of any significant changes.</p>
+
+    <h2>10. Contact</h2>
+    <p>For privacy-related inquiries, please contact:</p>
+    <p><strong>support@sumikkolab.com</strong></p>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. Dependa.
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+</body>
+</html>

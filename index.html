@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dependa — SumikkoLab</title>
+<meta name="description" content="依存ライブラリの脆弱性・ライセンスリスクを分析するデスクトップツール">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Yu Gothic UI', sans-serif; line-height: 1.7; color: #1a1a2e; background: #f8f9fa; }
+  .hero { background: linear-gradient(135deg, #312e81 0%, #4338ca 50%, #6366f1 100%); color: #fff; padding: 60px 24px 48px; text-align: center; }
+  .hero h1 { font-size: 2rem; margin-bottom: 12px; letter-spacing: 0.5px; }
+  .hero .tagline { font-size: 1.05rem; color: #c7d2fe; margin-bottom: 24px; }
+  .hero .badge { display: inline-block; background: #818cf8; color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; margin: 0 4px 8px; }
+  .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+  h2 { font-size: 1.25rem; margin: 32px 0 12px; color: #312e81; border-left: 3px solid #6366f1; padding-left: 10px; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  @media (max-width: 600px) { .features { grid-template-columns: 1fr; } }
+  .feature-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; }
+  .feature-card h3 { font-size: 0.95rem; color: #312e81; margin-bottom: 6px; }
+  .feature-card p { font-size: 0.85rem; color: #475569; }
+  .pro-badge { background: #f59e0b; color: #fff; font-size: 0.7rem; padding: 1px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+  ul { padding-left: 20px; margin: 8px 0 16px; }
+  li { font-size: 0.9rem; margin-bottom: 4px; }
+  .privacy-note { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; margin: 24px 0; }
+  .privacy-note p { font-size: 0.9rem; color: #166534; }
+  .links { text-align: center; margin: 32px 0; }
+  .links a { display: inline-block; margin: 6px 10px; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; }
+  .links .primary { background: #6366f1; color: #fff; }
+  .links .secondary { background: #e2e8f0; color: #1e3a5f; }
+  .footer { text-align: center; padding: 24px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; margin-top: 40px; }
+  .lang-toggle { text-align: right; padding: 12px 24px 0; }
+  .lang-toggle button { background: #e2e8f0; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+  .lang-toggle button.active { background: #6366f1; color: #fff; }
+  .section-ja, .section-en { display: none; }
+  .section-ja.visible, .section-en.visible { display: block; }
+  .eco-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+  .eco-table th, .eco-table td { border: 1px solid #e2e8f0; padding: 8px 12px; text-align: left; }
+  .eco-table th { background: #f1f5f9; color: #312e81; font-weight: 600; }
+  .eco-table td { background: #fff; }
+</style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+  <button id="btn-en" onclick="switchLang('en')">English</button>
+</div>
+
+<!-- 日本語 -->
+<div class="section-ja visible" id="content-ja">
+  <div class="hero">
+    <h1>Dependa</h1>
+    <p class="tagline">依存ライブラリの脆弱性・ライセンスリスクを分析</p>
+    <span class="badge">Python</span>
+    <span class="badge">Node.js</span>
+    <span class="badge">CycloneDX SBOM</span>
+    <span class="badge">オフライン優先</span>
+  </div>
+
+  <div class="container">
+    <h2>概要</h2>
+    <p>Dependa は、ソフトウェアプロジェクトが利用する依存ライブラリの<strong>脆弱性</strong>と<strong>ライセンスリスク</strong>を検出するデスクトップツールです。GUI と CLI の両方に対応し、オフライン環境でも基本機能が動作します。</p>
+
+    <h2>無料機能</h2>
+    <div class="features">
+      <div class="feature-card">
+        <h3>Python スキャン</h3>
+        <p>requirements.txt / pyproject.toml / poetry.lock / uv.lock を自動検出・解析。</p>
+      </div>
+      <div class="feature-card">
+        <h3>脆弱性照合</h3>
+        <p>ローカルデータベースで既知の脆弱性を CVSS スコア別（Critical / High / Medium / Low）に判定。</p>
+      </div>
+      <div class="feature-card">
+        <h3>ライセンス分析</h3>
+        <p>SPDX ID に基づき Approved / Caution / Prohibited / Unknown に自動分類。</p>
+      </div>
+      <div class="feature-card">
+        <h3>レポート・SBOM</h3>
+        <p>HTML レポート（オフライン閲覧・印刷対応）と CycloneDX 1.5 準拠 SBOM を自動生成。</p>
+      </div>
+    </div>
+
+    <h2>Pro 機能 <span class="pro-badge">PRO</span></h2>
+    <ul>
+      <li><strong>Node.js 対応</strong> — package.json / package-lock.json のスキャン</li>
+      <li><strong>オンライン脆弱性照合</strong> — OSV API で最新の脆弱性情報を取得</li>
+      <li><strong>オンラインライセンス補完</strong> — PyPI API でライセンス情報を補完</li>
+      <li><strong>Delta Scan</strong> — 前回スキャンとの差分を検出</li>
+      <li><strong>AI プロンプト</strong> — 脆弱性修正・ライセンス確認の支援プロンプト生成</li>
+    </ul>
+
+    <h2>対応エコシステム</h2>
+    <table class="eco-table">
+      <tr><th>エコシステム</th><th>対応ファイル</th><th>プラン</th></tr>
+      <tr><td>Python</td><td>requirements.txt, pyproject.toml, poetry.lock, uv.lock</td><td>Free</td></tr>
+      <tr><td>Node.js</td><td>package.json, package-lock.json</td><td>Pro</td></tr>
+    </table>
+
+    <div class="privacy-note">
+      <p><strong>プライバシー:</strong> すべてのデータはローカルで処理されます。オンライン機能はユーザーが明示的に有効化した場合のみ動作し、個人情報の送信は一切行いません。</p>
+    </div>
+
+    <h2>システム要件</h2>
+    <ul>
+      <li>Windows 10 バージョン 2004 (19041) 以降 / Windows 11</li>
+      <li>WebView2 Runtime（通常は Windows に同梱）</li>
+      <li>ディスク: 約 80 MB / RAM: 512 MB 以上</li>
+    </ul>
+
+    <div class="links">
+      <a href="manual/" class="primary">ユーザーマニュアル</a>
+      <a href="support.html" class="secondary">サポート</a>
+      <a href="privacy-policy.html" class="secondary">プライバシーポリシー</a>
+      <a href="terms-of-use.html" class="secondary">利用規約</a>
+    </div>
+  </div>
+</div>
+
+<!-- English -->
+<div class="section-en" id="content-en">
+  <div class="hero">
+    <h1>Dependa</h1>
+    <p class="tagline">Analyze dependency vulnerabilities and license risks</p>
+    <span class="badge">Python</span>
+    <span class="badge">Node.js</span>
+    <span class="badge">CycloneDX SBOM</span>
+    <span class="badge">Offline-first</span>
+  </div>
+
+  <div class="container">
+    <h2>Overview</h2>
+    <p>Dependa is a desktop tool that detects <strong>vulnerabilities</strong> and <strong>license risks</strong> in dependency libraries used by software projects. It supports both GUI and CLI interfaces and works offline for all basic features.</p>
+
+    <h2>Free Features</h2>
+    <div class="features">
+      <div class="feature-card">
+        <h3>Python Scanning</h3>
+        <p>Automatically detects and analyzes requirements.txt, pyproject.toml, poetry.lock, and uv.lock.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Vulnerability Matching</h3>
+        <p>Matches against a local database and classifies by CVSS score (Critical / High / Medium / Low).</p>
+      </div>
+      <div class="feature-card">
+        <h3>License Analysis</h3>
+        <p>Automatically classifies licenses as Approved / Caution / Prohibited / Unknown based on SPDX IDs.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Reports &amp; SBOM</h3>
+        <p>Generates offline-ready HTML reports and CycloneDX 1.5 compliant SBOM automatically.</p>
+      </div>
+    </div>
+
+    <h2>Pro Features <span class="pro-badge">PRO</span></h2>
+    <ul>
+      <li><strong>Node.js Support</strong> — Scan package.json and package-lock.json</li>
+      <li><strong>Online Vulnerability Lookup</strong> — Fetch latest vulnerability data via OSV API</li>
+      <li><strong>Online License Metadata</strong> — Supplement license info via PyPI API</li>
+      <li><strong>Delta Scan</strong> — Detect changes from previous scan results</li>
+      <li><strong>AI Prompts</strong> — Generate prompts for vulnerability remediation and license review</li>
+    </ul>
+
+    <h2>Supported Ecosystems</h2>
+    <table class="eco-table">
+      <tr><th>Ecosystem</th><th>Supported Files</th><th>Plan</th></tr>
+      <tr><td>Python</td><td>requirements.txt, pyproject.toml, poetry.lock, uv.lock</td><td>Free</td></tr>
+      <tr><td>Node.js</td><td>package.json, package-lock.json</td><td>Pro</td></tr>
+    </table>
+
+    <div class="privacy-note">
+      <p><strong>Privacy:</strong> All data is processed locally. Online features only operate when explicitly enabled by the user, and no personal information is ever sent.</p>
+    </div>
+
+    <h2>System Requirements</h2>
+    <ul>
+      <li>Windows 10 version 2004 (19041) or later / Windows 11</li>
+      <li>WebView2 Runtime (typically bundled with Windows)</li>
+      <li>Disk: ~80 MB / RAM: 512 MB or more</li>
+    </ul>
+
+    <div class="links">
+      <a href="manual/?lang=en" class="primary">User Manual</a>
+      <a href="support.html" class="secondary">Support</a>
+      <a href="privacy-policy.html" class="secondary">Privacy Policy</a>
+      <a href="terms-of-use.html" class="secondary">Terms of Use</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  &copy; 2026 SumikkoLab. Dependa.<br>
+  <a href="mailto:support@sumikkolab.com" style="color:#64748b;">support@sumikkolab.com</a>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+</body>
+</html>
