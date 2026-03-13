@@ -14,6 +14,7 @@
   h2 { font-size: 1.1rem; margin: 28px 0 8px; color: #312e81; border-left: 3px solid #6366f1; padding-left: 10px; }
   p, li { font-size: 0.95rem; margin-bottom: 8px; }
   ol { padding-left: 20px; margin-bottom: 12px; }
+  ul { padding-left: 20px; margin-bottom: 12px; }
   .lang-toggle { text-align: right; margin-bottom: 20px; }
   .lang-toggle button { background: #e2e8f0; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
   .lang-toggle button.active { background: #6366f1; color: #fff; }
@@ -25,14 +26,16 @@
   .contact-card a:hover { text-decoration: underline; }
   .info-box { background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 8px; padding: 16px; margin: 16px 0; }
   .info-box p { font-size: 0.9rem; color: #3730a3; margin-bottom: 0; }
-  .plan-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
-  .plan-table th, .plan-table td { border: 1px solid #e2e8f0; padding: 10px 12px; text-align: left; }
-  .plan-table th { background: #f1f5f9; color: #312e81; font-weight: 600; }
-  .plan-table td { background: #fff; }
+  .privacy-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; margin: 16px 0; }
+  .privacy-box p { font-size: 0.9rem; color: #166534; margin-bottom: 0; }
+  .step-box { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 12px 0; }
+  .step-box h3 { font-size: 1rem; color: #312e81; margin-bottom: 8px; }
+  .step-box p { font-size: 0.9rem; }
   .nav-links { margin-bottom: 24px; font-size: 0.85rem; }
   .nav-links a { color: #6366f1; text-decoration: none; margin-right: 16px; }
   .nav-links a:hover { text-decoration: underline; }
   .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; text-align: center; }
+  code { background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
 </style>
 </head>
 <body>
@@ -59,46 +62,39 @@
       <p><strong>対応言語:</strong> 日本語・英語</p>
     </div>
 
-    <p>お問い合わせの際は、ホーム画面に表示される<strong>バージョン番号</strong>をお知らせください。</p>
+    <h2>不具合の報告方法</h2>
+    <p>不具合が発生した場合は、以下の手順で診断レポートを生成し、サポートにお送りください。</p>
 
-    <h2>不具合の報告</h2>
-    <p>不具合を報告する際は、以下の情報をお知らせください。</p>
-    <ol>
-      <li>バージョン番号（ホーム画面に表示）</li>
-      <li>再現手順（どのような操作をしたか）</li>
-      <li>エラーメッセージ（表示された場合）</li>
-      <li>スキャン対象のエコシステム（Python / Node.js）</li>
-    </ol>
-
-    <div class="info-box">
-      <p><strong>注意:</strong> プロジェクトのソースコードや依存ファイルをそのまま送付しないでください。不具合の再現に必要な最小限の情報のみお送りください。</p>
+    <div class="step-box">
+      <h3>Step 1: 診断レポートを生成</h3>
+      <p>アプリの <strong>設定</strong> 画面の「サポート / トラブルシューティング」セクションにある <strong>「診断レポートを生成」</strong> ボタンをクリックしてください。ZIP ファイルが自動生成されます。</p>
     </div>
 
-    <h2>プランと機能</h2>
-    <table class="plan-table">
-      <tr>
-        <th>プラン</th>
-        <th>内容</th>
-      </tr>
-      <tr>
-        <td><strong>Free</strong></td>
-        <td>Python スキャン、ローカル脆弱性照合、ライセンス分析、SBOM・HTML レポート生成。</td>
-      </tr>
-      <tr>
-        <td><strong>Pro</strong></td>
-        <td>Free の全機能に加え、Node.js 対応、OSV API 脆弱性照合、PyPI ライセンス補完、Delta Scan、AI プロンプト生成。</td>
-      </tr>
-    </table>
+    <div class="step-box">
+      <h3>Step 2: 状況を記入</h3>
+      <p>ZIP 内の <code>user-message.txt</code> を開き、再現手順・期待する動作・実際の動作を記入してください。</p>
+    </div>
 
-    <h2>よくある質問</h2>
-    <p><strong>Q: オフラインで使えますか？</strong></p>
-    <p>A: はい。Free 版の全機能はオフラインで動作します。オンライン機能（OSV API、PyPI API）は Pro 版で、ユーザーが明示的に有効化した場合のみ使用されます。</p>
+    <div class="step-box">
+      <h3>Step 3: メールで送信</h3>
+      <p>生成された ZIP ファイルと、記入済みの <code>user-message.txt</code> を <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a> に添付して送信してください。</p>
+    </div>
 
-    <p><strong>Q: Pro 版の購入方法は？</strong></p>
-    <p>A: アプリ内の設定画面から Microsoft Store 経由で購入できます。</p>
+    <h2>診断レポートについて</h2>
+    <p>診断レポートには以下の情報が含まれます。</p>
+    <ul>
+      <li>アプリのバージョン情報</li>
+      <li>OS・ランタイム環境情報</li>
+      <li>スキャン設定の状態（パスやファイル内容は含みません）</li>
+      <li>設定ファイルの状態（存在確認・サイズ・更新日時のみ）</li>
+    </ul>
 
-    <p><strong>Q: CLI からも使えますか？</strong></p>
-    <p>A: はい。<code>Dependa.exe scan --path &lt;path&gt;</code> で CLI スキャンが可能です。詳細は<a href="manual/cli-reference.html">CLI リファレンス</a>をご覧ください。</p>
+    <div class="privacy-box">
+      <p><strong>プライバシー:</strong> 診断レポートにはソースコード、依存ファイル、プロジェクトパス、ユーザー名、マシン名は<strong>一切含まれません</strong>。安心してお送りいただけます。</p>
+    </div>
+
+    <h2>サポートデータの取り扱い</h2>
+    <p>不具合調査のために提供されたデータは、調査目的以外に使用せず、調査完了後速やかに（原則 30 日以内）破棄します。</p>
   </div>
 
   <!-- English -->
@@ -118,46 +114,39 @@
       <p><strong>Languages:</strong> Japanese, English</p>
     </div>
 
-    <p>When contacting support, please include the <strong>version number</strong> shown on the Home screen.</p>
+    <h2>How to Report Issues</h2>
+    <p>If you encounter a problem, please generate a diagnostic report and send it to our support team.</p>
 
-    <h2>Reporting Issues</h2>
-    <p>When reporting a bug, please include the following information:</p>
-    <ol>
-      <li>Version number (shown on Home screen)</li>
-      <li>Steps to reproduce (what you did)</li>
-      <li>Error message (if any)</li>
-      <li>Target ecosystem (Python / Node.js)</li>
-    </ol>
-
-    <div class="info-box">
-      <p><strong>Note:</strong> Please do not send your project source code or dependency files directly. Only provide the minimum information necessary to reproduce the issue.</p>
+    <div class="step-box">
+      <h3>Step 1: Generate a Diagnostic Report</h3>
+      <p>Go to the <strong>Settings</strong> page in the app, find the "Support / Troubleshooting" section, and click <strong>"Generate Diagnostic Report"</strong>. A ZIP file will be created automatically.</p>
     </div>
 
-    <h2>Plans and Features</h2>
-    <table class="plan-table">
-      <tr>
-        <th>Plan</th>
-        <th>Details</th>
-      </tr>
-      <tr>
-        <td><strong>Free</strong></td>
-        <td>Python scanning, local vulnerability matching, license analysis, SBOM and HTML report generation.</td>
-      </tr>
-      <tr>
-        <td><strong>Pro</strong></td>
-        <td>All Free features plus Node.js support, OSV API vulnerability lookup, PyPI license metadata, Delta Scan, and AI prompt generation.</td>
-      </tr>
-    </table>
+    <div class="step-box">
+      <h3>Step 2: Describe the Issue</h3>
+      <p>Open <code>user-message.txt</code> inside the ZIP and fill in the reproduction steps, expected behavior, and actual behavior.</p>
+    </div>
 
-    <h2>FAQ</h2>
-    <p><strong>Q: Can I use it offline?</strong></p>
-    <p>A: Yes. All Free features work offline. Online features (OSV API, PyPI API) are Pro-only and only used when explicitly enabled by the user.</p>
+    <div class="step-box">
+      <h3>Step 3: Send via Email</h3>
+      <p>Attach the generated ZIP file and the filled-in <code>user-message.txt</code> to an email and send it to <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>.</p>
+    </div>
 
-    <p><strong>Q: How do I purchase Pro?</strong></p>
-    <p>A: You can purchase through the Microsoft Store via the app's Settings screen.</p>
+    <h2>About the Diagnostic Report</h2>
+    <p>The diagnostic report includes:</p>
+    <ul>
+      <li>App version information</li>
+      <li>OS and runtime environment details</li>
+      <li>Scan configuration status (no paths or file contents)</li>
+      <li>Settings file status (existence check, size, and last modified date only)</li>
+    </ul>
 
-    <p><strong>Q: Can I use it from the command line?</strong></p>
-    <p>A: Yes. Run <code>Dependa.exe scan --path &lt;path&gt;</code> for CLI scanning. See the <a href="manual/cli-reference.html?lang=en">CLI Reference</a> for details.</p>
+    <div class="privacy-box">
+      <p><strong>Privacy:</strong> The diagnostic report does <strong>not</strong> contain source code, dependency files, project paths, user names, or machine names. It is safe to send.</p>
+    </div>
+
+    <h2>Data Handling</h2>
+    <p>Data provided for investigation purposes will not be used for any other purpose and will be promptly destroyed (within 30 days) after investigation is complete.</p>
   </div>
 
   <div class="footer">
