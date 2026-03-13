@@ -9,9 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://apps.microsoft.com/detail/9P84RLQQ401D">
-    <img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Get it from Microsoft Store" width="200" />
-  </a>
+  <img alt="Status" src="https://img.shields.io/badge/Microsoft%20Store-under%20review-orange" />
 </p>
 
 <p align="center">
@@ -102,7 +100,7 @@ Exit 3  Pro license required
 
 ## Install
 
-**[Microsoft Store](https://apps.microsoft.com/detail/9P84RLQQ401D)** — auto-updates, self-contained, no runtime needed.
+Currently under Microsoft Store review. The Store link will be available once approved.
 
 ## Language
 

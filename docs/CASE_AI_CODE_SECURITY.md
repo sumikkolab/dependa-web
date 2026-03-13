@@ -88,4 +88,4 @@ Pro adds Node.js, online OSV lookup, license compatibility analysis, vulnerabili
 
 ---
 
-Available on [Microsoft Store](https://apps.microsoft.com/detail/9P84RLQQ401D). Windows 10/11.
+Currently under Microsoft Store review. Windows 10/11.

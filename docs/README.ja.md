@@ -9,9 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://apps.microsoft.com/detail/9P84RLQQ401D">
-    <img src="https://get.microsoft.com/images/ja-jp%20dark.svg" alt="Microsoft Store から入手" width="200" />
-  </a>
+  <img alt="Status" src="https://img.shields.io/badge/Microsoft%20Store-%E5%AF%A9%E6%9F%BB%E4%B8%AD-orange" />
 </p>
 
 <p align="center">
@@ -88,7 +86,7 @@ Dependa.exe scan --path ./myproject --lang ja                  # 日本語出力
 
 ## インストール
 
-**[Microsoft Store](https://apps.microsoft.com/detail/9P84RLQQ401D)** — 自動更新、ランタイム不要。
+現在 Microsoft Store の審査中です。承認後に Store リンクが有効になります。
 
 ## プライバシー
 
