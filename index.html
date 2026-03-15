@@ -68,20 +68,20 @@
     <h2>無料機能</h2>
     <div class="features">
       <div class="feature-card">
-        <h3>Python スキャン</h3>
-        <p>requirements.txt / pyproject.toml / poetry.lock / uv.lock を自動検出・解析。</p>
+        <h3>Python / NuGet スキャン</h3>
+        <p>requirements.txt / pyproject.toml / .csproj 等を自動検出・解析。Python 243件・NuGet 45件の脆弱性データを同梱。</p>
       </div>
       <div class="feature-card">
         <h3>脆弱性照合</h3>
         <p>ローカルデータベースで既知の脆弱性を CVSS スコア別（Critical / High / Medium / Low）に判定。</p>
       </div>
       <div class="feature-card">
-        <h3>ライセンス分析</h3>
-        <p>SPDX ID に基づき Approved / Caution / Prohibited / Unknown に自動分類。</p>
+        <h3>ライセンス分析 + 信頼度</h3>
+        <p>SPDX ID に基づき承認 / 注意 / 禁止 / 不明に自動分類。判定信頼度（高 / 中 / 低 / 要確認）を表示。</p>
       </div>
       <div class="feature-card">
-        <h3>レポート・SBOM</h3>
-        <p>HTML レポート（オフライン閲覧・印刷対応）と CycloneDX 1.5 準拠 SBOM を自動生成。</p>
+        <h3>レポート・SBOM・エクスポート</h3>
+        <p>HTML レポート、CycloneDX SBOM、CSV 一覧表、ライセンス通知文書を生成。</p>
       </div>
     </div>
 
@@ -89,17 +89,20 @@
     <ul>
       <li><strong>Node.js 対応</strong> — package.json / package-lock.json のスキャン</li>
       <li><strong>オンライン脆弱性照合</strong> — OSV API で最新の脆弱性情報を取得</li>
-      <li><strong>オンラインライセンス補完</strong> — PyPI API でライセンス情報を補完</li>
+      <li><strong>オンラインライセンス検証</strong> — PyPI / npm / NuGet API で内蔵データを検証（B+ 方式）</li>
+      <li><strong>リスクスコア</strong> — パッケージごとに 0〜100 の定量リスク評価</li>
+      <li><strong>OSS 審査支援</strong> — 推奨アクション・商用利用ガイダンス・組織チェックリスト</li>
       <li><strong>Delta Scan</strong> — 前回スキャンとの差分を検出</li>
-      <li><strong>AI プロンプト</strong> — 脆弱性修正・ライセンス確認の支援プロンプト生成</li>
+      <li><strong>審査レポート出力</strong> — CSV 一覧表・Markdown 審査レポートのエクスポート</li>
+      <li><strong>AI プロンプト</strong> — 脆弱性修正・ライセンス確認・Delta Scan の支援プロンプト生成</li>
     </ul>
 
     <h2>対応エコシステム</h2>
     <table class="eco-table">
       <tr><th>エコシステム</th><th>対応ファイル</th><th>プラン</th></tr>
       <tr><td>Python</td><td>requirements.txt, pyproject.toml, poetry.lock, uv.lock</td><td>Free</td></tr>
+      <tr><td>NuGet (.NET)</td><td>.csproj, packages.config</td><td>Free</td></tr>
       <tr><td>Node.js</td><td>package.json, package-lock.json</td><td>Pro</td></tr>
-      <tr><td>NuGet (.NET)</td><td>.csproj, Directory.Build.props</td><td>Pro</td></tr>
     </table>
 
     <div class="privacy-note">
@@ -146,20 +149,20 @@
     <h2>Free Features</h2>
     <div class="features">
       <div class="feature-card">
-        <h3>Python Scanning</h3>
-        <p>Automatically detects and analyzes requirements.txt, pyproject.toml, poetry.lock, and uv.lock.</p>
+        <h3>Python / NuGet Scanning</h3>
+        <p>Automatically detects requirements.txt, pyproject.toml, .csproj, etc. Bundled with Python 243 + NuGet 45 vulnerability advisories.</p>
       </div>
       <div class="feature-card">
         <h3>Vulnerability Matching</h3>
         <p>Matches against a local database and classifies by CVSS score (Critical / High / Medium / Low).</p>
       </div>
       <div class="feature-card">
-        <h3>License Analysis</h3>
-        <p>Automatically classifies licenses as Approved / Caution / Prohibited / Unknown based on SPDX IDs.</p>
+        <h3>License Analysis + Confidence</h3>
+        <p>Classifies licenses as Approved / Caution / Prohibited / Unknown. Shows confidence level (High / Medium / Low / Conflicted).</p>
       </div>
       <div class="feature-card">
-        <h3>Reports &amp; SBOM</h3>
-        <p>Generates offline-ready HTML reports and CycloneDX 1.5 compliant SBOM automatically.</p>
+        <h3>Reports, SBOM &amp; Export</h3>
+        <p>HTML report, CycloneDX SBOM, CSV inventory, and license notice document generation.</p>
       </div>
     </div>
 
@@ -167,17 +170,20 @@
     <ul>
       <li><strong>Node.js Support</strong> — Scan package.json and package-lock.json</li>
       <li><strong>Online Vulnerability Lookup</strong> — Fetch latest vulnerability data via OSV API</li>
-      <li><strong>Online License Metadata</strong> — Supplement license info via PyPI API</li>
+      <li><strong>Online License Verification</strong> — Verify local data against PyPI / npm / NuGet registries (B+ method)</li>
+      <li><strong>Risk Score</strong> — Per-package quantitative risk evaluation (0-100)</li>
+      <li><strong>OSS Review Support</strong> — Recommended actions, commercial use guidance, organization checklist</li>
       <li><strong>Delta Scan</strong> — Detect changes from previous scan results</li>
-      <li><strong>AI Prompts</strong> — Generate prompts for vulnerability remediation and license review</li>
+      <li><strong>Review Report Export</strong> — CSV inventory and Markdown review report</li>
+      <li><strong>AI Prompts</strong> — Generate prompts for vulnerability fix, license review, and Delta Scan</li>
     </ul>
 
     <h2>Supported Ecosystems</h2>
     <table class="eco-table">
       <tr><th>Ecosystem</th><th>Supported Files</th><th>Plan</th></tr>
       <tr><td>Python</td><td>requirements.txt, pyproject.toml, poetry.lock, uv.lock</td><td>Free</td></tr>
+      <tr><td>NuGet (.NET)</td><td>.csproj, packages.config</td><td>Free</td></tr>
       <tr><td>Node.js</td><td>package.json, package-lock.json</td><td>Pro</td></tr>
-      <tr><td>NuGet (.NET)</td><td>.csproj, Directory.Build.props</td><td>Pro</td></tr>
     </table>
 
     <div class="privacy-note">
