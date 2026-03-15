@@ -61,40 +61,40 @@
 
   <div class="container">
     <h2>概要</h2>
-    <p>Dependa は、ソフトウェアプロジェクトが利用する依存ライブラリの<strong>脆弱性</strong>と<strong>ライセンスリスク</strong>を検出するデスクトップツールです。GUI と CLI の両方に対応し、オフライン環境でも基本機能が動作します。</p>
-    <p>Dependa は解析をローカル環境で実行し、ソースコードやプロジェクトファイルを外部サーバーへ送信することはありません。</p>
-    <p>Dependa は OSS 棚卸し、ライセンス確認、互換性レビュー、脆弱性確認を統合し、セキュリティレビューや監査に活用できるレポートを生成します。</p>
+    <p>Dependa は、プロジェクトで使っている依存ライブラリの<strong>脆弱性</strong>と<strong>ライセンスリスク</strong>をまとめてチェックするデスクトップツールです。画面操作（GUI）でもコマンドライン（CLI）でも使え、ネットに接続しなくても基本機能が動きます。</p>
+    <p>分析はすべてお使いの PC 上で行います。ソースコードやプロジェクトの情報を外部に送信することはありません。</p>
+    <p>OSS の棚卸し、ライセンスの確認、互換性のチェック、脆弱性の照合をひとつのツールで完結し、セキュリティレビューや監査に使えるレポートを生成します。</p>
 
     <h2>無料機能</h2>
     <div class="features">
       <div class="feature-card">
         <h3>Python / NuGet スキャン</h3>
-        <p>requirements.txt / pyproject.toml / .csproj 等を自動検出・解析。Python 243件・NuGet 45件の脆弱性データを同梱。</p>
+        <p>requirements.txt や .csproj などを自動で検出・解析。脆弱性データ（Python 243件・NuGet 45件）を内蔵しているので、ネット接続なしで検出できます。</p>
       </div>
       <div class="feature-card">
-        <h3>脆弱性照合</h3>
-        <p>ローカルデータベースで既知の脆弱性を CVSS スコア別（Critical / High / Medium / Low）に判定。</p>
+        <h3>脆弱性の照合</h3>
+        <p>内蔵データで既知の脆弱性を検出し、深刻度（Critical / High / Medium / Low）ごとに分類します。</p>
       </div>
       <div class="feature-card">
-        <h3>ライセンス分析 + 信頼度</h3>
-        <p>SPDX ID に基づき承認 / 注意 / 禁止 / 不明に自動分類。判定信頼度（高 / 中 / 低 / 要確認）を表示。</p>
+        <h3>ライセンスの分類と信頼度</h3>
+        <p>ライセンスを自動で分類（承認 / 注意 / 禁止 / 不明）。判定の信頼度（高 / 中 / 低 / 要確認）も表示するので、どこまで信頼できるかがわかります。</p>
       </div>
       <div class="feature-card">
-        <h3>レポート・SBOM・エクスポート</h3>
-        <p>HTML レポート、CycloneDX SBOM、CSV 一覧表、ライセンス通知文書を生成。</p>
+        <h3>レポートとエクスポート</h3>
+        <p>HTML レポート、SBOM（CycloneDX）、OSS 一覧表（CSV）、ライセンス通知文書をワンクリックで生成。</p>
       </div>
     </div>
 
     <h2>Pro 機能 <span class="pro-badge">PRO</span></h2>
     <ul>
       <li><strong>Node.js 対応</strong> — package.json / package-lock.json のスキャン</li>
-      <li><strong>オンライン脆弱性照合</strong> — OSV API で最新の脆弱性情報を取得</li>
-      <li><strong>オンラインライセンス検証</strong> — PyPI / npm / NuGet API で内蔵データを検証（B+ 方式）</li>
-      <li><strong>リスクスコア</strong> — パッケージごとに 0〜100 の定量リスク評価</li>
-      <li><strong>OSS 審査支援</strong> — 推奨アクション・商用利用ガイダンス・組織チェックリスト</li>
-      <li><strong>Delta Scan</strong> — 前回スキャンとの差分を検出</li>
-      <li><strong>審査レポート出力</strong> — CSV 一覧表・Markdown 審査レポートのエクスポート</li>
-      <li><strong>AI プロンプト</strong> — 脆弱性修正・ライセンス確認・Delta Scan の支援プロンプト生成</li>
+      <li><strong>最新の脆弱性情報</strong> — OSV API で最新の脆弱性データを取得して照合</li>
+      <li><strong>ライセンスのオンライン検証</strong> — PyPI / npm / NuGet の公式情報で内蔵データの判定を照合し、信頼度を引き上げ</li>
+      <li><strong>リスクスコア</strong> — パッケージごとに 0〜100 のスコアでリスクを定量化</li>
+      <li><strong>OSS 利用審査の支援</strong> — 推奨アクション、商用利用の注意点、組織向けチェックリストを生成</li>
+      <li><strong>差分比較（Delta Scan）</strong> — 前回のスキャン結果と比較し、変化点を検出</li>
+      <li><strong>審査レポートの出力</strong> — OSS 一覧表（CSV）や審査レポート（Markdown）をエクスポート</li>
+      <li><strong>AI 向けプロンプト</strong> — 脆弱性の修正やライセンスの確認に使えるプロンプトを生成</li>
     </ul>
 
     <h2>対応エコシステム</h2>
@@ -106,11 +106,11 @@
     </table>
 
     <div class="privacy-note">
-      <p><strong>プライバシー:</strong> すべてのデータはローカルで処理されます。Free 機能は完全にオフラインで動作します。Pro 機能ではユーザーがオンライン照合を有効化した場合のみ、OSV などの公開脆弱性データベースを参照します。個人情報の送信は一切行いません。</p>
+      <p><strong>プライバシー:</strong> 分析はすべて PC 上で完結します。無料版はインターネットに一切接続しません。Pro 版のオンライン機能も、ユーザーが明示的に有効にした場合のみ、公開されている脆弱性データベース等を参照します。個人情報の送信は一切行いません。</p>
     </div>
 
     <h2>入手方法</h2>
-    <p>Dependa は <strong>Microsoft Store</strong> からインストールできます。Store 経由のインストールにより、自動更新と安全な配布が保証されます。</p>
+    <p><strong>Microsoft Store</strong> からインストールできます。自動更新に対応しており、ランタイムの追加インストールは不要です。</p>
 
     <h2>システム要件</h2>
     <ul>
