@@ -9,7 +9,9 @@
 </p>
 
 <p align="center">
-  <img alt="Status" src="https://img.shields.io/badge/Microsoft%20Store-%E5%AF%A9%E6%9F%BB%E4%B8%AD-orange" />
+  <a href="https://apps.microsoft.com/detail/9P84RLQQ401D">
+    <img src="https://get.microsoft.com/images/ja-jp%20dark.svg" alt="Microsoft Store から入手" width="200" />
+  </a>
 </p>
 
 <p align="center">
@@ -30,15 +32,16 @@ SCA ツールの大半は CI パイプラインと Linux が前提です。Windo
 
 ## 機能
 
+### スキャン
+
 <p align="center">
   <img src="https://dependa.sumikkolab.com/manual/images/scan-results-ja.png" alt="スキャン結果" width="720" />
 </p>
 
-### スキャン
-
 - **Python** (pip)、**NuGet** (.csproj / packages.config)、**Node.js** (npm)
-- バンドル済みアドバイザリ DB による脆弱性照合 — ネットワーク不要
-- ライセンス分類: Approved / Caution / Prohibited / Unknown
+- バンドル済みアドバイザリ DB による脆弱性照合（Python 243件 / NuGet 45件同梱）— ネットワーク不要
+- ライセンス分類: 承認 / 注意 / 禁止 / 不明
+- **判定信頼度**: 高 / 中 / 低 / 要確認
 - スクリプト・ブラウザ拡張の外部参照検査
 
 ### レポート
@@ -49,6 +52,7 @@ SCA ツールの大半は CI パイプラインと Linux が前提です。Windo
 
 - 自己完結型 HTML — 外部 CSS/JS なし、オフラインで開ける、そのまま印刷可
 - CycloneDX 1.5 SBOM (JSON)
+- CSV 一覧表（v1 固定スキーマ）・THIRD-PARTY-NOTICES.txt
 - LLM に貼り付けて修正指示に使える構造化プロンプト出力
 
 ### 分析 (Pro)
@@ -58,14 +62,18 @@ SCA ツールの大半は CI パイプラインと Linux が前提です。Windo
 </p>
 
 - **ライセンス互換性** — Apache-2.0 + GPL-2.0 特許条項の衝突、Copyleft と Proprietary の混在を検出・説明
-- **脆弱性トリアージ** — severity 別の内訳、影響パッケージ、修正パス
+- **脆弱性トリアージ** — 深刻度別の内訳、影響パッケージ、修正パス
+- **リスクスコア** — パッケージごとに 0〜100 の定量評価
+- **OSS 利用審査支援** — 推奨アクション・商用利用ガイダンス・組織確認チェックリスト
 - **Delta Scan** — 前回スキャンとの差分
+- **オンライン検証** — B+ 方式: 内蔵データをオンラインレジストリ（PyPI / npm / NuGet）で確認
 - **オンライン OSV 照合** — リアルタイム CVE データ（オプトイン）
-- **オンラインライセンス補完** — PyPI / npm レジストリから補足
 
 ## オフラインが既定
 
 オプトインしない限りネットワーク通信ゼロ。脆弱性照合、ライセンス分類、ポリシーチェック、レポート、SBOM — すべてローカル。
+
+内蔵データが古くなった場合（90日以上経過時）は自動で案内を表示します。
 
 ## CLI + GUI
 
@@ -74,19 +82,24 @@ SCA ツールの大半は CI パイプラインと Linux が前提です。Windo
 ```powershell
 Dependa.exe                                                    # GUI
 Dependa.exe scan --path ./myproject --accept-terms             # スキャン
+Dependa.exe scan --path ./myproject --export all --overwrite   # CSV + Notice + Review 出力
 Dependa.exe scan --path ./myproject --ai-prompt vuln           # AI 修正プロンプト
 Dependa.exe scan --path ./myproject --lang ja                  # 日本語出力
 ```
 
 ## Free と Pro
 
-**Free** — Python + NuGet スキャン、ローカル脆弱性照合、ライセンス分類、HTML レポート、SBOM、スクリプト検査。「問題があるか？」に答える。
+**Free** — Python + NuGet スキャン、ローカル脆弱性照合、信頼度付きライセンス分類、HTML レポート、SBOM、CSV 一覧表、ライセンス通知、スクリプト検査。「問題があるか？」に答える。
 
-**Pro** — Node.js、オンライン OSV 照合、ライセンス互換性分析、脆弱性トリアージ、Delta Scan を追加。「どれくらい深刻で、何から直すか？」に答える。Microsoft Store でワンタイム購入。
+**Pro** — Node.js、オンライン OSV 照合、オンラインライセンス検証（B+ 方式）、ライセンス互換性分析、脆弱性トリアージ、リスクスコア、OSS 審査支援、Delta Scan、審査レポート出力を追加。「どれくらい深刻で、何から直すか、審査にどう出すか？」に答える。Microsoft Store でワンタイム購入。
 
 ## インストール
 
-現在 Microsoft Store の審査中です。承認後に Store リンクが有効になります。
+**[Microsoft Store](https://apps.microsoft.com/detail/9P84RLQQ401D)** — 自動更新、ランタイム不要。
+
+## ドキュメント
+
+**[ユーザーマニュアル](https://dependa.sumikkolab.com/manual/)** — はじめに、スキャン、レポート、CLI リファレンス、Pro 機能、トラブルシューティング。
 
 ## プライバシー
 
@@ -94,4 +107,4 @@ Dependa.exe scan --path ./myproject --lang ja                  # 日本語出力
 
 ## ライセンス
 
-Proprietary。Free 版は無償。[Sumikko Lab](https://dependa.sumikkolab.com)。
+Proprietary。Free 版は無償。[Sumikko Lab](https://dependa.sumikkolab.com)。サードパーティライセンス: [ThirdPartyNotices](https://dependa.sumikkolab.com/manual/licensing.html)。

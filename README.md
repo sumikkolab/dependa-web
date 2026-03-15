@@ -5,17 +5,19 @@
 <h1 align="center">Dependa</h1>
 
 <p align="center">
-  Dependency risk analysis for Windows — vulnerabilities, licenses, and compatibility in one scan.
+  Dependency risk analysis for Windows — vulnerabilities, licenses, and compliance in one scan.
 </p>
 
 <p align="center">
-  <img alt="Status" src="https://img.shields.io/badge/Microsoft%20Store-under%20review-orange" />
+  <a href="https://apps.microsoft.com/detail/9P84RLQQ401D">
+    <img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Get it from Microsoft Store" width="200" />
+  </a>
 </p>
 
 <p align="center">
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%2010%2F11-blue" />
   <img alt=".NET 8" src="https://img.shields.io/badge/.NET-8.0-purple" />
-  <img alt="Tests" src="https://img.shields.io/badge/tests-396%20passing-brightgreen" />
+  <img alt="Tests" src="https://img.shields.io/badge/tests-565%20passing-brightgreen" />
 </p>
 
 <p align="center">
@@ -36,15 +38,16 @@ Most SCA tools expect a CI pipeline and a Linux box. A lot of real projects don'
 
 ## What You Get
 
+### Scan
+
 <p align="center">
   <img src="https://dependa.sumikkolab.com/manual/images/scan-results-en.png" alt="Scan Results" width="720" />
 </p>
 
-### Scan
-
 - **Python** (pip), **NuGet** (.csproj / packages.config), **Node.js** (npm)
-- Vulnerability matching against a bundled advisory database — no network required
+- Vulnerability matching against a bundled advisory database (Python 243 + NuGet 45 advisories) — no network required
 - License classification: Approved / Caution / Prohibited / Unknown
+- **License confidence scoring**: High / Medium / Low / Conflicted
 - Script and browser extension inspection for external references
 
 ### Report
@@ -55,6 +58,7 @@ Most SCA tools expect a CI pipeline and a Linux box. A lot of real projects don'
 
 - Self-contained HTML — no external CSS/JS, prints cleanly, works offline
 - CycloneDX 1.5 SBOM (JSON)
+- CSV inventory (fixed v1 schema) and THIRD-PARTY-NOTICES.txt
 - Structured prompts you can paste into ChatGPT, Claude, or any LLM for fix guidance
 
 ### Analyze (Pro)
@@ -65,15 +69,19 @@ Most SCA tools expect a CI pipeline and a Linux box. A lot of real projects don'
 
 - **License compatibility** — Apache-2.0 + GPL-2.0 patent clause conflict? Copyleft in a proprietary project? Detected and explained.
 - **Vulnerability triage** — severity breakdown, affected packages, remediation paths
+- **Risk Score** — 0-100 quantitative evaluation per package
+- **OSS Review Support** — recommended actions, commercial use guidance, organization review checklist
 - **Delta Scan** — what changed since your last scan
+- **Online verification** — B+ method: verify local license definitions against online registries (PyPI, npm, NuGet)
 - **Online OSV lookup** — real-time CVE data, opt-in
-- **Online license metadata** — PyPI and npm registry supplement
 
 ## Offline by Default
 
 Zero network requests unless you opt in. Vulnerability matching, license classification, policy checks, HTML reports, SBOM — all local, all bundled.
 
-Online features (OSV API, PyPI, npm) exist. They're off until you turn them on.
+Data freshness warning after 90 days — Dependa tells you when bundled data may be stale.
+
+Online features (OSV API, PyPI, npm, NuGet) exist. They're off until you turn them on.
 
 ## CLI + GUI
 
@@ -82,6 +90,7 @@ Same binary.
 ```powershell
 Dependa.exe                                                    # GUI
 Dependa.exe scan --path ./myproject --accept-terms             # scan
+Dependa.exe scan --path ./myproject --export all --overwrite   # export CSV + Notice + Review
 Dependa.exe scan --path ./myproject --ai-prompt vuln           # AI fix prompt
 Dependa.exe scan --path ./myproject --lang en                  # English output
 ```
@@ -94,17 +103,21 @@ Exit 3  Pro license required
 
 ## Free vs Pro
 
-**Free** — Python + NuGet scanning, local vulnerability matching, license classification, HTML report, SBOM, script inspection. Answers: *do I have a problem?*
+**Free** — Python + NuGet scanning, local vulnerability matching, license classification with confidence scoring, HTML report, SBOM, CSV inventory, license notice, script inspection. Answers: *do I have a problem?*
 
-**Pro** — adds Node.js, online OSV lookup, license compatibility analysis, vulnerability triage, Delta Scan. Answers: *how bad, and what do I fix first?* One-time purchase via Microsoft Store.
+**Pro** — adds Node.js, online OSV lookup, online license verification (B+ method), license compatibility analysis, vulnerability triage, risk scoring, OSS review support, Delta Scan, review report export. Answers: *how bad, what do I fix first, and what do I tell the reviewer?* One-time purchase via Microsoft Store.
 
 ## Install
 
-Currently under Microsoft Store review. The Store link will be available once approved.
+**[Microsoft Store](https://apps.microsoft.com/detail/9P84RLQQ401D)** — auto-updates, self-contained, no runtime needed.
+
+## Documentation
+
+**[User Manual](https://dependa.sumikkolab.com/manual/)** — Getting started, scanning, reports, CLI reference, Pro features, and troubleshooting.
 
 ## Language
 
-Japanese and English. UI, reports, CLI output — everything switches with one setting.
+Japanese and English. UI, reports, CLI output — everything switches with one setting. Full Japanese localization including license labels, risk levels, and review guidance.
 
 ## Privacy
 
