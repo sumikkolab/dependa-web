@@ -5,7 +5,7 @@
 <h1 align="center">Dependa</h1>
 
 <p align="center">
-  Dependency risk analysis for Windows — vulnerabilities, licenses, and compliance in one scan.
+  Local dependency review for security and compliance
 </p>
 
 <p align="center">
@@ -28,13 +28,18 @@
 
 ## The Problem
 
-Copilot added three packages to your `requirements.txt`. Did you check the licenses? Cursor generated a `package.json` — are any of those transitive deps on the CVE list?
+Modern applications rely on dozens or hundreds of open-source dependencies. Understanding the security, licensing, and compatibility risks of those dependencies is often difficult.
 
-With AI-assisted coding, you're shipping dependencies you didn't choose. But the risk is still yours. Checking licenses means cross-referencing SPDX identifiers by hand. Vulnerability scanning means querying OSV one package at a time. Generating an SBOM means configuring yet another tool. And tomorrow the deps change again.
+Many SCA tools focus on CI/CD automation, but developers and reviewers still need a clear way to understand dependency risks before release.
 
-Most SCA tools expect a CI pipeline and a Linux box. A lot of real projects don't have either — they live on a Windows machine, built by a small team or a solo developer.
+**Dependa analyzes dependencies locally and generates a human-readable review report you can share with your team. No cloud upload. No account. No setup.**
 
-**Dependa runs locally on Windows, works offline, and gives you answers. No cloud. No account. No setup.**
+## Who Uses This
+
+- **Developers** — review dependency risks before shipping
+- **Security teams** — vulnerability inventory and prioritization
+- **Compliance reviewers** — license compatibility checks and audit reports
+- **IT / Procurement** — risk evaluation before adopting third-party tools
 
 ## What You Get
 
@@ -45,7 +50,7 @@ Most SCA tools expect a CI pipeline and a Linux box. A lot of real projects don'
 </p>
 
 - **Python** (pip), **NuGet** (.csproj / packages.config), **Node.js** (npm)
-- Vulnerability matching against a bundled advisory database (Python 243 + NuGet 45 advisories) — no network required
+- Vulnerability matching against a bundled advisory database — no network required
 - License classification: Approved / Caution / Prohibited / Unknown
 - **License confidence scoring**: High / Medium / Low / Conflicted
 - Script and browser extension inspection for external references
@@ -72,8 +77,33 @@ Most SCA tools expect a CI pipeline and a Linux box. A lot of real projects don'
 - **Risk Score** — 0-100 quantitative evaluation per package
 - **OSS Review Support** — recommended actions, commercial use guidance, organization review checklist
 - **Delta Scan** — what changed since your last scan
-- **Online verification** — B+ method: verify local license definitions against online registries (PyPI, npm, NuGet)
+- **Online verification** — verify local license definitions against online registries (PyPI, npm, NuGet)
 - **Online OSV lookup** — real-time CVE data, opt-in
+
+## Why Dependa
+
+Dependa is not a replacement for CI-based SCA tools. It focuses on **the human review step** in your workflow.
+
+|  | Snyk | Trivy | Dependency-Check | Dependa |
+|---|:---:|:---:|:---:|:---:|
+| CI/CD automation | ✓ | ✓ | ✓ | optional |
+| No cloud required | — | ✓ | ✓ | ✓ |
+| Human-readable review report | — | — | — | ✓ |
+| Local execution | — | ✓ | ✓ | ✓ |
+| Desktop GUI | — | — | — | ✓ |
+| License confidence scoring | — | — | — | ✓ |
+
+> Dependa complements CI tools. Use CI for automated checks, Dependa for review reports.
+
+## Example Workflow
+
+```
+1. Select a project directory
+2. Run dependency analysis (vulnerabilities + licenses + compatibility)
+3. Review results on screen (risk scores, confidence levels)
+4. Generate HTML review report
+5. Share report with your team for approval
+```
 
 ## Offline by Default
 
@@ -105,7 +135,7 @@ Exit 3  Pro license required
 
 **Free** — Python + NuGet scanning, local vulnerability matching, license classification with confidence scoring, HTML report, SBOM, CSV inventory, license notice, script inspection. Answers: *do I have a problem?*
 
-**Pro** — adds Node.js, online OSV lookup, online license verification (B+ method), license compatibility analysis, vulnerability triage, risk scoring, OSS review support, Delta Scan, review report export. Answers: *how bad, what do I fix first, and what do I tell the reviewer?* One-time purchase via Microsoft Store.
+**Pro** — adds Node.js, online OSV lookup, online license verification, license compatibility analysis, vulnerability triage, risk scoring, OSS review support, Delta Scan, review report export. Answers: *how bad, what do I fix first, and what do I tell the reviewer?* One-time purchase via Microsoft Store.
 
 ## Install
 
