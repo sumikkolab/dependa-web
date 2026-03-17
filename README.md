@@ -92,21 +92,14 @@ Many SCA tools focus on CI/CD automation, but developers and reviewers still nee
 - **Online verification** — verify local license definitions against online registries (PyPI, npm, NuGet)
 - **Online OSV lookup** — real-time CVE data, opt-in
 
-## Why Dependa
+## Key Characteristics
 
-Dependa is not a replacement for CI-based SCA tools. It focuses on **the human review step** in your workflow.
-
-|  | Snyk | Trivy | Dependency-Check | Dependa |
-|---|:---:|:---:|:---:|:---:|
-| CI/CD automation | ✓ | ✓ | ✓ | optional |
-| No cloud required | — | ✓ | ✓ | ✓ |
-| Human-readable review report | — | — | — | ✓ |
-| Local execution | — | ✓ | ✓ | ✓ |
-| Desktop GUI | — | — | — | ✓ |
-| License confidence scoring | — | — | — | ✓ |
-| Policy-based explainable judgments | — | — | — | ✓ |
-
-> Dependa complements CI tools. Use CI for automated checks, Dependa for review reports.
+- **Local-first** — all analysis runs on your machine, no cloud upload
+- **Human-readable reports** — HTML, CSV, SBOM designed for review workflows
+- **Desktop GUI + CLI** — same binary, choose your workflow
+- **Policy-based judgments** — explainable decisions with reasons
+- **License confidence scoring** — know how reliable each license detection is
+- **Offline by default** — bundled vulnerability and license data, no network required
 
 ## Example Workflow
 
