@@ -17,7 +17,7 @@
 <p align="center">
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%2010%2F11-blue" />
   <img alt=".NET 8" src="https://img.shields.io/badge/.NET-8.0-purple" />
-  <img alt="Tests" src="https://img.shields.io/badge/tests-565%20passing-brightgreen" />
+  <img alt="Tests" src="https://img.shields.io/badge/tests-709%20passing-brightgreen" />
 </p>
 
 <p align="center">
@@ -55,6 +55,17 @@ Many SCA tools focus on CI/CD automation, but developers and reviewers still nee
 - **License confidence scoring**: High / Medium / Low / Conflicted
 - Script and browser extension inspection for external references
 
+### Policy & Judgments (v1.1.0)
+
+<p align="center">
+  <img src="https://dependa.sumikkolab.com/manual/images/policy-judgments-en.png" alt="Policy Judgments" width="720" />
+</p>
+
+- **Organization Policy Builder** — create from templates, customize rules, save and set as default
+- **Package-level judgments** — detected facts, initial evaluation, policy action, and reason shown separately
+- Color-coded status: Pass / Warning / Fail for initial evaluation, Allow / Conditional / Review / Deny for policy action
+- Explainable results: every judgment includes the reason why
+
 ### Report
 
 <p align="center">
@@ -62,8 +73,9 @@ Many SCA tools focus on CI/CD automation, but developers and reviewers still nee
 </p>
 
 - Self-contained HTML — no external CSS/JS, prints cleanly, works offline
+- **Policy judgment records** in HTML — applied policy name, action summary badges, detailed judgment table
 - CycloneDX 1.5 SBOM (JSON)
-- CSV inventory (fixed v1 schema) and THIRD-PARTY-NOTICES.txt
+- CSV inventory (v2 schema with PolicyAction, ReasonCode, AppliedPolicyName, IsEffective)
 - Structured prompts you can paste into ChatGPT, Claude, or any LLM for fix guidance
 
 ### Analyze (Pro)
@@ -92,6 +104,7 @@ Dependa is not a replacement for CI-based SCA tools. It focuses on **the human r
 | Local execution | — | ✓ | ✓ | ✓ |
 | Desktop GUI | — | — | — | ✓ |
 | License confidence scoring | — | — | — | ✓ |
+| Policy-based explainable judgments | — | — | — | ✓ |
 
 > Dependa complements CI tools. Use CI for automated checks, Dependa for review reports.
 
