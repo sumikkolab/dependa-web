@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exception Management — Dependa | SumikkoLab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>例外管理</h1>
+    <p class="subtitle">検出された問題を「承知の上で許容する」記録を管理します。<span class="pro-badge">Pro</span></p>
+
+    <h2>概要</h2>
+    <p>例外管理は、スキャンで検出された脆弱性やライセンス問題に対して「例外として許容する」という判断を記録する機能です。例外は「無視」ではなく「管理下で承認された状態」として扱われます。</p>
+
+    <h2>例外の登録方法</h2>
+    <h3>スキャン結果画面から直接登録（推奨）</h3>
+    <ol>
+      <li>スキャンを実行します。</li>
+      <li>脆弱性一覧またはライセンス一覧で、例外にしたい行を選択します。</li>
+      <li>ヘッダ横の「例外登録」ボタンをクリックします。</li>
+      <li>ダイアログが開き、種別・エコシステム・パッケージ名・Advisory ID が自動入力されます。</li>
+      <li>理由、承認者、有効期間（日数）を入力し、「登録」をクリックします。</li>
+    </ol>
+
+    <h3>例外管理ページから登録</h3>
+    <p>サイドメニューの「例外管理」から手動で登録することもできます。台帳管理用です。</p>
+
+    <h2>例外のライフサイクル</h2>
+    <table>
+      <tr><th>状態</th><th>意味</th><th>遷移</th></tr>
+      <tr><td><strong>Active</strong></td><td>有効。ポリシー判定で例外として扱われます。</td><td>登録時</td></tr>
+      <tr><td><strong>Expired</strong></td><td>有効期限切れ。再レビューが必要です。</td><td>自動（期限経過時）</td></tr>
+      <tr><td><strong>Revoked</strong></td><td>手動で取り消し。監査証跡として残ります。</td><td>手動（取り消しボタン）</td></tr>
+    </table>
+    <p>例外は削除されません。Revoked / Expired として監査証跡が残ります。</p>
+
+    <h2>スコープ</h2>
+    <ul>
+      <li><strong>プロジェクト個別</strong>（既定）— 特定のプロジェクトのみに適用されます。</li>
+      <li><strong>共通例外（Global）</strong> — 全プロジェクトに適用されます。慎重に使用してください。</li>
+    </ul>
+
+    <h2>例外の反映</h2>
+    <ul>
+      <li><strong>GUI</strong> — 脆弱性・ライセンスのボタンが「例外適用済み」に変わります。</li>
+      <li><strong>ポリシー判定</strong> — 「例外適用済み: N 件 / 未解決: M 件」が表示されます。</li>
+      <li><strong>HTML レポート</strong> — 例外管理セクションに適用済み例外が表示されます。</li>
+      <li><strong>CSV</strong> — ExceptionStatus 列に Applied (Project) / Applied (Global) が出力されます。</li>
+    </ul>
+
+    <h2>例外管理ページの操作</h2>
+    <ul>
+      <li><strong>取り消し</strong> — 選択した例外を Revoked に変更します。</li>
+      <li><strong>期限延長</strong> — 選択した例外の期限を延長します（旧例外は Revoke され、新しい例外が作成されます）。</li>
+      <li><strong>更新</strong> — 期限切れの自動検出と一覧の再読み込みを行います。</li>
+    </ul>
+
+    <h2>保存形式</h2>
+    <p>例外は <code>dependa-exceptions.json</code> として保存されます。Git で管理可能です。</p>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html">Table of Contents</a>
+      <a href="../support.html">Support</a>
+    </div>
+
+    <h1>Exception Management</h1>
+    <p class="subtitle">Record approved exceptions for detected issues with full audit trail. <span class="pro-badge">Pro</span></p>
+
+    <h2>Overview</h2>
+    <p>Exception management lets you record deliberate decisions to accept known vulnerabilities or license issues. Exceptions are not "ignoring" — they are "approved under management".</p>
+
+    <h2>Registering Exceptions</h2>
+    <h3>From Scan Results (Recommended)</h3>
+    <ol>
+      <li>Run a scan.</li>
+      <li>Select a row in the Vulnerabilities or Licenses list.</li>
+      <li>Click the "Register Exception" button next to the section header.</li>
+      <li>A dialog opens with Type, Ecosystem, Package, and Advisory ID pre-filled.</li>
+      <li>Enter Reason, Approved By, and Expires (days), then click "Register".</li>
+    </ol>
+
+    <h3>From Exception Management Page</h3>
+    <p>You can also register exceptions manually from the "Exceptions" page in the sidebar. This is useful for ledger management.</p>
+
+    <h2>Exception Lifecycle</h2>
+    <table>
+      <tr><th>Status</th><th>Meaning</th><th>Transition</th></tr>
+      <tr><td><strong>Active</strong></td><td>Effective. The exception is applied during policy evaluation.</td><td>On registration</td></tr>
+      <tr><td><strong>Expired</strong></td><td>Past expiry date. Re-review required.</td><td>Automatic</td></tr>
+      <tr><td><strong>Revoked</strong></td><td>Manually cancelled. Kept as audit trail.</td><td>Manual (Revoke button)</td></tr>
+    </table>
+    <p>Exceptions are never deleted. Revoked and Expired entries remain as audit evidence.</p>
+
+    <h2>Scope</h2>
+    <ul>
+      <li><strong>Project</strong> (default) — applies only to the specific project.</li>
+      <li><strong>Global</strong> — applies to all projects. Use with caution.</li>
+    </ul>
+
+    <h2>Reflection in Results</h2>
+    <ul>
+      <li><strong>GUI</strong> — exception buttons change to "Exception Applied".</li>
+      <li><strong>Policy</strong> — shows "N of M issues excepted, K unresolved".</li>
+      <li><strong>HTML Report</strong> — Exception Management section with applied exceptions table.</li>
+      <li><strong>CSV</strong> — ExceptionStatus column shows Applied (Project) / Applied (Global).</li>
+    </ul>
+
+    <h2>Exception Page Operations</h2>
+    <ul>
+      <li><strong>Revoke</strong> — changes selected exception to Revoked status.</li>
+      <li><strong>Extend</strong> — extends the expiry (old exception is revoked, new one created).</li>
+      <li><strong>Refresh</strong> — auto-expires outdated entries and reloads the list.</li>
+    </ul>
+
+    <h2>Storage</h2>
+    <p>Exceptions are saved as <code>dependa-exceptions.json</code>. This file can be tracked in Git.</p>
+  </div>
+</div>
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').className = lang === 'ja' ? 'section-ja visible' : 'section-ja';
+  document.getElementById('content-en').className = lang === 'en' ? 'section-en visible' : 'section-en';
+  document.getElementById('btn-ja').className = lang === 'ja' ? 'active' : '';
+  document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+}
+</script>
+</body>
+</html>
