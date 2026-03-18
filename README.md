@@ -78,6 +78,16 @@ Most SCA tools expect a CI pipeline and a Linux box. A lot of real projects don'
 - **Online OSV lookup** — real-time CVE data, opt-in
 - **Online license metadata** — PyPI and npm registry supplement
 
+### Policy Builder (Pro)
+
+<p align="center">
+  <img src="https://dependa.sumikkolab.com/manual/images/policy-builder-en.png" alt="Policy Builder" width="720" />
+</p>
+
+- Select a template, adjust rules per category, preview the impact
+- Saved policies are applied automatically on every scan
+- Explainable judgments: every package gets a reason, not just a pass/fail
+
 ## Offline by Default
 
 Zero network requests unless you opt in. Vulnerability matching, license classification, policy checks, HTML reports, SBOM — all local, all bundled.
