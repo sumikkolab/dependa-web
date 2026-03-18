@@ -5,7 +5,7 @@
 <h1 align="center">Dependa</h1>
 
 <p align="center">
-  依存ライブラリのリスクを、あなたの PC 上でレビュー
+  Windows 向け依存関係リスク分析 — 脆弱性・ライセンス・互換性をワンスキャンで。
 </p>
 
 <p align="center">
@@ -20,45 +20,28 @@
 
 ---
 
-## 課題
+## 何が問題か
 
-現代のソフトウェアは、数十から数百のオープンソースライブラリに依存しています。それらのセキュリティ、ライセンス、互換性のリスクを把握するのは簡単ではありません。
+Copilot が `requirements.txt` に足したパッケージ、ライセンスを確認しましたか？ Cursor が生成した `package.json`、その推移的依存に既知の CVE が含まれていないと言い切れますか？
 
-多くの SCA ツールは CI/CD パイプライン向けに設計されていますが、リリース前に人間がレビューする工程では、見やすいレポートが求められます。
+AI コード生成が当たり前になった結果、自分で選んでいない依存を出荷するようになりました。でもリスクの責任は変わらずあなたにあります。ライセンス照合は SPDX を手作業で突き合わせ、脆弱性は OSV をひとつずつ検索、SBOM 生成はまた別のツールの設定。翌日には依存が変わっている。
 
-**Dependa は、依存ライブラリのリスクを分析し、チームで共有できるレビューレポートを生成します。分析はすべてあなたの PC 上で完結します。クラウドへのアップロードは不要です。**
+SCA ツールの大半は CI パイプラインと Linux が前提です。Windows デスクトップで動いている現場には合わない。
 
-## こんな方に
-
-- **開発者** — リリース前に依存ライブラリのリスクを確認したいとき
-- **セキュリティチーム** — 脆弱性の棚卸しと対応優先度の判断に
-- **コンプライアンス担当** — ライセンスの互換性確認と監査レポートの作成に
-- **社内 IT / 調達** — サードパーティツール導入前のリスク評価に
+**Dependa は Windows でローカル動作し、オフラインで回答を出します。クラウド不要。アカウント不要。**
 
 ## 機能
-
-### スキャン
 
 <p align="center">
   <img src="https://dependa.sumikkolab.com/manual/images/scan-results-ja.png" alt="スキャン結果" width="720" />
 </p>
 
-- **Python**（pip）、**NuGet**（.csproj / packages.config）、**Node.js**（npm）に対応
-- 脆弱性データを内蔵しているので、ネットにつながなくても検出可能
-- ライセンスを自動で分類（承認 / 注意 / 禁止 / 不明）
-- 判定の**信頼度**を表示（高 / 中 / 低 / 要確認）— どこまで信用できるかがわかる
-- PowerShell スクリプトやブラウザ拡張の外部接続先も検査
+### スキャン
 
-### ポリシーと判定記録（v1.1.0）
-
-<p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/policy-judgments-ja.png" alt="ポリシー判定記録" width="720" />
-</p>
-
-- **組織ポリシー設定** — テンプレートから作成し、ルールをカスタマイズして保存・既定設定
-- **パッケージ単位の判定記録** — 検出事実・初期評価・ポリシー判定・理由を分けて表示
-- 色分けで一目で判断: 初期評価（OK / 警告 / 不可）、ポリシー判定（許可 / 条件付き / 要レビュー / 使用不可）
-- すべての判定に理由が付く — なぜその判定になったかが説明可能
+- **Python** (pip)、**NuGet** (.csproj / packages.config)、**Node.js** (npm)
+- バンドル済みアドバイザリ DB による脆弱性照合 — ネットワーク不要
+- ライセンス分類: Approved / Caution / Prohibited / Unknown
+- スクリプト・ブラウザ拡張の外部参照検査
 
 ### レポート
 
@@ -66,83 +49,58 @@
   <img src="https://dependa.sumikkolab.com/manual/images/html-report-ja.png" alt="HTML レポート" width="720" />
 </p>
 
-- HTML レポートを自動生成。外部ファイル不要で、そのまま開いて印刷できる
-- **ポリシー判定記録** を HTML に含む — 適用ポリシー名、アクション別件数、判定詳細テーブル
-- CycloneDX 1.5 準拠の SBOM（JSON）を出力
-- OSS 一覧表（CSV v2: PolicyAction / ReasonCode 列を追加）とライセンス通知文書も生成可能
-- ChatGPT や Claude に貼れる修正支援プロンプトも出力
+- 自己完結型 HTML — 外部 CSS/JS なし、オフラインで開ける、そのまま印刷可
+- CycloneDX 1.5 SBOM (JSON)
+- LLM に貼り付けて修正指示に使える構造化プロンプト出力
 
-### 高度な分析（Pro）
+### 分析 (Pro)
 
 <p align="center">
   <img src="https://dependa.sumikkolab.com/manual/images/license-analysis-ja.png" alt="ライセンス分析" width="720" />
 </p>
 
-- **ライセンス互換性チェック** — Apache-2.0 と GPL-2.0 の特許条項の衝突や、コピーレフトと商用ライセンスの混在を検出して解説
-- **脆弱性の優先度整理** — 深刻度ごとの内訳、影響を受けるパッケージ、修正方法を提示
-- **リスクスコア** — パッケージごとに 0〜100 で定量的にリスクを評価
-- **OSS 利用審査の支援** — 各パッケージの推奨アクション、商用利用時の注意点、組織向けチェックリストを生成
-- **Delta Scan** — 前回のスキャン結果との差分を表示
-- **オンラインでの確認** — 内蔵データの判定結果を、PyPI / npm / NuGet の公式情報で照合して信頼度を引き上げ
-- **最新の脆弱性情報** — OSV API に問い合わせて、リアルタイムの CVE データで照合（任意で有効化）
+- **マルチエコシステム統合** — Python + npm を同時スキャン、統合結果表示
+- **ライセンス互換性** — Apache-2.0 + GPL-2.0 特許条項の衝突、Copyleft と Proprietary の混在を検出・説明
+- **脆弱性トリアージ** — severity 別の内訳、影響パッケージ、修正パス
+- **Delta Scan** — 前回スキャンとの差分、継続審査
+- **例外管理** — 既知の問題を理由・承認者・期限付きで許容。追跡・取消・延長が可能。監査対応。
 
-## 特長
+<p align="center">
+  <img src="https://dependa.sumikkolab.com/manual/images/exception-management-ja.png" alt="例外管理" width="720" />
+</p>
 
-- **ローカル完結** — 分析はすべて PC 上で実行。クラウドへのアップロードなし
-- **人間が読めるレポート** — HTML・CSV・SBOM をレビュー・共有用に生成
-- **デスクトップ GUI + CLI** — 同じアプリで両方使える
-- **ポリシーに基づく判定** — 理由付きの判定結果を表示
-- **ライセンス信頼度スコア** — 各ライセンス検出の信頼性がわかる
-- **オフラインで動作** — 脆弱性・ライセンスデータを内蔵。ネット不要
+- **オンライン OSV 照合** — リアルタイム CVE データ（オプトイン）
+- **オンラインライセンス補完** — PyPI / npm レジストリから補足
 
-## 使い方の流れ
+## オフラインが既定
 
-```
-1. プロジェクトフォルダを選択
-2. スキャン実行（脆弱性 + ライセンス + 互換性を分析）
-3. 画面で結果を確認（リスクスコア・信頼度）
-4. HTML レビューレポートを生成
-5. レポートをチームに共有して承認
-```
+オプトインしない限りネットワーク通信ゼロ。脆弱性照合、ライセンス分類、ポリシーチェック、レポート、SBOM — すべてローカル。
 
-## ネット接続なしで使える
+## CLI + GUI
 
-通常のスキャンでは、インターネットに一切接続しません。脆弱性の照合、ライセンスの分類、ポリシーの判定、レポートの生成 — すべてローカルで完結します。
-
-内蔵データが古くなると（90日以上経過時）、更新を促す案内が表示されます。
-
-オンライン機能（OSV API、PyPI、npm、NuGet）もありますが、ユーザーが明示的に有効にしない限り通信は発生しません。
-
-## GUI でも CLI でも
-
-同じアプリで両方使えます。
+同一バイナリ。
 
 ```powershell
-Dependa.exe                                                    # GUI を起動
-Dependa.exe scan --path ./myproject --accept-terms             # コマンドラインでスキャン
-Dependa.exe scan --path ./myproject --export all --overwrite   # CSV・通知文書・審査レポートを出力
-Dependa.exe scan --path ./myproject --ai-prompt vuln           # AI 向け修正プロンプトを生成
-Dependa.exe scan --path ./myproject --lang ja                  # 日本語で出力
+Dependa.exe                                                    # GUI
+Dependa.exe scan --path ./myproject --accept-terms             # スキャン
+Dependa.exe scan --path ./myproject --ai-prompt vuln           # AI 修正プロンプト
+Dependa.exe scan --path ./myproject --lang ja                  # 日本語出力
 ```
 
-## 無料版と Pro 版
+## Free と Pro
 
-**無料版** — Python と NuGet のスキャン、脆弱性の照合、信頼度つきライセンス分類、HTML レポート、SBOM、CSV 一覧表、ライセンス通知文書、スクリプト検査。「このプロジェクトに問題はあるか？」に答えます。
+**Free** — Python + NuGet スキャン、ローカル脆弱性照合、ライセンス分類、HTML レポート、SBOM、スクリプト検査。「問題があるか？」に答える。
 
-**Pro 版** — 上記に加えて、Node.js 対応、オンライン脆弱性照合、ライセンスのオンライン検証、互換性チェック、脆弱性の優先度整理、リスクスコア、OSS 審査支援、差分比較、審査レポート出力。「どこが深刻で、何から対応すべきか」まで踏み込みます。Microsoft Store で買い切り。
+**Pro** — Node.js、マルチエコシステム統合、例外管理、オンライン OSV 照合、ライセンス互換性分析、脆弱性トリアージ、Delta Scan を追加。「どれくらい深刻で、何から直すか、何を承認済みか？」に答える。Microsoft Store でワンタイム購入。
 
 ## インストール
 
-**[Microsoft Store](https://apps.microsoft.com/detail/9P84RLQQ401D)** からインストールできます。自動更新、ランタイムの追加インストール不要。
-
-## ドキュメント
-
-**[ユーザーマニュアル](https://dependa.sumikkolab.com/manual/)** — 使い方、スキャン手順、レポートの読み方、CLI コマンド一覧、Pro 機能の活用、よくある問題と対処法。
+**[Microsoft Store](https://apps.microsoft.com/detail/9P84RLQQ401D)** — 自動更新、ランタイム不要。
 
 ## プライバシー
 
-利用状況の収集や分析は一切行いません。アカウント登録も不要です。[プライバシーポリシー](https://dependa.sumikkolab.com/privacy-policy.html)
+テレメトリなし。分析なし。アカウント不要。[プライバシーポリシー](https://dependa.sumikkolab.com/privacy-policy.html)。
 
 ## ライセンス
 
-Dependa は商用ソフトウェアです。無料版は費用なしで利用できます。開発元: [Sumikko Lab](https://dependa.sumikkolab.com)。使用しているサードパーティライセンス: [ThirdPartyNotices](https://dependa.sumikkolab.com/manual/licensing.html)
+Proprietary。Free 版は無償。[Sumikko Lab](https://dependa.sumikkolab.com)。
