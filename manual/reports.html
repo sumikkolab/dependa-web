@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 5: Reports &amp; SBOM — Dependa | SumikkoLab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>Chapter 5: レポートと SBOM</h1>
+    <p class="subtitle">HTML レポート・CycloneDX SBOM の生成と活用</p>
+
+    <h2>HTML レポートの構成</h2>
+    <p>スキャン完了後に生成される HTML レポートは、ブラウザで開けるスタンドアロンファイルです。以下のセクションで構成されています。</p>
+    <table class="manual-table">
+      <tr><th>セクション</th><th>内容</th></tr>
+      <tr><td>ヘッダ</td><td>プロジェクト名、スキャン日時、Dependa バージョンが表示されます。</td></tr>
+      <tr><td>サマリ</td><td>依存ライブラリ数、脆弱性数、ライセンス分類の概要をカード形式で表示します。</td></tr>
+      <tr><td>ポリシー判定</td><td>PASS / FAIL の判定結果と、FAIL の場合はその理由が表示されます。</td></tr>
+      <tr><td>依存ライブラリ表</td><td>検出されたすべてのパッケージの名前、バージョン、エコシステム、ライセンスの一覧です。</td></tr>
+      <tr><td>脆弱性表</td><td>検出された脆弱性の ID、影響パッケージ、CVSS スコア、重大度、説明の一覧です。</td></tr>
+      <tr><td>ライセンス表</td><td>各パッケージのライセンス SPDX ID と分類（Approved / Caution / Prohibited / Unknown）の一覧です。</td></tr>
+      <tr><td>推奨事項</td><td>検出された問題に対する対処の提案（バージョンの更新、ライセンスの確認など）が記載されます。</td></tr>
+    </table>
+
+    <div class="screenshot">
+      <img src="images/html-report-ja.png" alt="HTML レポートのプレビュー">
+      <div class="caption">生成された HTML レポートの表示例</div>
+    </div>
+
+    <h2>レポートの閲覧方法</h2>
+    <ul>
+      <li><strong>ブラウザで開く:</strong> 生成された HTML ファイルをダブルクリックするだけで、ブラウザに表示されます。インターネット接続は不要です。</li>
+      <li><strong>印刷:</strong> ブラウザの印刷機能（Ctrl+P）を使って、紙に印刷したり PDF に変換したりできます。レポートは印刷用に最適化されたスタイルが適用されます。</li>
+      <li><strong>共有:</strong> HTML ファイルをそのままメールやファイル共有で送付できます。受け取った方もブラウザだけで閲覧できます。</li>
+    </ul>
+
+    <h2>SBOM 出力（CycloneDX 1.5 JSON）</h2>
+    <p>SBOM（Software Bill of Materials）とは、ソフトウェアに含まれるすべての部品（依存ライブラリ）のリストのことです。「ソフトウェアの部品表」とも呼ばれます。</p>
+    <p>Dependa は CycloneDX 1.5 形式の JSON ファイルとして SBOM を出力します。</p>
+    <ul>
+      <li>CycloneDX は国際的に広く採用されている SBOM 標準フォーマットです。</li>
+      <li>セキュリティ監査やコンプライアンス対応で求められる場面で活用できます。</li>
+      <li>他の SBOM 対応ツール（Dependency-Track など）にインポートして利用することも可能です。</li>
+    </ul>
+
+    <h2>出力先</h2>
+    <p>レポートと SBOM はスキャン対象プロジェクトの <code>reports/</code> フォルダに出力されます。</p>
+    <pre><code>{スキャン対象パス}/
+  reports/
+    dependa-report-2026-03-13.html    ← HTML レポート
+    dependa-sbom-2026-03-13.json      ← CycloneDX SBOM</code></pre>
+
+    <div class="info-box">
+      <p>スキャンのたびにタイムスタンプ付きの新しいファイルが生成されます。過去のレポートも残るため、変化の比較に活用できます。</p>
+    </div>
+
+    <div class="chapter-nav">
+      <a href="license-analysis.html">&larr; 前へ: ライセンス分析</a>
+      <a href="settings.html">次へ: 設定 &rarr;</a>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Table of Contents</a>
+      <a href="../support.html?lang=en">Support</a>
+    </div>
+
+    <h1>Chapter 5: Reports &amp; SBOM</h1>
+    <p class="subtitle">Generate and use HTML reports and CycloneDX SBOM</p>
+
+    <h2>HTML Report Structure</h2>
+    <p>The HTML report generated after a scan is a standalone file that can be opened in any browser. It consists of the following sections.</p>
+    <table class="manual-table">
+      <tr><th>Section</th><th>Content</th></tr>
+      <tr><td>Header</td><td>Displays the project name, scan date/time, and Dependa version.</td></tr>
+      <tr><td>Summary</td><td>Shows dependency count, vulnerability count, and license classification overview in card format.</td></tr>
+      <tr><td>Policy Result</td><td>Displays the PASS / FAIL result, along with reasons if FAIL.</td></tr>
+      <tr><td>Dependencies Table</td><td>Lists all detected packages with name, version, ecosystem, and license.</td></tr>
+      <tr><td>Vulnerabilities Table</td><td>Lists detected vulnerabilities with ID, affected package, CVSS score, severity, and description.</td></tr>
+      <tr><td>Licenses Table</td><td>Lists each package's SPDX license ID and classification (Approved / Caution / Prohibited / Unknown).</td></tr>
+      <tr><td>Recommendations</td><td>Provides suggested actions for detected issues (e.g., update versions, review licenses).</td></tr>
+    </table>
+
+    <div class="screenshot">
+      <img src="images/html-report-en.png" alt="HTML Report Preview">
+      <div class="caption">Example of a generated HTML report</div>
+    </div>
+
+    <h2>Viewing Reports</h2>
+    <ul>
+      <li><strong>Open in browser:</strong> Simply double-click the generated HTML file to view it in your browser. No internet connection is required.</li>
+      <li><strong>Print:</strong> Use the browser's print function (Ctrl+P) to print on paper or convert to PDF. The report includes print-optimized styles.</li>
+      <li><strong>Share:</strong> Send the HTML file as-is via email or file sharing. Recipients can view it with just a browser.</li>
+    </ul>
+
+    <h2>SBOM Output (CycloneDX 1.5 JSON)</h2>
+    <p>An SBOM (Software Bill of Materials) is a complete list of all components (dependency libraries) included in your software. It is sometimes called a "software parts list."</p>
+    <p>Dependa outputs SBOMs as CycloneDX 1.5 format JSON files.</p>
+    <ul>
+      <li>CycloneDX is an internationally adopted SBOM standard format.</li>
+      <li>Useful for security audits and compliance requirements.</li>
+      <li>Can be imported into other SBOM-compatible tools (e.g., Dependency-Track).</li>
+    </ul>
+
+    <h2>Output Location</h2>
+    <p>Reports and SBOM files are saved in the <code>reports/</code> folder within the scanned project directory.</p>
+    <pre><code>{Target Path}/
+  reports/
+    dependa-report-2026-03-13.html    ← HTML Report
+    dependa-sbom-2026-03-13.json      ← CycloneDX SBOM</code></pre>
+
+    <div class="info-box">
+      <p>Each scan generates new timestamped files. Previous reports are preserved, making it easy to compare changes over time.</p>
+    </div>
+
+    <div class="chapter-nav">
+      <a href="license-analysis.html?lang=en">&larr; Previous: License Analysis</a>
+      <a href="settings.html?lang=en">Next: Settings &rarr;</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. Dependa.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

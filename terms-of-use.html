@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Use — Dependa | SumikkoLab</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Yu Gothic UI', sans-serif; line-height: 1.7; color: #1a1a2e; background: #f8f9fa; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 1.5rem; margin-bottom: 8px; color: #0f172a; }
+  .subtitle { font-size: 0.85rem; color: #64748b; margin-bottom: 32px; }
+  h2 { font-size: 1.1rem; margin: 28px 0 8px; color: #312e81; border-left: 3px solid #6366f1; padding-left: 10px; }
+  h3 { font-size: 1rem; margin: 20px 0 6px; color: #312e81; }
+  p, li { font-size: 0.95rem; margin-bottom: 8px; }
+  ul, ol { padding-left: 20px; margin-bottom: 12px; }
+  .lang-toggle { text-align: right; margin-bottom: 20px; }
+  .lang-toggle button { background: #e2e8f0; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+  .lang-toggle button.active { background: #6366f1; color: #fff; }
+  .section-ja, .section-en { display: none; }
+  .section-ja.visible, .section-en.visible { display: block; }
+  .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; text-align: center; }
+  .nav-links { margin-bottom: 24px; font-size: 0.85rem; }
+  .nav-links a { color: #6366f1; text-decoration: none; margin-right: 16px; }
+  .nav-links a:hover { text-decoration: underline; }
+  .disclaimer-box { background: #fef2f2; border: 2px solid #fca5a5; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .disclaimer-box h3 { color: #991b1b; }
+  .disclaimer-box p, .disclaimer-box li { color: #7f1d1d; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">製品情報</a>
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+    </div>
+
+    <h1>利用規約・免責事項</h1>
+    <p class="subtitle">Dependa — SumikkoLab｜最終更新日: 2026-03-13</p>
+
+    <h2>1. 本規約について</h2>
+    <p>本規約は、デスクトップアプリケーション「Dependa」（以下「本アプリ」）の利用条件を定めるものです。本アプリをインストールまたは使用することにより、本規約に同意したものとみなします。</p>
+
+    <h2>2. 本アプリの目的</h2>
+    <p>本アプリは、ソフトウェアプロジェクトが利用する依存ライブラリの脆弱性およびライセンスリスクの検出を<strong>補助</strong>するツールです。</p>
+
+    <h2>3. 免責事項</h2>
+    <div class="disclaimer-box">
+      <h3>3.1 検出精度に関する免責</h3>
+      <ul>
+        <li>本アプリは脆弱性およびライセンスリスクの<strong>完全な検出を保証するものではありません</strong>。</li>
+        <li>脆弱性データベースおよびライセンス情報は定期的に更新されますが、最新の情報を網羅していない場合があります。</li>
+        <li>スキャン結果は参考情報としてご利用ください。</li>
+      </ul>
+
+      <h3>3.2 判断責任に関する免責</h3>
+      <ul>
+        <li>セキュリティ上の判断および法務上の判断の<strong>最終責任は利用者</strong>にあります。</li>
+        <li>本アプリのスキャン結果のみに基づく意思決定により生じた損害について、開発者は責任を負いません。</li>
+      </ul>
+
+      <h3>3.3 損害賠償の制限</h3>
+      <p><strong>本アプリは現状有姿（AS IS）で提供されます。法令で許される最大限の範囲において、開発者は本アプリの利用により生じたいかなる損害についても責任を負いません。</strong></p>
+
+      <p>本アプリが提供する結果は参考情報であり、法的判断またはセキュリティ判断の最終的な根拠となるものではありません。</p>
+    </div>
+
+    <h2>4. ライセンスモデル</h2>
+    <h3>4.1 Free 版</h3>
+    <p>Python プロジェクトのスキャン、ローカル脆弱性照合、SBOM 出力、HTML レポート生成等の基本機能を無料で利用できます。</p>
+    <h3>4.2 Pro 版</h3>
+    <ul>
+      <li>Microsoft Store を通じたアプリ内購入により利用可能です。</li>
+      <li>Node.js プロジェクト対応、オンライン脆弱性照合（OSV API）、オンラインライセンス情報補完（PyPI API）等の追加機能が含まれます。</li>
+      <li>購入に関する条件は Microsoft Store の規約に従います。</li>
+    </ul>
+
+    <h2>5. 知的財産権</h2>
+    <p>本アプリおよび付随するドキュメント等に関する知的財産権は、第三者に権利が帰属するものを除き、開発者（SumikkoLab）に帰属します。</p>
+
+    <h2>6. 利用制限</h2>
+    <p>以下の行為を禁止します。</p>
+    <ol>
+      <li>法令で認められる場合を除き、本アプリのリバースエンジニアリング、逆コンパイル、逆アセンブル</li>
+      <li>本アプリの再配布、転売、サブライセンス</li>
+      <li>本アプリを利用した違法行為</li>
+    </ol>
+
+    <h2>7. 規約の変更</h2>
+    <p>本規約は必要に応じて変更される場合があります。重要な変更がある場合はアプリ内で通知します。</p>
+
+    <h2>8. 準拠法</h2>
+    <p>本規約は日本法に準拠し、日本法に従って解釈されるものとします。</p>
+
+    <h2>9. お問い合わせ</h2>
+    <p>本規約に関するお問い合わせは以下までお願いします。</p>
+    <p><strong>support@sumikkolab.com</strong></p>
+    <p style="margin-top: 24px; font-size: 0.85rem; color: #64748b;"><em>Copyright &copy; 2026 Sumikko Lab. All rights reserved.</em></p>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html">Product Info</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </div>
+
+    <h1>Terms of Use &amp; Disclaimer</h1>
+    <p class="subtitle">Dependa — SumikkoLab | Last updated: March 13, 2026</p>
+
+    <h2>1. About These Terms</h2>
+    <p>These Terms of Use govern the use of the desktop application "Dependa" (hereinafter "the App"). By installing or using the App, you agree to these terms.</p>
+
+    <h2>2. Purpose of the App</h2>
+    <p>The App is a tool designed to <strong>assist</strong> in detecting vulnerability and license risks in dependency libraries used by software projects.</p>
+
+    <h2>3. Disclaimer</h2>
+    <div class="disclaimer-box">
+      <h3>3.1 Detection Accuracy</h3>
+      <ul>
+        <li>The App <strong>does not guarantee complete detection</strong> of all vulnerabilities or license risks.</li>
+        <li>Vulnerability databases and license information are updated periodically but may not cover all the latest data.</li>
+        <li>Scan results should be used as reference information only.</li>
+      </ul>
+
+      <h3>3.2 Decision Responsibility</h3>
+      <ul>
+        <li><strong>Final responsibility</strong> for security and legal decisions rests with the user.</li>
+        <li>The developer shall not be liable for any damages resulting from decisions made solely based on the App's scan results.</li>
+      </ul>
+
+      <h3>3.3 Limitation of Liability</h3>
+      <p><strong>The App is provided "AS IS". To the maximum extent permitted by applicable law, the developer shall not be liable for any damages arising from the use of the App.</strong></p>
+
+      <p>Results provided by the App are for informational purposes only and should not be considered definitive legal or security advice.</p>
+    </div>
+
+    <h2>4. License Model</h2>
+    <h3>4.1 Free Edition</h3>
+    <p>Basic features including Python project scanning, local vulnerability matching, SBOM output, and HTML report generation are available at no cost.</p>
+    <h3>4.2 Pro Edition</h3>
+    <ul>
+      <li>Available through in-app purchase via the Microsoft Store.</li>
+      <li>Includes additional features such as Node.js project support, online vulnerability lookup (OSV API), and online license metadata (PyPI API).</li>
+      <li>Purchase conditions are governed by the Microsoft Store terms.</li>
+    </ul>
+
+    <h2>5. Intellectual Property</h2>
+    <p>Intellectual property rights in the App and related documentation belong to the developer (SumikkoLab), except for components or materials owned by third parties.</p>
+
+    <h2>6. Restrictions</h2>
+    <p>The following activities are prohibited:</p>
+    <ol>
+      <li>Except where permitted by applicable law, reverse engineering, decompilation, or disassembly of the App</li>
+      <li>Redistributing, reselling, or sublicensing the App</li>
+      <li>Using the App for any illegal purpose</li>
+    </ol>
+
+    <h2>7. Changes to These Terms</h2>
+    <p>These terms may be updated as needed. Users will be notified within the App of any significant changes.</p>
+
+    <h2>8. Governing Law</h2>
+    <p>These terms shall be governed by and construed in accordance with the laws of Japan.</p>
+
+    <h2>9. Contact</h2>
+    <p>For inquiries regarding these terms, please contact:</p>
+    <p><strong>support@sumikkolab.com</strong></p>
+    <p style="margin-top: 24px; font-size: 0.85rem; color: #64748b;"><em>Copyright &copy; 2026 Sumikko Lab. All rights reserved.</em></p>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. Dependa.
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+</body>
+</html>

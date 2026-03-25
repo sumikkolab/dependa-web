@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 6: Settings — Dependa | SumikkoLab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>Chapter 6: 設定</h1>
+    <p class="subtitle">アプリケーションの動作をカスタマイズする</p>
+
+    <h2>設定画面を開く</h2>
+    <p>メイン画面の左下にある <strong>歯車アイコン</strong> をクリックすると設定画面が開きます。</p>
+
+    <h2>設定項目一覧</h2>
+
+    <h3>言語設定</h3>
+    <p>表示言語を選択できます。以下の 3 つから選べます。</p>
+    <table class="manual-table">
+      <tr><th>選択肢</th><th>説明</th></tr>
+      <tr><td>日本語</td><td>すべての UI とレポートが日本語で表示されます。</td></tr>
+      <tr><td>English</td><td>すべての UI とレポートが英語で表示されます。</td></tr>
+      <tr><td>システム言語</td><td>OS の言語設定に従います。対応外の言語の場合は英語になります。</td></tr>
+    </table>
+
+    <h3>オンライン脆弱性照合 <span class="pro-badge">Pro</span></h3>
+    <p>有効にすると、ローカル JSON データベースに加えて <strong>OSV API</strong>（Google が運営するオープンソース脆弱性データベース）にもオンラインで問い合わせを行います。これにより、最新の脆弱性情報を取得でき、検出精度が向上します。</p>
+    <div class="info-box">
+      <p>この機能を利用するにはインターネット接続と Pro ライセンスが必要です。</p>
+    </div>
+
+    <h3>オンラインライセンス補完 <span class="pro-badge">Pro</span></h3>
+    <p>有効にすると、ローカルデータベースにライセンス情報がないパッケージについて <strong>PyPI API</strong> 等からライセンス情報を自動補完します。Unknown と判定されるパッケージが減り、ライセンス分析の精度が向上します。</p>
+    <div class="info-box">
+      <p>この機能を利用するにはインターネット接続と Pro ライセンスが必要です。</p>
+    </div>
+
+    <h3>利用規約の再表示</h3>
+    <p>初回起動時に同意した利用規約を再度確認できます。設定画面内の <strong>「利用規約を表示」</strong> ボタンをクリックしてください。</p>
+
+    <h2>設定ファイルの保存先</h2>
+    <p>設定は以下のパスに JSON 形式で保存されます。</p>
+    <pre><code>%LocalAppData%\Dependa\settings.json</code></pre>
+    <p>通常は以下のようなパスになります。</p>
+    <pre><code>C:\Users\&lt;ユーザー名&gt;\AppData\Local\Dependa\settings.json</code></pre>
+    <div class="warn-box">
+      <p>設定ファイルを手動で編集する場合は、アプリケーションを終了してから行ってください。アプリ起動中に編集すると変更が上書きされる場合があります。</p>
+    </div>
+
+    <div class="chapter-nav">
+      <a href="reports.html">&larr; Chapter 5: レポートと SBOM</a>
+      <a href="pro-features.html">Chapter 7: Pro 機能ガイド &rarr;</a>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Table of Contents</a>
+      <a href="../support.html?lang=en">Support</a>
+    </div>
+
+    <h1>Chapter 6: Settings</h1>
+    <p class="subtitle">Customize how the application works</p>
+
+    <h2>Opening Settings</h2>
+    <p>Click the <strong>gear icon</strong> at the bottom-left of the main screen to open the Settings panel.</p>
+
+    <h2>Settings Overview</h2>
+
+    <h3>Language</h3>
+    <p>Choose the display language from the following three options:</p>
+    <table class="manual-table">
+      <tr><th>Option</th><th>Description</th></tr>
+      <tr><td>Japanese</td><td>All UI and reports are displayed in Japanese.</td></tr>
+      <tr><td>English</td><td>All UI and reports are displayed in English.</td></tr>
+      <tr><td>System Language</td><td>Follows the OS language setting. Falls back to English if the language is not supported.</td></tr>
+    </table>
+
+    <h3>Online Vulnerability Lookup <span class="pro-badge">Pro</span></h3>
+    <p>When enabled, queries the <strong>OSV API</strong> (an open-source vulnerability database operated by Google) in addition to the local JSON database. This provides access to the latest vulnerability data and improves detection accuracy.</p>
+    <div class="info-box">
+      <p>This feature requires an internet connection and a Pro license.</p>
+    </div>
+
+    <h3>Online License Metadata <span class="pro-badge">Pro</span></h3>
+    <p>When enabled, automatically supplements license information from the <strong>PyPI API</strong> and other sources for packages missing from the local database. This reduces the number of packages classified as Unknown and improves license analysis accuracy.</p>
+    <div class="info-box">
+      <p>This feature requires an internet connection and a Pro license.</p>
+    </div>
+
+    <h3>Re-display Terms of Use</h3>
+    <p>You can review the terms of use that you agreed to during the first launch. Click the <strong>"Show Terms of Use"</strong> button in the Settings panel.</p>
+
+    <h2>Settings File Location</h2>
+    <p>Settings are saved in JSON format at the following path:</p>
+    <pre><code>%LocalAppData%\Dependa\settings.json</code></pre>
+    <p>Typically this resolves to:</p>
+    <pre><code>C:\Users\&lt;username&gt;\AppData\Local\Dependa\settings.json</code></pre>
+    <div class="warn-box">
+      <p>If you edit the settings file manually, close the application first. Changes may be overwritten if the app is running.</p>
+    </div>
+
+    <div class="chapter-nav">
+      <a href="reports.html?lang=en">&larr; Chapter 5: Reports &amp; SBOM</a>
+      <a href="pro-features.html?lang=en">Chapter 7: Pro Features Guide &rarr;</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. Dependa.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

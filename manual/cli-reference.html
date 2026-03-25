@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 8: CLI Reference — Dependa | SumikkoLab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>Chapter 8: CLI リファレンス</h1>
+    <p class="subtitle">コマンドラインからの操作・自動化</p>
+
+    <h2>基本構文</h2>
+    <pre><code>Dependa.exe &lt;command&gt; [options]</code></pre>
+
+    <h2>コマンド一覧</h2>
+    <table class="manual-table">
+      <tr><th>コマンド</th><th>説明</th></tr>
+      <tr><td><code>help</code></td><td>ヘルプを表示します。</td></tr>
+      <tr><td><code>version</code></td><td>バージョン情報を表示します。</td></tr>
+      <tr><td><code>scan</code></td><td>指定したパスのプロジェクトをスキャンします。</td></tr>
+    </table>
+
+    <h2>scan コマンドのオプション</h2>
+    <table class="manual-table">
+      <tr><th>オプション</th><th>説明</th></tr>
+      <tr><td><code>--path &lt;path&gt;</code></td><td>スキャン対象のプロジェクトフォルダまたはファイルのパス（必須）。</td></tr>
+      <tr><td><code>--output &lt;path&gt;</code></td><td>結果の出力先パス。JSON ファイルとして保存されます。</td></tr>
+      <tr><td><code>--lang &lt;ja|en&gt;</code></td><td>レポートの言語を指定します（デフォルト: 設定に従う）。</td></tr>
+      <tr><td><code>--accept-terms</code></td><td>利用規約に同意します（初回実行時に必要）。</td></tr>
+      <tr><td><code>--verbose</code></td><td>詳細なログを出力します。</td></tr>
+      <tr><td><code>--use-online-vuln</code></td><td>OSV API によるオンライン脆弱性照合を有効にします。<span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--use-online-license-metadata</code></td><td>PyPI API によるオンラインライセンス補完を有効にします。<span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--ai-prompt &lt;type&gt;</code></td><td>AI プロンプトを生成します。type: <code>VulnerabilityRemediation</code>, <code>LicenseReview</code>, <code>DeltaScanReview</code></td></tr>
+    </table>
+
+    <h2>終了コード</h2>
+    <table class="manual-table">
+      <tr><th>コード</th><th>意味</th></tr>
+      <tr><td><code>0</code></td><td>成功（ポリシー違反なし）</td></tr>
+      <tr><td><code>1</code></td><td>一般エラー</td></tr>
+      <tr><td><code>2</code></td><td>ポリシー違反が検出された（Critical/High 脆弱性または Prohibited ライセンス）</td></tr>
+      <tr><td><code>3</code></td><td>Pro ライセンスが必要な機能が使用された</td></tr>
+      <tr><td><code>4</code></td><td>データパック検証失敗</td></tr>
+      <tr><td><code>5</code></td><td>不正な引数</td></tr>
+      <tr><td><code>6</code></td><td>利用規約に未同意</td></tr>
+      <tr><td><code>7</code></td><td>Integrity 検証失敗</td></tr>
+    </table>
+
+    <h2>使用例</h2>
+
+    <h3>基本スキャン</h3>
+    <pre><code>Dependa.exe scan --path C:\my-project --accept-terms</code></pre>
+
+    <h3>結果を JSON に出力</h3>
+    <pre><code>Dependa.exe scan --path C:\my-project --output C:\reports\result.json --lang ja</code></pre>
+
+    <h3>Pro 機能付きスキャン</h3>
+    <pre><code>Dependa.exe scan --path C:\my-project --use-online-vuln --use-online-license-metadata --verbose</code></pre>
+
+    <h3>AI プロンプト生成付きスキャン</h3>
+    <pre><code>Dependa.exe scan --path C:\my-project --ai-prompt VulnerabilityRemediation</code></pre>
+
+    <h3>CI/CD 統合例（GitHub Actions）</h3>
+    <pre><code>- name: Run Dependa Scan
+  run: |
+    Dependa.exe scan --path . --output result.json --accept-terms
+  continue-on-error: false
+  # 終了コード 2 でポリシー違反時にパイプラインを停止</code></pre>
+
+    <h3>CI/CD 統合例（PowerShell）</h3>
+    <pre><code>$result = Start-Process -FilePath "Dependa.exe" `
+  -ArgumentList "scan", "--path", ".", "--accept-terms", "--output", "result.json" `
+  -Wait -PassThru -NoNewWindow
+
+if ($result.ExitCode -eq 2) {
+    Write-Error "Policy violation detected."
+    exit 1
+}</code></pre>
+
+    <div class="info-box">
+      <p>CI/CD で使用する場合、<code>--accept-terms</code> フラグを付けて利用規約への同意を自動化できます。</p>
+    </div>
+
+    <div class="chapter-nav">
+      <a href="pro-features.html">&larr; Chapter 7: Pro 機能ガイド</a>
+      <a href="licensing.html">Chapter 9: ライセンスと購入 &rarr;</a>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Table of Contents</a>
+      <a href="../support.html?lang=en">Support</a>
+    </div>
+
+    <h1>Chapter 8: CLI Reference</h1>
+    <p class="subtitle">Command-line usage and automation</p>
+
+    <h2>Basic Syntax</h2>
+    <pre><code>Dependa.exe &lt;command&gt; [options]</code></pre>
+
+    <h2>Commands</h2>
+    <table class="manual-table">
+      <tr><th>Command</th><th>Description</th></tr>
+      <tr><td><code>help</code></td><td>Display help information.</td></tr>
+      <tr><td><code>version</code></td><td>Display version information.</td></tr>
+      <tr><td><code>scan</code></td><td>Scan a project at the specified path.</td></tr>
+    </table>
+
+    <h2>Scan Command Options</h2>
+    <table class="manual-table">
+      <tr><th>Option</th><th>Description</th></tr>
+      <tr><td><code>--path &lt;path&gt;</code></td><td>Path to the project folder or file to scan (required).</td></tr>
+      <tr><td><code>--output &lt;path&gt;</code></td><td>Output path for results. Saved as a JSON file.</td></tr>
+      <tr><td><code>--lang &lt;ja|en&gt;</code></td><td>Specify the report language (default: follows settings).</td></tr>
+      <tr><td><code>--accept-terms</code></td><td>Accept the terms of use (required on first run).</td></tr>
+      <tr><td><code>--verbose</code></td><td>Output detailed logs.</td></tr>
+      <tr><td><code>--use-online-vuln</code></td><td>Enable online vulnerability lookup via OSV API. <span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--use-online-license-metadata</code></td><td>Enable online license metadata via PyPI API. <span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--ai-prompt &lt;type&gt;</code></td><td>Generate an AI prompt. Types: <code>VulnerabilityRemediation</code>, <code>LicenseReview</code>, <code>DeltaScanReview</code></td></tr>
+    </table>
+
+    <h2>Exit Codes</h2>
+    <table class="manual-table">
+      <tr><th>Code</th><th>Meaning</th></tr>
+      <tr><td><code>0</code></td><td>Success (no policy violations)</td></tr>
+      <tr><td><code>1</code></td><td>General error</td></tr>
+      <tr><td><code>2</code></td><td>Policy violation detected (Critical/High vulnerability or Prohibited license)</td></tr>
+      <tr><td><code>3</code></td><td>Pro license required for the requested feature</td></tr>
+      <tr><td><code>4</code></td><td>Data pack verification failed</td></tr>
+      <tr><td><code>5</code></td><td>Invalid arguments</td></tr>
+      <tr><td><code>6</code></td><td>Terms of use not accepted</td></tr>
+      <tr><td><code>7</code></td><td>Integrity verification failed</td></tr>
+    </table>
+
+    <h2>Usage Examples</h2>
+
+    <h3>Basic Scan</h3>
+    <pre><code>Dependa.exe scan --path C:\my-project --accept-terms</code></pre>
+
+    <h3>Output Results to JSON</h3>
+    <pre><code>Dependa.exe scan --path C:\my-project --output C:\reports\result.json --lang en</code></pre>
+
+    <h3>Scan with Pro Features</h3>
+    <pre><code>Dependa.exe scan --path C:\my-project --use-online-vuln --use-online-license-metadata --verbose</code></pre>
+
+    <h3>Scan with AI Prompt Generation</h3>
+    <pre><code>Dependa.exe scan --path C:\my-project --ai-prompt VulnerabilityRemediation</code></pre>
+
+    <h3>CI/CD Integration (GitHub Actions)</h3>
+    <pre><code>- name: Run Dependa Scan
+  run: |
+    Dependa.exe scan --path . --output result.json --accept-terms
+  continue-on-error: false
+  # Exit code 2 stops the pipeline on policy violations</code></pre>
+
+    <h3>CI/CD Integration (PowerShell)</h3>
+    <pre><code>$result = Start-Process -FilePath "Dependa.exe" `
+  -ArgumentList "scan", "--path", ".", "--accept-terms", "--output", "result.json" `
+  -Wait -PassThru -NoNewWindow
+
+if ($result.ExitCode -eq 2) {
+    Write-Error "Policy violation detected."
+    exit 1
+}</code></pre>
+
+    <div class="info-box">
+      <p>When used in CI/CD, the <code>--accept-terms</code> flag automates the terms of use acceptance.</p>
+    </div>
+
+    <div class="chapter-nav">
+      <a href="pro-features.html?lang=en">&larr; Chapter 7: Pro Features Guide</a>
+      <a href="licensing.html?lang=en">Chapter 9: Licensing &amp; Purchase &rarr;</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. Dependa.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

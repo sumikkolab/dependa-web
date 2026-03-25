@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dependa — Local dependency review for security and compliance</title>
+<meta name="description" content="Dependa analyzes open-source dependencies locally and generates human-readable review reports for security and compliance workflows.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Yu Gothic UI', sans-serif; line-height: 1.7; color: #1a1a2e; background: #f8f9fa; }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, #312e81 0%, #4338ca 50%, #6366f1 100%); color: #fff; padding: 60px 24px 48px; text-align: center; }
+  .hero h1 { font-size: 2.2rem; margin-bottom: 8px; letter-spacing: 0.5px; }
+  .hero .tagline { font-size: 1.15rem; color: #e0e7ff; margin-bottom: 12px; font-weight: 500; }
+  .hero .sub-tagline { font-size: 0.95rem; color: #c7d2fe; margin-bottom: 28px; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .hero .badge { display: inline-block; background: #818cf8; color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; margin: 0 4px 8px; }
+  .hero-buttons { margin-top: 24px; }
+  .hero-buttons a { display: inline-block; margin: 6px 8px; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-size: 0.95rem; font-weight: 600; }
+  .hero-buttons .store-btn { background: #fff; color: #312e81; }
+  .hero-buttons .manual-btn { background: transparent; color: #e0e7ff; border: 1px solid #a5b4fc; }
+
+  /* Container */
+  .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+  h2 { font-size: 1.25rem; margin: 36px 0 12px; color: #312e81; border-left: 3px solid #6366f1; padding-left: 10px; }
+
+  /* Problem / Why section */
+  .why-section { background: #eef2ff; border-radius: 8px; padding: 24px; margin: 28px 0; }
+  .why-section h2 { margin-top: 0; }
+  .why-section p { font-size: 0.92rem; color: #374151; margin-bottom: 10px; }
+  .why-section p:last-child { margin-bottom: 0; }
+  .why-section strong { color: #312e81; }
+
+  /* Screenshots */
+  .screenshots { margin: 28px 0; text-align: center; }
+  .screenshots img { max-width: 100%; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); margin-bottom: 16px; }
+  .screenshots .caption { font-size: 0.8rem; color: #64748b; margin-bottom: 24px; }
+
+  /* Feature cards */
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  @media (max-width: 600px) { .features { grid-template-columns: 1fr; } }
+  .feature-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; }
+  .feature-card h3 { font-size: 0.95rem; color: #312e81; margin-bottom: 6px; }
+  .feature-card p { font-size: 0.85rem; color: #475569; }
+  .pro-badge { background: #f59e0b; color: #fff; font-size: 0.7rem; padding: 1px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+  ul { padding-left: 20px; margin: 8px 0 16px; }
+  li { font-size: 0.9rem; margin-bottom: 4px; }
+
+  /* Comparison table */
+  .compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.85rem; }
+  .compare-table th, .compare-table td { border: 1px solid #e2e8f0; padding: 8px 12px; text-align: center; }
+  .compare-table th { background: #f1f5f9; color: #312e81; font-weight: 600; }
+  .compare-table td { background: #fff; }
+  .compare-table td:first-child { text-align: left; font-weight: 500; }
+  .compare-note { font-size: 0.82rem; color: #64748b; margin-top: 8px; font-style: italic; }
+
+  /* Ecosystem table */
+  .eco-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+  .eco-table th, .eco-table td { border: 1px solid #e2e8f0; padding: 8px 12px; text-align: left; }
+  .eco-table th { background: #f1f5f9; color: #312e81; font-weight: 600; }
+  .eco-table td { background: #fff; }
+
+  /* Privacy note */
+  .privacy-note { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; margin: 24px 0; }
+  .privacy-note p { font-size: 0.9rem; color: #166534; }
+
+  /* Store CTA */
+  .store-cta { text-align: center; margin: 32px 0; padding: 28px; background: #eef2ff; border-radius: 8px; }
+  .store-cta p { font-size: 0.95rem; color: #374151; margin-bottom: 16px; }
+  .store-cta a { display: inline-block; }
+  .store-cta img { height: 52px; }
+
+  /* Links */
+  .links { text-align: center; margin: 32px 0; }
+  .links a { display: inline-block; margin: 6px 10px; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; }
+  .links .primary { background: #6366f1; color: #fff; }
+  .links .secondary { background: #e2e8f0; color: #1e3a5f; }
+
+  /* Footer */
+  .footer { text-align: center; padding: 24px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; margin-top: 40px; }
+  .footer a { color: #64748b; margin: 0 8px; }
+
+  /* Lang toggle */
+  .lang-toggle { text-align: right; padding: 12px 24px 0; }
+  .lang-toggle button { background: #e2e8f0; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+  .lang-toggle button.active { background: #6366f1; color: #fff; }
+  .section-ja, .section-en { display: none; }
+  .section-ja.visible, .section-en.visible { display: block; }
+</style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+  <button id="btn-en" onclick="switchLang('en')">English</button>
+</div>
+
+<!-- ==================== 日本語 ==================== -->
+<div class="section-ja visible" id="content-ja">
+  <div class="hero">
+    <h1>Dependa</h1>
+    <p class="tagline">依存ライブラリのリスクを、あなたの PC 上でレビュー</p>
+    <p class="sub-tagline">クラウドにコードを送らず、脆弱性・ライセンス・互換性を分析。セキュリティレビューや OSS 審査に使えるレポートを生成します。</p>
+    <span class="badge">Python</span>
+    <span class="badge">Node.js</span>
+    <span class="badge">NuGet (.NET)</span>
+    <span class="badge">CycloneDX SBOM</span>
+    <span class="badge">オフライン優先</span>
+    <div class="hero-buttons">
+      <a href="https://apps.microsoft.com/detail/9P84RLQQ401D" class="store-btn">Microsoft Store で入手</a>
+      <a href="manual/" class="manual-btn">ユーザーマニュアル</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Problem → Solution -->
+    <div class="why-section">
+      <h2>なぜ Dependa が必要か</h2>
+      <p>現代のソフトウェアは、数十から数百のオープンソースライブラリに依存しています。それらのセキュリティ、ライセンス、互換性のリスクを把握するのは簡単ではありません。</p>
+      <p>多くの SCA（Software Composition Analysis）ツールは CI/CD パイプライン向けに設計されていますが、<strong>リリース前に人間がレビューする工程</strong>では、見やすいレポートが求められます。</p>
+      <p><strong>Dependa は、依存ライブラリのリスクを分析し、チームで共有できるレビューレポートを生成します。</strong>分析はすべてあなたの PC 上で完結します。クラウドへのアップロードは不要です。</p>
+    </div>
+
+    <!-- Screenshots -->
+    <div class="screenshots">
+      <img src="manual/images/scan-results-ja.png" alt="Dependa スキャン結果" />
+      <div class="caption">スキャン結果 — 脆弱性・ライセンス・ポリシー判定を一覧表示</div>
+      <img src="manual/images/policy-judgments-ja.png" alt="Dependa ポリシー判定記録" />
+      <div class="caption">ポリシー判定記録 — 検出事実・初期評価・ポリシー判定・理由を色分け表示</div>
+      <img src="manual/images/policy-builder-ja.png" alt="Dependa ポリシー設定" />
+      <div class="caption">ポリシー設定 — テンプレートから作成し、組織のルールに合わせてカスタマイズ</div>
+      <img src="manual/images/html-report-ja.png" alt="Dependa HTML レポート" />
+      <div class="caption">HTML レポート — 判定理由を含むレビュー資料をチームで共有</div>
+    </div>
+
+    <!-- v1.1.0 Highlight -->
+    <h2>v1.1.0 新機能: ポリシー評価と判定理由の可視化</h2>
+    <div class="why-section">
+      <p>v1.1.0 では、OSS 依存関係の検出結果に対して、<strong>組織ポリシーに基づく判定とその理由</strong>を GUI・HTML レポート・CSV で確認できるようになりました。</p>
+      <p>単なる検出ではなく、<strong>審査・説明・共有に使えるローカルレビュー支援ツール</strong>として利用できます。</p>
+    </div>
+
+    <!-- Free Features -->
+    <h2>無料機能</h2>
+    <div class="features">
+      <div class="feature-card">
+        <h3>Python / NuGet スキャン</h3>
+        <p>requirements.txt や .csproj などを自動で検出・解析。脆弱性データを内蔵しているので、ネット接続なしで検出できます。</p>
+      </div>
+      <div class="feature-card">
+        <h3>脆弱性の照合</h3>
+        <p>内蔵データで既知の脆弱性を検出し、深刻度（Critical / High / Medium / Low）ごとに分類します。</p>
+      </div>
+      <div class="feature-card">
+        <h3>ライセンスの分類と信頼度</h3>
+        <p>ライセンスを自動で分類（承認 / 注意 / 禁止 / 不明）。判定の信頼度も表示するので、どこまで信頼できるかがわかります。</p>
+      </div>
+      <div class="feature-card">
+        <h3>レポートとエクスポート</h3>
+        <p>HTML レポート、SBOM（CycloneDX）、OSS 一覧表（CSV）、ライセンス通知文書をワンクリックで生成。</p>
+      </div>
+    </div>
+
+    <!-- Pro Features -->
+    <h2>Pro 機能 <span class="pro-badge">PRO</span></h2>
+    <ul>
+      <li><strong>Node.js 対応</strong> — package.json / package-lock.json のスキャン</li>
+      <li><strong>マルチエコシステム統合</strong> — Python + npm を同時スキャンし、統合結果を表示</li>
+      <li><strong>最新の脆弱性情報</strong> — OSV API で最新の脆弱性データを取得して照合</li>
+      <li><strong>ライセンスのオンライン検証</strong> — PyPI / npm / NuGet の公式情報で判定を照合し、信頼度を引き上げ</li>
+      <li><strong>リスクスコア</strong> — パッケージごとに 0〜100 のスコアでリスクを定量化</li>
+      <li><strong>OSS 利用審査の支援</strong> — 推奨アクション、商用利用の注意点、チェックリストを生成</li>
+      <li><strong>差分比較（Delta Scan）</strong> — 前回のスキャン結果と比較し、変化点を検出。継続審査を支援</li>
+      <li><strong>例外管理</strong> — 既知の問題を理由・承認者・期限付きで許容。追跡・取消・延長が可能。監査対応</li>
+      <li><strong>審査レポートの出力</strong> — OSS 一覧表（CSV）や審査レポート（Markdown）をエクスポート</li>
+      <li><strong>AI 向けプロンプト</strong> — 脆弱性の修正やライセンスの確認に使えるプロンプトを生成</li>
+    </ul>
+
+    <!-- Why Dependa — Comparison -->
+    <h2>他のツールとの違い</h2>
+    <p style="font-size:0.9rem; margin-bottom:12px;">Dependa は CI ツールの代替ではなく、<strong>人間がレビューする工程</strong>に特化したツールです。</p>
+    <table class="compare-table">
+      <tr>
+        <th></th>
+        <th>Snyk</th>
+        <th>Trivy</th>
+        <th>Dependency-Check</th>
+        <th>Dependa</th>
+      </tr>
+      <tr><td>CI/CD 自動化向け</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>optional</td></tr>
+      <tr><td>クラウド不要</td><td>&#8212;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>人間が読めるレビューレポート</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>ローカル実行</td><td>&#8212;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>デスクトップ GUI</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>ライセンス信頼度スコア</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003;</td></tr>
+    </table>
+    <p class="compare-note">Dependa は CI ツールと併用できます。CI で自動チェック、Dependa でレビューレポート作成という使い分けが効果的です。</p>
+
+    <!-- Ecosystems -->
+    <h2>対応エコシステム</h2>
+    <table class="eco-table">
+      <tr><th>エコシステム</th><th>対応ファイル</th><th>プラン</th></tr>
+      <tr><td>Python</td><td>requirements.txt, pyproject.toml, poetry.lock, uv.lock</td><td>Free</td></tr>
+      <tr><td>NuGet (.NET)</td><td>.csproj, packages.config</td><td>Free</td></tr>
+      <tr><td>Node.js</td><td>package.json, package-lock.json</td><td>Pro</td></tr>
+    </table>
+
+    <!-- Privacy -->
+    <div class="privacy-note">
+      <p><strong>プライバシー:</strong> 分析はすべて PC 上で完結します。無料版はインターネットに一切接続しません。Pro 版のオンライン機能も、ユーザーが明示的に有効にした場合のみ、公開されている脆弱性データベース等を参照します。個人情報の送信は一切行いません。</p>
+    </div>
+
+    <!-- Store CTA -->
+    <div class="store-cta">
+      <p>Microsoft Store からインストールできます。自動更新対応、ランタイムの追加インストールは不要です。</p>
+      <a href="https://apps.microsoft.com/detail/9P84RLQQ401D">
+        <img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Microsoft Store で入手" />
+      </a>
+    </div>
+
+    <!-- System Requirements -->
+    <h2>システム要件</h2>
+    <ul>
+      <li>Windows 10 バージョン 2004 (19041) 以降 / Windows 11</li>
+      <li>WebView2 Runtime（通常は Windows に同梱）</li>
+      <li>ディスク: 約 80 MB / RAM: 512 MB 以上</li>
+    </ul>
+
+    <!-- Links -->
+    <div class="links">
+      <a href="manual/" class="primary">ユーザーマニュアル</a>
+      <a href="support.html" class="secondary">サポート</a>
+      <a href="privacy-policy.html" class="secondary">プライバシーポリシー</a>
+      <a href="terms-of-use.html" class="secondary">利用規約</a>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== English ==================== -->
+<div class="section-en" id="content-en">
+  <div class="hero">
+    <h1>Dependa</h1>
+    <p class="tagline">Review dependency risks locally on your machine</p>
+    <p class="sub-tagline">Analyze vulnerabilities, licenses, and compatibility without uploading code. Generate review reports for security and compliance workflows.</p>
+    <span class="badge">Python</span>
+    <span class="badge">Node.js</span>
+    <span class="badge">NuGet (.NET)</span>
+    <span class="badge">CycloneDX SBOM</span>
+    <span class="badge">Offline-first</span>
+    <div class="hero-buttons">
+      <a href="https://apps.microsoft.com/detail/9P84RLQQ401D" class="store-btn">Get it from Microsoft Store</a>
+      <a href="manual/?lang=en" class="manual-btn">User Manual</a>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Problem → Solution -->
+    <div class="why-section">
+      <h2>Why Dependa</h2>
+      <p>Modern applications rely on dozens or hundreds of open-source dependencies. Understanding the security, licensing, and compatibility risks of those dependencies is often difficult.</p>
+      <p>Many SCA (Software Composition Analysis) tools focus on CI/CD automation, but developers and reviewers still need <strong>a clear way to understand dependency risks before release</strong>.</p>
+      <p><strong>Dependa analyzes dependencies and generates a human-readable review report you can share with your team.</strong> All analysis runs locally on your machine. No cloud upload required.</p>
+    </div>
+
+    <!-- Screenshots -->
+    <div class="screenshots">
+      <img src="manual/images/scan-results-en.png" alt="Dependa scan results" />
+      <div class="caption">Scan results — vulnerabilities, licenses, and policy judgments at a glance</div>
+      <img src="manual/images/policy-judgments-en.png" alt="Dependa policy judgments" />
+      <div class="caption">Policy Judgments — detected facts, initial status, policy action, and reason with color coding</div>
+      <img src="manual/images/policy-builder-en.png" alt="Dependa Policy Builder" />
+      <div class="caption">Policy Builder — create from templates, customize rules for your organization</div>
+      <img src="manual/images/html-report-en.png" alt="Dependa HTML report" />
+      <div class="caption">HTML report — judgment reasons included, ready for review and sharing</div>
+    </div>
+
+    <!-- v1.1.0 Highlight -->
+    <h2>v1.1.0: Policy-driven review and explainable judgments</h2>
+    <div class="why-section">
+      <p>v1.1.0 adds <strong>organization policy support and explainable package-level judgments</strong> across the GUI, HTML reports, and CSV export.</p>
+      <p>Move beyond detection — use Dependa as a <strong>local review support tool for auditing, explaining, and sharing</strong> dependency decisions.</p>
+    </div>
+
+    <!-- Free Features -->
+    <h2>Free Features</h2>
+    <div class="features">
+      <div class="feature-card">
+        <h3>Python / NuGet Scanning</h3>
+        <p>Automatically detects requirements.txt, pyproject.toml, .csproj, etc. Bundled vulnerability advisories — no network required.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Vulnerability Matching</h3>
+        <p>Matches against a local database and classifies by severity (Critical / High / Medium / Low).</p>
+      </div>
+      <div class="feature-card">
+        <h3>License Analysis + Confidence</h3>
+        <p>Classifies licenses as Approved / Caution / Prohibited / Unknown. Shows confidence level so you know how reliable each result is.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Reports, SBOM &amp; Export</h3>
+        <p>HTML report, CycloneDX SBOM, CSV inventory, and license notice document generation.</p>
+      </div>
+    </div>
+
+    <!-- Pro Features -->
+    <h2>Pro Features <span class="pro-badge">PRO</span></h2>
+    <ul>
+      <li><strong>Node.js Support</strong> — Scan package.json and package-lock.json</li>
+      <li><strong>Multi-Ecosystem Scanning</strong> — Scan Python + npm simultaneously with unified results</li>
+      <li><strong>Online Vulnerability Lookup</strong> — Fetch latest vulnerability data via OSV API</li>
+      <li><strong>Online License Verification</strong> — Verify local data against PyPI / npm / NuGet registries</li>
+      <li><strong>Risk Score</strong> — Per-package quantitative risk evaluation (0-100)</li>
+      <li><strong>OSS Review Support</strong> — Recommended actions, commercial use guidance, organization checklist</li>
+      <li><strong>Delta Scan</strong> — Detect changes from previous scan results for continuous review</li>
+      <li><strong>Exception Management</strong> — Approve known issues with reason, approver, and expiry. Track, revoke, extend. Audit-ready</li>
+      <li><strong>Review Report Export</strong> — CSV inventory and Markdown review report</li>
+      <li><strong>AI Prompts</strong> — Generate prompts for vulnerability fix and license review</li>
+    </ul>
+
+    <!-- Why Dependa — Comparison -->
+    <h2>How Dependa Differs</h2>
+    <p style="font-size:0.9rem; margin-bottom:12px;">Dependa is not a replacement for CI tools. It focuses on <strong>the human review step</strong> in your workflow.</p>
+    <table class="compare-table">
+      <tr>
+        <th></th>
+        <th>Snyk</th>
+        <th>Trivy</th>
+        <th>Dependency-Check</th>
+        <th>Dependa</th>
+      </tr>
+      <tr><td>CI/CD automation</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>optional</td></tr>
+      <tr><td>No cloud required</td><td>&#8212;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Human-readable review report</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Local execution</td><td>&#8212;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Desktop GUI</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>License confidence scoring</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003;</td></tr>
+    </table>
+    <p class="compare-note">Dependa complements CI-based SCA tools. Use CI for automated checks, Dependa for review reports.</p>
+
+    <!-- Ecosystems -->
+    <h2>Supported Ecosystems</h2>
+    <table class="eco-table">
+      <tr><th>Ecosystem</th><th>Supported Files</th><th>Plan</th></tr>
+      <tr><td>Python</td><td>requirements.txt, pyproject.toml, poetry.lock, uv.lock</td><td>Free</td></tr>
+      <tr><td>NuGet (.NET)</td><td>.csproj, packages.config</td><td>Free</td></tr>
+      <tr><td>Node.js</td><td>package.json, package-lock.json</td><td>Pro</td></tr>
+    </table>
+
+    <!-- Privacy -->
+    <div class="privacy-note">
+      <p><strong>Privacy:</strong> All analysis runs locally. Free features are completely offline. Pro features optionally query public vulnerability databases when the user enables online lookup. No personal information is ever sent.</p>
+    </div>
+
+    <!-- Store CTA -->
+    <div class="store-cta">
+      <p>Available from the Microsoft Store. Auto-updates, self-contained, no runtime installation needed.</p>
+      <a href="https://apps.microsoft.com/detail/9P84RLQQ401D">
+        <img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Get it from Microsoft Store" />
+      </a>
+    </div>
+
+    <!-- System Requirements -->
+    <h2>System Requirements</h2>
+    <ul>
+      <li>Windows 10 version 2004 (19041) or later / Windows 11</li>
+      <li>WebView2 Runtime (typically bundled with Windows)</li>
+      <li>Disk: ~80 MB / RAM: 512 MB or more</li>
+    </ul>
+
+    <!-- Links -->
+    <div class="links">
+      <a href="manual/?lang=en" class="primary">User Manual</a>
+      <a href="support.html" class="secondary">Support</a>
+      <a href="privacy-policy.html" class="secondary">Privacy Policy</a>
+      <a href="terms-of-use.html" class="secondary">Terms of Use</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  &copy; 2026 SumikkoLab. Dependa.<br>
+  <a href="https://github.com/sumikkolab/dependa-web">GitHub</a>
+  <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+</body>
+</html>

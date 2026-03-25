@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delta Scan — Dependa | SumikkoLab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>差分スキャン（Delta Scan）</h1>
+    <p class="subtitle">前回スキャンとの変更を自動検出し、継続審査を支援します。<span class="pro-badge">Pro</span></p>
+
+    <h2>概要</h2>
+    <p>差分スキャンは、前回のスキャン結果と今回のスキャン結果を自動比較し、以下の変更を検出します。</p>
+    <ul>
+      <li><strong>追加された依存関係</strong> — 新しく追加されたパッケージ</li>
+      <li><strong>削除された依存関係</strong> — 削除されたパッケージ</li>
+      <li><strong>新規脆弱性</strong> — 新たに検出された脆弱性</li>
+      <li><strong>解消された脆弱性</strong> — 修正されたバージョンへの更新等で解消された脆弱性</li>
+      <li><strong>ライセンス変更</strong> — ライセンス分類が変化したパッケージ</li>
+      <li><strong>ポリシー判定変化</strong> — 全体のポリシー判定が変わった場合</li>
+    </ul>
+
+    <h2>使い方</h2>
+    <ol>
+      <li>Pro ライセンスが有効であることを確認します。</li>
+      <li>通常どおりスキャンを実行します。</li>
+      <li>初回スキャン時はスナップショットが保存され、「初回スキャンです」と表示されます。</li>
+      <li>2 回目以降のスキャンで、前回との差分が自動的に表示されます。</li>
+    </ol>
+
+    <h2>差分詳細</h2>
+    <p>変更が検出された場合、差分詳細テーブルに以下が表示されます。</p>
+    <ul>
+      <li><strong>変更種別</strong> — Added / Removed / VulnerabilityNew / VulnerabilityResolved / LicenseChanged / PolicyChanged</li>
+      <li><strong>種別</strong> — エコシステム名（Python / Node.js）</li>
+      <li><strong>名前</strong> — パッケージ名</li>
+      <li><strong>バージョン</strong> — 対象バージョン</li>
+      <li><strong>詳細</strong> — 脆弱性の重要度や Advisory ID、ライセンス変更の前後など</li>
+    </ul>
+
+    <h2>マルチエコシステム対応</h2>
+    <p>差分比較はエコシステムごとに独立して行われます。Python パッケージと npm パッケージが同名でも、異なるエコシステムとして正しく追跡されます。</p>
+
+    <h2>HTML レポート・CSV</h2>
+    <p>差分結果は HTML レポートと差分専用 CSV（<code>oss-delta.csv</code>）にも出力されます。</p>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html">Table of Contents</a>
+      <a href="../support.html">Support</a>
+    </div>
+
+    <h1>Delta Scan</h1>
+    <p class="subtitle">Automatically detect changes from your previous scan for continuous review. <span class="pro-badge">Pro</span></p>
+
+    <h2>Overview</h2>
+    <p>Delta Scan compares your current scan results with the previous scan and detects the following changes:</p>
+    <ul>
+      <li><strong>Added dependencies</strong> — newly added packages</li>
+      <li><strong>Removed dependencies</strong> — packages that were removed</li>
+      <li><strong>New vulnerabilities</strong> — newly detected vulnerabilities</li>
+      <li><strong>Resolved vulnerabilities</strong> — vulnerabilities fixed by version updates</li>
+      <li><strong>License changes</strong> — packages whose license classification changed</li>
+      <li><strong>Policy changes</strong> — changes in the overall policy evaluation</li>
+    </ul>
+
+    <h2>How to Use</h2>
+    <ol>
+      <li>Ensure your Pro license is active.</li>
+      <li>Run a scan as usual.</li>
+      <li>The first scan saves a snapshot and shows "First scan".</li>
+      <li>Subsequent scans automatically display differences from the previous scan.</li>
+    </ol>
+
+    <h2>Delta Details</h2>
+    <p>When changes are detected, the Delta Details table shows:</p>
+    <ul>
+      <li><strong>Change Type</strong> — Added / Removed / VulnerabilityNew / VulnerabilityResolved / LicenseChanged / PolicyChanged</li>
+      <li><strong>Ecosystem</strong> — Python / Node.js</li>
+      <li><strong>Package Name</strong></li>
+      <li><strong>Version</strong></li>
+      <li><strong>Details</strong> — Severity, Advisory ID, license change details</li>
+    </ul>
+
+    <h2>Multi-Ecosystem Support</h2>
+    <p>Delta comparison is performed independently per ecosystem. Same-named packages in Python and npm are tracked separately.</p>
+
+    <h2>HTML Report & CSV</h2>
+    <p>Delta results are also included in the HTML report and a dedicated CSV file (<code>oss-delta.csv</code>).</p>
+  </div>
+</div>
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').className = lang === 'ja' ? 'section-ja visible' : 'section-ja';
+  document.getElementById('content-en').className = lang === 'en' ? 'section-en visible' : 'section-en';
+  document.getElementById('btn-ja').className = lang === 'ja' ? 'active' : '';
+  document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+}
+</script>
+</body>
+</html>

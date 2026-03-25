@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — Dependa | SumikkoLab</title>
+<meta name="description" content="Dependa サポート情報・お問い合わせ">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Yu Gothic UI', sans-serif; line-height: 1.7; color: #1a1a2e; background: #f8f9fa; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 1.5rem; margin-bottom: 8px; color: #0f172a; }
+  .subtitle { font-size: 0.85rem; color: #64748b; margin-bottom: 32px; }
+  h2 { font-size: 1.1rem; margin: 28px 0 8px; color: #312e81; border-left: 3px solid #6366f1; padding-left: 10px; }
+  p, li { font-size: 0.95rem; margin-bottom: 8px; }
+  ol { padding-left: 20px; margin-bottom: 12px; }
+  ul { padding-left: 20px; margin-bottom: 12px; }
+  .lang-toggle { text-align: right; margin-bottom: 20px; }
+  .lang-toggle button { background: #e2e8f0; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+  .lang-toggle button.active { background: #6366f1; color: #fff; }
+  .section-ja, .section-en { display: none; }
+  .section-ja.visible, .section-en.visible { display: block; }
+  .contact-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 16px 0; }
+  .contact-card p { margin-bottom: 4px; }
+  .contact-card a { color: #6366f1; text-decoration: none; }
+  .contact-card a:hover { text-decoration: underline; }
+  .info-box { background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 8px; padding: 16px; margin: 16px 0; }
+  .info-box p { font-size: 0.9rem; color: #3730a3; margin-bottom: 0; }
+  .privacy-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; margin: 16px 0; }
+  .privacy-box p { font-size: 0.9rem; color: #166534; margin-bottom: 0; }
+  .step-box { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 12px 0; }
+  .step-box h3 { font-size: 1rem; color: #312e81; margin-bottom: 8px; }
+  .step-box p { font-size: 0.9rem; }
+  .nav-links { margin-bottom: 24px; font-size: 0.85rem; }
+  .nav-links a { color: #6366f1; text-decoration: none; margin-right: 16px; }
+  .nav-links a:hover { text-decoration: underline; }
+  .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; text-align: center; }
+  code { background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">製品情報</a>
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+      <a href="manual/">マニュアル</a>
+    </div>
+
+    <h1>サポート</h1>
+    <p class="subtitle">Dependa — SumikkoLab</p>
+
+    <h2>お問い合わせ</h2>
+    <div class="contact-card">
+      <p><strong>メール:</strong> <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a></p>
+      <p><strong>対応言語:</strong> 日本語・英語</p>
+    </div>
+
+    <h2>不具合の報告方法</h2>
+    <p>不具合が発生した場合は、以下の手順で診断レポートを生成し、サポートにお送りください。</p>
+
+    <div class="step-box">
+      <h3>Step 1: 診断レポートを生成</h3>
+      <p>アプリの <strong>設定</strong> 画面の「サポート / トラブルシューティング」セクションにある <strong>「診断レポートを生成」</strong> ボタンをクリックしてください。ZIP ファイルが自動生成されます。</p>
+    </div>
+
+    <div class="step-box">
+      <h3>Step 2: 状況を記入</h3>
+      <p>ZIP 内の <code>user-message.txt</code> を開き、再現手順・期待する動作・実際の動作を記入してください。</p>
+    </div>
+
+    <div class="step-box">
+      <h3>Step 3: メールで送信</h3>
+      <p>生成された ZIP ファイルと、記入済みの <code>user-message.txt</code> を <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a> に添付して送信してください。</p>
+    </div>
+
+    <h2>診断レポートについて</h2>
+    <p>診断レポートには以下の情報が含まれます。</p>
+    <ul>
+      <li>アプリのバージョン情報</li>
+      <li>OS・ランタイム環境情報</li>
+      <li>スキャン設定の状態（パスやファイル内容は含みません）</li>
+      <li>設定ファイルの状態（存在確認・サイズ・更新日時のみ）</li>
+    </ul>
+
+    <div class="privacy-box">
+      <p><strong>プライバシー:</strong> 診断レポートは、ソースコード、依存ファイル、プロジェクトパス、ユーザー名、マシン名を<strong>含まない設計</strong>になっています。</p>
+    </div>
+
+    <h2>サポートデータの取り扱い</h2>
+    <p>不具合調査のために提供されたデータは、調査目的以外に使用せず、調査完了後速やかに破棄するよう努めます。</p>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html">Product Info</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="manual/?lang=en">Manual</a>
+    </div>
+
+    <h1>Support</h1>
+    <p class="subtitle">Dependa — SumikkoLab</p>
+
+    <h2>Contact Us</h2>
+    <div class="contact-card">
+      <p><strong>Email:</strong> <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a></p>
+      <p><strong>Languages:</strong> Japanese, English</p>
+    </div>
+
+    <h2>How to Report Issues</h2>
+    <p>If you encounter a problem, please generate a diagnostic report and send it to our support team.</p>
+
+    <div class="step-box">
+      <h3>Step 1: Generate a Diagnostic Report</h3>
+      <p>Go to the <strong>Settings</strong> page in the app, find the "Support / Troubleshooting" section, and click <strong>"Generate Diagnostic Report"</strong>. A ZIP file will be created automatically.</p>
+    </div>
+
+    <div class="step-box">
+      <h3>Step 2: Describe the Issue</h3>
+      <p>Open <code>user-message.txt</code> inside the ZIP and fill in the reproduction steps, expected behavior, and actual behavior.</p>
+    </div>
+
+    <div class="step-box">
+      <h3>Step 3: Send via Email</h3>
+      <p>Attach the generated ZIP file and the filled-in <code>user-message.txt</code> to an email and send it to <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>.</p>
+    </div>
+
+    <h2>About the Diagnostic Report</h2>
+    <p>The diagnostic report includes:</p>
+    <ul>
+      <li>App version information</li>
+      <li>OS and runtime environment details</li>
+      <li>Scan configuration status (no paths or file contents)</li>
+      <li>Settings file status (existence check, size, and last modified date only)</li>
+    </ul>
+
+    <div class="privacy-box">
+      <p><strong>Privacy:</strong> The diagnostic report is designed not to include source code, dependency files, project paths, user names, or machine names. Please see the list above for what is included.</p>
+    </div>
+
+    <h2>Data Handling</h2>
+    <p>Data provided for investigation purposes will not be used for any other purpose and will be promptly deleted after the investigation is complete.</p>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. Dependa.<br>
+    <a href="mailto:support@sumikkolab.com" style="color:#64748b;">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+</body>
+</html>

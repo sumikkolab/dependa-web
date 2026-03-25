@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 7: Pro Features — Dependa | SumikkoLab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>Chapter 7: Pro 機能ガイド</h1>
+    <p class="subtitle">Pro ライセンスで利用できる高度な機能</p>
+
+    <h2>Pro でできること</h2>
+    <table class="manual-table">
+      <tr><th>機能</th><th>説明</th></tr>
+      <tr><td>Node.js スキャン</td><td>package.json / package-lock.json を解析し、npm パッケージの依存関係を検出します。</td></tr>
+      <tr><td>OSV API オンライン脆弱性照合</td><td>Google OSV データベースにリアルタイムで問い合わせ、最新の脆弱性情報を取得します。</td></tr>
+      <tr><td>PyPI API オンラインライセンス補完</td><td>ローカル DB に無いパッケージのライセンス情報を PyPI から自動取得します。</td></tr>
+      <tr><td>Delta Scan（差分スキャン）</td><td>前回スキャン結果と比較し、依存・脆弱性・ライセンス・ポリシーの変化を検出します。</td></tr>
+      <tr><td>AI プロンプト生成</td><td>ChatGPT 等の AI に貼り付けて使える修正支援プロンプトを 3 種類生成します。</td></tr>
+      <tr><td>高度なレポート</td><td>脆弱性分析レポート・ライセンス分析レポートの詳細版を出力します。</td></tr>
+    </table>
+
+    <div class="screenshot">
+      <img src="images/advanced-report-ja.png" alt="高度な分析レポート">
+      <div class="caption">高度な分析 — 深刻度分布・ライセンス分布・AI プロンプト</div>
+    </div>
+
+    <h2>Node.js スキャン <span class="pro-badge">Pro</span></h2>
+    <p>Pro ライセンスを有効にすると、Python に加えて <strong>Node.js プロジェクト</strong> のスキャンが可能になります。</p>
+    <p>対応ファイル:</p>
+    <ul>
+      <li><code>package.json</code> — 直接依存の検出</li>
+      <li><code>package-lock.json</code> — 完全な依存ツリーの解析（推奨）</li>
+    </ul>
+    <p>使い方は Python スキャンと同じです。プロジェクトフォルダを選択するだけで、自動的にエコシステムを判別してスキャンを実行します。</p>
+
+    <h2>OSV API オンライン脆弱性照合 <span class="pro-badge">Pro</span></h2>
+    <p>設定画面で「オンライン脆弱性照合」を有効にすると、ローカル JSON データベースだけでなく <strong>OSV API</strong> にもリアルタイムで問い合わせます。</p>
+    <ul>
+      <li>ローカル DB は定期更新ですが、OSV API は常に最新のデータを返します。</li>
+      <li>ローカル DB に含まれない新しい脆弱性も検出可能です。</li>
+      <li>インターネット接続が必要です。オフライン環境ではローカル DB のみ使用されます。</li>
+    </ul>
+
+    <h2>PyPI API オンラインライセンス補完 <span class="pro-badge">Pro</span></h2>
+    <p>設定画面で「オンラインライセンス補完」を有効にすると、ローカル DB にライセンス情報がないパッケージについて <strong>PyPI API</strong> から自動補完します。</p>
+    <ul>
+      <li>Unknown と判定されるパッケージが大幅に減少します。</li>
+      <li>SPDX ID に正規化して分類するため、正確なリスク判定が行われます。</li>
+    </ul>
+
+    <h2>Delta Scan（差分スキャン） <span class="pro-badge">Pro</span></h2>
+    <p>Delta Scan は、前回のスキャン結果と今回の結果を比較して <strong>変化点</strong> を自動検出する機能です。</p>
+
+    <h3>Delta Scan の使い方</h3>
+    <ol>
+      <li>通常通りプロジェクトをスキャンします。</li>
+      <li>スキャン結果画面で <strong>「Delta Scan」</strong> ボタンをクリックします。</li>
+      <li>比較対象となる前回のスキャン結果（JSON ファイル）を選択します。</li>
+      <li>差分レポートが生成されます。</li>
+    </ol>
+
+    <h3>Delta Scan が検出する変化</h3>
+    <table class="manual-table">
+      <tr><th>カテゴリ</th><th>検出内容</th></tr>
+      <tr><td>依存関係の変化</td><td>追加・削除・バージョン変更されたパッケージ</td></tr>
+      <tr><td>脆弱性の変化</td><td>新たに発見された脆弱性、解消された脆弱性</td></tr>
+      <tr><td>ライセンスの変化</td><td>ライセンス種別が変わったパッケージ、リスク分類の変化</td></tr>
+      <tr><td>ポリシーの変化</td><td>ポリシー判定結果（PASS/FAIL）の変化</td></tr>
+    </table>
+
+    <h2>AI プロンプト生成 <span class="pro-badge">Pro</span></h2>
+    <p>スキャン結果をもとに、ChatGPT 等の AI チャットに貼り付けて使える <strong>修正支援プロンプト</strong> を生成します。3 種類のプロンプトが利用できます。</p>
+
+    <h3>1. VulnerabilityRemediation（脆弱性修正）</h3>
+    <p>検出された脆弱性に対する修正方法を AI に相談するためのプロンプトです。影響を受けるパッケージ、CVE ID、CVSS スコア、推奨バージョンなどの情報が含まれます。</p>
+
+    <h3>2. LicenseReview（ライセンス確認）</h3>
+    <p>ライセンスリスクが検出されたパッケージについて、法的な影響や代替パッケージを AI に相談するためのプロンプトです。</p>
+
+    <h3>3. DeltaScanReview（Delta Scan レビュー） <span class="pro-badge">Pro</span></h3>
+    <p>Delta Scan の差分結果をもとに、変更の影響範囲やリスク評価を AI に相談するためのプロンプトです。</p>
+
+    <div class="info-box">
+      <p>AI プロンプトはクリップボードにコピーできます。お使いの AI チャットサービスに貼り付けてご利用ください。</p>
+    </div>
+
+    <div class="chapter-nav">
+      <a href="settings.html">&larr; Chapter 6: 設定</a>
+      <a href="cli-reference.html">Chapter 8: CLI リファレンス &rarr;</a>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Table of Contents</a>
+      <a href="../support.html?lang=en">Support</a>
+    </div>
+
+    <h1>Chapter 7: Pro Features Guide</h1>
+    <p class="subtitle">Advanced features available with the Pro license</p>
+
+    <h2>What Pro Offers</h2>
+    <table class="manual-table">
+      <tr><th>Feature</th><th>Description</th></tr>
+      <tr><td>Node.js Scanning</td><td>Analyze package.json / package-lock.json to detect npm package dependencies.</td></tr>
+      <tr><td>OSV API Online Vulnerability Lookup</td><td>Query the Google OSV database in real time to get the latest vulnerability data.</td></tr>
+      <tr><td>PyPI API Online License Metadata</td><td>Automatically retrieve license info from PyPI for packages not in the local DB.</td></tr>
+      <tr><td>Delta Scan</td><td>Compare with previous scan results to detect changes in dependencies, vulnerabilities, licenses, and policy status.</td></tr>
+      <tr><td>AI Prompt Generation</td><td>Generate three types of remediation prompts to paste into AI chatbots like ChatGPT.</td></tr>
+      <tr><td>Advanced Reports</td><td>Export detailed vulnerability and license analysis reports.</td></tr>
+    </table>
+
+    <div class="screenshot">
+      <img src="images/advanced-report-en.png" alt="Advanced Analysis Report">
+      <div class="caption">Advanced analysis — severity distribution, license breakdown, and AI prompts</div>
+    </div>
+
+    <h2>Node.js Scanning <span class="pro-badge">Pro</span></h2>
+    <p>With a Pro license, you can scan <strong>Node.js projects</strong> in addition to Python.</p>
+    <p>Supported files:</p>
+    <ul>
+      <li><code>package.json</code> — Detects direct dependencies</li>
+      <li><code>package-lock.json</code> — Analyzes the full dependency tree (recommended)</li>
+    </ul>
+    <p>Usage is the same as Python scanning. Simply select the project folder and Dependa will automatically detect the ecosystem and run the scan.</p>
+
+    <h2>OSV API Online Vulnerability Lookup <span class="pro-badge">Pro</span></h2>
+    <p>Enable "Online Vulnerability Lookup" in Settings to query the <strong>OSV API</strong> in real time alongside the local JSON database.</p>
+    <ul>
+      <li>The local DB is periodically updated, but the OSV API always returns the latest data.</li>
+      <li>Detects new vulnerabilities not yet included in the local DB.</li>
+      <li>Requires an internet connection. In offline environments, only the local DB is used.</li>
+    </ul>
+
+    <h2>PyPI API Online License Metadata <span class="pro-badge">Pro</span></h2>
+    <p>Enable "Online License Metadata" in Settings to automatically supplement license information from the <strong>PyPI API</strong> for packages missing from the local DB.</p>
+    <ul>
+      <li>Significantly reduces the number of packages classified as Unknown.</li>
+      <li>Normalizes to SPDX IDs for accurate risk classification.</li>
+    </ul>
+
+    <h2>Delta Scan <span class="pro-badge">Pro</span></h2>
+    <p>Delta Scan compares previous scan results with current results to automatically detect <strong>changes</strong>.</p>
+
+    <h3>How to Use Delta Scan</h3>
+    <ol>
+      <li>Scan your project as usual.</li>
+      <li>Click the <strong>"Delta Scan"</strong> button on the scan results screen.</li>
+      <li>Select the previous scan result (JSON file) to compare against.</li>
+      <li>A delta report will be generated.</li>
+    </ol>
+
+    <h3>What Delta Scan Detects</h3>
+    <table class="manual-table">
+      <tr><th>Category</th><th>Details</th></tr>
+      <tr><td>Dependency Changes</td><td>Added, removed, or version-changed packages</td></tr>
+      <tr><td>Vulnerability Changes</td><td>Newly discovered or resolved vulnerabilities</td></tr>
+      <tr><td>License Changes</td><td>Packages with changed license types or risk classifications</td></tr>
+      <tr><td>Policy Changes</td><td>Changes in policy verdict (PASS/FAIL)</td></tr>
+    </table>
+
+    <h2>AI Prompt Generation <span class="pro-badge">Pro</span></h2>
+    <p>Generate <strong>remediation prompts</strong> based on scan results that you can paste into AI chatbots like ChatGPT. Three types of prompts are available:</p>
+
+    <h3>1. VulnerabilityRemediation</h3>
+    <p>A prompt for consulting AI about fixing detected vulnerabilities. Includes affected packages, CVE IDs, CVSS scores, and recommended versions.</p>
+
+    <h3>2. LicenseReview</h3>
+    <p>A prompt for consulting AI about legal implications of detected license risks and finding alternative packages.</p>
+
+    <h3>3. DeltaScanReview <span class="pro-badge">Pro</span></h3>
+    <p>A prompt for consulting AI about the impact scope and risk assessment of changes detected by Delta Scan.</p>
+
+    <div class="info-box">
+      <p>AI prompts can be copied to your clipboard. Paste them into your preferred AI chat service.</p>
+    </div>
+
+    <div class="chapter-nav">
+      <a href="settings.html?lang=en">&larr; Chapter 6: Settings</a>
+      <a href="cli-reference.html?lang=en">Chapter 8: CLI Reference &rarr;</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. Dependa.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>
