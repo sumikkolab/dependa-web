@@ -5,7 +5,7 @@
 <h1 align="center">Dependa</h1>
 
 <p align="center">
-  Windows 向け依存関係リスク分析 — 脆弱性・ライセンス・互換性をワンスキャンで。
+  依存関係と AI 構成を静的解析 — 脆弱性・ライセンス・ガバナンスをワンスキャンで。
 </p>
 
 <p align="center">
@@ -22,32 +22,34 @@
 
 ## 何が問題か
 
-Copilot が `requirements.txt` に足したパッケージ、ライセンスを確認しましたか？ Cursor が生成した `package.json`、その推移的依存に既知の CVE が含まれていないと言い切れますか？
+Copilot が `requirements.txt` に足したパッケージ、ライセンスを確認しましたか？ Cursor が生成した `package.json`、その推移的依存に既知の CVE が含まれていないと言い切れますか？ Terraform で定義した AI サービスのリージョン設定、データがどこで処理されるか把握していますか？
 
-AI コード生成が当たり前になった結果、自分で選んでいない依存を出荷するようになりました。でもリスクの責任は変わらずあなたにあります。ライセンス照合は SPDX を手作業で突き合わせ、脆弱性は OSV をひとつずつ検索、SBOM 生成はまた別のツールの設定。翌日には依存が変わっている。
-
-SCA ツールの大半は CI パイプラインと Linux が前提です。Windows デスクトップで動いている現場には合わない。
+AI コード生成が当たり前になった結果、自分で選んでいない依存を出荷するようになりました。AI SDK やモデル設定が気づかないうちに増えています。でもリスクの責任は変わらずあなたにあります。
 
 **Dependa は Windows でローカル動作し、オフラインで回答を出します。クラウド不要。アカウント不要。**
 
 ## 機能
-
-<p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/scan-results-ja.png" alt="スキャン結果" width="720" />
-</p>
 
 ### スキャン
 
 - **Python** (pip)、**NuGet** (.csproj / packages.config)、**Node.js** (npm)
 - バンドル済みアドバイザリ DB による脆弱性照合 — ネットワーク不要
 - ライセンス分類: Approved / Caution / Prohibited / Unknown
-- スクリプト・ブラウザ拡張の外部参照検査
+
+### AI Governance (v1.5 New)
+
+- **AI BOM** — AI SDK・モデル設定・API キー・エンドポイントを依存関係・ソースコード・環境変数・IaC から統合的に棚卸し
+- **Excessive Agency 検出** — ワイルドカード IAM・自動承認・無制限ループなど過大権限の候補を検出
+- **Data Sovereignty 確認** — AI サービスのリージョン設定・データ送信先を確認
+- **組織ポリシー照合** — 許可リージョン・承認済みプロバイダとの照合
+
+### IaC 対応 (v1.5 New)
+
+- **Terraform** (.tf) — HCL 軽量構造認識で AI リソースを検出
+- **Bicep** (.bicep) — Azure AI リソースを検出、param default 解決
+- **ARM JSON** (.json) — ARM テンプレートから AI リソースを検出
 
 ### レポート
-
-<p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/html-report-ja.png" alt="HTML レポート" width="720" />
-</p>
 
 - 自己完結型 HTML — 外部 CSS/JS なし、オフラインで開ける、そのまま印刷可
 - CycloneDX 1.5 SBOM (JSON)
@@ -55,36 +57,17 @@ SCA ツールの大半は CI パイプラインと Linux が前提です。Windo
 
 ### 分析 (Pro)
 
-<p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/license-analysis-ja.png" alt="ライセンス分析" width="720" />
-</p>
-
 - **マルチエコシステム統合** — Python + npm を同時スキャン、統合結果表示
 - **ライセンス互換性** — Apache-2.0 + GPL-2.0 特許条項の衝突、Copyleft と Proprietary の混在を検出・説明
 - **脆弱性トリアージ** — severity 別の内訳、影響パッケージ、修正パス
-- **Delta Scan** — 前回スキャンとの差分、継続審査
-- **例外管理** — 既知の問題を理由・承認者・期限付きで許容。追跡・取消・延長が可能。監査対応。
-
-<p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/exception-management-ja.png" alt="例外管理" width="720" />
-</p>
-
+- **Delta Scan** — 前回スキャンとの差分比較。AI BOM / Finding の追加・削除・新規・解消も検出 (v1.5 New)
+- **例外管理** — 既知の問題を理由・承認者・期限付きで許容。追跡・取消・延長が可能
 - **オンライン OSV 照合** — リアルタイム CVE データ（オプトイン）
 - **オンラインライセンス補完** — PyPI / npm レジストリから補足
 
-### ポリシー設定 (Pro)
-
-<p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/policy-builder-ja.png" alt="ポリシー設定" width="720" />
-</p>
-
-- テンプレートからカテゴリ別のルールを選択し、プレビューで影響を確認
-- 保存したポリシーは次回以降のスキャンで自動適用
-- すべてのパッケージに判定理由を提示（合否だけでなく根拠を説明）
-
 ## オフラインが既定
 
-オプトインしない限りネットワーク通信ゼロ。脆弱性照合、ライセンス分類、ポリシーチェック、レポート、SBOM — すべてローカル。
+オプトインしない限りネットワーク通信ゼロ。脆弱性照合、ライセンス分類、ポリシーチェック、AI Governance、IaC 解析、レポート、SBOM — すべてローカル。
 
 ## CLI + GUI
 
@@ -99,9 +82,9 @@ Dependa.exe scan --path ./myproject --lang ja                  # 日本語出力
 
 ## Free と Pro
 
-**Free** — Python + NuGet スキャン、ローカル脆弱性照合、ライセンス分類、HTML レポート、SBOM、スクリプト検査。「問題があるか？」に答える。
+**Free** — Python + NuGet スキャン、ローカル脆弱性照合、ライセンス分類、AI Governance（AI BOM / Excessive Agency / Data Sovereignty / 組織ポリシー照合）、IaC 対応（Terraform / Bicep / ARM JSON）、HTML レポート、SBOM。「今どうなっているか？」に答える。
 
-**Pro** — Node.js、マルチエコシステム統合、例外管理、オンライン OSV 照合、ライセンス互換性分析、脆弱性トリアージ、Delta Scan を追加。「どれくらい深刻で、何から直すか、何を承認済みか？」に答える。Microsoft Store でワンタイム購入。
+**Pro** — Node.js、マルチエコシステム統合、Delta Scan（AI Governance 差分を含む）、例外管理、オンライン OSV 照合、ライセンス互換性分析、脆弱性トリアージを追加。「前回から何が変わったか、何から直すか？」に答える。Microsoft Store でワンタイム購入。
 
 ## インストール
 
