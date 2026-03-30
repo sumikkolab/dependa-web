@@ -99,8 +99,8 @@
 <div class="section-ja visible" id="content-ja">
   <div class="hero">
     <h1>Dependa</h1>
-    <p class="tagline">依存ライブラリのリスクを、あなたの PC 上でレビュー</p>
-    <p class="sub-tagline">クラウドにコードを送らず、脆弱性・ライセンス・互換性を分析。セキュリティレビューや OSS 審査に使えるレポートを生成します。</p>
+    <p class="tagline">依存関係と AI 構成を、あなたの PC 上でレビュー</p>
+    <p class="sub-tagline">クラウドにコードを送らず、脆弱性・ライセンス・AI ガバナンスを分析。セキュリティレビューや OSS 審査に使えるレポートを生成します。</p>
     <span class="badge">Python</span>
     <span class="badge">Node.js</span>
     <span class="badge">NuGet (.NET)</span>
@@ -134,11 +134,32 @@
       <div class="caption">HTML レポート — 判定理由を含むレビュー資料をチームで共有</div>
     </div>
 
-    <!-- v1.1.0 Highlight -->
-    <h2>v1.1.0 新機能: ポリシー評価と判定理由の可視化</h2>
+    <!-- v1.5.0 Highlight -->
+    <h2>v1.5.0 新機能: AI Governance + IaC 対応</h2>
     <div class="why-section">
-      <p>v1.1.0 では、OSS 依存関係の検出結果に対して、<strong>組織ポリシーに基づく判定とその理由</strong>を GUI・HTML レポート・CSV で確認できるようになりました。</p>
-      <p>単なる検出ではなく、<strong>審査・説明・共有に使えるローカルレビュー支援ツール</strong>として利用できます。</p>
+      <p>v1.5.0 では、<strong>AI 関連構成の棚卸しと確認</strong>に対応しました。依存関係・ソースコード・環境変数・IaC 定義から AI コンポーネントを統合的に検出し、レポートに出力します。</p>
+      <p><strong>Terraform / Bicep / ARM JSON</strong> からも AI リソースを検出。リージョン設定の確認や組織ポリシーとの照合が可能です。</p>
+      <p>前回スキャンとの<strong>差分比較</strong>で、AI 構成の追加・削除・Finding の新規・解消も検出します（Pro）。</p>
+    </div>
+
+    <h2>AI Governance（Free）</h2>
+    <div class="features">
+      <div class="feature-card">
+        <h3>AI BOM（部品表）</h3>
+        <p>AI SDK・モデル設定・API キー・エンドポイントを検出して一覧化。依存関係・ソースコード・環境変数・IaC から統合的に棚卸し。</p>
+      </div>
+      <div class="feature-card">
+        <h3>Excessive Agency 検出</h3>
+        <p>ワイルドカード IAM・自動承認・無制限ループなど、AI エージェントの過大な権限設定の候補を検出。</p>
+      </div>
+      <div class="feature-card">
+        <h3>Data Sovereignty 確認</h3>
+        <p>AI サービスのリージョン設定やデータ送信先を確認。global / auto / 未指定の構成を検出。</p>
+      </div>
+      <div class="feature-card">
+        <h3>IaC 対応</h3>
+        <p>Terraform (.tf) / Bicep (.bicep) / ARM JSON (.json) から AI リソースを検出し、AI BOM と Data Sovereignty に反映。</p>
+      </div>
     </div>
 
     <!-- Free Features -->
@@ -171,7 +192,7 @@
       <li><strong>ライセンスのオンライン検証</strong> — PyPI / npm / NuGet の公式情報で判定を照合し、信頼度を引き上げ</li>
       <li><strong>リスクスコア</strong> — パッケージごとに 0〜100 のスコアでリスクを定量化</li>
       <li><strong>OSS 利用審査の支援</strong> — 推奨アクション、商用利用の注意点、チェックリストを生成</li>
-      <li><strong>差分比較（Delta Scan）</strong> — 前回のスキャン結果と比較し、変化点を検出。継続審査を支援</li>
+      <li><strong>差分比較（Delta Scan）</strong> — 前回のスキャン結果と比較し、変化点を検出。AI BOM / Finding の追加・削除・新規・解消も検出（v1.5）</li>
       <li><strong>例外管理</strong> — 既知の問題を理由・承認者・期限付きで許容。追跡・取消・延長が可能。監査対応</li>
       <li><strong>審査レポートの出力</strong> — OSS 一覧表（CSV）や審査レポート（Markdown）をエクスポート</li>
       <li><strong>AI 向けプロンプト</strong> — 脆弱性の修正やライセンスの確認に使えるプロンプトを生成</li>
@@ -241,8 +262,8 @@
 <div class="section-en" id="content-en">
   <div class="hero">
     <h1>Dependa</h1>
-    <p class="tagline">Review dependency risks locally on your machine</p>
-    <p class="sub-tagline">Analyze vulnerabilities, licenses, and compatibility without uploading code. Generate review reports for security and compliance workflows.</p>
+    <p class="tagline">Review dependency &amp; AI governance risks locally on your machine</p>
+    <p class="sub-tagline">Analyze vulnerabilities, licenses, and AI governance without uploading code. Generate review reports for security and compliance workflows.</p>
     <span class="badge">Python</span>
     <span class="badge">Node.js</span>
     <span class="badge">NuGet (.NET)</span>
@@ -276,11 +297,32 @@
       <div class="caption">HTML report — judgment reasons included, ready for review and sharing</div>
     </div>
 
-    <!-- v1.1.0 Highlight -->
-    <h2>v1.1.0: Policy-driven review and explainable judgments</h2>
+    <!-- v1.5.0 Highlight -->
+    <h2>v1.5.0: AI Governance + IaC Support</h2>
     <div class="why-section">
-      <p>v1.1.0 adds <strong>organization policy support and explainable package-level judgments</strong> across the GUI, HTML reports, and CSV export.</p>
-      <p>Move beyond detection — use Dependa as a <strong>local review support tool for auditing, explaining, and sharing</strong> dependency decisions.</p>
+      <p>v1.5.0 adds <strong>AI governance analysis</strong>. Detect AI SDKs, model settings, API keys, and endpoints from dependencies, source code, environment variables, and IaC definitions.</p>
+      <p>Scan <strong>Terraform / Bicep / ARM JSON</strong> for AI service resources. Check region settings and compare against organization policies.</p>
+      <p><strong>Delta Scan</strong> now includes AI BOM and Finding changes — detect what's been added or resolved since the last scan (Pro).</p>
+    </div>
+
+    <h2>AI Governance (Free)</h2>
+    <div class="features">
+      <div class="feature-card">
+        <h3>AI BOM (Bill of Materials)</h3>
+        <p>Detect AI SDKs, model settings, API keys, and endpoints. Consolidate from dependencies, source code, environment variables, and IaC.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Excessive Agency Detection</h3>
+        <p>Identify wildcard IAM, auto-approve settings, unlimited loops, and other overly broad permission candidates in AI agent configurations.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Data Sovereignty Checks</h3>
+        <p>Review AI service region settings and data destinations. Flag global / auto / unspecified configurations.</p>
+      </div>
+      <div class="feature-card">
+        <h3>IaC Support</h3>
+        <p>Detect AI resources from Terraform (.tf) / Bicep (.bicep) / ARM JSON (.json) and reflect in AI BOM and Data Sovereignty checks.</p>
+      </div>
     </div>
 
     <!-- Free Features -->
@@ -313,7 +355,7 @@
       <li><strong>Online License Verification</strong> — Verify local data against PyPI / npm / NuGet registries</li>
       <li><strong>Risk Score</strong> — Per-package quantitative risk evaluation (0-100)</li>
       <li><strong>OSS Review Support</strong> — Recommended actions, commercial use guidance, organization checklist</li>
-      <li><strong>Delta Scan</strong> — Detect changes from previous scan results for continuous review</li>
+      <li><strong>Delta Scan</strong> — Detect changes from previous scan results, including AI BOM and Finding additions/removals (v1.5)</li>
       <li><strong>Exception Management</strong> — Approve known issues with reason, approver, and expiry. Track, revoke, extend. Audit-ready</li>
       <li><strong>Review Report Export</strong> — CSV inventory and Markdown review report</li>
       <li><strong>AI Prompts</strong> — Generate prompts for vulnerability fix and license review</li>
