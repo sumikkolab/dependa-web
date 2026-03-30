@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IaC Support — Dependa | SumikkoLab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>IaC 対応</h1>
+    <p class="subtitle">Terraform / Bicep / ARM JSON から AI リソースを検出 <span class="badge-new">v1.5 New</span></p>
+
+    <h2>概要</h2>
+    <p>Dependa は Infrastructure as Code（IaC）ファイルから AI サービスリソースを検出し、AI BOM に追加します。リージョン設定も Data Sovereignty 確認に反映されます。</p>
+
+    <div class="info-box">
+      <p>IaC 対応は Free 版で利用できます。</p>
+    </div>
+
+    <h2>対応 IaC</h2>
+    <table class="manual-table">
+      <tr><th>IaC</th><th>ファイル</th><th>認識方法</th></tr>
+      <tr><td>Terraform</td><td><code>.tf</code></td><td>HCL 軽量構造認識（正規表現ベース）</td></tr>
+      <tr><td>Bicep</td><td><code>.bicep</code></td><td>Bicep 軽量構造認識（正規表現ベース）</td></tr>
+      <tr><td>ARM JSON</td><td><code>.json</code>（ARM テンプレート）</td><td>JSON resources 配列の直接走査</td></tr>
+    </table>
+
+    <h2>検出される AI リソース</h2>
+
+    <h3>Terraform（11 リソースタイプ）</h3>
+    <table class="manual-table">
+      <tr><th>リソースタイプ</th><th>サービス</th></tr>
+      <tr><td><code>azurerm_cognitive_account</code></td><td>Azure AI Services</td></tr>
+      <tr><td><code>azurerm_cognitive_deployment</code></td><td>Azure OpenAI Deployment</td></tr>
+      <tr><td><code>azurerm_ai_services</code></td><td>Azure AI Services</td></tr>
+      <tr><td><code>aws_bedrock_custom_model</code></td><td>Bedrock Custom Model</td></tr>
+      <tr><td><code>aws_sagemaker_endpoint</code></td><td>SageMaker Endpoint</td></tr>
+      <tr><td><code>google_vertex_ai_endpoint</code></td><td>Vertex AI Endpoint</td></tr>
+    </table>
+    <p>他 5 リソースタイプ（AWS SageMaker Model、Bedrock Logging、Google Vertex AI Index / Feature Store / ML Engine）</p>
+
+    <h3>Bicep / ARM JSON（8 リソースタイプ）</h3>
+    <table class="manual-table">
+      <tr><th>リソースタイプ</th><th>サービス</th></tr>
+      <tr><td><code>Microsoft.CognitiveServices/accounts</code></td><td>Azure AI Services</td></tr>
+      <tr><td><code>Microsoft.CognitiveServices/accounts/deployments</code></td><td>Azure OpenAI Deployment</td></tr>
+      <tr><td><code>Microsoft.MachineLearningServices/workspaces</code></td><td>Azure ML Workspace</td></tr>
+      <tr><td><code>Microsoft.Search/searchServices</code></td><td>Azure AI Search</td></tr>
+      <tr><td><code>Microsoft.BotService/botServices</code></td><td>Azure Bot Service</td></tr>
+    </table>
+    <p>他 3 リソースタイプ（Azure ML Online Endpoint / Deployment、Azure AI Content Safety）</p>
+
+    <h2>location / region の抽出</h2>
+    <p>IaC で指定されたリージョン設定を Data Sovereignty 確認に反映します。</p>
+    <table class="manual-table">
+      <tr><th>IaC</th><th>解決方法</th></tr>
+      <tr><td>Terraform</td><td>resource / provider ブロックの <code>location</code> / <code>region</code> 属性</td></tr>
+      <tr><td>Bicep</td><td><code>location</code> 属性。<code>param</code> の default 値で簡易解決</td></tr>
+      <tr><td>ARM JSON</td><td><code>location</code> 属性。<code>[parameters('x')]</code> の defaultValue で簡易解決</td></tr>
+    </table>
+
+    <h2>制約事項</h2>
+    <ul>
+      <li>完全な構文解析ではなく、軽量構造認識です。主要属性のパターンマッチによる構造抽出を行います。</li>
+      <li>Terraform: module 展開、for_each、dynamic block、remote state は未対応</li>
+      <li>Bicep: module / var 解決、existing リソースの属性追跡は未対応</li>
+      <li>ARM JSON: nested deployment、linked template、variables 解決、copy / condition 評価は未対応</li>
+      <li>10 MB を超えるファイルはスキップされます。</li>
+    </ul>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Table of Contents</a>
+      <a href="../support.html?lang=en">Support</a>
+    </div>
+
+    <h1>IaC Support</h1>
+    <p class="subtitle">Detect AI resources from Terraform / Bicep / ARM JSON <span class="badge-new">v1.5 New</span></p>
+
+    <h2>Overview</h2>
+    <p>Dependa detects AI service resources from Infrastructure as Code (IaC) files and adds them to the AI BOM. Region settings are also reflected in Data Sovereignty checks.</p>
+
+    <div class="info-box">
+      <p>IaC support is available in the Free edition.</p>
+    </div>
+
+    <h2>Supported IaC</h2>
+    <table class="manual-table">
+      <tr><th>IaC</th><th>Files</th><th>Method</th></tr>
+      <tr><td>Terraform</td><td><code>.tf</code></td><td>Lightweight HCL structure recognition (regex-based)</td></tr>
+      <tr><td>Bicep</td><td><code>.bicep</code></td><td>Lightweight Bicep structure recognition (regex-based)</td></tr>
+      <tr><td>ARM JSON</td><td><code>.json</code> (ARM templates)</td><td>Direct JSON resources array scanning</td></tr>
+    </table>
+
+    <h2>Detected AI Resources</h2>
+
+    <h3>Terraform (11 resource types)</h3>
+    <table class="manual-table">
+      <tr><th>Resource Type</th><th>Service</th></tr>
+      <tr><td><code>azurerm_cognitive_account</code></td><td>Azure AI Services</td></tr>
+      <tr><td><code>azurerm_cognitive_deployment</code></td><td>Azure OpenAI Deployment</td></tr>
+      <tr><td><code>azurerm_ai_services</code></td><td>Azure AI Services</td></tr>
+      <tr><td><code>aws_bedrock_custom_model</code></td><td>Bedrock Custom Model</td></tr>
+      <tr><td><code>aws_sagemaker_endpoint</code></td><td>SageMaker Endpoint</td></tr>
+      <tr><td><code>google_vertex_ai_endpoint</code></td><td>Vertex AI Endpoint</td></tr>
+    </table>
+    <p>Plus 5 additional resource types (AWS SageMaker Model, Bedrock Logging, Google Vertex AI Index / Feature Store / ML Engine)</p>
+
+    <h3>Bicep / ARM JSON (8 resource types)</h3>
+    <table class="manual-table">
+      <tr><th>Resource Type</th><th>Service</th></tr>
+      <tr><td><code>Microsoft.CognitiveServices/accounts</code></td><td>Azure AI Services</td></tr>
+      <tr><td><code>Microsoft.CognitiveServices/accounts/deployments</code></td><td>Azure OpenAI Deployment</td></tr>
+      <tr><td><code>Microsoft.MachineLearningServices/workspaces</code></td><td>Azure ML Workspace</td></tr>
+      <tr><td><code>Microsoft.Search/searchServices</code></td><td>Azure AI Search</td></tr>
+      <tr><td><code>Microsoft.BotService/botServices</code></td><td>Azure Bot Service</td></tr>
+    </table>
+    <p>Plus 3 additional resource types (Azure ML Online Endpoint / Deployment, Azure AI Content Safety)</p>
+
+    <h2>Location / Region Extraction</h2>
+    <p>Region settings from IaC are fed into Data Sovereignty checks.</p>
+    <table class="manual-table">
+      <tr><th>IaC</th><th>Resolution Method</th></tr>
+      <tr><td>Terraform</td><td><code>location</code> / <code>region</code> attributes in resource / provider blocks</td></tr>
+      <tr><td>Bicep</td><td><code>location</code> attribute with simple <code>param</code> default resolution</td></tr>
+      <tr><td>ARM JSON</td><td><code>location</code> attribute with <code>[parameters('x')]</code> defaultValue resolution</td></tr>
+    </table>
+
+    <h2>Limitations</h2>
+    <ul>
+      <li>Lightweight structure recognition, not full syntax parsing. Uses pattern matching for key attributes.</li>
+      <li>Terraform: module expansion, for_each, dynamic blocks, remote state not supported</li>
+      <li>Bicep: module / var resolution, existing resource attribute tracking not supported</li>
+      <li>ARM JSON: nested deployment, linked template, variables resolution, copy / condition evaluation not supported</li>
+      <li>Files larger than 10 MB are skipped.</li>
+    </ul>
+  </div>
+</div>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.section-ja, .section-en').forEach(e => e.classList.remove('visible'));
+  document.getElementById('content-' + lang).classList.add('visible');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+if (location.search.includes('lang=en')) switchLang('en');
+</script>
+</body>
+</html>

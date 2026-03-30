@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Governance — Dependa | SumikkoLab</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>AI Governance 分析</h1>
+    <p class="subtitle">プロジェクト内の AI 関連構成を静的解析し、確認ポイントを可視化する <span class="badge-new">v1.5 New</span></p>
+
+    <h2>概要</h2>
+    <p>Dependa の AI Governance 機能は、プロジェクト内の AI 関連構成を検出し、ガバナンス上の確認ポイントを整理します。依存関係・ソースコード・環境変数・IaC 定義から AI コンポーネントを統合的に棚卸しし、レポートに出力します。</p>
+
+    <div class="info-box">
+      <p>AI Governance は Free 版で利用できます。追加費用はかかりません。</p>
+    </div>
+
+    <h2>AI BOM（部品表）</h2>
+    <p>プロジェクト内で使用されている AI 関連コンポーネントを検出し、一覧化します。</p>
+
+    <h3>検出ソース</h3>
+    <table class="manual-table">
+      <tr><th>ソース</th><th>検出対象</th><th>例</th></tr>
+      <tr><td>依存関係</td><td>AI SDK / フレームワーク / ML ライブラリ</td><td>openai, langchain, transformers</td></tr>
+      <tr><td>ソースコード</td><td>import / require / using 文</td><td><code>import openai</code>, <code>from langchain import ...</code></td></tr>
+      <tr><td>環境変数</td><td>.env ファイル内の API キー参照</td><td><code>OPENAI_API_KEY</code>, <code>ANTHROPIC_API_KEY</code></td></tr>
+      <tr><td>IaC 定義</td><td>Terraform / Bicep / ARM JSON の AI リソース</td><td><code>azurerm_cognitive_account</code></td></tr>
+    </table>
+
+    <h3>BOM テーブルの見方</h3>
+    <table class="manual-table">
+      <tr><th>列</th><th>説明</th></tr>
+      <tr><td>コンポーネント</td><td>検出された AI コンポーネントの名前</td></tr>
+      <tr><td>種別</td><td>SDK / フレームワーク / サービスエンドポイント / 環境設定 など</td></tr>
+      <tr><td>バージョン</td><td>検出されたバージョン（IaC の場合は API バージョン）</td></tr>
+      <tr><td>プロバイダー</td><td>AI プロバイダー名（OpenAI, Anthropic, Microsoft 等）</td></tr>
+      <tr><td>直接</td><td>直接依存か間接（推移）依存か</td></tr>
+      <tr><td>確度</td><td>検出の信頼度（High / Medium / Low）</td></tr>
+      <tr><td>ソース</td><td>検出元ファイル</td></tr>
+    </table>
+
+    <h2>Excessive Agency 検出</h2>
+    <p>AI エージェントや AI アプリに関連する過大な権限設定の候補を検出します。</p>
+    <table class="manual-table">
+      <tr><th>検出項目</th><th>説明</th></tr>
+      <tr><td>AGENCY-001</td><td>ワイルドカード IAM 権限（<code>Action: "*"</code>）</td></tr>
+      <tr><td>AGENCY-002</td><td>過大な OAuth スコープ</td></tr>
+      <tr><td>AGENCY-003</td><td>書込み / 削除 / 実行系ツール定義</td></tr>
+      <tr><td>AGENCY-004</td><td>人間の監視なしの自動承認設定</td></tr>
+      <tr><td>AGENCY-005</td><td>書込み可能ツール近傍に安全策が未検出</td></tr>
+      <tr><td>AGENCY-006</td><td>無制限または過大な反復上限</td></tr>
+    </table>
+
+    <h2>Data Sovereignty 確認</h2>
+    <p>AI サービスのデータ送信先やリージョン設定を確認します。</p>
+    <table class="manual-table">
+      <tr><th>検出項目</th><th>説明</th></tr>
+      <tr><td>SOV-001</td><td>AI サービスのリージョンが未指定</td></tr>
+      <tr><td>SOV-002</td><td>非特定リージョン設定（global / auto）</td></tr>
+      <tr><td>SOV-004</td><td>外部 AI API への直接呼出し</td></tr>
+      <tr><td>SOV-005</td><td>データ残留設定が未検出</td></tr>
+    </table>
+
+    <h2>組織ポリシー照合</h2>
+    <p>ローカルに配置したポリシーファイルに基づき、許可リージョン外のデータ送信先や未承認 AI プロバイダの利用を検出します。</p>
+
+    <div class="info-box">
+      <p>ポリシーファイル（<code>data/ai-governance/ai-governance-policy.json</code>）を配置すると、ポリシー照合が有効になります。未設定時はスキップされます。</p>
+    </div>
+
+    <h2>Finding の見方</h2>
+    <p>各検出結果には以下の情報が付与されます。</p>
+    <ul>
+      <li><strong>理由</strong> — なぜ確認が必要か</li>
+      <li><strong>アクション</strong> — 今すぐ何をすべきか</li>
+      <li><strong>エビデンス</strong> — 検出元のファイルと行番号</li>
+    </ul>
+
+    <h2>制約事項</h2>
+    <ul>
+      <li>静的解析のみ。実行時の挙動や動的に付与される権限は検出対象外です。</li>
+      <li>カタログに登録されていない AI SDK は検出されません。</li>
+      <li>推移依存からの間接的な AI コンポーネント検出は Low confidence で表示されます。</li>
+    </ul>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Table of Contents</a>
+      <a href="../support.html?lang=en">Support</a>
+    </div>
+
+    <h1>AI Governance Analysis</h1>
+    <p class="subtitle">Statically analyze AI-related configuration and surface governance review items <span class="badge-new">v1.5 New</span></p>
+
+    <h2>Overview</h2>
+    <p>Dependa's AI Governance feature detects AI-related configuration in your project and organizes governance review items. It consolidates AI components from dependencies, source code, environment variables, and IaC definitions into an AI Bill of Materials.</p>
+
+    <div class="info-box">
+      <p>AI Governance is available in the Free edition at no additional cost.</p>
+    </div>
+
+    <h2>AI BOM (Bill of Materials)</h2>
+    <p>Detects and inventories AI-related components used in your project.</p>
+
+    <h3>Detection Sources</h3>
+    <table class="manual-table">
+      <tr><th>Source</th><th>Detection Target</th><th>Examples</th></tr>
+      <tr><td>Dependencies</td><td>AI SDKs / Frameworks / ML Libraries</td><td>openai, langchain, transformers</td></tr>
+      <tr><td>Source Code</td><td>import / require / using statements</td><td><code>import openai</code>, <code>from langchain import ...</code></td></tr>
+      <tr><td>Environment Variables</td><td>API key references in .env files</td><td><code>OPENAI_API_KEY</code>, <code>ANTHROPIC_API_KEY</code></td></tr>
+      <tr><td>IaC Definitions</td><td>Terraform / Bicep / ARM JSON AI resources</td><td><code>azurerm_cognitive_account</code></td></tr>
+    </table>
+
+    <h3>BOM Table Columns</h3>
+    <table class="manual-table">
+      <tr><th>Column</th><th>Description</th></tr>
+      <tr><td>Component</td><td>Name of the detected AI component</td></tr>
+      <tr><td>Type</td><td>Sdk / Framework / ServiceEndpoint / EnvironmentConfig, etc.</td></tr>
+      <tr><td>Version</td><td>Detected version (API version for IaC resources)</td></tr>
+      <tr><td>Provider</td><td>AI provider name (OpenAI, Anthropic, Microsoft, etc.)</td></tr>
+      <tr><td>Direct</td><td>Whether direct or transitive dependency</td></tr>
+      <tr><td>Confidence</td><td>Detection confidence level (High / Medium / Low)</td></tr>
+      <tr><td>Source</td><td>Source file where detected</td></tr>
+    </table>
+
+    <h2>Excessive Agency Detection</h2>
+    <p>Detects candidates for overly broad permissions in AI agent configurations.</p>
+    <table class="manual-table">
+      <tr><th>Finding</th><th>Description</th></tr>
+      <tr><td>AGENCY-001</td><td>Wildcard IAM permissions (<code>Action: "*"</code>)</td></tr>
+      <tr><td>AGENCY-002</td><td>Overly broad OAuth scopes</td></tr>
+      <tr><td>AGENCY-003</td><td>Write / delete / execute tool definitions</td></tr>
+      <tr><td>AGENCY-004</td><td>Automatic approval without human oversight</td></tr>
+      <tr><td>AGENCY-005</td><td>Safeguard not detected near write-capable tools</td></tr>
+      <tr><td>AGENCY-006</td><td>Unlimited or excessive iteration limit</td></tr>
+    </table>
+
+    <h2>Data Sovereignty Checks</h2>
+    <p>Reviews AI service data destinations and region settings.</p>
+    <table class="manual-table">
+      <tr><th>Finding</th><th>Description</th></tr>
+      <tr><td>SOV-001</td><td>Region not specified for AI services</td></tr>
+      <tr><td>SOV-002</td><td>Non-specific region setting (global / auto)</td></tr>
+      <tr><td>SOV-004</td><td>Direct external AI API calls detected</td></tr>
+      <tr><td>SOV-005</td><td>Retention-related setting not detected for AI provider</td></tr>
+    </table>
+
+    <h2>Organization Policy Evaluation</h2>
+    <p>Compares detected AI configuration against a local policy file to identify regions outside the allowed list and unapproved AI providers.</p>
+
+    <div class="info-box">
+      <p>Place <code>ai-governance-policy.json</code> in <code>data/ai-governance/</code> to enable policy evaluation. Skipped when not configured.</p>
+    </div>
+
+    <h2>Understanding Findings</h2>
+    <p>Each finding includes:</p>
+    <ul>
+      <li><strong>Why</strong> — Why this needs attention</li>
+      <li><strong>Action</strong> — What to do now</li>
+      <li><strong>Evidence</strong> — Source file and line number</li>
+    </ul>
+
+    <h2>Limitations</h2>
+    <ul>
+      <li>Static analysis only. Runtime behavior and dynamically assigned permissions are not detected.</li>
+      <li>AI SDKs not registered in the catalog will not be detected.</li>
+      <li>Transitive dependency AI components are shown with Low confidence.</li>
+    </ul>
+  </div>
+</div>
+<script src="styles.css" onerror=""></script>
+<script>
+function switchLang(lang) {
+  document.querySelectorAll('.section-ja, .section-en').forEach(e => e.classList.remove('visible'));
+  document.getElementById('content-' + lang).classList.add('visible');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+if (location.search.includes('lang=en')) switchLang('en');
+</script>
+</body>
+</html>
