@@ -5,7 +5,7 @@
 <h1 align="center">Dependa</h1>
 
 <p align="center">
-  Dependency &amp; AI governance analysis for Windows — vulnerabilities, licenses, and governance in one scan.
+  Review, approve, and report on OSS usage — SBOM-driven risk analysis for Windows.
 </p>
 
 <p align="center">
@@ -17,106 +17,95 @@
 <p align="center">
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%2010%2F11-blue" />
   <img alt=".NET 8" src="https://img.shields.io/badge/.NET-8.0-purple" />
-  <img alt="Tests" src="https://img.shields.io/badge/tests-1034%20passing-brightgreen" />
+  <img alt="Tests" src="https://img.shields.io/badge/tests-1279%20passing-brightgreen" />
+  <img alt="Version" src="https://img.shields.io/badge/version-2.0.0-orange" />
 </p>
 
 <p align="center">
-  <a href="docs/README.ja.md">🇯🇵 日本語版はこちら</a>
+  <a href="docs/README.ja.md">日本語版はこちら</a>
 </p>
 
 ---
 
 ## The Problem
 
-Copilot added three packages to your `requirements.txt`. Did you check the licenses? Cursor generated a `package.json` — are any of those transitive deps on the CVE list? Your Terraform defines Azure OpenAI resources — do you know where your data is processed?
+Your team receives an SBOM from a vendor. 140 packages. Which licenses need review? Which have known vulnerabilities? Who approved what, and when?
 
-With AI-assisted coding, you're shipping dependencies and AI configurations you didn't choose. But the risk is still yours.
+With AI-assisted coding shipping dependencies you didn't choose, and compliance teams asking "how do you manage OSS?", you need a tool that organizes the review — not just scans.
 
-**Dependa runs locally on Windows, works offline, and gives you answers. No cloud. No account. No setup.**
+**Dependa imports your SBOM, classifies risks, supports review decisions, tracks approvals, and generates reports. Locally. Offline. No cloud. No account.**
 
-## What You Get
+## What Dependa Does
 
 <p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/scan-results-en.png" alt="Scan Results" width="720" />
+  <img src="https://dependa.sumikkolab.com/manual/images/scan-results-en.png" alt="Review Screen" width="720" />
 </p>
 
-### Scan
+### Import & Risk Analysis
 
-- **Python** (pip), **NuGet** (.csproj / packages.config), **Node.js** (npm)
-- Vulnerability matching against a bundled advisory database — no network required
-- License classification: Approved / Caution / Prohibited / Unknown
+- Import **CycloneDX** (1.2–1.6) and **SPDX** (2.2–2.3) JSON — auto-detected
+- Or scan a local folder (Python / NuGet / Node.js)
+- Every component gets a **Risk Level** (High Risk / Risk / Known-Normal) with:
+  - **Risk Reason** (18 categories) — why this needs attention
+  - **Recommended Action** (12 types) — what to do next
+  - **Evidence** — the data behind the classification
+  - **Confidence** — how certain the analysis is
 
-### AI Governance (v1.5 New)
+### Review & Approval Workflow
 
-- **AI BOM** — Inventory AI SDKs, model settings, API keys, and endpoints from dependencies, source code, environment variables, and IaC definitions
-- **Excessive Agency Detection** — Wildcard IAM, auto-approve, unlimited loops, and other overly broad permission candidates
-- **Data Sovereignty Checks** — AI service region settings and data destination verification
-- **Organization Policy Evaluation** — Compare against allowed regions and approved AI providers
+- Review each component: **Approve**, **Action Required**, or **In Review**
+- Track progress with review statistics and completion percentage
+- Workflow states: Not Started → In Review → Completed → Pending Approval → Returned
+- Guide panel explains what to do at each step — accessible to non-technical reviewers
 
-### IaC Support (v1.5 New)
-
-- **Terraform** (.tf) — Lightweight HCL structure recognition for AI resource detection
-- **Bicep** (.bicep) — Azure AI resource detection with param default resolution
-- **ARM JSON** (.json) — ARM template resource array scanning for AI resources
-
-### Report
+### Reports
 
 <p align="center">
   <img src="https://dependa.sumikkolab.com/manual/images/html-report-en.png" alt="HTML Report" width="720" />
 </p>
 
-- Self-contained HTML — no external CSS/JS, prints cleanly, works offline
-- CycloneDX 1.5 SBOM (JSON)
-- Structured prompts you can paste into ChatGPT, Claude, or any LLM for fix guidance
+- Executive summary with risk breakdown and review statistics
+- Action Required items highlighted with risk reasons and recommended actions
+- Self-contained HTML — no external dependencies, prints cleanly
+- CycloneDX SBOM output
 
-### Analyze (Pro)
-
-<p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/license-analysis-en.png" alt="License Analysis" width="720" />
-</p>
-
-- **Multi-ecosystem scanning** — scan Python + npm simultaneously, unified results
-- **License compatibility** — Apache-2.0 + GPL-2.0 patent clause conflict? Copyleft in a proprietary project? Detected and explained.
-- **Vulnerability triage** — severity breakdown, affected packages, remediation paths
-- **Delta Scan** — what changed since your last scan, including AI BOM and Finding changes (v1.5 New)
-- **Exception management** — approve known issues with reason, approver, and expiry
-
-<p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/exception-management-en.png" alt="Exception Management" width="720" />
-</p>
-
-- **Online OSV lookup** — real-time CVE data, opt-in
-- **Online license metadata** — PyPI and npm registry supplement
-
-### Policy Builder (Pro)
+### Policy
 
 <p align="center">
   <img src="https://dependa.sumikkolab.com/manual/images/policy-builder-en.png" alt="Policy Builder" width="720" />
 </p>
 
-- Select a template, adjust rules per category, preview the impact
-- Saved policies are applied automatically on every scan
+- Define organization license rules: Allowed / Need Approval / Prohibited
+- Load templates, customize per license
+- Applied automatically on every analysis
+
+### AI Governance
+
+- **AI BOM** — Inventory AI SDKs, model settings, API keys, endpoints
+- **Excessive Agency Detection** — Overly broad permissions, auto-approve patterns
+- **Data Sovereignty** — AI service region and data destination checks
+- **IaC Support** — Terraform / Bicep / ARM JSON AI resource detection
 
 ## Offline by Default
 
-Zero network requests unless you opt in. Vulnerability matching, license classification, policy checks, AI Governance, IaC analysis, HTML reports, SBOM — all local, all bundled.
-
-## CLI + GUI
-
-Same binary.
-
-```powershell
-Dependa.exe                                                    # GUI
-Dependa.exe scan --path ./myproject --accept-terms             # scan
-Dependa.exe scan --path ./myproject --ai-prompt vuln           # AI fix prompt
-Dependa.exe scan --path ./myproject --lang en                  # English output
-```
+Zero network requests unless you opt in. Risk analysis, license classification, policy checks, AI Governance, reports — all local.
 
 ## Free vs Pro
 
-**Free** — Python + NuGet scanning, local vulnerability matching, license classification, AI Governance (AI BOM / Excessive Agency / Data Sovereignty / Organization Policy), IaC support (Terraform / Bicep / ARM JSON), HTML report, SBOM. Answers: *what's the current state of my project?*
+| | Free | Pro |
+|---|---|---|
+| SBOM Import (CycloneDX / SPDX) | 1 file | Unlimited |
+| Risk Analysis (full detail) | All | All |
+| Review | 5 items | Unlimited |
+| Approval Workflow | View only | Full transitions |
+| Reports | Watermarked | Full |
+| SBOM Diff | — | Yes |
+| Online Enrichment (PyPI / npm / NuGet) | — | Yes |
+| AI Governance Report | View only | Included in report |
+| Projects | 1 | Unlimited |
 
-**Pro** — adds Node.js, multi-ecosystem scanning, Delta Scan (including AI Governance diff), exception management, online OSV lookup, license compatibility analysis, vulnerability triage. Answers: *what changed, how bad is it, and what do I fix first?* One-time purchase via Microsoft Store.
+**Free** answers: *what risks exist in this SBOM?*
+**Pro** answers: *review it, approve it, report it.*
 
 ## Install
 
@@ -124,7 +113,7 @@ Dependa.exe scan --path ./myproject --lang en                  # English output
 
 ## Language
 
-Japanese and English. UI, reports, CLI output — everything switches with one setting.
+Japanese and English. UI, reports, risk analysis — everything switches with one setting.
 
 ## Privacy
 
