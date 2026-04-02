@@ -33,7 +33,7 @@
       <tr><td>オンライン補完</td><td>PyPI / npm / NuGet のライセンス情報をオンラインで取得し、Unknown を大幅に削減します。</td></tr>
       <tr><td>複数プロジェクト管理</td><td>複数のプロジェクトを切り替えて管理できます。</td></tr>
       <tr><td>OSV API オンライン脆弱性照合</td><td>Google OSV データベースにリアルタイムで問い合わせ、最新の脆弱性情報を取得します。</td></tr>
-      <tr><td>Delta Scan（差分スキャン）</td><td>前回スキャン結果と比較し、依存・脆弱性・ライセンス・ポリシーの変化を検出します。</td></tr>
+      <tr><td>Delta Scan（差分スキャン）</td><td>前回分析結果と比較し、依存・脆弱性・ライセンス・ポリシーの変化を検出します。</td></tr>
       <tr><td>例外管理</td><td>脆弱性・ライセンス問題の例外承認・期限管理を行います。</td></tr>
       <tr><td>AI プロンプト生成</td><td>ChatGPT 等の AI に貼り付けて使える修正支援プロンプトを生成します。</td></tr>
     </table>
@@ -112,7 +112,7 @@
     </ul>
 
     <h2>Delta Scan（差分スキャン） <span class="pro-badge">Pro</span></h2>
-    <p>Delta Scan は、前回のスキャン結果と今回の結果を比較して <strong>変化点</strong> を自動検出する機能です。AI Governance の差分も検出されます。詳しくは <a href="delta-scan.html">差分スキャン</a> をご覧ください。</p>
+    <p>Delta Scan は、前回の分析結果と今回の結果を比較して <strong>変化点</strong> を自動検出する機能です。AI Governance の差分も検出されます。詳しくは <a href="delta-scan.html">差分スキャン</a> をご覧ください。</p>
 
     <h2>例外管理 <span class="pro-badge">Pro</span></h2>
     <p>脆弱性やライセンス問題に対して「例外として承認済み」の記録を管理します。詳しくは <a href="exceptions.html">例外管理</a> をご覧ください。</p>
@@ -123,7 +123,7 @@
     </div>
 
     <h2>AI プロンプト生成 <span class="pro-badge">Pro</span></h2>
-    <p>スキャン結果をもとに、ChatGPT 等の AI チャットに貼り付けて使える <strong>修正支援プロンプト</strong> を生成します。</p>
+    <p>分析結果をもとに、ChatGPT 等の AI チャットに貼り付けて使える <strong>修正支援プロンプト</strong> を生成します。</p>
     <ul>
       <li><strong>VulnerabilityRemediation</strong> — 脆弱性修正の相談プロンプト</li>
       <li><strong>LicenseReview</strong> — ライセンスリスクの相談プロンプト</li>
@@ -160,7 +160,7 @@
       <tr><td>Online Enrichment</td><td>Retrieve license info from PyPI / npm / NuGet online, significantly reducing Unknown results.</td></tr>
       <tr><td>Multiple Projects</td><td>Manage and switch between multiple projects.</td></tr>
       <tr><td>OSV API Vulnerability Lookup</td><td>Query the Google OSV database in real time for the latest vulnerability data.</td></tr>
-      <tr><td>Delta Scan</td><td>Compare with previous scan results to detect changes in dependencies, vulnerabilities, licenses, and policy.</td></tr>
+      <tr><td>Delta Scan</td><td>Compare with previous analysis results to detect changes in dependencies, vulnerabilities, licenses, and policy.</td></tr>
       <tr><td>Exception Management</td><td>Track approved exceptions for vulnerabilities and license issues with expiration management.</td></tr>
       <tr><td>AI Prompt Generation</td><td>Generate remediation prompts to paste into AI chatbots like ChatGPT.</td></tr>
     </table>
@@ -239,7 +239,7 @@
     </ul>
 
     <h2>Delta Scan <span class="pro-badge">Pro</span></h2>
-    <p>Delta Scan compares previous scan results with current results to automatically detect <strong>changes</strong>, including AI Governance deltas. See <a href="delta-scan.html?lang=en">Delta Scan</a> for details.</p>
+    <p>Delta Scan compares previous analysis results with current results to automatically detect <strong>changes</strong>, including AI Governance deltas. See <a href="delta-scan.html?lang=en">Delta Scan</a> for details.</p>
 
     <h2>Exception Management <span class="pro-badge">Pro</span></h2>
     <p>Track approved exceptions for vulnerability and license issues with full audit trail. See <a href="exceptions.html?lang=en">Exception Management</a> for details.</p>
@@ -250,7 +250,7 @@
     </div>
 
     <h2>AI Prompt Generation <span class="pro-badge">Pro</span></h2>
-    <p>Generate <strong>remediation prompts</strong> based on scan results for use with AI chatbots like ChatGPT:</p>
+    <p>Generate <strong>remediation prompts</strong> based on analysis results for use with AI chatbots like ChatGPT:</p>
     <ul>
       <li><strong>VulnerabilityRemediation</strong> — Consult AI about fixing detected vulnerabilities</li>
       <li><strong>LicenseReview</strong> — Consult AI about license risk implications</li>

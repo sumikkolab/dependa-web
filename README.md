@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://apps.microsoft.com/detail/9P84RLQQ401D">
-    <img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Get it from Microsoft Store" width="200" />
+    <img alt="Microsoft Store" src="https://img.shields.io/badge/Microsoft_Store-Get_it-0078d4?style=for-the-badge&logo=microsoft" />
   </a>
 </p>
 

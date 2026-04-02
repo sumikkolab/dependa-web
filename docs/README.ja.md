@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://apps.microsoft.com/detail/9P84RLQQ401D">
-    <img src="https://get.microsoft.com/images/ja-jp%20dark.svg" alt="Microsoft Store から入手" width="200" />
+    <img alt="Microsoft Store" src="https://img.shields.io/badge/Microsoft_Store-入手する-0078d4?style=for-the-badge&logo=microsoft" />
   </a>
 </p>
 

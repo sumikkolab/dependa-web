@@ -34,7 +34,7 @@
       <tr>
         <td><code>SBOM format not recognized</code></td>
         <td>インポートした SBOM ファイルの形式が CycloneDX でも SPDX でもない</td>
-        <td>SBOM ファイルが CycloneDX 1.4/1.5 JSON または SPDX 2.3 JSON 形式であることを確認してください。XML 形式は未対応です。</td>
+        <td>SBOM ファイルが CycloneDX 1.2〜1.6 JSON または SPDX 2.2〜2.3 JSON 形式であることを確認してください。XML 形式は未対応です。</td>
       </tr>
       <tr>
         <td><code>Pro license required</code></td>
@@ -78,7 +78,7 @@
     <h3>SBOM ファイルがインポートできない</h3>
     <p>以下を確認してください。</p>
     <ul>
-      <li>ファイル形式が CycloneDX 1.4/1.5 JSON または SPDX 2.3 JSON であること。</li>
+      <li>ファイル形式が CycloneDX 1.2〜1.6 JSON または SPDX 2.2〜2.3 JSON であること。</li>
       <li>XML 形式の SBOM は v2.0 では未対応です。JSON 形式に変換してからインポートしてください。</li>
       <li>ファイルが壊れていないこと。JSON として正しくパースできるか確認してください。</li>
     </ul>
@@ -167,7 +167,7 @@
       <tr>
         <td><code>SBOM format not recognized</code></td>
         <td>Imported SBOM file is neither CycloneDX nor SPDX</td>
-        <td>Ensure the SBOM file is CycloneDX 1.4/1.5 JSON or SPDX 2.3 JSON format. XML format is not supported.</td>
+        <td>Ensure the SBOM file is CycloneDX 1.2–1.6 JSON or SPDX 2.2–2.3 JSON format. XML format is not supported.</td>
       </tr>
       <tr>
         <td><code>Pro license required</code></td>
@@ -211,7 +211,7 @@
     <h3>SBOM File Cannot Be Imported</h3>
     <p>Check the following:</p>
     <ul>
-      <li>The file format must be CycloneDX 1.4/1.5 JSON or SPDX 2.3 JSON.</li>
+      <li>The file format must be CycloneDX 1.2–1.6 JSON or SPDX 2.2–2.3 JSON.</li>
       <li>XML format SBOMs are not supported in v2.0. Convert to JSON format before importing.</li>
       <li>The file is not corrupted. Verify it can be parsed as valid JSON.</li>
     </ul>
