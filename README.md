@@ -37,9 +37,21 @@ You need a tool that **organizes the review** — not just scans.
 
 **Dependa imports your SBOM, classifies risks, supports review decisions, tracks approvals, and generates reports. Final decisions are always made by humans. Locally. Offline. No cloud. No account.**
 
+## Why This Tool Exists
+
+Software is increasingly built on open source components. Organizations are now required to manage SBOMs, track licenses, and address vulnerabilities — not just as best practice, but as compliance obligations.
+
+Most existing tools focus on **detection and scanning**. But in real organizations, the harder part is not detection — it is **review, approval, documentation, and explanation**.
+
+Many teams still manage OSS usage reviews using Excel, emails, and Word documents. There is no standard tool for this workflow. Dependa was created to fill that gap.
+
+> **Product category**: OSS Governance / SBOM Review Management Tool
+
 ## What Dependa Is — and What It Is Not
 
 Dependa is an **OSS review workflow tool**. It organizes the information you need to make usage decisions, records those decisions, and produces reports you can show to auditors.
+
+Dependa is not a scanner. It is a tool for reviewing, documenting, and explaining OSS usage decisions. Designed for teams that already have scan results or SBOMs, but need to review, approve, record, and explain their decisions.
 
 | Dependa IS | Dependa is NOT |
 |---|---|
@@ -169,6 +181,10 @@ Japanese and English. UI, reports, risk analysis — everything switches with on
 - [User Manual](https://dependa.sumikkolab.com/manual/)
 - [Pro Features Guide](https://dependa.sumikkolab.com/manual/pro-features.html)
 - [Support](https://dependa.sumikkolab.com/support.html)
+
+## Disclaimer
+
+Dependa organizes information for review purposes. It does not provide legal advice, guarantee license compliance, or substitute for professional security assessments. Final usage decisions are the responsibility of the user and their organization.
 
 ## Privacy
 
