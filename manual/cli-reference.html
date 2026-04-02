@@ -89,27 +89,6 @@
     <h3>AI プロンプト生成付きスキャン</h3>
     <pre><code>Dependa.exe scan --path C:\my-project --ai-prompt VulnerabilityRemediation</code></pre>
 
-    <h3>CI/CD 統合例（GitHub Actions）</h3>
-    <pre><code>- name: Run Dependa Scan
-  run: |
-    Dependa.exe scan --path . --output result.json --accept-terms
-  continue-on-error: false
-  # 終了コード 2 でポリシー違反時にパイプラインを停止</code></pre>
-
-    <h3>CI/CD 統合例（PowerShell）</h3>
-    <pre><code>$result = Start-Process -FilePath "Dependa.exe" `
-  -ArgumentList "scan", "--path", ".", "--accept-terms", "--output", "result.json" `
-  -Wait -PassThru -NoNewWindow
-
-if ($result.ExitCode -eq 2) {
-    Write-Error "Policy violation detected."
-    exit 1
-}</code></pre>
-
-    <div class="info-box">
-      <p>CI/CD で使用する場合、<code>--accept-terms</code> フラグを付けて利用規約への同意を自動化できます。</p>
-    </div>
-
     <div class="chapter-nav">
       <a href="pro-features.html">&larr; Pro 機能ガイド</a>
       <a href="licensing.html">ライセンスと購入 &rarr;</a>
@@ -191,27 +170,6 @@ if ($result.ExitCode -eq 2) {
 
     <h3>Scan with AI Prompt Generation</h3>
     <pre><code>Dependa.exe scan --path C:\my-project --ai-prompt VulnerabilityRemediation</code></pre>
-
-    <h3>CI/CD Integration (GitHub Actions)</h3>
-    <pre><code>- name: Run Dependa Scan
-  run: |
-    Dependa.exe scan --path . --output result.json --accept-terms
-  continue-on-error: false
-  # Exit code 2 stops the pipeline on policy violations</code></pre>
-
-    <h3>CI/CD Integration (PowerShell)</h3>
-    <pre><code>$result = Start-Process -FilePath "Dependa.exe" `
-  -ArgumentList "scan", "--path", ".", "--accept-terms", "--output", "result.json" `
-  -Wait -PassThru -NoNewWindow
-
-if ($result.ExitCode -eq 2) {
-    Write-Error "Policy violation detected."
-    exit 1
-}</code></pre>
-
-    <div class="info-box">
-      <p>When used in CI/CD, the <code>--accept-terms</code> flag automates the terms of use acceptance.</p>
-    </div>
 
     <div class="chapter-nav">
       <a href="pro-features.html?lang=en">&larr; Pro Features Guide</a>
