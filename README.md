@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/home-screen-en.png?v=2.0" alt="Dependa" width="480" />
+  <img src="https://dependa.sumikkolab.com/manual/images/dashboard-en.png?v=2.0" alt="Dependa Dashboard" width="720" />
 </p>
 
 <h1 align="center">Dependa</h1>
@@ -35,51 +35,84 @@ With AI-assisted coding shipping dependencies you didn't choose, and compliance 
 
 **Dependa imports your SBOM, classifies risks, supports review decisions, tracks approvals, and generates reports. Locally. Offline. No cloud. No account.**
 
-## What Dependa Does
+---
+
+## Import & Risk Analysis
+
+Import **CycloneDX** (1.2–1.6) and **SPDX** (2.2–2.3) JSON — auto-detected. Or scan a local folder (Python / NuGet / Node.js).
+
+Every component gets a **Risk Level** (High Risk / Risk / Known-Normal) with Risk Reason, Recommended Action, Evidence, and Confidence.
 
 <p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/scan-results-en.png?v=2.0" alt="Review Screen" width="720" />
+  <img src="https://dependa.sumikkolab.com/manual/images/vulnerability-analysis-en.png?v=2.0" alt="High Risk components with risk reasons" width="720" />
+  <br><sub>High Risk components highlighted — Unknown licenses flagged for review</sub>
 </p>
 
-### Import & Risk Analysis
+---
 
-- Import **CycloneDX** (1.2–1.6) and **SPDX** (2.2–2.3) JSON — auto-detected
-- Or scan a local folder (Python / NuGet / Node.js)
-- Every component gets a **Risk Level** (High Risk / Risk / Known-Normal) with:
-  - **Risk Reason** (18 categories) — why this needs attention
-  - **Recommended Action** (12 types) — what to do next
-  - **Evidence** — the data behind the classification
-  - **Confidence** — how certain the analysis is
+## Review & Approval Workflow
 
-### Review & Approval Workflow
-
-- Review each component: **Approve**, **Action Required**, or **In Review**
-- Track progress with review statistics and completion percentage
-- Workflow states: Not Started → In Review → Completed → Pending Approval → Returned
-- Guide panel explains what to do at each step — accessible to non-technical reviewers
-
-### Reports
+Review each component: **Approve**, **Action Required**, or **In Review**. Track progress with review statistics and a completion bar. Non-technical reviewers can follow the built-in guide.
 
 <p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/html-report-en.png?v=2.0" alt="HTML Report" width="720" />
+  <img src="https://dependa.sumikkolab.com/manual/images/review-all-items-en.png?v=2.0" alt="Review screen with component details and review panel" width="720" />
+  <br><sub>Full component list with detail panel — license info, risk level, PURL, and review controls</sub>
 </p>
 
-- Executive summary with risk breakdown and review statistics
-- Action Required items highlighted with risk reasons and recommended actions
-- Self-contained HTML — no external dependencies, prints cleanly
-- CycloneDX SBOM output
-
-### Policy
+Workflow states: **Not Started → In Review → Completed → Pending Approval → Returned**
 
 <p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/policy-builder-en.png?v=2.0" alt="Policy Builder" width="720" />
+  <img src="https://dependa.sumikkolab.com/manual/images/scan-results-en.png?v=2.0" alt="Review completed — ready for approval" width="720" />
+  <br><sub>All risk items reviewed — ready to mark as completed</sub>
 </p>
 
-- Define organization license rules: Allowed / Need Approval / Prohibited
-- Load templates, customize per license
-- Applied automatically on every analysis
+---
 
-### AI Governance
+## Reports
+
+Executive summary with risk breakdown, review statistics, and action items. Self-contained HTML — no external dependencies, prints cleanly.
+
+<p align="center">
+  <img src="https://dependa.sumikkolab.com/manual/images/html-report-en.png?v=2.0" alt="SBOM Review Report" width="720" />
+  <br><sub>SBOM Review Report — component count, risk breakdown, review status, license types</sub>
+</p>
+
+---
+
+## Policy
+
+Define organization license rules: **Allowed / Need Approval / Prohibited**. Load templates, customize per license.
+
+<p align="center">
+  <img src="https://dependa.sumikkolab.com/manual/images/policy-builder-en.png?v=2.0" alt="Organization Policy" width="720" />
+  <br><sub>24 license rules — GPL prohibited, LGPL needs approval, MIT/Apache allowed</sub>
+</p>
+
+---
+
+## Project Management
+
+Track multiple SBOM reviews across projects. Each project records owner, last review date, component count, and risk summary.
+
+<p align="center">
+  <img src="https://dependa.sumikkolab.com/manual/images/projects-en.png?v=2.0" alt="Project Management" width="720" />
+  <br><sub>6 projects tracked — review history and risk counts at a glance</sub>
+</p>
+
+---
+
+## Dashboard
+
+Overview of all review activity: review counts, workflow status, policy compliance, and recent projects.
+
+<p align="center">
+  <img src="https://dependa.sumikkolab.com/manual/images/home-screen-en.png?v=2.0" alt="Dashboard" width="720" />
+  <br><sub>Dashboard — 11 reviews, 7 action required, 34 high risk across 6 projects</sub>
+</p>
+
+---
+
+## AI Governance
 
 - **AI BOM** — Inventory AI SDKs, model settings, API keys, endpoints
 - **Excessive Agency Detection** — Overly broad permissions, auto-approve patterns
