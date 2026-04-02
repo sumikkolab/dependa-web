@@ -103,11 +103,31 @@
       <div class="caption">ダッシュボード — レビュー実績・ワークフロー状態・ポリシー状況を一覧</div>
     </div>
 
+    <h2>こんな方に</h2>
+    <table class="eco-table">
+      <tr><th>役割</th><th>使う場面</th><th>今の方法</th><th>Dependa で</th></tr>
+      <tr><td>情報システム部門</td><td>OSS 利用申請のレビュー</td><td>Excel で一覧管理</td><td>レビュー画面で一元管理</td></tr>
+      <tr><td>セキュリティ担当</td><td>脆弱性・ライセンスの確認</td><td>スキャン結果を目視</td><td>リスク分類 + 推奨対応を自動提示</td></tr>
+      <tr><td>法務・コンプライアンス</td><td>ライセンス利用可否の確認</td><td>ライセンス表を手動照合</td><td>ポリシー設定で組織ルールを適用</td></tr>
+      <tr><td>開発リーダー</td><td>OSS 採用の判断</td><td>個別に調査</td><td>リスク理由 + 根拠で判断材料を整理</td></tr>
+      <tr><td>監査対応</td><td>SBOM 提出・説明</td><td>Word でレポート作成</td><td>HTML レポートを自動出力</td></tr>
+      <tr><td>ベンダー管理</td><td>納品物の SBOM 確認</td><td>確認手段がない</td><td>SBOM インポート → レビュー → 記録</td></tr>
+    </table>
+
+    <h2>いつ使うか</h2>
+    <ul>
+      <li>ベンダーから SBOM を受け取ったとき</li>
+      <li>プロジェクトの OSS 利用状況をレビューするとき</li>
+      <li>監査用の説明資料を準備するとき</li>
+      <li>あるコンポーネントをなぜ承認したか説明する必要があるとき</li>
+      <li>今 Excel で管理している OSS 審査を効率化したいとき</li>
+    </ul>
+
     <h2>主な機能</h2>
     <div class="features">
       <div class="feature-card">
         <h3>リスク分析</h3>
-        <p>ライセンス不明・コピーレフト・脆弱性・AI 利用を自動分類。すべての判定に理由・推奨対応・根拠・確信度が付きます。</p>
+        <p>ライセンス不明・コピーレフト・脆弱性・AI 利用をリスクとして分類。すべての判定に理由・推奨対応・根拠・確信度が付きます。</p>
       </div>
       <div class="feature-card">
         <h3>レビュー支援</h3>
@@ -166,8 +186,11 @@
       <tr><td>レポート出力</td><td>透かし付き</td><td>完全版</td></tr>
       <tr><td>SBOM 差分比較</td><td>—</td><td>&#10003;</td></tr>
       <tr><td>オンライン補完</td><td>—</td><td>&#10003;</td></tr>
+      <tr><td>AI Governance レポート</td><td>表示のみ</td><td>レポート含む</td></tr>
       <tr><td>プロジェクト管理</td><td>1 件</td><td>無制限</td></tr>
     </table>
+
+    <p class="compare-note">Free はリスクを理解するため。Pro は組織として判断を管理・記録するため。</p>
 
     <h2>他のツールとの違い</h2>
     <p style="font-size:0.9rem; margin-bottom:12px;">Dependa はスキャナの代替ではなく、<strong>分析結果をレビュー・承認・報告する</strong>ためのツールです。</p>
@@ -213,8 +236,14 @@
       <li>ディスク: 約 80 MB / RAM: 512 MB 以上</li>
     </ul>
 
+    <div class="privacy-note" style="background:#fff7ed;border-color:#fed7aa;">
+      <p><strong>免責事項:</strong> Dependa はレビュー業務に必要な情報を整理するツールです。法的助言、ライセンスコンプライアンスの保証、専門的なセキュリティ評価の代替を提供するものではありません。最終的な利用判断はユーザーおよび所属組織の責任で行ってください。</p>
+    </div>
+
     <div class="links">
       <a href="manual/" class="primary">ユーザーマニュアル</a>
+      <a href="manual/pro-features.html" class="secondary">Pro 機能ガイド</a>
+      <a href="manual/licensing.html" class="secondary">ライセンスと購入</a>
       <a href="support.html" class="secondary">サポート</a>
       <a href="privacy-policy.html" class="secondary">プライバシーポリシー</a>
       <a href="terms-of-use.html" class="secondary">利用規約</a>
@@ -254,11 +283,31 @@
       <div class="caption">Dashboard — review counts, workflow status, policy compliance at a glance</div>
     </div>
 
+    <h2>Who Is This Tool For?</h2>
+    <table class="eco-table">
+      <tr><th>Role</th><th>Use Case</th><th>Current Method</th><th>With Dependa</th></tr>
+      <tr><td>IT / Security</td><td>OSS usage review</td><td>Excel spreadsheets</td><td>Unified review screen</td></tr>
+      <tr><td>Security teams</td><td>Vulnerability & license check</td><td>Manual scan review</td><td>Risk classification + recommended actions</td></tr>
+      <tr><td>Legal / Compliance</td><td>License usage decisions</td><td>Manual license lookup</td><td>Organization policy rules</td></tr>
+      <tr><td>Engineering leads</td><td>OSS adoption decisions</td><td>Ad-hoc research</td><td>Risk reasons + evidence</td></tr>
+      <tr><td>Audit preparation</td><td>SBOM documentation</td><td>Word reports</td><td>Auto-generated HTML reports</td></tr>
+      <tr><td>Vendor management</td><td>Reviewing delivered SBOMs</td><td>No standard tool</td><td>Import → Review → Record</td></tr>
+    </table>
+
+    <h2>When Do You Use Dependa?</h2>
+    <ul>
+      <li>When you receive an SBOM from a vendor</li>
+      <li>When reviewing OSS usage in a project</li>
+      <li>When preparing documentation for audits</li>
+      <li>When explaining why a component was approved</li>
+      <li>When managing OSS reviews currently tracked in Excel</li>
+    </ul>
+
     <h2>Key Features</h2>
     <div class="features">
       <div class="feature-card">
         <h3>Risk Analysis</h3>
-        <p>Automatically classifies unknown licenses, copyleft, vulnerabilities, and AI usage. Every judgment includes reason, recommended action, evidence, and confidence.</p>
+        <p>Classifies unknown licenses, copyleft, vulnerabilities, and AI usage as risks. Every classification includes reason, recommended action, evidence, and confidence.</p>
       </div>
       <div class="feature-card">
         <h3>Review Support</h3>
@@ -317,8 +366,11 @@
       <tr><td>Report Export</td><td>With watermark</td><td>Full version</td></tr>
       <tr><td>SBOM Diff</td><td>—</td><td>&#10003;</td></tr>
       <tr><td>Online Enrichment</td><td>—</td><td>&#10003;</td></tr>
+      <tr><td>AI Governance Report</td><td>View only</td><td>Included in report</td></tr>
       <tr><td>Project Management</td><td>1 project</td><td>Unlimited</td></tr>
     </table>
+
+    <p class="compare-note">Free helps you understand the risks. Pro helps your organization manage and document decisions.</p>
 
     <h2>How Dependa Differs</h2>
     <p style="font-size:0.9rem; margin-bottom:12px;">Dependa is not a scanner replacement. It turns analysis results into <strong>review, approval, and reports</strong>.</p>
@@ -364,8 +416,14 @@
       <li>Disk: ~80 MB / RAM: 512 MB+</li>
     </ul>
 
+    <div class="privacy-note" style="background:#fff7ed;border-color:#fed7aa;">
+      <p><strong>Disclaimer:</strong> Dependa organizes information for review purposes. It does not provide legal advice, guarantee license compliance, or substitute for professional security assessments. Final usage decisions are the responsibility of the user and their organization.</p>
+    </div>
+
     <div class="links">
       <a href="manual/?lang=en" class="primary">User Manual</a>
+      <a href="manual/pro-features.html?lang=en" class="secondary">Pro Features</a>
+      <a href="manual/licensing.html?lang=en" class="secondary">Licensing & Purchase</a>
       <a href="support.html" class="secondary">Support</a>
       <a href="privacy-policy.html" class="secondary">Privacy Policy</a>
       <a href="terms-of-use.html" class="secondary">Terms of Use</a>
