@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/home-screen-ja.png" alt="Dependa" width="480" />
+  <img src="https://dependa.sumikkolab.com/manual/images/home-screen-ja.png?v=2.0" alt="Dependa" width="480" />
 </p>
 
 <h1 align="center">Dependa</h1>

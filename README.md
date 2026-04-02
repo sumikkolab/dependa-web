@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/home-screen-en.png" alt="Dependa" width="480" />
+  <img src="https://dependa.sumikkolab.com/manual/images/home-screen-en.png?v=2.0" alt="Dependa" width="480" />
 </p>
 
 <h1 align="center">Dependa</h1>
@@ -38,7 +38,7 @@ With AI-assisted coding shipping dependencies you didn't choose, and compliance 
 ## What Dependa Does
 
 <p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/scan-results-en.png" alt="Review Screen" width="720" />
+  <img src="https://dependa.sumikkolab.com/manual/images/scan-results-en.png?v=2.0" alt="Review Screen" width="720" />
 </p>
 
 ### Import & Risk Analysis
@@ -61,7 +61,7 @@ With AI-assisted coding shipping dependencies you didn't choose, and compliance 
 ### Reports
 
 <p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/html-report-en.png" alt="HTML Report" width="720" />
+  <img src="https://dependa.sumikkolab.com/manual/images/html-report-en.png?v=2.0" alt="HTML Report" width="720" />
 </p>
 
 - Executive summary with risk breakdown and review statistics
@@ -72,7 +72,7 @@ With AI-assisted coding shipping dependencies you didn't choose, and compliance 
 ### Policy
 
 <p align="center">
-  <img src="https://dependa.sumikkolab.com/manual/images/policy-builder-en.png" alt="Policy Builder" width="720" />
+  <img src="https://dependa.sumikkolab.com/manual/images/policy-builder-en.png?v=2.0" alt="Policy Builder" width="720" />
 </p>
 
 - Define organization license rules: Allowed / Need Approval / Prohibited
