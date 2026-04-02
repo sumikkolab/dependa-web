@@ -21,10 +21,11 @@
     </div>
 
     <h1>AI Governance 分析</h1>
-    <p class="subtitle">プロジェクト内の AI 関連構成を静的解析し、確認ポイントを可視化する <span class="badge-new">v1.5 New</span></p>
+    <p class="subtitle">プロジェクト内の AI 関連構成を静的解析し、確認ポイントを可視化する</p>
 
     <h2>概要</h2>
     <p>Dependa の AI Governance 機能は、プロジェクト内の AI 関連構成を検出し、ガバナンス上の確認ポイントを整理します。依存関係・ソースコード・環境変数・IaC 定義から AI コンポーネントを統合的に棚卸しし、レポートに出力します。</p>
+    <p>v2.0 では <strong>ExternalServiceUsage</strong> の検出がリスク分析と統合され、AI 関連の外部サービス利用がリスク評価に反映されます。</p>
 
     <div class="info-box">
       <p>AI Governance は Free 版で利用できます。追加費用はかかりません。</p>
@@ -53,6 +54,9 @@
       <tr><td>確度</td><td>検出の信頼度（High / Medium / Low）</td></tr>
       <tr><td>ソース</td><td>検出元ファイル</td></tr>
     </table>
+
+    <h2>ExternalServiceUsage とリスク分析の統合（v2.0）</h2>
+    <p>v2.0 では、AI 関連の外部サービス利用（ExternalServiceUsage）がリスク分析に統合されています。外部 AI API を呼び出しているパッケージに対して、RiskReason と RecommendedAction が自動的に付与されます。</p>
 
     <h2>Excessive Agency 検出</h2>
     <p>AI エージェントや AI アプリに関連する過大な権限設定の候補を検出します。</p>
@@ -107,10 +111,11 @@
     </div>
 
     <h1>AI Governance Analysis</h1>
-    <p class="subtitle">Statically analyze AI-related configuration and surface governance review items <span class="badge-new">v1.5 New</span></p>
+    <p class="subtitle">Statically analyze AI-related configuration and surface governance review items</p>
 
     <h2>Overview</h2>
     <p>Dependa's AI Governance feature detects AI-related configuration in your project and organizes governance review items. It consolidates AI components from dependencies, source code, environment variables, and IaC definitions into an AI Bill of Materials.</p>
+    <p>In v2.0, <strong>ExternalServiceUsage</strong> detection is integrated with Risk Analysis. External AI API usage is reflected in risk assessments.</p>
 
     <div class="info-box">
       <p>AI Governance is available in the Free edition at no additional cost.</p>
@@ -139,6 +144,9 @@
       <tr><td>Confidence</td><td>Detection confidence level (High / Medium / Low)</td></tr>
       <tr><td>Source</td><td>Source file where detected</td></tr>
     </table>
+
+    <h2>ExternalServiceUsage and Risk Analysis Integration (v2.0)</h2>
+    <p>In v2.0, AI-related external service usage (ExternalServiceUsage) is integrated with Risk Analysis. Packages that call external AI APIs are automatically assigned RiskReason and RecommendedAction.</p>
 
     <h2>Excessive Agency Detection</h2>
     <p>Detects candidates for overly broad permissions in AI agent configurations.</p>

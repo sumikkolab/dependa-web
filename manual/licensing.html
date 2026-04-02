@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 9: Licensing — Dependa | SumikkoLab</title>
+<title>Chapter 14: Licensing — Dependa | SumikkoLab</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,27 +20,32 @@
       <a href="../support.html">サポート</a>
     </div>
 
-    <h1>Chapter 9: ライセンスと購入</h1>
-    <p class="subtitle">Free / Pro プランの違いと Pro の購入方法</p>
+    <h1>Chapter 14: ライセンスと購入</h1>
+    <p class="subtitle">Free / Pro プランの違いと Pro の購入方法（v2.0）</p>
 
     <h2>Free / Pro プラン比較</h2>
     <table class="manual-table">
       <tr><th>機能</th><th>Free</th><th>Pro</th></tr>
-      <tr><td>Python スキャン（requirements.txt, pyproject.toml, poetry.lock, uv.lock）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>SBOM インポート（CycloneDX / SPDX 自動判別）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>フォルダスキャン（Python: requirements.txt, pyproject.toml, poetry.lock, uv.lock）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>フォルダスキャン（Node.js: package.json, package-lock.json）</td><td>&#10003;</td><td>&#10003;</td></tr>
       <tr><td>ローカル脆弱性データベースによる照合</td><td>&#10003;</td><td>&#10003;</td></tr>
       <tr><td>ローカルライセンスデータベースによる分類</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><td>基本レポート（JSON エクスポート）</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><td>ポリシー判定（PASS / FAIL）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>リスク分析（RiskReason / RecommendedAction / Evidence / Confidence）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>ポリシー判定（許可 / 要承認 / 禁止）</td><td>&#10003;</td><td>&#10003;</td></tr>
       <tr><td>SBOM 生成（CycloneDX 1.5 JSON）</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><td>Node.js スキャン（package.json, package-lock.json）</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>AI Governance 分析</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>IaC 対応（Terraform / Bicep / ARM JSON）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>レビュー件数</td><td>5 件まで</td><td>無制限</td></tr>
+      <tr><td>HTML レポート</td><td>ウォーターマーク付き</td><td>完全版（ウォーターマークなし）</td></tr>
+      <tr><td>承認ワークフロー（PendingApproval / Returned）</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>SBOM 差分（Diff）</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>オンライン補完（PyPI / npm / NuGet ライセンス取得）</td><td>&#8212;</td><td>&#10003;</td></tr>
       <tr><td>OSV API オンライン脆弱性照合</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>PyPI API オンラインライセンス補完</td><td>&#8212;</td><td>&#10003;</td></tr>
       <tr><td>Delta Scan（差分スキャン）</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>AI プロンプト生成（脆弱性修正）</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>AI プロンプト生成（ライセンス確認）</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>AI プロンプト生成（Delta Scan レビュー）</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>高度な脆弱性分析レポート</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>高度なライセンス分析レポート</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>例外管理</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>複数プロジェクト管理</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>AI プロンプト生成</td><td>&#8212;</td><td>&#10003;</td></tr>
     </table>
 
     <div class="screenshot">
@@ -63,9 +68,12 @@
     <h2>ライセンスの確認</h2>
     <p>現在のライセンス状態は設定画面で確認できます。Pro が有効な場合は「Pro」バッジが表示されます。</p>
 
+    <h2>Free 版のウォーターマークについて</h2>
+    <p>Free 版で生成される HTML レポートには「Free Edition」のウォーターマーク（透かし）が表示されます。レポートの内容は閲覧可能ですが、公式な提出用途には Pro 版をご利用ください。</p>
+
     <div class="chapter-nav">
-      <a href="cli-reference.html">&larr; Chapter 8: CLI リファレンス</a>
-      <a href="troubleshooting.html">Chapter 10: トラブルシューティング &rarr;</a>
+      <a href="cli-reference.html">&larr; CLI リファレンス</a>
+      <a href="troubleshooting.html">トラブルシューティング &rarr;</a>
     </div>
   </div>
 
@@ -76,27 +84,32 @@
       <a href="../support.html?lang=en">Support</a>
     </div>
 
-    <h1>Chapter 9: Licensing &amp; Purchase</h1>
-    <p class="subtitle">Free vs Pro plan differences and how to purchase Pro</p>
+    <h1>Chapter 14: Licensing &amp; Purchase</h1>
+    <p class="subtitle">Free vs Pro plan differences and how to purchase Pro (v2.0)</p>
 
     <h2>Free / Pro Plan Comparison</h2>
     <table class="manual-table">
       <tr><th>Feature</th><th>Free</th><th>Pro</th></tr>
-      <tr><td>Python Scanning (requirements.txt, pyproject.toml, poetry.lock, uv.lock)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>SBOM Import (CycloneDX / SPDX auto-detection)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Folder Scan (Python: requirements.txt, pyproject.toml, poetry.lock, uv.lock)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Folder Scan (Node.js: package.json, package-lock.json)</td><td>&#10003;</td><td>&#10003;</td></tr>
       <tr><td>Local vulnerability database lookup</td><td>&#10003;</td><td>&#10003;</td></tr>
       <tr><td>Local license database classification</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><td>Basic reports (JSON export)</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><td>Policy verdict (PASS / FAIL)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Risk Analysis (RiskReason / RecommendedAction / Evidence / Confidence)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Policy verdict (Allowed / NeedApproval / Prohibited)</td><td>&#10003;</td><td>&#10003;</td></tr>
       <tr><td>SBOM generation (CycloneDX 1.5 JSON)</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><td>Node.js Scanning (package.json, package-lock.json)</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>AI Governance Analysis</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>IaC Support (Terraform / Bicep / ARM JSON)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Review items</td><td>Up to 5</td><td>Unlimited</td></tr>
+      <tr><td>HTML Reports</td><td>With watermark</td><td>Full (no watermark)</td></tr>
+      <tr><td>Approval Workflow (PendingApproval / Returned)</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>SBOM Diff</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Online Enrichment (PyPI / npm / NuGet license lookup)</td><td>&#8212;</td><td>&#10003;</td></tr>
       <tr><td>OSV API online vulnerability lookup</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>PyPI API online license metadata</td><td>&#8212;</td><td>&#10003;</td></tr>
       <tr><td>Delta Scan</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>AI Prompt — Vulnerability Remediation</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>AI Prompt — License Review</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>AI Prompt — Delta Scan Review</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>Advanced vulnerability analysis report</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>Advanced license analysis report</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Exception Management</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Multiple Project Management</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>AI Prompt Generation</td><td>&#8212;</td><td>&#10003;</td></tr>
     </table>
 
     <div class="screenshot">
@@ -119,9 +132,12 @@
     <h2>Checking Your License</h2>
     <p>You can check your current license status in the Settings panel. If Pro is active, a "Pro" badge will be displayed.</p>
 
+    <h2>Free Edition Watermark</h2>
+    <p>HTML reports generated in the Free edition include a "Free Edition" watermark. The report content is fully readable, but for official submissions, please use the Pro edition.</p>
+
     <div class="chapter-nav">
-      <a href="cli-reference.html?lang=en">&larr; Chapter 8: CLI Reference</a>
-      <a href="troubleshooting.html?lang=en">Chapter 10: Troubleshooting &rarr;</a>
+      <a href="cli-reference.html?lang=en">&larr; CLI Reference</a>
+      <a href="troubleshooting.html?lang=en">Troubleshooting &rarr;</a>
     </div>
   </div>
 

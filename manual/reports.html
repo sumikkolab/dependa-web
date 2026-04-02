@@ -21,25 +21,37 @@
     </div>
 
     <h1>Chapter 5: レポートと SBOM</h1>
-    <p class="subtitle">HTML レポート・CycloneDX SBOM の生成と活用</p>
+    <p class="subtitle">v2.0 レポート構成 — Executive Summary・Action Required・リスク分析</p>
 
-    <h2>HTML レポートの構成</h2>
-    <p>スキャン完了後に生成される HTML レポートは、ブラウザで開けるスタンドアロンファイルです。以下のセクションで構成されています。</p>
+    <h2>v2.0 HTML レポートの構成</h2>
+    <p>スキャンまたは SBOM インポート後に生成される HTML レポートは、ブラウザで開けるスタンドアロンファイルです。v2.0 では以下のセクションで構成されています。</p>
     <table class="manual-table">
       <tr><th>セクション</th><th>内容</th></tr>
-      <tr><td>ヘッダ</td><td>プロジェクト名、スキャン日時、Dependa バージョンが表示されます。</td></tr>
-      <tr><td>サマリ</td><td>依存ライブラリ数、脆弱性数、ライセンス分類の概要をカード形式で表示します。</td></tr>
-      <tr><td>ポリシー判定</td><td>PASS / FAIL の判定結果と、FAIL の場合はその理由が表示されます。</td></tr>
-      <tr><td>依存ライブラリ表</td><td>検出されたすべてのパッケージの名前、バージョン、エコシステム、ライセンスの一覧です。</td></tr>
+      <tr><td>ヘッダ</td><td>プロジェクト名、スキャン日時、Dependa バージョン（v2.0）が表示されます。</td></tr>
+      <tr><td>Executive Summary</td><td>レビュー統計（レビュー済み件数、リスク別件数）、依存ライブラリ数、脆弱性サマリ、ライセンス分類サマリをカード形式で表示します。</td></tr>
+      <tr><td>Action Required</td><td>対処が必要なアイテムの一覧です。High Risk / Risk に該当するパッケージとその推奨アクションが表示されます。</td></tr>
+      <tr><td>リスク分析</td><td>各パッケージのリスク詳細です。RiskReason（リスクの理由）、RecommendedAction（推奨アクション）、Evidence（根拠）、Confidence（確信度）が含まれます。</td></tr>
+      <tr><td>ポリシー判定</td><td>適用ポリシー名、アクション別件数（許可 / 要承認 / 禁止）が表示されます。</td></tr>
+      <tr><td>依存ライブラリ表</td><td>検出されたすべてのパッケージの名前、バージョン、エコシステム、ライセンス、リスクレベルの一覧です。</td></tr>
       <tr><td>脆弱性表</td><td>検出された脆弱性の ID、影響パッケージ、CVSS スコア、重大度、説明の一覧です。</td></tr>
-      <tr><td>ライセンス表</td><td>各パッケージのライセンス SPDX ID と分類（Approved / Caution / Prohibited / Unknown）の一覧です。</td></tr>
-      <tr><td>推奨事項</td><td>検出された問題に対する対処の提案（バージョンの更新、ライセンスの確認など）が記載されます。</td></tr>
+      <tr><td>ライセンス表</td><td>各パッケージのライセンス SPDX ID と分類（High Risk / Risk / Known-Normal / Unknown）の一覧です。</td></tr>
+      <tr><td>AI セクション</td><td>AI Governance 分析の結果サマリ（AI BOM、Excessive Agency、Data Sovereignty）が含まれます。</td></tr>
+      <tr><td>免責事項（Disclaimer）</td><td>レポートの利用に関する免責事項が記載されます。</td></tr>
     </table>
 
     <div class="screenshot">
       <img src="images/html-report-ja.png" alt="HTML レポートのプレビュー">
-      <div class="caption">生成された HTML レポートの表示例</div>
+      <div class="caption">v2.0 HTML レポート — Executive Summary とリスク分析</div>
     </div>
+
+    <h2>Free 版と Pro 版のレポートの違い</h2>
+    <table class="manual-table">
+      <tr><th>項目</th><th>Free</th><th>Pro</th></tr>
+      <tr><td>ウォーターマーク</td><td>「Free Edition」の透かしあり</td><td>なし</td></tr>
+      <tr><td>Executive Summary</td><td>基本情報のみ</td><td>レビュー統計付き</td></tr>
+      <tr><td>Action Required</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>リスク分析詳細</td><td>簡易版</td><td>完全版（Evidence / Confidence 含む）</td></tr>
+    </table>
 
     <h2>レポートの閲覧方法</h2>
     <ul>
@@ -61,8 +73,8 @@
     <p>レポートと SBOM はスキャン対象プロジェクトの <code>reports/</code> フォルダに出力されます。</p>
     <pre><code>{スキャン対象パス}/
   reports/
-    dependa-report-2026-03-13.html    ← HTML レポート
-    dependa-sbom-2026-03-13.json      ← CycloneDX SBOM</code></pre>
+    dependa-report-2026-04-01.html    ← HTML レポート
+    dependa-sbom-2026-04-01.json      ← CycloneDX SBOM</code></pre>
 
     <div class="info-box">
       <p>スキャンのたびにタイムスタンプ付きの新しいファイルが生成されます。過去のレポートも残るため、変化の比較に活用できます。</p>
@@ -70,7 +82,7 @@
 
     <div class="chapter-nav">
       <a href="license-analysis.html">&larr; 前へ: ライセンス分析</a>
-      <a href="settings.html">次へ: 設定 &rarr;</a>
+      <a href="policy.html">次へ: ポリシー設定 &rarr;</a>
     </div>
   </div>
 
@@ -82,25 +94,37 @@
     </div>
 
     <h1>Chapter 5: Reports &amp; SBOM</h1>
-    <p class="subtitle">Generate and use HTML reports and CycloneDX SBOM</p>
+    <p class="subtitle">v2.0 report structure — Executive Summary, Action Required, Risk Analysis</p>
 
-    <h2>HTML Report Structure</h2>
-    <p>The HTML report generated after a scan is a standalone file that can be opened in any browser. It consists of the following sections.</p>
+    <h2>v2.0 HTML Report Structure</h2>
+    <p>The HTML report generated after a scan or SBOM import is a standalone file that can be opened in any browser. In v2.0, it consists of the following sections:</p>
     <table class="manual-table">
       <tr><th>Section</th><th>Content</th></tr>
-      <tr><td>Header</td><td>Displays the project name, scan date/time, and Dependa version.</td></tr>
-      <tr><td>Summary</td><td>Shows dependency count, vulnerability count, and license classification overview in card format.</td></tr>
-      <tr><td>Policy Result</td><td>Displays the PASS / FAIL result, along with reasons if FAIL.</td></tr>
-      <tr><td>Dependencies Table</td><td>Lists all detected packages with name, version, ecosystem, and license.</td></tr>
+      <tr><td>Header</td><td>Displays the project name, scan date/time, and Dependa version (v2.0).</td></tr>
+      <tr><td>Executive Summary</td><td>Review statistics (reviewed count, risk breakdown), dependency count, vulnerability summary, and license classification summary in card format.</td></tr>
+      <tr><td>Action Required</td><td>List of items requiring attention. Shows High Risk / Risk packages with their recommended actions.</td></tr>
+      <tr><td>Risk Analysis</td><td>Detailed risk information per package: RiskReason, RecommendedAction, Evidence, and Confidence.</td></tr>
+      <tr><td>Policy Result</td><td>Applied policy name and action count breakdown (Allowed / NeedApproval / Prohibited).</td></tr>
+      <tr><td>Dependencies Table</td><td>Lists all detected packages with name, version, ecosystem, license, and risk level.</td></tr>
       <tr><td>Vulnerabilities Table</td><td>Lists detected vulnerabilities with ID, affected package, CVSS score, severity, and description.</td></tr>
-      <tr><td>Licenses Table</td><td>Lists each package's SPDX license ID and classification (Approved / Caution / Prohibited / Unknown).</td></tr>
-      <tr><td>Recommendations</td><td>Provides suggested actions for detected issues (e.g., update versions, review licenses).</td></tr>
+      <tr><td>Licenses Table</td><td>Lists each package's SPDX license ID and classification (High Risk / Risk / Known-Normal / Unknown).</td></tr>
+      <tr><td>AI Section</td><td>AI Governance analysis summary (AI BOM, Excessive Agency, Data Sovereignty).</td></tr>
+      <tr><td>Disclaimer</td><td>Legal disclaimer regarding report usage.</td></tr>
     </table>
 
     <div class="screenshot">
       <img src="images/html-report-en.png" alt="HTML Report Preview">
-      <div class="caption">Example of a generated HTML report</div>
+      <div class="caption">v2.0 HTML report — Executive Summary and Risk Analysis</div>
     </div>
+
+    <h2>Free vs Pro Report Differences</h2>
+    <table class="manual-table">
+      <tr><th>Item</th><th>Free</th><th>Pro</th></tr>
+      <tr><td>Watermark</td><td>"Free Edition" watermark present</td><td>None</td></tr>
+      <tr><td>Executive Summary</td><td>Basic information only</td><td>Includes review statistics</td></tr>
+      <tr><td>Action Required</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Risk Analysis Detail</td><td>Simplified</td><td>Full (includes Evidence / Confidence)</td></tr>
+    </table>
 
     <h2>Viewing Reports</h2>
     <ul>
@@ -122,8 +146,8 @@
     <p>Reports and SBOM files are saved in the <code>reports/</code> folder within the scanned project directory.</p>
     <pre><code>{Target Path}/
   reports/
-    dependa-report-2026-03-13.html    ← HTML Report
-    dependa-sbom-2026-03-13.json      ← CycloneDX SBOM</code></pre>
+    dependa-report-2026-04-01.html    ← HTML Report
+    dependa-sbom-2026-04-01.json      ← CycloneDX SBOM</code></pre>
 
     <div class="info-box">
       <p>Each scan generates new timestamped files. Previous reports are preserved, making it easy to compare changes over time.</p>
@@ -131,7 +155,7 @@
 
     <div class="chapter-nav">
       <a href="license-analysis.html?lang=en">&larr; Previous: License Analysis</a>
-      <a href="settings.html?lang=en">Next: Settings &rarr;</a>
+      <a href="policy.html?lang=en">Next: Policy Settings &rarr;</a>
     </div>
   </div>
 

@@ -21,11 +21,11 @@
     </div>
 
     <h1>ポリシー設定と判定記録</h1>
-    <p class="subtitle">組織のルールに基づいてOSS利用を審査する（v1.1.0）</p>
+    <p class="subtitle">組織のルールに基づいて OSS 利用を審査する（v2.0）</p>
 
     <h2>概要</h2>
     <p>Dependa のポリシー機能は、OSS の検出結果に対して「組織としてどう判断するか」を設定し、その判定理由を記録・共有するための仕組みです。</p>
-    <p>単なる検出ではなく、<strong>なぜその判定になったか</strong>を説明できるレポートを生成します。</p>
+    <p>単なる検出ではなく、<strong>なぜその判定になったか</strong>を説明できるレポートを生成します。v2.0 ではポリシーアクションの用語が更新されました。</p>
 
     <h2>ポリシー設定（Policy Builder）</h2>
     <p>左メニューの「ポリシー」から設定画面を開きます。</p>
@@ -48,18 +48,17 @@
       <tr><td>弱いコピーレフトライセンス</td><td>LGPL / MPL など。ライブラリとして分離すれば利用可能な場合が多い</td></tr>
       <tr><td>不明なライセンス</td><td>ライセンスが特定できなかったパッケージ</td></tr>
       <tr><td>Critical 脆弱性</td><td>CVSS 9.0 以上の重大な脆弱性</td></tr>
-      <tr><td>High 脆弱性</td><td>CVSS 7.0〜8.9 の既知の脆弱性</td></tr>
+      <tr><td>High 脆弱性</td><td>CVSS 7.0～8.9 の既知の脆弱性</td></tr>
       <tr><td>信頼度の低いライセンス判定</td><td>検出されたライセンス情報が不完全または不一致</td></tr>
       <tr><td>ライセンス情報の欠損</td><td>ライセンスのメタデータが見つからなかったパッケージ</td></tr>
     </table>
 
-    <p>各ルールに設定できるアクション:</p>
+    <p>各ルールに設定できるアクション（v2.0 用語）:</p>
     <table class="manual-table">
       <tr><th>アクション</th><th>意味</th><th>色</th></tr>
-      <tr><td>使用不可</td><td>組織のポリシーで利用を推奨しない</td><td style="color:#dc2626;">赤</td></tr>
-      <tr><td>要レビュー</td><td>利用前に確認が必要</td><td style="color:#d97706;">橙</td></tr>
-      <tr><td>条件付き許可</td><td>条件を満たせば利用可能</td><td style="color:#2563eb;">青</td></tr>
-      <tr><td>許可</td><td>利用に問題なし</td><td style="color:#16a34a;">緑</td></tr>
+      <tr><td>禁止（Prohibited）</td><td>組織のポリシーで利用を禁止する</td><td style="color:#dc2626;">赤</td></tr>
+      <tr><td>要承認（NeedApproval）</td><td>利用前に承認が必要</td><td style="color:#d97706;">橙</td></tr>
+      <tr><td>許可（Allowed）</td><td>利用に問題なし</td><td style="color:#16a34a;">緑</td></tr>
     </table>
 
     <h3>ステップ 3: 保存と既定設定</h3>
@@ -72,48 +71,39 @@
     </div>
 
     <h2>ポリシー判定記録</h2>
-    <p>スキャンを実行すると、各パッケージに対してポリシー判定記録が自動生成されます。</p>
+    <p>スキャンまたは SBOM インポートを実行すると、各パッケージに対してポリシー判定記録が自動生成されます。</p>
     <img src="images/policy-judgments-ja.png" alt="ポリシー判定記録" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin:16px 0;" />
 
-    <h3>判定記録の5列</h3>
+    <h3>判定記録の列</h3>
     <table class="manual-table">
       <tr><th>列</th><th>説明</th></tr>
       <tr><td>パッケージ</td><td>対象パッケージ名</td></tr>
-      <tr><td>検出事実</td><td>検出された事実（例: ライセンス: 承認、中 — CVE-2024-xxxx）</td></tr>
-      <tr><td>初期評価</td><td>既定ルールによる自動評価（OK / 警告 / 不可）</td></tr>
-      <tr><td>ポリシー判定</td><td>組織ポリシーによる判定（許可 / 条件付き / 要レビュー / 使用不可 / 制限なし）</td></tr>
-      <tr><td>理由</td><td>判定の根拠（例: 不明ライセンス: 要レビューとする設定）</td></tr>
+      <tr><td>リスク</td><td>リスクレベル（High Risk / Risk / Known-Normal）</td></tr>
+      <tr><td>レビュー結果</td><td>レビュー担当者の判定結果</td></tr>
+      <tr><td>ポリシー判定</td><td>組織ポリシーによる判定（許可 / 要承認 / 禁止 / 制限なし）</td></tr>
+      <tr><td>理由</td><td>判定の根拠（RiskReason と RecommendedAction を含む）</td></tr>
     </table>
 
     <h3>ポリシー判定列の読み方</h3>
     <table class="manual-table">
       <tr><th>表示</th><th>意味</th></tr>
-      <tr><td style="color:#dc2626;font-weight:600;">使用不可</td><td>ポリシーで利用を推奨しないと設定されている</td></tr>
-      <tr><td style="color:#d97706;font-weight:600;">要レビュー</td><td>利用前に確認が必要と設定されている</td></tr>
-      <tr><td style="color:#2563eb;">条件付き許可</td><td>条件を満たせば利用可能と設定されている</td></tr>
+      <tr><td style="color:#dc2626;font-weight:600;">禁止</td><td>ポリシーで利用を禁止と設定されている</td></tr>
+      <tr><td style="color:#d97706;font-weight:600;">要承認</td><td>利用前に承認が必要と設定されている</td></tr>
       <tr><td style="color:#16a34a;">許可</td><td>利用に問題なしと設定されている</td></tr>
       <tr><td style="color:#718096;">—（制限なし）</td><td>ポリシーは適用されているが、このパッケージに該当するルールがない。特に制限なし</td></tr>
       <tr><td style="color:#718096;">—（ポリシー未設定）</td><td>組織ポリシーが設定されていない</td></tr>
     </table>
 
+    <h2>レビューステータスとの連携</h2>
+    <p>v2.0 ではポリシー判定がレビューワークフロー（NotStarted → InReview → Completed → PendingApproval → Returned）と連携します。ポリシーで「要承認」となったパッケージは、レビュー完了後に承認ワークフロー（Pro）に進みます。</p>
+
     <h2>HTML レポートでの表示</h2>
     <p>スキャン結果から生成される HTML レポートにも判定記録が含まれます。</p>
-    <img src="images/html-report-ja.png" alt="HTML レポートの判定記録" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin:16px 0;" />
     <ul>
-      <li><strong>要約</strong>: 適用ポリシー名、アクション別件数バッジ</li>
-      <li><strong>詳細テーブル</strong>: パッケージごとの事実・判定・理由</li>
+      <li><strong>要約</strong>: 適用ポリシー名、アクション別件数バッジ（許可 / 要承認 / 禁止）</li>
+      <li><strong>詳細テーブル</strong>: パッケージごとのリスク・判定・理由</li>
     </ul>
     <p>このレポートはオフラインで閲覧でき、チームメンバーやレビュー担当者と共有できます。</p>
-
-    <h2>CSV でのポリシー情報</h2>
-    <p>CSV エクスポート（v2 スキーマ）には以下の列が追加されています:</p>
-    <table class="manual-table">
-      <tr><th>列名</th><th>説明</th></tr>
-      <tr><td>PolicyAction</td><td>ポリシー判定（Allow / Conditional / Review / Deny）</td></tr>
-      <tr><td>ReasonCode</td><td>判定理由のコード（機械処理用）</td></tr>
-      <tr><td>AppliedPolicyName</td><td>適用された組織ポリシー名</td></tr>
-      <tr><td>IsEffective</td><td>ルールが現在有効かどうか</td></tr>
-    </table>
   </div>
 
   <!-- English -->
@@ -124,11 +114,11 @@
     </div>
 
     <h1>Policy Settings &amp; Judgments</h1>
-    <p class="subtitle">Review OSS usage based on your organization's rules (v1.1.0)</p>
+    <p class="subtitle">Review OSS usage based on your organization's rules (v2.0)</p>
 
     <h2>Overview</h2>
     <p>Dependa's policy feature lets you define how your organization evaluates OSS dependencies, and records the judgment with its reasoning for review and sharing.</p>
-    <p>Move beyond detection — generate reports that explain <strong>why each decision was made</strong>.</p>
+    <p>Move beyond detection — generate reports that explain <strong>why each decision was made</strong>. In v2.0, policy action terminology has been updated.</p>
 
     <h2>Policy Builder</h2>
     <p>Open the Policy Builder from the "Policy" menu on the left sidebar.</p>
@@ -151,17 +141,16 @@
       <tr><td>Weak copyleft licenses</td><td>LGPL / MPL — often usable as a separate library</td></tr>
       <tr><td>Unknown license</td><td>Packages where the license could not be identified</td></tr>
       <tr><td>Critical vulnerability</td><td>CVSS 9.0+ known vulnerabilities</td></tr>
-      <tr><td>High vulnerability</td><td>CVSS 7.0–8.9 known vulnerabilities</td></tr>
+      <tr><td>High vulnerability</td><td>CVSS 7.0-8.9 known vulnerabilities</td></tr>
       <tr><td>Low confidence classification</td><td>License detection is incomplete or inconsistent</td></tr>
       <tr><td>Missing license metadata</td><td>No license metadata found for the package</td></tr>
     </table>
 
-    <p>Available actions for each rule:</p>
+    <p>Available actions for each rule (v2.0 terminology):</p>
     <table class="manual-table">
       <tr><th>Action</th><th>Meaning</th><th>Color</th></tr>
-      <tr><td>Not Allowed</td><td>Usage is not recommended by policy</td><td style="color:#dc2626;">Red</td></tr>
-      <tr><td>Requires Review</td><td>Review required before use</td><td style="color:#d97706;">Orange</td></tr>
-      <tr><td>Conditional</td><td>Allowed under certain conditions</td><td style="color:#2563eb;">Blue</td></tr>
+      <tr><td>Prohibited</td><td>Usage is prohibited by policy</td><td style="color:#dc2626;">Red</td></tr>
+      <tr><td>NeedApproval</td><td>Approval required before use</td><td style="color:#d97706;">Orange</td></tr>
       <tr><td>Allowed</td><td>No restrictions</td><td style="color:#16a34a;">Green</td></tr>
     </table>
 
@@ -175,48 +164,39 @@
     </div>
 
     <h2>Policy Judgments</h2>
-    <p>When a scan completes, policy judgment records are automatically generated for each package.</p>
+    <p>When a scan or SBOM import completes, policy judgment records are automatically generated for each package.</p>
     <img src="images/policy-judgments-en.png" alt="Policy Judgments" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin:16px 0;" />
 
-    <h3>The 5 Columns</h3>
+    <h3>Judgment Record Columns</h3>
     <table class="manual-table">
       <tr><th>Column</th><th>Description</th></tr>
       <tr><td>Package</td><td>Package name</td></tr>
-      <tr><td>Detected Fact</td><td>What was detected (e.g., License: Approved, Medium — CVE-2024-xxxx)</td></tr>
-      <tr><td>Initial Status</td><td>Automatic evaluation by default rules (Pass / Warning / Fail)</td></tr>
-      <tr><td>Policy Action</td><td>Organization policy judgment (Allow / Conditional / Review / Deny / No restriction)</td></tr>
-      <tr><td>Reason</td><td>Why this judgment was made (e.g., Unknown license: Requires review by policy)</td></tr>
+      <tr><td>Risk</td><td>Risk level (High Risk / Risk / Known-Normal)</td></tr>
+      <tr><td>Review Result</td><td>Reviewer's assessment</td></tr>
+      <tr><td>Policy Action</td><td>Organization policy judgment (Allowed / NeedApproval / Prohibited / No restriction)</td></tr>
+      <tr><td>Reason</td><td>Why this judgment was made (includes RiskReason and RecommendedAction)</td></tr>
     </table>
 
     <h3>Reading the Policy Action Column</h3>
     <table class="manual-table">
       <tr><th>Display</th><th>Meaning</th></tr>
-      <tr><td style="color:#dc2626;font-weight:600;">Deny</td><td>Usage is not recommended by the configured policy</td></tr>
-      <tr><td style="color:#d97706;font-weight:600;">Review</td><td>Review required before use per policy configuration</td></tr>
-      <tr><td style="color:#2563eb;">Conditional</td><td>Allowed under conditions specified in the policy</td></tr>
-      <tr><td style="color:#16a34a;">Allow</td><td>No restrictions per policy</td></tr>
-      <tr><td style="color:#718096;">— (No restriction)</td><td>Policy is applied, but no matching rule for this package</td></tr>
-      <tr><td style="color:#718096;">— (No policy)</td><td>No organization policy has been configured</td></tr>
+      <tr><td style="color:#dc2626;font-weight:600;">Prohibited</td><td>Usage is prohibited by the configured policy</td></tr>
+      <tr><td style="color:#d97706;font-weight:600;">NeedApproval</td><td>Approval required before use per policy configuration</td></tr>
+      <tr><td style="color:#16a34a;">Allowed</td><td>No restrictions per policy</td></tr>
+      <tr><td style="color:#718096;">-- (No restriction)</td><td>Policy is applied, but no matching rule for this package</td></tr>
+      <tr><td style="color:#718096;">-- (No policy)</td><td>No organization policy has been configured</td></tr>
     </table>
+
+    <h2>Integration with Review Workflow</h2>
+    <p>In v2.0, policy judgments integrate with the review workflow (NotStarted -> InReview -> Completed -> PendingApproval -> Returned). Packages with "NeedApproval" policy proceed to the approval workflow (Pro) after review completion.</p>
 
     <h2>HTML Report</h2>
     <p>The HTML report generated from scan results includes a policy judgment section.</p>
-    <img src="images/html-report-en.png" alt="HTML Report Judgments" style="max-width:100%;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);margin:16px 0;" />
     <ul>
-      <li><strong>Summary</strong>: Applied policy name and action count badges</li>
-      <li><strong>Detail table</strong>: Per-package facts, judgments, and reasons</li>
+      <li><strong>Summary</strong>: Applied policy name and action count badges (Allowed / NeedApproval / Prohibited)</li>
+      <li><strong>Detail table</strong>: Per-package risk, judgments, and reasons</li>
     </ul>
     <p>Reports are self-contained HTML files that work offline and can be shared with team members and reviewers.</p>
-
-    <h2>CSV Policy Columns</h2>
-    <p>The CSV export (v2 schema) includes these additional columns:</p>
-    <table class="manual-table">
-      <tr><th>Column</th><th>Description</th></tr>
-      <tr><td>PolicyAction</td><td>Policy judgment (Allow / Conditional / Review / Deny)</td></tr>
-      <tr><td>ReasonCode</td><td>Machine-readable reason code</td></tr>
-      <tr><td>AppliedPolicyName</td><td>Name of the applied organization policy</td></tr>
-      <tr><td>IsEffective</td><td>Whether the rule is currently enforced</td></tr>
-    </table>
   </div>
 
   <div class="footer">

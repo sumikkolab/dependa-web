@@ -23,13 +23,16 @@
     <h1>Chapter 1: はじめに</h1>
     <p class="subtitle">インストール・初回起動・画面構成</p>
 
+    <h2>Dependa v2.0 とは</h2>
+    <p>Dependa は <strong>OSS レビュー・承認・レポートツール</strong> です。SBOM（ソフトウェア部品表）をインポートまたはフォルダスキャンで生成し、依存ライブラリのリスク分析・レビュー・承認ワークフロー・レポート出力を一貫して行えます。</p>
+
     <h2>動作要件</h2>
     <table class="manual-table">
       <tr><th>項目</th><th>要件</th></tr>
       <tr><td>OS</td><td>Windows 10 Version 2004 以降 / Windows 11</td></tr>
       <tr><td>ランタイム</td><td>WebView2 Runtime（通常は OS に同梱済み）</td></tr>
       <tr><td>ディスク容量</td><td>約 50 MB</td></tr>
-      <tr><td>インターネット</td><td>オフラインでも基本機能は利用可能（オンライン照合は Pro 機能）</td></tr>
+      <tr><td>インターネット</td><td>オフラインでも基本機能は利用可能（オンライン補完は Pro 機能）</td></tr>
     </table>
 
     <h2>インストール方法</h2>
@@ -43,7 +46,7 @@
 
     <div class="screenshot">
       <img src="images/home-screen-ja.png" alt="Dependa ホーム画面">
-      <div class="caption">Dependa のホーム画面</div>
+      <div class="caption">Dependa のホーム画面（ダッシュボード）</div>
     </div>
 
     <h2>初回起動と利用規約</h2>
@@ -53,23 +56,43 @@
       <li>同意しない場合、アプリは終了します。</li>
     </ol>
 
+    <h2>v2.0 の基本ワークフロー</h2>
+    <p>Dependa v2.0 では、以下のワークフローで OSS を審査します。</p>
+    <ol>
+      <li><strong>SBOM を開く、またはフォルダスキャンを実行</strong> — CycloneDX / SPDX 形式の SBOM ファイルをインポートするか、プロジェクトフォルダをスキャンして依存関係を検出します。</li>
+      <li><strong>レビュー</strong> — 検出された各パッケージのリスク（High Risk / Risk / Known-Normal）を確認し、レビューを行います。</li>
+      <li><strong>承認</strong> — レビュー完了後、承認ワークフロー（Pro）でレビュー結果を承認します。</li>
+      <li><strong>レポート出力</strong> — Executive Summary・Action Required・リスク分析を含む HTML レポートを生成します。</li>
+    </ol>
+
     <h2>画面構成の概要</h2>
-    <p>Dependa は 4 つのメイン画面で構成されています。</p>
+    <p>Dependa v2.0 は以下のメイン画面で構成されています。</p>
     <table class="manual-table">
       <tr><th>画面</th><th>説明</th></tr>
-      <tr><td>ホーム</td><td>アプリの概要とクイックアクション。直近のスキャン情報も表示されます。</td></tr>
-      <tr><td>スキャン</td><td>プロジェクトのパスを指定してスキャンを実行し、結果を確認する画面です。</td></tr>
+      <tr><td>ダッシュボード</td><td>レビューワークフローのステータス件数、直近のレビュー状況を表示します。</td></tr>
+      <tr><td>SBOM / スキャン</td><td>SBOM ファイルのインポートまたはフォルダスキャンを実行し、結果を確認する画面です。スキャン中はロックオーバーレイが表示されます。</td></tr>
       <tr><td>レポート</td><td>生成された HTML レポートや SBOM を閲覧・管理できます。</td></tr>
-      <tr><td>設定</td><td>言語の切替、オンライン機能の ON/OFF、Pro ライセンスの管理を行います。</td></tr>
+      <tr><td>設定</td><td>言語の切替、オンライン補完の ON/OFF、Pro ライセンスの管理を行います。</td></tr>
     </table>
 
     <div class="info-box">
-      <p>左側のナビゲーションバーから各画面にいつでも切り替えられます。</p>
+      <p>左側のナビゲーションバーから各画面にいつでも切り替えられます。現在のページはナビゲーション上でハイライト表示されます。</p>
     </div>
+
+    <h2>レビューワークフローの状態</h2>
+    <p>v2.0 では各レビューセッションに以下のステータスがあります。</p>
+    <table class="manual-table">
+      <tr><th>ステータス</th><th>説明</th></tr>
+      <tr><td>NotStarted</td><td>レビューがまだ開始されていません。</td></tr>
+      <tr><td>InReview</td><td>レビュー作業中です。</td></tr>
+      <tr><td>Completed</td><td>レビューが完了しました。</td></tr>
+      <tr><td>PendingApproval</td><td>承認待ちの状態です（Pro）。</td></tr>
+      <tr><td>Returned</td><td>承認者から差し戻されました（Pro）。</td></tr>
+    </table>
 
     <div class="chapter-nav">
       <span></span>
-      <a href="scanning.html">次へ: スキャン機能 &rarr;</a>
+      <a href="scanning.html">次へ: SBOM インポートとフォルダスキャン &rarr;</a>
     </div>
   </div>
 
@@ -83,13 +106,16 @@
     <h1>Chapter 1: Getting Started</h1>
     <p class="subtitle">Installation, first launch, and screen overview</p>
 
+    <h2>What is Dependa v2.0?</h2>
+    <p>Dependa is an <strong>OSS review, approval, and reporting tool</strong>. Import SBOMs (Software Bill of Materials) or generate them via folder scan, then perform risk analysis, review, approval workflow, and report generation in a unified workflow.</p>
+
     <h2>System Requirements</h2>
     <table class="manual-table">
       <tr><th>Item</th><th>Requirement</th></tr>
       <tr><td>OS</td><td>Windows 10 Version 2004 or later / Windows 11</td></tr>
       <tr><td>Runtime</td><td>WebView2 Runtime (usually included with the OS)</td></tr>
       <tr><td>Disk Space</td><td>Approximately 50 MB</td></tr>
-      <tr><td>Internet</td><td>Basic features work offline (online lookups are Pro features)</td></tr>
+      <tr><td>Internet</td><td>Basic features work offline (online enrichment is a Pro feature)</td></tr>
     </table>
 
     <h2>Installation</h2>
@@ -103,7 +129,7 @@
 
     <div class="screenshot">
       <img src="images/home-screen-en.png" alt="Dependa Home Screen">
-      <div class="caption">Dependa Home Screen</div>
+      <div class="caption">Dependa Home Screen (Dashboard)</div>
     </div>
 
     <h2>First Launch and Terms of Use</h2>
@@ -113,23 +139,43 @@
       <li>If you decline, the app will close.</li>
     </ol>
 
+    <h2>v2.0 Basic Workflow</h2>
+    <p>In Dependa v2.0, you review OSS using the following workflow:</p>
+    <ol>
+      <li><strong>Open SBOM or run folder scan</strong> — Import a CycloneDX / SPDX format SBOM file, or scan a project folder to detect dependencies.</li>
+      <li><strong>Review</strong> — Examine each detected package's risk level (High Risk / Risk / Known-Normal) and perform your review.</li>
+      <li><strong>Approve</strong> — After completing the review, approve results through the approval workflow (Pro).</li>
+      <li><strong>Generate report</strong> — Generate an HTML report including Executive Summary, Action Required, and Risk Analysis sections.</li>
+    </ol>
+
     <h2>Screen Overview</h2>
-    <p>Dependa consists of four main screens.</p>
+    <p>Dependa v2.0 consists of the following main screens:</p>
     <table class="manual-table">
       <tr><th>Screen</th><th>Description</th></tr>
-      <tr><td>Home</td><td>App overview and quick actions. Recent scan information is also shown.</td></tr>
-      <tr><td>Scan</td><td>Specify a project path, run a scan, and review results.</td></tr>
+      <tr><td>Dashboard</td><td>Displays review workflow status counts and recent review activity.</td></tr>
+      <tr><td>SBOM / Scan</td><td>Import SBOM files or run folder scans and review results. A scan lock overlay is shown during scanning.</td></tr>
       <tr><td>Reports</td><td>View and manage generated HTML reports and SBOM files.</td></tr>
-      <tr><td>Settings</td><td>Switch language, toggle online features, and manage your Pro license.</td></tr>
+      <tr><td>Settings</td><td>Switch language, toggle online enrichment, and manage your Pro license.</td></tr>
     </table>
 
     <div class="info-box">
-      <p>You can switch between screens at any time using the navigation bar on the left.</p>
+      <p>You can switch between screens at any time using the navigation bar on the left. The current page is highlighted in the navigation.</p>
     </div>
+
+    <h2>Review Workflow States</h2>
+    <p>In v2.0, each review session has the following statuses:</p>
+    <table class="manual-table">
+      <tr><th>Status</th><th>Description</th></tr>
+      <tr><td>NotStarted</td><td>Review has not yet begun.</td></tr>
+      <tr><td>InReview</td><td>Review is in progress.</td></tr>
+      <tr><td>Completed</td><td>Review has been completed.</td></tr>
+      <tr><td>PendingApproval</td><td>Awaiting approval (Pro).</td></tr>
+      <tr><td>Returned</td><td>Returned by the approver for revision (Pro).</td></tr>
+    </table>
 
     <div class="chapter-nav">
       <span></span>
-      <a href="scanning.html?lang=en">Next: Scanning &rarr;</a>
+      <a href="scanning.html?lang=en">Next: SBOM Import &amp; Folder Scan &rarr;</a>
     </div>
   </div>
 

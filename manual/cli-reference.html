@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 8: CLI Reference — Dependa | SumikkoLab</title>
+<title>Chapter 13: CLI Reference — Dependa | SumikkoLab</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,8 +20,8 @@
       <a href="../support.html">サポート</a>
     </div>
 
-    <h1>Chapter 8: CLI リファレンス</h1>
-    <p class="subtitle">コマンドラインからの操作・自動化</p>
+    <h1>Chapter 13: CLI リファレンス</h1>
+    <p class="subtitle">コマンドラインからの操作・自動化（v2.0）</p>
 
     <h2>基本構文</h2>
     <pre><code>Dependa.exe &lt;command&gt; [options]</code></pre>
@@ -32,6 +32,8 @@
       <tr><td><code>help</code></td><td>ヘルプを表示します。</td></tr>
       <tr><td><code>version</code></td><td>バージョン情報を表示します。</td></tr>
       <tr><td><code>scan</code></td><td>指定したパスのプロジェクトをスキャンします。</td></tr>
+      <tr><td><code>import</code></td><td>SBOM ファイル（CycloneDX / SPDX）をインポートします。</td></tr>
+      <tr><td><code>review</code></td><td>レビューセッションのステータスを表示・更新します。</td></tr>
     </table>
 
     <h2>scan コマンドのオプション</h2>
@@ -43,8 +45,17 @@
       <tr><td><code>--accept-terms</code></td><td>利用規約に同意します（初回実行時に必要）。</td></tr>
       <tr><td><code>--verbose</code></td><td>詳細なログを出力します。</td></tr>
       <tr><td><code>--use-online-vuln</code></td><td>OSV API によるオンライン脆弱性照合を有効にします。<span class="pro-badge">Pro</span></td></tr>
-      <tr><td><code>--use-online-license-metadata</code></td><td>PyPI API によるオンラインライセンス補完を有効にします。<span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--use-online-enrichment</code></td><td>PyPI / npm / NuGet によるオンライン補完を有効にします。<span class="pro-badge">Pro</span></td></tr>
       <tr><td><code>--ai-prompt &lt;type&gt;</code></td><td>AI プロンプトを生成します。type: <code>VulnerabilityRemediation</code>, <code>LicenseReview</code>, <code>DeltaScanReview</code></td></tr>
+    </table>
+
+    <h2>import コマンドのオプション</h2>
+    <table class="manual-table">
+      <tr><th>オプション</th><th>説明</th></tr>
+      <tr><td><code>--file &lt;path&gt;</code></td><td>インポートする SBOM ファイルのパス（必須）。CycloneDX / SPDX 形式を自動判別します。</td></tr>
+      <tr><td><code>--output &lt;path&gt;</code></td><td>結果の出力先パス。</td></tr>
+      <tr><td><code>--lang &lt;ja|en&gt;</code></td><td>レポートの言語を指定します。</td></tr>
+      <tr><td><code>--accept-terms</code></td><td>利用規約に同意します。</td></tr>
     </table>
 
     <h2>終了コード</h2>
@@ -52,12 +63,13 @@
       <tr><th>コード</th><th>意味</th></tr>
       <tr><td><code>0</code></td><td>成功（ポリシー違反なし）</td></tr>
       <tr><td><code>1</code></td><td>一般エラー</td></tr>
-      <tr><td><code>2</code></td><td>ポリシー違反が検出された（Critical/High 脆弱性または Prohibited ライセンス）</td></tr>
+      <tr><td><code>2</code></td><td>ポリシー違反が検出された（High Risk アイテムまたは Prohibited ライセンス）</td></tr>
       <tr><td><code>3</code></td><td>Pro ライセンスが必要な機能が使用された</td></tr>
       <tr><td><code>4</code></td><td>データパック検証失敗</td></tr>
       <tr><td><code>5</code></td><td>不正な引数</td></tr>
       <tr><td><code>6</code></td><td>利用規約に未同意</td></tr>
       <tr><td><code>7</code></td><td>Integrity 検証失敗</td></tr>
+      <tr><td><code>8</code></td><td>SBOM 形式が認識できない</td></tr>
     </table>
 
     <h2>使用例</h2>
@@ -65,11 +77,14 @@
     <h3>基本スキャン</h3>
     <pre><code>Dependa.exe scan --path C:\my-project --accept-terms</code></pre>
 
+    <h3>SBOM インポート</h3>
+    <pre><code>Dependa.exe import --file C:\sbom\cyclonedx.json --output C:\reports\result.json</code></pre>
+
     <h3>結果を JSON に出力</h3>
     <pre><code>Dependa.exe scan --path C:\my-project --output C:\reports\result.json --lang ja</code></pre>
 
     <h3>Pro 機能付きスキャン</h3>
-    <pre><code>Dependa.exe scan --path C:\my-project --use-online-vuln --use-online-license-metadata --verbose</code></pre>
+    <pre><code>Dependa.exe scan --path C:\my-project --use-online-vuln --use-online-enrichment --verbose</code></pre>
 
     <h3>AI プロンプト生成付きスキャン</h3>
     <pre><code>Dependa.exe scan --path C:\my-project --ai-prompt VulnerabilityRemediation</code></pre>
@@ -96,8 +111,8 @@ if ($result.ExitCode -eq 2) {
     </div>
 
     <div class="chapter-nav">
-      <a href="pro-features.html">&larr; Chapter 7: Pro 機能ガイド</a>
-      <a href="licensing.html">Chapter 9: ライセンスと購入 &rarr;</a>
+      <a href="pro-features.html">&larr; Pro 機能ガイド</a>
+      <a href="licensing.html">ライセンスと購入 &rarr;</a>
     </div>
   </div>
 
@@ -108,8 +123,8 @@ if ($result.ExitCode -eq 2) {
       <a href="../support.html?lang=en">Support</a>
     </div>
 
-    <h1>Chapter 8: CLI Reference</h1>
-    <p class="subtitle">Command-line usage and automation</p>
+    <h1>Chapter 13: CLI Reference</h1>
+    <p class="subtitle">Command-line usage and automation (v2.0)</p>
 
     <h2>Basic Syntax</h2>
     <pre><code>Dependa.exe &lt;command&gt; [options]</code></pre>
@@ -120,6 +135,8 @@ if ($result.ExitCode -eq 2) {
       <tr><td><code>help</code></td><td>Display help information.</td></tr>
       <tr><td><code>version</code></td><td>Display version information.</td></tr>
       <tr><td><code>scan</code></td><td>Scan a project at the specified path.</td></tr>
+      <tr><td><code>import</code></td><td>Import an SBOM file (CycloneDX / SPDX).</td></tr>
+      <tr><td><code>review</code></td><td>Display or update review session status.</td></tr>
     </table>
 
     <h2>Scan Command Options</h2>
@@ -131,8 +148,17 @@ if ($result.ExitCode -eq 2) {
       <tr><td><code>--accept-terms</code></td><td>Accept the terms of use (required on first run).</td></tr>
       <tr><td><code>--verbose</code></td><td>Output detailed logs.</td></tr>
       <tr><td><code>--use-online-vuln</code></td><td>Enable online vulnerability lookup via OSV API. <span class="pro-badge">Pro</span></td></tr>
-      <tr><td><code>--use-online-license-metadata</code></td><td>Enable online license metadata via PyPI API. <span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--use-online-enrichment</code></td><td>Enable online enrichment via PyPI / npm / NuGet. <span class="pro-badge">Pro</span></td></tr>
       <tr><td><code>--ai-prompt &lt;type&gt;</code></td><td>Generate an AI prompt. Types: <code>VulnerabilityRemediation</code>, <code>LicenseReview</code>, <code>DeltaScanReview</code></td></tr>
+    </table>
+
+    <h2>Import Command Options</h2>
+    <table class="manual-table">
+      <tr><th>Option</th><th>Description</th></tr>
+      <tr><td><code>--file &lt;path&gt;</code></td><td>Path to the SBOM file to import (required). Auto-detects CycloneDX / SPDX format.</td></tr>
+      <tr><td><code>--output &lt;path&gt;</code></td><td>Output path for results.</td></tr>
+      <tr><td><code>--lang &lt;ja|en&gt;</code></td><td>Specify the report language.</td></tr>
+      <tr><td><code>--accept-terms</code></td><td>Accept the terms of use.</td></tr>
     </table>
 
     <h2>Exit Codes</h2>
@@ -140,12 +166,13 @@ if ($result.ExitCode -eq 2) {
       <tr><th>Code</th><th>Meaning</th></tr>
       <tr><td><code>0</code></td><td>Success (no policy violations)</td></tr>
       <tr><td><code>1</code></td><td>General error</td></tr>
-      <tr><td><code>2</code></td><td>Policy violation detected (Critical/High vulnerability or Prohibited license)</td></tr>
+      <tr><td><code>2</code></td><td>Policy violation detected (High Risk items or Prohibited license)</td></tr>
       <tr><td><code>3</code></td><td>Pro license required for the requested feature</td></tr>
       <tr><td><code>4</code></td><td>Data pack verification failed</td></tr>
       <tr><td><code>5</code></td><td>Invalid arguments</td></tr>
       <tr><td><code>6</code></td><td>Terms of use not accepted</td></tr>
       <tr><td><code>7</code></td><td>Integrity verification failed</td></tr>
+      <tr><td><code>8</code></td><td>SBOM format not recognized</td></tr>
     </table>
 
     <h2>Usage Examples</h2>
@@ -153,11 +180,14 @@ if ($result.ExitCode -eq 2) {
     <h3>Basic Scan</h3>
     <pre><code>Dependa.exe scan --path C:\my-project --accept-terms</code></pre>
 
+    <h3>SBOM Import</h3>
+    <pre><code>Dependa.exe import --file C:\sbom\cyclonedx.json --output C:\reports\result.json</code></pre>
+
     <h3>Output Results to JSON</h3>
     <pre><code>Dependa.exe scan --path C:\my-project --output C:\reports\result.json --lang en</code></pre>
 
     <h3>Scan with Pro Features</h3>
-    <pre><code>Dependa.exe scan --path C:\my-project --use-online-vuln --use-online-license-metadata --verbose</code></pre>
+    <pre><code>Dependa.exe scan --path C:\my-project --use-online-vuln --use-online-enrichment --verbose</code></pre>
 
     <h3>Scan with AI Prompt Generation</h3>
     <pre><code>Dependa.exe scan --path C:\my-project --ai-prompt VulnerabilityRemediation</code></pre>
@@ -184,8 +214,8 @@ if ($result.ExitCode -eq 2) {
     </div>
 
     <div class="chapter-nav">
-      <a href="pro-features.html?lang=en">&larr; Chapter 7: Pro Features Guide</a>
-      <a href="licensing.html?lang=en">Chapter 9: Licensing &amp; Purchase &rarr;</a>
+      <a href="pro-features.html?lang=en">&larr; Pro Features Guide</a>
+      <a href="licensing.html?lang=en">Licensing &amp; Purchase &rarr;</a>
     </div>
   </div>
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 10: Troubleshooting — Dependa | SumikkoLab</title>
+<title>Chapter 15: Troubleshooting — Dependa | SumikkoLab</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,34 +20,8 @@
       <a href="../support.html">サポート</a>
     </div>
 
-    <h1>Chapter 10: トラブルシューティング</h1>
-    <p class="subtitle">エラーへの対処方法・設定リセット・サポート連絡先</p>
-
-    <!-- FAQ セクション（将来復活用に保持）
-    <h2>よくある質問（FAQ）</h2>
-    <h3>Q1. スキャン対象のファイルが見つかりません</h3>
-    <p>Dependa は特定のファイル名（requirements.txt, pyproject.toml, poetry.lock, uv.lock, package.json, package-lock.json）を検索します。プロジェクトフォルダのルートにこれらのファイルが存在するか確認してください。</p>
-    <h3>Q2. 脆弱性が検出されないのですが正常ですか？</h3>
-    <p>はい、脆弱性が無い場合は正常です。より最新のデータで照合するには、Pro ライセンスで OSV API オンライン脆弱性照合を有効にしてください。</p>
-    <h3>Q3. ライセンスが Unknown と表示されるパッケージが多い</h3>
-    <p>ローカルデータベースにライセンス情報が含まれていないパッケージは Unknown と表示されます。Pro ライセンスのオンラインライセンス補完機能を有効にすると、Unknown が大幅に減少します。</p>
-    <h3>Q4. Pro を購入したのに機能が有効になりません</h3>
-    <p>以下をお試しください。</p>
-    <ol>
-      <li>アプリを完全に終了し、再起動してください。</li>
-      <li>Microsoft Store アプリで購入が完了しているか確認してください。</li>
-      <li>Microsoft アカウントにサインインしていることを確認してください。</li>
-      <li>インターネットに接続した状態で再起動してください（ライセンス検証のため）。</li>
-    </ol>
-    <h3>Q5. スキャンに時間がかかります</h3>
-    <p>オンライン機能（OSV API、PyPI API）を有効にしている場合、ネットワーク通信が発生するためスキャン時間が長くなることがあります。オフラインでの高速スキャンが必要な場合は、設定画面でオンライン機能を無効にしてください。</p>
-    <h3>Q6. Delta Scan で比較対象のファイルが選べません</h3>
-    <p>Delta Scan で比較できるのは、Dependa が出力した JSON 形式のスキャン結果ファイルのみです。事前に output オプションで結果を保存しておく必要があります。</p>
-    <h3>Q7. CLI でスキャンすると終了コード 6 が返ります</h3>
-    <p>利用規約に同意していない状態です。初回は accept-terms フラグを付けて実行してください。</p>
-    <h3>Q8. レポートの文字化けが発生します</h3>
-    <p>HTML レポートは UTF-8 でエンコードされています。ブラウザのエンコーディングが自動検出になっているか確認してください。IE モードでの閲覧は推奨しません。Microsoft Edge または Chrome をお使いください。</p>
-    END FAQ -->
+    <h1>Chapter 15: トラブルシューティング</h1>
+    <p class="subtitle">エラーへの対処方法・v2.0 よくある問題・設定リセット・サポート連絡先</p>
 
     <h2>エラーメッセージ対応表</h2>
     <table class="manual-table">
@@ -58,9 +32,19 @@
         <td>対応ファイル（requirements.txt 等）がフォルダ内に存在するか確認してください。</td>
       </tr>
       <tr>
+        <td><code>SBOM format not recognized</code></td>
+        <td>インポートした SBOM ファイルの形式が CycloneDX でも SPDX でもない</td>
+        <td>SBOM ファイルが CycloneDX 1.4/1.5 JSON または SPDX 2.3 JSON 形式であることを確認してください。XML 形式は未対応です。</td>
+      </tr>
+      <tr>
         <td><code>Pro license required</code></td>
         <td>Pro 専用機能を Free で使おうとした</td>
         <td>Pro ライセンスを購入するか、該当機能の使用を中止してください。</td>
+      </tr>
+      <tr>
+        <td><code>Review limit reached</code></td>
+        <td>Free 版の 5 件レビュー上限に達した</td>
+        <td>Pro にアップグレードすると無制限にレビューできます。</td>
       </tr>
       <tr>
         <td><code>Data pack verification failed</code></td>
@@ -82,7 +66,31 @@
         <td>オンライン API への接続に失敗</td>
         <td>インターネット接続を確認してください。プロキシ環境の場合はシステムプロキシ設定を確認してください。</td>
       </tr>
+      <tr>
+        <td><code>License preload failed</code></td>
+        <td>ライセンスデータベースの事前読み込みに失敗</td>
+        <td>アプリを再起動してください。問題が継続する場合はアプリを再インストールしてください。</td>
+      </tr>
     </table>
+
+    <h2>v2.0 でよくある問題</h2>
+
+    <h3>SBOM ファイルがインポートできない</h3>
+    <p>以下を確認してください。</p>
+    <ul>
+      <li>ファイル形式が CycloneDX 1.4/1.5 JSON または SPDX 2.3 JSON であること。</li>
+      <li>XML 形式の SBOM は v2.0 では未対応です。JSON 形式に変換してからインポートしてください。</li>
+      <li>ファイルが壊れていないこと。JSON として正しくパースできるか確認してください。</li>
+    </ul>
+
+    <h3>ライセンスプリロードエラー</h3>
+    <p>起動時に「License preload failed」が表示される場合、ライセンスデータベースの読み込みに問題が発生しています。アプリを再起動するか、設定ファイルを削除して再起動してください。</p>
+
+    <h3>レビュー件数が 5 件で止まる</h3>
+    <p>Free 版ではレビュー可能な件数が 5 件に制限されています。すべてのパッケージをレビューするには Pro ライセンスが必要です。</p>
+
+    <h3>レポートにウォーターマークが表示される</h3>
+    <p>Free 版で生成された HTML レポートには「Free Edition」のウォーターマークが表示されます。これは正常な動作です。ウォーターマークなしのレポートが必要な場合は Pro にアップグレードしてください。</p>
 
     <h2>設定のリセット方法</h2>
     <p>設定を初期状態に戻すには、以下の手順を実行してください。</p>
@@ -105,10 +113,10 @@
     </ul>
 
     <h2>オンライン機能が動作しない場合</h2>
-    <p>OSV API やPyPI API への接続がうまくいかない場合、以下を確認してください。</p>
+    <p>OSV API や PyPI / npm / NuGet への接続がうまくいかない場合、以下を確認してください。</p>
     <ul>
       <li><strong>インターネット接続</strong>: ブラウザで通常のウェブサイトにアクセスできるか確認してください。</li>
-      <li><strong>ファイアウォール</strong>: 企業ネットワークの場合、<code>api.osv.dev</code> および <code>pypi.org</code> への HTTPS 通信が許可されているか確認してください。</li>
+      <li><strong>ファイアウォール</strong>: 企業ネットワークの場合、<code>api.osv.dev</code>、<code>pypi.org</code>、<code>registry.npmjs.org</code>、<code>api.nuget.org</code> への HTTPS 通信が許可されているか確認してください。</li>
       <li><strong>プロキシ</strong>: プロキシ環境では、Windows のシステムプロキシ設定が正しく構成されている必要があります。</li>
       <li><strong>Pro ライセンス</strong>: オンライン機能は Pro ライセンスが必要です。設定画面でライセンス状態を確認してください。</li>
     </ul>
@@ -128,7 +136,7 @@
     </ul>
 
     <div class="chapter-nav">
-      <a href="licensing.html">&larr; Chapter 9: ライセンスと購入</a>
+      <a href="licensing.html">&larr; ライセンスと購入</a>
       <span></span>
     </div>
   </div>
@@ -140,34 +148,8 @@
       <a href="../support.html?lang=en">Support</a>
     </div>
 
-    <h1>Chapter 10: Troubleshooting</h1>
-    <p class="subtitle">Error resolution, settings reset, and support contact</p>
-
-    <!-- FAQ section (preserved for future use)
-    <h2>Frequently Asked Questions (FAQ)</h2>
-    <h3>Q1. No scan target files are found</h3>
-    <p>Dependa searches for specific file names (requirements.txt, pyproject.toml, poetry.lock, uv.lock, package.json, package-lock.json). Verify that these files exist in the root of your project folder.</p>
-    <h3>Q2. No vulnerabilities were detected — is this normal?</h3>
-    <p>Yes, if there are no known vulnerabilities, this is expected. For the latest data, enable OSV API online vulnerability lookup with a Pro license.</p>
-    <h3>Q3. Many packages show "Unknown" license</h3>
-    <p>Packages without license information in the local database are classified as Unknown. Enable the online license metadata feature with a Pro license to significantly reduce Unknown results.</p>
-    <h3>Q4. I purchased Pro but features are not activated</h3>
-    <p>Try the following:</p>
-    <ol>
-      <li>Completely close and restart the app.</li>
-      <li>Verify the purchase is complete in the Microsoft Store app.</li>
-      <li>Ensure you are signed in with your Microsoft account.</li>
-      <li>Restart with an internet connection (required for license verification).</li>
-    </ol>
-    <h3>Q5. Scanning takes a long time</h3>
-    <p>When online features (OSV API, PyPI API) are enabled, network requests increase scan time. If you need faster offline scanning, disable online features in Settings.</p>
-    <h3>Q6. Cannot select a file for Delta Scan comparison</h3>
-    <p>Delta Scan can only compare JSON scan result files generated by Dependa. You need to save results beforehand using the output option.</p>
-    <h3>Q7. CLI scan returns exit code 6</h3>
-    <p>The terms of use have not been accepted. Add the accept-terms flag on the first run.</p>
-    <h3>Q8. Report text appears garbled</h3>
-    <p>HTML reports are encoded in UTF-8. Check that your browser's encoding is set to auto-detect. IE mode is not recommended. Please use Microsoft Edge or Chrome.</p>
-    END FAQ -->
+    <h1>Chapter 15: Troubleshooting</h1>
+    <p class="subtitle">Error resolution, v2.0 common issues, settings reset, and support contact</p>
 
     <h2>Error Message Reference</h2>
     <table class="manual-table">
@@ -178,9 +160,19 @@
         <td>Verify that supported files (e.g., requirements.txt) exist in the folder.</td>
       </tr>
       <tr>
+        <td><code>SBOM format not recognized</code></td>
+        <td>Imported SBOM file is neither CycloneDX nor SPDX</td>
+        <td>Ensure the SBOM file is CycloneDX 1.4/1.5 JSON or SPDX 2.3 JSON format. XML format is not supported.</td>
+      </tr>
+      <tr>
         <td><code>Pro license required</code></td>
         <td>Attempted to use a Pro-only feature on Free</td>
         <td>Purchase a Pro license or stop using the feature.</td>
+      </tr>
+      <tr>
+        <td><code>Review limit reached</code></td>
+        <td>Free edition's 5-item review limit reached</td>
+        <td>Upgrade to Pro for unlimited reviews.</td>
       </tr>
       <tr>
         <td><code>Data pack verification failed</code></td>
@@ -202,7 +194,31 @@
         <td>Failed to connect to online API</td>
         <td>Check your internet connection. In proxy environments, verify system proxy settings.</td>
       </tr>
+      <tr>
+        <td><code>License preload failed</code></td>
+        <td>License database preloading failed</td>
+        <td>Restart the app. If the issue persists, reinstall the app.</td>
+      </tr>
     </table>
+
+    <h2>Common v2.0 Issues</h2>
+
+    <h3>SBOM File Cannot Be Imported</h3>
+    <p>Check the following:</p>
+    <ul>
+      <li>The file format must be CycloneDX 1.4/1.5 JSON or SPDX 2.3 JSON.</li>
+      <li>XML format SBOMs are not supported in v2.0. Convert to JSON format before importing.</li>
+      <li>The file is not corrupted. Verify it can be parsed as valid JSON.</li>
+    </ul>
+
+    <h3>License Preload Error</h3>
+    <p>If "License preload failed" appears at startup, there is an issue loading the license database. Restart the app, or delete the settings file and restart.</p>
+
+    <h3>Review Count Stops at 5</h3>
+    <p>The Free edition limits reviews to 5 items. A Pro license is required to review all packages.</p>
+
+    <h3>Report Shows Watermark</h3>
+    <p>HTML reports generated in the Free edition include a "Free Edition" watermark. This is expected behavior. Upgrade to Pro for watermark-free reports.</p>
 
     <h2>Resetting Settings</h2>
     <p>To reset settings to their defaults:</p>
@@ -225,10 +241,10 @@
     </ul>
 
     <h2>Online Features Not Working</h2>
-    <p>If OSV API or PyPI API connections fail, check the following:</p>
+    <p>If OSV API or PyPI / npm / NuGet connections fail, check the following:</p>
     <ul>
       <li><strong>Internet connection</strong>: Verify you can access regular websites in your browser.</li>
-      <li><strong>Firewall</strong>: In corporate networks, ensure HTTPS access to <code>api.osv.dev</code> and <code>pypi.org</code> is allowed.</li>
+      <li><strong>Firewall</strong>: In corporate networks, ensure HTTPS access to <code>api.osv.dev</code>, <code>pypi.org</code>, <code>registry.npmjs.org</code>, and <code>api.nuget.org</code> is allowed.</li>
       <li><strong>Proxy</strong>: In proxy environments, Windows system proxy settings must be correctly configured.</li>
       <li><strong>Pro license</strong>: Online features require a Pro license. Check your license status in Settings.</li>
     </ul>
@@ -248,7 +264,7 @@
     </ul>
 
     <div class="chapter-nav">
-      <a href="licensing.html?lang=en">&larr; Chapter 9: Licensing &amp; Purchase</a>
+      <a href="licensing.html?lang=en">&larr; Licensing &amp; Purchase</a>
       <span></span>
     </div>
   </div>

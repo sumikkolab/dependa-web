@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 2: Scanning — Dependa | SumikkoLab</title>
+<title>Chapter 2: SBOM Import &amp; Folder Scan — Dependa | SumikkoLab</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,20 +20,37 @@
       <a href="../support.html">サポート</a>
     </div>
 
-    <h1>Chapter 2: スキャン機能</h1>
-    <p class="subtitle">プロジェクトの依存ライブラリを検出・分析する</p>
+    <h1>Chapter 2: SBOM インポートとフォルダスキャン</h1>
+    <p class="subtitle">CycloneDX / SPDX のインポート、フォルダスキャンによる依存検出</p>
 
-    <h2>スキャンの実行方法</h2>
+    <h2>v2.0 の 2 つの入力方法</h2>
+    <p>Dependa v2.0 では、以下の 2 つの方法で依存関係を読み込めます。</p>
+    <table class="manual-table">
+      <tr><th>方法</th><th>説明</th></tr>
+      <tr><td>SBOM インポート</td><td>既存の SBOM ファイル（CycloneDX JSON / SPDX JSON）を直接インポートします。形式は自動判別されます。</td></tr>
+      <tr><td>フォルダスキャン</td><td>プロジェクトフォルダを指定してスキャンし、依存定義ファイルから SBOM を生成します。</td></tr>
+    </table>
+
+    <h2>SBOM インポート</h2>
     <ol>
-      <li>左側のナビゲーションから「スキャン」画面を開きます。</li>
-      <li>スキャン対象のプロジェクトフォルダのパスを入力するか、「フォルダを選択」ボタンでフォルダを指定します。</li>
-      <li>「スキャン」ボタンをクリックすると、分析が開始されます。</li>
-      <li>スキャンが完了すると、結果がサマリカードとデータグリッドで表示されます。</li>
+      <li>左側のナビゲーションから「SBOM / スキャン」画面を開きます。</li>
+      <li>「SBOM を開く」ボタンをクリックし、SBOM ファイルを選択します。</li>
+      <li>Dependa が CycloneDX と SPDX を自動判別し、インポートします。</li>
+      <li>インポート完了後、レビュー対象のパッケージ一覧が表示されます。</li>
     </ol>
 
     <div class="info-box">
-      <p>スキャン対象フォルダには、対応する依存定義ファイル（requirements.txt など）が含まれている必要があります。</p>
+      <p>対応 SBOM 形式: <strong>CycloneDX 1.4 / 1.5 JSON</strong> および <strong>SPDX 2.3 JSON</strong>。形式は自動検出されるため、手動で指定する必要はありません。</p>
     </div>
+
+    <h2>フォルダスキャンの実行方法</h2>
+    <ol>
+      <li>左側のナビゲーションから「SBOM / スキャン」画面を開きます。</li>
+      <li>「フォルダスキャン」タブを選択します。</li>
+      <li>スキャン対象のプロジェクトフォルダのパスを入力するか、「フォルダを選択」ボタンでフォルダを指定します。</li>
+      <li>「スキャン」ボタンをクリックすると、分析が開始されます。スキャン中はロックオーバーレイが表示され、進捗バーで状況を確認できます。</li>
+      <li>スキャンが完了すると、結果がサマリカードとデータグリッドで表示されます。</li>
+    </ol>
 
     <h2>対応エコシステムと対応ファイル</h2>
     <table class="manual-table">
@@ -42,46 +59,49 @@
       <tr><td>Python</td><td><code>pyproject.toml</code></td><td>Free</td></tr>
       <tr><td>Python</td><td><code>poetry.lock</code></td><td>Free</td></tr>
       <tr><td>Python</td><td><code>uv.lock</code></td><td>Free</td></tr>
-      <tr><td>Node.js</td><td><code>package.json</code></td><td>Pro <span class="pro-badge">PRO</span></td></tr>
-      <tr><td>Node.js</td><td><code>package-lock.json</code></td><td>Pro <span class="pro-badge">PRO</span></td></tr>
+      <tr><td>Node.js</td><td><code>package.json</code></td><td>Free</td></tr>
+      <tr><td>Node.js</td><td><code>package-lock.json</code></td><td>Free</td></tr>
+      <tr><td>SBOM</td><td>CycloneDX JSON（<code>.cdx.json</code> / <code>.json</code>）</td><td>Free</td></tr>
+      <tr><td>SBOM</td><td>SPDX JSON（<code>.spdx.json</code> / <code>.json</code>）</td><td>Free</td></tr>
     </table>
 
     <h2>スキャン結果の見方</h2>
 
     <div class="screenshot">
       <img src="images/scan-results-ja.png" alt="スキャン結果画面">
-      <div class="caption">スキャン結果 — サマリ・依存関係・脆弱性・ライセンス一覧</div>
+      <div class="caption">スキャン結果 — サマリ・依存関係・リスク・ライセンス一覧</div>
     </div>
 
     <h3>サマリカード</h3>
-    <p>スキャン完了後、画面上部に以下の 4 つのサマリカードが表示されます。</p>
+    <p>スキャン完了後、画面上部に以下のサマリカードが表示されます。</p>
     <table class="manual-table">
       <tr><th>カード</th><th>内容</th></tr>
       <tr><td>依存ライブラリ数</td><td>検出された依存パッケージの総数です。</td></tr>
+      <tr><td>リスク</td><td>リスクレベル別の件数です（High Risk / Risk / Known-Normal）。</td></tr>
       <tr><td>脆弱性数</td><td>既知の脆弱性が検出された件数です。重大度ごとの内訳も表示されます。</td></tr>
-      <tr><td>ライセンス数</td><td>検出されたライセンスの種類数です。分類（Approved / Caution / Prohibited / Unknown）ごとの内訳も表示されます。</td></tr>
-      <tr><td>ポリシー判定</td><td>全体のポリシー判定結果です。PASS（問題なし）または FAIL（要対応）で表示されます。</td></tr>
+      <tr><td>ライセンス数</td><td>検出されたライセンスの種類数です。分類ごとの内訳も表示されます。</td></tr>
+      <tr><td>レビューステータス</td><td>レビューワークフローの現在のステータスが表示されます。</td></tr>
     </table>
 
     <h3>データグリッド</h3>
-    <p>サマリカードの下に、以下の 3 つのデータグリッド（表）が表示されます。</p>
+    <p>サマリカードの下に、データグリッド（表）が表示されます。フィルターを適用すると、条件に一致する行がハイライト表示されます。</p>
 
     <p><strong>1. 依存ライブラリ一覧</strong></p>
-    <p>検出されたすべての依存パッケージの名前、バージョン、エコシステム、ライセンスが表示されます。</p>
+    <p>検出されたすべての依存パッケージの名前、バージョン、エコシステム、ライセンス、リスクレベルが表示されます。</p>
 
     <p><strong>2. 脆弱性一覧</strong></p>
     <p>検出された脆弱性の ID（CVE 番号など）、影響するパッケージ、重大度（Critical / High / Medium / Low）、説明が表示されます。</p>
 
     <p><strong>3. ライセンス一覧</strong></p>
-    <p>各パッケージのライセンス SPDX ID と、その分類（Approved / Caution / Prohibited / Unknown）が表示されます。</p>
+    <p>各パッケージのライセンス SPDX ID と、そのリスク分類（High Risk / Risk / Known-Normal / Unknown）が表示されます。</p>
 
     <div class="warn-box">
-      <p>ポリシー判定が FAIL の場合は、脆弱性一覧やライセンス一覧を確認し、該当する問題に対処してください。</p>
+      <p>High Risk のアイテムがある場合は、リスク分析の詳細を確認し、推奨アクションに従って対処してください。</p>
     </div>
 
     <div class="chapter-nav">
       <a href="getting-started.html">&larr; 前へ: はじめに</a>
-      <a href="vulnerability-analysis.html">次へ: 脆弱性分析 &rarr;</a>
+      <a href="vulnerability-analysis.html">次へ: 脆弱性分析とリスク分析 &rarr;</a>
     </div>
   </div>
 
@@ -92,20 +112,37 @@
       <a href="../support.html?lang=en">Support</a>
     </div>
 
-    <h1>Chapter 2: Scanning</h1>
-    <p class="subtitle">Detect and analyze project dependency libraries</p>
+    <h1>Chapter 2: SBOM Import &amp; Folder Scan</h1>
+    <p class="subtitle">CycloneDX / SPDX auto-detect import, folder scan for dependency detection</p>
 
-    <h2>How to Run a Scan</h2>
+    <h2>Two Input Methods in v2.0</h2>
+    <p>Dependa v2.0 provides two ways to load dependencies:</p>
+    <table class="manual-table">
+      <tr><th>Method</th><th>Description</th></tr>
+      <tr><td>SBOM Import</td><td>Directly import an existing SBOM file (CycloneDX JSON / SPDX JSON). Format is auto-detected.</td></tr>
+      <tr><td>Folder Scan</td><td>Specify a project folder to scan and generate an SBOM from dependency definition files.</td></tr>
+    </table>
+
+    <h2>SBOM Import</h2>
     <ol>
-      <li>Open the "Scan" screen from the navigation bar on the left.</li>
-      <li>Enter the path to your project folder or click "Select Folder" to browse.</li>
-      <li>Click the "Scan" button to start the analysis.</li>
-      <li>Once complete, results are displayed as summary cards and data grids.</li>
+      <li>Open the "SBOM / Scan" screen from the navigation bar on the left.</li>
+      <li>Click "Open SBOM" and select your SBOM file.</li>
+      <li>Dependa auto-detects CycloneDX vs SPDX format and imports it.</li>
+      <li>After import, the list of packages for review is displayed.</li>
     </ol>
 
     <div class="info-box">
-      <p>The target folder must contain supported dependency definition files (e.g., requirements.txt).</p>
+      <p>Supported SBOM formats: <strong>CycloneDX 1.4 / 1.5 JSON</strong> and <strong>SPDX 2.3 JSON</strong>. Format is auto-detected; no manual selection is needed.</p>
     </div>
+
+    <h2>How to Run a Folder Scan</h2>
+    <ol>
+      <li>Open the "SBOM / Scan" screen from the navigation bar on the left.</li>
+      <li>Select the "Folder Scan" tab.</li>
+      <li>Enter the path to your project folder or click "Select Folder" to browse.</li>
+      <li>Click the "Scan" button to start the analysis. A scan lock overlay is displayed during scanning with a progress bar showing status.</li>
+      <li>Once complete, results are displayed as summary cards and data grids.</li>
+    </ol>
 
     <h2>Supported Ecosystems and Files</h2>
     <table class="manual-table">
@@ -114,46 +151,49 @@
       <tr><td>Python</td><td><code>pyproject.toml</code></td><td>Free</td></tr>
       <tr><td>Python</td><td><code>poetry.lock</code></td><td>Free</td></tr>
       <tr><td>Python</td><td><code>uv.lock</code></td><td>Free</td></tr>
-      <tr><td>Node.js</td><td><code>package.json</code></td><td>Pro <span class="pro-badge">PRO</span></td></tr>
-      <tr><td>Node.js</td><td><code>package-lock.json</code></td><td>Pro <span class="pro-badge">PRO</span></td></tr>
+      <tr><td>Node.js</td><td><code>package.json</code></td><td>Free</td></tr>
+      <tr><td>Node.js</td><td><code>package-lock.json</code></td><td>Free</td></tr>
+      <tr><td>SBOM</td><td>CycloneDX JSON (<code>.cdx.json</code> / <code>.json</code>)</td><td>Free</td></tr>
+      <tr><td>SBOM</td><td>SPDX JSON (<code>.spdx.json</code> / <code>.json</code>)</td><td>Free</td></tr>
     </table>
 
     <h2>Understanding Scan Results</h2>
 
     <div class="screenshot">
       <img src="images/scan-results-en.png" alt="Scan Results">
-      <div class="caption">Scan results — summary, dependencies, vulnerabilities, and licenses</div>
+      <div class="caption">Scan results — summary, dependencies, risk, and licenses</div>
     </div>
 
     <h3>Summary Cards</h3>
-    <p>After a scan completes, four summary cards are displayed at the top of the screen.</p>
+    <p>After a scan completes, summary cards are displayed at the top of the screen:</p>
     <table class="manual-table">
       <tr><th>Card</th><th>Description</th></tr>
       <tr><td>Dependencies</td><td>Total number of detected dependency packages.</td></tr>
+      <tr><td>Risk</td><td>Count by risk level (High Risk / Risk / Known-Normal).</td></tr>
       <tr><td>Vulnerabilities</td><td>Number of known vulnerabilities found, broken down by severity.</td></tr>
-      <tr><td>Licenses</td><td>Number of license types detected, broken down by classification (Approved / Caution / Prohibited / Unknown).</td></tr>
-      <tr><td>Policy</td><td>Overall policy result: PASS (no issues) or FAIL (action required).</td></tr>
+      <tr><td>Licenses</td><td>Number of license types detected, broken down by classification.</td></tr>
+      <tr><td>Review Status</td><td>Current review workflow status.</td></tr>
     </table>
 
     <h3>Data Grids</h3>
-    <p>Below the summary cards, three data grids (tables) are displayed.</p>
+    <p>Below the summary cards, data grids (tables) are displayed. When filters are applied, matching rows are highlighted.</p>
 
     <p><strong>1. Dependencies List</strong></p>
-    <p>Shows all detected dependency packages with their name, version, ecosystem, and license.</p>
+    <p>Shows all detected dependency packages with their name, version, ecosystem, license, and risk level.</p>
 
     <p><strong>2. Vulnerabilities List</strong></p>
     <p>Shows detected vulnerabilities with their ID (e.g., CVE number), affected package, severity (Critical / High / Medium / Low), and description.</p>
 
     <p><strong>3. Licenses List</strong></p>
-    <p>Shows each package's SPDX license ID and its classification (Approved / Caution / Prohibited / Unknown).</p>
+    <p>Shows each package's SPDX license ID and its risk classification (High Risk / Risk / Known-Normal / Unknown).</p>
 
     <div class="warn-box">
-      <p>If the policy result is FAIL, review the vulnerability and license lists to address the identified issues.</p>
+      <p>If High Risk items are found, review the risk analysis details and follow the recommended actions.</p>
     </div>
 
     <div class="chapter-nav">
       <a href="getting-started.html?lang=en">&larr; Previous: Getting Started</a>
-      <a href="vulnerability-analysis.html?lang=en">Next: Vulnerability Analysis &rarr;</a>
+      <a href="vulnerability-analysis.html?lang=en">Next: Vulnerability &amp; Risk Analysis &rarr;</a>
     </div>
   </div>
 

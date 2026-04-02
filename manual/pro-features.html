@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 7: Pro Features — Dependa | SumikkoLab</title>
+<title>Chapter 12: Pro Features — Dependa | SumikkoLab</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,33 +20,73 @@
       <a href="../support.html">サポート</a>
     </div>
 
-    <h1>Chapter 7: Pro 機能ガイド</h1>
-    <p class="subtitle">Pro ライセンスで利用できる高度な機能</p>
+    <h1>Chapter 12: Pro 機能ガイド</h1>
+    <p class="subtitle">Pro ライセンスで利用できる高度な機能（v2.0）</p>
 
     <h2>Pro でできること</h2>
     <table class="manual-table">
       <tr><th>機能</th><th>説明</th></tr>
-      <tr><td>Node.js スキャン</td><td>package.json / package-lock.json を解析し、npm パッケージの依存関係を検出します。</td></tr>
+      <tr><td>無制限レビュー</td><td>Free 版は 5 件までのレビューですが、Pro では無制限にレビューできます。</td></tr>
+      <tr><td>承認ワークフロー</td><td>レビュー結果に対する承認・差し戻しワークフロー（PendingApproval / Returned）が利用できます。</td></tr>
+      <tr><td>完全レポート</td><td>透かし（ウォーターマーク）なしの完全な HTML レポートを出力します。Free 版はウォーターマーク付きです。</td></tr>
+      <tr><td>SBOM 差分（Diff）</td><td>2 つの SBOM を比較し、依存関係・脆弱性・ライセンスの変化を検出します。</td></tr>
+      <tr><td>オンライン補完</td><td>PyPI / npm / NuGet のライセンス情報をオンラインで取得し、Unknown を大幅に削減します。</td></tr>
+      <tr><td>複数プロジェクト管理</td><td>複数のプロジェクトを切り替えて管理できます。</td></tr>
       <tr><td>OSV API オンライン脆弱性照合</td><td>Google OSV データベースにリアルタイムで問い合わせ、最新の脆弱性情報を取得します。</td></tr>
-      <tr><td>PyPI API オンラインライセンス補完</td><td>ローカル DB に無いパッケージのライセンス情報を PyPI から自動取得します。</td></tr>
       <tr><td>Delta Scan（差分スキャン）</td><td>前回スキャン結果と比較し、依存・脆弱性・ライセンス・ポリシーの変化を検出します。</td></tr>
-      <tr><td>AI プロンプト生成</td><td>ChatGPT 等の AI に貼り付けて使える修正支援プロンプトを 3 種類生成します。</td></tr>
-      <tr><td>高度なレポート</td><td>脆弱性分析レポート・ライセンス分析レポートの詳細版を出力します。</td></tr>
+      <tr><td>例外管理</td><td>脆弱性・ライセンス問題の例外承認・期限管理を行います。</td></tr>
+      <tr><td>AI プロンプト生成</td><td>ChatGPT 等の AI に貼り付けて使える修正支援プロンプトを生成します。</td></tr>
     </table>
 
     <div class="screenshot">
-      <img src="images/advanced-report-ja.png" alt="高度な分析レポート">
-      <div class="caption">高度な分析 — 深刻度分布・ライセンス分布・AI プロンプト</div>
+      <img src="images/advanced-report-ja.png" alt="Pro レポート">
+      <div class="caption">Pro 版レポート — ウォーターマークなし・完全な分析セクション</div>
     </div>
 
-    <h2>Node.js スキャン <span class="pro-badge">Pro</span></h2>
-    <p>Pro ライセンスを有効にすると、Python に加えて <strong>Node.js プロジェクト</strong> のスキャンが可能になります。</p>
-    <p>対応ファイル:</p>
+    <h2>無制限レビュー <span class="pro-badge">Pro</span></h2>
+    <p>Free 版では 1 回のセッションでレビューできるアイテムが 5 件に制限されています。Pro ではこの制限がなくなり、すべてのパッケージをレビューできます。</p>
+
+    <h2>承認ワークフロー <span class="pro-badge">Pro</span></h2>
+    <p>Pro ライセンスで利用できる承認ワークフローにより、レビュー結果を正式に承認する運用が可能になります。</p>
+    <table class="manual-table">
+      <tr><th>ステータス</th><th>説明</th></tr>
+      <tr><td>NotStarted</td><td>レビュー未開始</td></tr>
+      <tr><td>InReview</td><td>レビュー実施中</td></tr>
+      <tr><td>Completed</td><td>レビュー完了</td></tr>
+      <tr><td>PendingApproval</td><td>承認者による承認待ち（Pro）</td></tr>
+      <tr><td>Returned</td><td>承認者から差し戻し（Pro）</td></tr>
+    </table>
+    <p>レビュー完了後、「承認申請」をクリックすると PendingApproval 状態に遷移します。承認者は内容を確認し、承認または差し戻しを行います。</p>
+
+    <h2>完全レポート <span class="pro-badge">Pro</span></h2>
+    <p>Free 版の HTML レポートにはウォーターマーク（透かし）が表示されます。Pro 版ではウォーターマークが除去され、以下の詳細セクションも含まれます。</p>
     <ul>
-      <li><code>package.json</code> — 直接依存の検出</li>
-      <li><code>package-lock.json</code> — 完全な依存ツリーの解析（推奨）</li>
+      <li>Executive Summary（レビュー統計付き）</li>
+      <li>Action Required セクション</li>
+      <li>リスク分析セクション（RiskReason / RecommendedAction / Evidence）</li>
+      <li>AI セクション</li>
+      <li>免責事項（Disclaimer）</li>
     </ul>
-    <p>使い方は Python スキャンと同じです。プロジェクトフォルダを選択するだけで、自動的にエコシステムを判別してスキャンを実行します。</p>
+
+    <h2>SBOM 差分（Diff） <span class="pro-badge">Pro</span></h2>
+    <p>2 つの SBOM ファイルを比較し、追加・削除・変更されたパッケージ、新規・解消された脆弱性、ライセンスの変化を検出します。Delta Scan と組み合わせることで、継続的なレビューを効率化できます。</p>
+
+    <h2>オンライン補完 <span class="pro-badge">Pro</span></h2>
+    <p>設定画面で「オンライン補完」を有効にすると、以下のパッケージレジストリからライセンス情報を自動取得します。</p>
+    <table class="manual-table">
+      <tr><th>レジストリ</th><th>対象</th></tr>
+      <tr><td>PyPI</td><td>Python パッケージのライセンス情報</td></tr>
+      <tr><td>npm</td><td>Node.js パッケージのライセンス情報</td></tr>
+      <tr><td>NuGet</td><td>.NET パッケージのライセンス情報</td></tr>
+    </table>
+    <ul>
+      <li>Unknown と判定されるパッケージが大幅に減少します。</li>
+      <li>SPDX ID に正規化して分類するため、正確なリスク判定が行われます。</li>
+      <li>インターネット接続が必要です。オフライン環境ではローカル DB のみ使用されます。</li>
+    </ul>
+
+    <h2>複数プロジェクト管理 <span class="pro-badge">Pro</span></h2>
+    <p>Pro ライセンスでは、複数のプロジェクトを登録し、プロジェクト間を切り替えてレビュー・レポートを管理できます。Free 版は 1 プロジェクトのみです。</p>
 
     <h2>OSV API オンライン脆弱性照合 <span class="pro-badge">Pro</span></h2>
     <p>設定画面で「オンライン脆弱性照合」を有効にすると、ローカル JSON データベースだけでなく <strong>OSV API</strong> にもリアルタイムで問い合わせます。</p>
@@ -56,52 +96,27 @@
       <li>インターネット接続が必要です。オフライン環境ではローカル DB のみ使用されます。</li>
     </ul>
 
-    <h2>PyPI API オンラインライセンス補完 <span class="pro-badge">Pro</span></h2>
-    <p>設定画面で「オンラインライセンス補完」を有効にすると、ローカル DB にライセンス情報がないパッケージについて <strong>PyPI API</strong> から自動補完します。</p>
-    <ul>
-      <li>Unknown と判定されるパッケージが大幅に減少します。</li>
-      <li>SPDX ID に正規化して分類するため、正確なリスク判定が行われます。</li>
-    </ul>
-
     <h2>Delta Scan（差分スキャン） <span class="pro-badge">Pro</span></h2>
-    <p>Delta Scan は、前回のスキャン結果と今回の結果を比較して <strong>変化点</strong> を自動検出する機能です。</p>
+    <p>Delta Scan は、前回のスキャン結果と今回の結果を比較して <strong>変化点</strong> を自動検出する機能です。AI Governance の差分も検出されます。詳しくは <a href="delta-scan.html">差分スキャン</a> をご覧ください。</p>
 
-    <h3>Delta Scan の使い方</h3>
-    <ol>
-      <li>通常通りプロジェクトをスキャンします。</li>
-      <li>スキャン結果画面で <strong>「Delta Scan」</strong> ボタンをクリックします。</li>
-      <li>比較対象となる前回のスキャン結果（JSON ファイル）を選択します。</li>
-      <li>差分レポートが生成されます。</li>
-    </ol>
-
-    <h3>Delta Scan が検出する変化</h3>
-    <table class="manual-table">
-      <tr><th>カテゴリ</th><th>検出内容</th></tr>
-      <tr><td>依存関係の変化</td><td>追加・削除・バージョン変更されたパッケージ</td></tr>
-      <tr><td>脆弱性の変化</td><td>新たに発見された脆弱性、解消された脆弱性</td></tr>
-      <tr><td>ライセンスの変化</td><td>ライセンス種別が変わったパッケージ、リスク分類の変化</td></tr>
-      <tr><td>ポリシーの変化</td><td>ポリシー判定結果（PASS/FAIL）の変化</td></tr>
-    </table>
+    <h2>例外管理 <span class="pro-badge">Pro</span></h2>
+    <p>脆弱性やライセンス問題に対して「例外として承認済み」の記録を管理します。詳しくは <a href="exceptions.html">例外管理</a> をご覧ください。</p>
 
     <h2>AI プロンプト生成 <span class="pro-badge">Pro</span></h2>
-    <p>スキャン結果をもとに、ChatGPT 等の AI チャットに貼り付けて使える <strong>修正支援プロンプト</strong> を生成します。3 種類のプロンプトが利用できます。</p>
-
-    <h3>1. VulnerabilityRemediation（脆弱性修正）</h3>
-    <p>検出された脆弱性に対する修正方法を AI に相談するためのプロンプトです。影響を受けるパッケージ、CVE ID、CVSS スコア、推奨バージョンなどの情報が含まれます。</p>
-
-    <h3>2. LicenseReview（ライセンス確認）</h3>
-    <p>ライセンスリスクが検出されたパッケージについて、法的な影響や代替パッケージを AI に相談するためのプロンプトです。</p>
-
-    <h3>3. DeltaScanReview（Delta Scan レビュー） <span class="pro-badge">Pro</span></h3>
-    <p>Delta Scan の差分結果をもとに、変更の影響範囲やリスク評価を AI に相談するためのプロンプトです。</p>
+    <p>スキャン結果をもとに、ChatGPT 等の AI チャットに貼り付けて使える <strong>修正支援プロンプト</strong> を生成します。</p>
+    <ul>
+      <li><strong>VulnerabilityRemediation</strong> — 脆弱性修正の相談プロンプト</li>
+      <li><strong>LicenseReview</strong> — ライセンスリスクの相談プロンプト</li>
+      <li><strong>DeltaScanReview</strong> — 差分結果のリスク評価プロンプト</li>
+    </ul>
 
     <div class="info-box">
       <p>AI プロンプトはクリップボードにコピーできます。お使いの AI チャットサービスに貼り付けてご利用ください。</p>
     </div>
 
     <div class="chapter-nav">
-      <a href="settings.html">&larr; Chapter 6: 設定</a>
-      <a href="cli-reference.html">Chapter 8: CLI リファレンス &rarr;</a>
+      <a href="settings.html">&larr; 設定</a>
+      <a href="cli-reference.html">CLI リファレンス &rarr;</a>
     </div>
   </div>
 
@@ -112,33 +127,73 @@
       <a href="../support.html?lang=en">Support</a>
     </div>
 
-    <h1>Chapter 7: Pro Features Guide</h1>
-    <p class="subtitle">Advanced features available with the Pro license</p>
+    <h1>Chapter 12: Pro Features Guide</h1>
+    <p class="subtitle">Advanced features available with the Pro license (v2.0)</p>
 
     <h2>What Pro Offers</h2>
     <table class="manual-table">
       <tr><th>Feature</th><th>Description</th></tr>
-      <tr><td>Node.js Scanning</td><td>Analyze package.json / package-lock.json to detect npm package dependencies.</td></tr>
-      <tr><td>OSV API Online Vulnerability Lookup</td><td>Query the Google OSV database in real time to get the latest vulnerability data.</td></tr>
-      <tr><td>PyPI API Online License Metadata</td><td>Automatically retrieve license info from PyPI for packages not in the local DB.</td></tr>
-      <tr><td>Delta Scan</td><td>Compare with previous scan results to detect changes in dependencies, vulnerabilities, licenses, and policy status.</td></tr>
-      <tr><td>AI Prompt Generation</td><td>Generate three types of remediation prompts to paste into AI chatbots like ChatGPT.</td></tr>
-      <tr><td>Advanced Reports</td><td>Export detailed vulnerability and license analysis reports.</td></tr>
+      <tr><td>Unlimited Review</td><td>Free is limited to 5 review items; Pro allows unlimited reviews.</td></tr>
+      <tr><td>Approval Workflow</td><td>Formal approval/return workflow for review results (PendingApproval / Returned).</td></tr>
+      <tr><td>Full Reports</td><td>Generate watermark-free HTML reports. Free edition includes a watermark.</td></tr>
+      <tr><td>SBOM Diff</td><td>Compare two SBOMs to detect changes in dependencies, vulnerabilities, and licenses.</td></tr>
+      <tr><td>Online Enrichment</td><td>Retrieve license info from PyPI / npm / NuGet online, significantly reducing Unknown results.</td></tr>
+      <tr><td>Multiple Projects</td><td>Manage and switch between multiple projects.</td></tr>
+      <tr><td>OSV API Vulnerability Lookup</td><td>Query the Google OSV database in real time for the latest vulnerability data.</td></tr>
+      <tr><td>Delta Scan</td><td>Compare with previous scan results to detect changes in dependencies, vulnerabilities, licenses, and policy.</td></tr>
+      <tr><td>Exception Management</td><td>Track approved exceptions for vulnerabilities and license issues with expiration management.</td></tr>
+      <tr><td>AI Prompt Generation</td><td>Generate remediation prompts to paste into AI chatbots like ChatGPT.</td></tr>
     </table>
 
     <div class="screenshot">
-      <img src="images/advanced-report-en.png" alt="Advanced Analysis Report">
-      <div class="caption">Advanced analysis — severity distribution, license breakdown, and AI prompts</div>
+      <img src="images/advanced-report-en.png" alt="Pro Report">
+      <div class="caption">Pro report — no watermark, complete analysis sections</div>
     </div>
 
-    <h2>Node.js Scanning <span class="pro-badge">Pro</span></h2>
-    <p>With a Pro license, you can scan <strong>Node.js projects</strong> in addition to Python.</p>
-    <p>Supported files:</p>
+    <h2>Unlimited Review <span class="pro-badge">Pro</span></h2>
+    <p>The Free edition limits review to 5 items per session. Pro removes this limit, allowing you to review all packages.</p>
+
+    <h2>Approval Workflow <span class="pro-badge">Pro</span></h2>
+    <p>The Pro approval workflow enables formal approval of review results.</p>
+    <table class="manual-table">
+      <tr><th>Status</th><th>Description</th></tr>
+      <tr><td>NotStarted</td><td>Review not yet started</td></tr>
+      <tr><td>InReview</td><td>Review in progress</td></tr>
+      <tr><td>Completed</td><td>Review completed</td></tr>
+      <tr><td>PendingApproval</td><td>Awaiting approver review (Pro)</td></tr>
+      <tr><td>Returned</td><td>Returned by approver for revision (Pro)</td></tr>
+    </table>
+    <p>After completing a review, click "Request Approval" to transition to PendingApproval. The approver can then approve or return the review.</p>
+
+    <h2>Full Reports <span class="pro-badge">Pro</span></h2>
+    <p>Free edition HTML reports include a watermark. Pro removes the watermark and includes additional detailed sections:</p>
     <ul>
-      <li><code>package.json</code> — Detects direct dependencies</li>
-      <li><code>package-lock.json</code> — Analyzes the full dependency tree (recommended)</li>
+      <li>Executive Summary (with review statistics)</li>
+      <li>Action Required section</li>
+      <li>Risk Analysis section (RiskReason / RecommendedAction / Evidence)</li>
+      <li>AI section</li>
+      <li>Disclaimer</li>
     </ul>
-    <p>Usage is the same as Python scanning. Simply select the project folder and Dependa will automatically detect the ecosystem and run the scan.</p>
+
+    <h2>SBOM Diff <span class="pro-badge">Pro</span></h2>
+    <p>Compare two SBOM files to detect added, removed, and changed packages, new and resolved vulnerabilities, and license changes. Combine with Delta Scan for efficient continuous review.</p>
+
+    <h2>Online Enrichment <span class="pro-badge">Pro</span></h2>
+    <p>Enable "Online Enrichment" in Settings to automatically retrieve license information from the following package registries:</p>
+    <table class="manual-table">
+      <tr><th>Registry</th><th>Target</th></tr>
+      <tr><td>PyPI</td><td>Python package license information</td></tr>
+      <tr><td>npm</td><td>Node.js package license information</td></tr>
+      <tr><td>NuGet</td><td>.NET package license information</td></tr>
+    </table>
+    <ul>
+      <li>Significantly reduces the number of packages classified as Unknown.</li>
+      <li>Normalizes to SPDX IDs for accurate risk classification.</li>
+      <li>Requires an internet connection. In offline environments, only the local DB is used.</li>
+    </ul>
+
+    <h2>Multiple Projects <span class="pro-badge">Pro</span></h2>
+    <p>With Pro, you can register and switch between multiple projects for review and reporting. The Free edition supports only one project.</p>
 
     <h2>OSV API Online Vulnerability Lookup <span class="pro-badge">Pro</span></h2>
     <p>Enable "Online Vulnerability Lookup" in Settings to query the <strong>OSV API</strong> in real time alongside the local JSON database.</p>
@@ -148,52 +203,27 @@
       <li>Requires an internet connection. In offline environments, only the local DB is used.</li>
     </ul>
 
-    <h2>PyPI API Online License Metadata <span class="pro-badge">Pro</span></h2>
-    <p>Enable "Online License Metadata" in Settings to automatically supplement license information from the <strong>PyPI API</strong> for packages missing from the local DB.</p>
-    <ul>
-      <li>Significantly reduces the number of packages classified as Unknown.</li>
-      <li>Normalizes to SPDX IDs for accurate risk classification.</li>
-    </ul>
-
     <h2>Delta Scan <span class="pro-badge">Pro</span></h2>
-    <p>Delta Scan compares previous scan results with current results to automatically detect <strong>changes</strong>.</p>
+    <p>Delta Scan compares previous scan results with current results to automatically detect <strong>changes</strong>, including AI Governance deltas. See <a href="delta-scan.html?lang=en">Delta Scan</a> for details.</p>
 
-    <h3>How to Use Delta Scan</h3>
-    <ol>
-      <li>Scan your project as usual.</li>
-      <li>Click the <strong>"Delta Scan"</strong> button on the scan results screen.</li>
-      <li>Select the previous scan result (JSON file) to compare against.</li>
-      <li>A delta report will be generated.</li>
-    </ol>
-
-    <h3>What Delta Scan Detects</h3>
-    <table class="manual-table">
-      <tr><th>Category</th><th>Details</th></tr>
-      <tr><td>Dependency Changes</td><td>Added, removed, or version-changed packages</td></tr>
-      <tr><td>Vulnerability Changes</td><td>Newly discovered or resolved vulnerabilities</td></tr>
-      <tr><td>License Changes</td><td>Packages with changed license types or risk classifications</td></tr>
-      <tr><td>Policy Changes</td><td>Changes in policy verdict (PASS/FAIL)</td></tr>
-    </table>
+    <h2>Exception Management <span class="pro-badge">Pro</span></h2>
+    <p>Track approved exceptions for vulnerability and license issues with full audit trail. See <a href="exceptions.html?lang=en">Exception Management</a> for details.</p>
 
     <h2>AI Prompt Generation <span class="pro-badge">Pro</span></h2>
-    <p>Generate <strong>remediation prompts</strong> based on scan results that you can paste into AI chatbots like ChatGPT. Three types of prompts are available:</p>
-
-    <h3>1. VulnerabilityRemediation</h3>
-    <p>A prompt for consulting AI about fixing detected vulnerabilities. Includes affected packages, CVE IDs, CVSS scores, and recommended versions.</p>
-
-    <h3>2. LicenseReview</h3>
-    <p>A prompt for consulting AI about legal implications of detected license risks and finding alternative packages.</p>
-
-    <h3>3. DeltaScanReview <span class="pro-badge">Pro</span></h3>
-    <p>A prompt for consulting AI about the impact scope and risk assessment of changes detected by Delta Scan.</p>
+    <p>Generate <strong>remediation prompts</strong> based on scan results for use with AI chatbots like ChatGPT:</p>
+    <ul>
+      <li><strong>VulnerabilityRemediation</strong> — Consult AI about fixing detected vulnerabilities</li>
+      <li><strong>LicenseReview</strong> — Consult AI about license risk implications</li>
+      <li><strong>DeltaScanReview</strong> — Consult AI about delta scan risk assessment</li>
+    </ul>
 
     <div class="info-box">
       <p>AI prompts can be copied to your clipboard. Paste them into your preferred AI chat service.</p>
     </div>
 
     <div class="chapter-nav">
-      <a href="settings.html?lang=en">&larr; Chapter 6: Settings</a>
-      <a href="cli-reference.html?lang=en">Chapter 8: CLI Reference &rarr;</a>
+      <a href="settings.html?lang=en">&larr; Settings</a>
+      <a href="cli-reference.html?lang=en">CLI Reference &rarr;</a>
     </div>
   </div>
 

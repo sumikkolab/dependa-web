@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 6: Settings — Dependa | SumikkoLab</title>
+<title>Chapter 11: Settings — Dependa | SumikkoLab</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,8 +20,8 @@
       <a href="../support.html">サポート</a>
     </div>
 
-    <h1>Chapter 6: 設定</h1>
-    <p class="subtitle">アプリケーションの動作をカスタマイズする</p>
+    <h1>Chapter 11: 設定</h1>
+    <p class="subtitle">アプリケーションの動作をカスタマイズする（v2.0）</p>
 
     <h2>設定画面を開く</h2>
     <p>メイン画面の左下にある <strong>歯車アイコン</strong> をクリックすると設定画面が開きます。</p>
@@ -43,14 +43,30 @@
       <p>この機能を利用するにはインターネット接続と Pro ライセンスが必要です。</p>
     </div>
 
-    <h3>オンラインライセンス補完 <span class="pro-badge">Pro</span></h3>
-    <p>有効にすると、ローカルデータベースにライセンス情報がないパッケージについて <strong>PyPI API</strong> 等からライセンス情報を自動補完します。Unknown と判定されるパッケージが減り、ライセンス分析の精度が向上します。</p>
+    <h3>オンライン補完 <span class="pro-badge">Pro</span></h3>
+    <p>有効にすると、ローカルデータベースにライセンス情報がないパッケージについて <strong>PyPI / npm / NuGet</strong> からライセンス情報を自動補完します。Unknown と判定されるパッケージが減り、ライセンス分析の精度が向上します。</p>
+    <table class="manual-table">
+      <tr><th>レジストリ</th><th>対象</th></tr>
+      <tr><td>PyPI</td><td>Python パッケージのライセンス情報</td></tr>
+      <tr><td>npm</td><td>Node.js パッケージのライセンス情報</td></tr>
+      <tr><td>NuGet</td><td>.NET パッケージのライセンス情報</td></tr>
+    </table>
     <div class="info-box">
       <p>この機能を利用するにはインターネット接続と Pro ライセンスが必要です。</p>
     </div>
 
     <h3>利用規約の再表示</h3>
     <p>初回起動時に同意した利用規約を再度確認できます。設定画面内の <strong>「利用規約を表示」</strong> ボタンをクリックしてください。</p>
+
+    <h2>Pro 機能の設定項目</h2>
+    <p>Pro ライセンスが有効な場合、以下の設定項目が追加で利用できます。</p>
+    <table class="manual-table">
+      <tr><th>設定項目</th><th>説明</th></tr>
+      <tr><td>オンライン脆弱性照合</td><td>OSV API によるリアルタイム脆弱性検出</td></tr>
+      <tr><td>オンライン補完</td><td>PyPI / npm / NuGet からのライセンス情報自動取得</td></tr>
+      <tr><td>承認ワークフロー</td><td>レビュー結果の承認・差し戻し機能の有効化</td></tr>
+      <tr><td>複数プロジェクト</td><td>複数プロジェクトの切り替え管理</td></tr>
+    </table>
 
     <h2>設定ファイルの保存先</h2>
     <p>設定は以下のパスに JSON 形式で保存されます。</p>
@@ -62,8 +78,8 @@
     </div>
 
     <div class="chapter-nav">
-      <a href="reports.html">&larr; Chapter 5: レポートと SBOM</a>
-      <a href="pro-features.html">Chapter 7: Pro 機能ガイド &rarr;</a>
+      <a href="iac-support.html">&larr; IaC 対応</a>
+      <a href="pro-features.html">Pro 機能ガイド &rarr;</a>
     </div>
   </div>
 
@@ -74,8 +90,8 @@
       <a href="../support.html?lang=en">Support</a>
     </div>
 
-    <h1>Chapter 6: Settings</h1>
-    <p class="subtitle">Customize how the application works</p>
+    <h1>Chapter 11: Settings</h1>
+    <p class="subtitle">Customize how the application works (v2.0)</p>
 
     <h2>Opening Settings</h2>
     <p>Click the <strong>gear icon</strong> at the bottom-left of the main screen to open the Settings panel.</p>
@@ -97,14 +113,30 @@
       <p>This feature requires an internet connection and a Pro license.</p>
     </div>
 
-    <h3>Online License Metadata <span class="pro-badge">Pro</span></h3>
-    <p>When enabled, automatically supplements license information from the <strong>PyPI API</strong> and other sources for packages missing from the local database. This reduces the number of packages classified as Unknown and improves license analysis accuracy.</p>
+    <h3>Online Enrichment <span class="pro-badge">Pro</span></h3>
+    <p>When enabled, automatically supplements license information from <strong>PyPI / npm / NuGet</strong> for packages missing from the local database. This reduces the number of packages classified as Unknown and improves license analysis accuracy.</p>
+    <table class="manual-table">
+      <tr><th>Registry</th><th>Target</th></tr>
+      <tr><td>PyPI</td><td>Python package license information</td></tr>
+      <tr><td>npm</td><td>Node.js package license information</td></tr>
+      <tr><td>NuGet</td><td>.NET package license information</td></tr>
+    </table>
     <div class="info-box">
       <p>This feature requires an internet connection and a Pro license.</p>
     </div>
 
     <h3>Re-display Terms of Use</h3>
     <p>You can review the terms of use that you agreed to during the first launch. Click the <strong>"Show Terms of Use"</strong> button in the Settings panel.</p>
+
+    <h2>Pro Feature Settings</h2>
+    <p>When a Pro license is active, the following additional settings are available:</p>
+    <table class="manual-table">
+      <tr><th>Setting</th><th>Description</th></tr>
+      <tr><td>Online Vulnerability Lookup</td><td>Real-time vulnerability detection via OSV API</td></tr>
+      <tr><td>Online Enrichment</td><td>Automatic license information retrieval from PyPI / npm / NuGet</td></tr>
+      <tr><td>Approval Workflow</td><td>Enable review result approval and return functionality</td></tr>
+      <tr><td>Multiple Projects</td><td>Manage and switch between multiple projects</td></tr>
+    </table>
 
     <h2>Settings File Location</h2>
     <p>Settings are saved in JSON format at the following path:</p>
@@ -116,8 +148,8 @@
     </div>
 
     <div class="chapter-nav">
-      <a href="reports.html?lang=en">&larr; Chapter 5: Reports &amp; SBOM</a>
-      <a href="pro-features.html?lang=en">Chapter 7: Pro Features Guide &rarr;</a>
+      <a href="iac-support.html?lang=en">&larr; IaC Support</a>
+      <a href="pro-features.html?lang=en">Pro Features Guide &rarr;</a>
     </div>
   </div>
 

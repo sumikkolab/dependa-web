@@ -21,25 +21,25 @@
     </div>
 
     <h1>Dependa ユーザーマニュアル</h1>
-    <p class="subtitle">v1.5 — 最終更新: 2026-03-31</p>
+    <p class="subtitle">v2.0 — 最終更新: 2026-04-01</p>
 
     <h2>目次</h2>
     <ol>
-      <li><a href="getting-started.html">はじめに</a><br><span style="font-size:0.85rem;color:#64748b;">インストール・初回起動・利用規約の同意</span></li>
-      <li><a href="scanning.html">スキャン機能</a><br><span style="font-size:0.85rem;color:#64748b;">プロジェクトの依存ライブラリを検出・分析する</span></li>
-      <li><a href="vulnerability-analysis.html">脆弱性分析</a><br><span style="font-size:0.85rem;color:#64748b;">既知の脆弱性を CVSS スコアで判定</span></li>
-      <li><a href="license-analysis.html">ライセンス分析</a><br><span style="font-size:0.85rem;color:#64748b;">ライセンスリスクを自動分類</span></li>
-      <li><a href="reports.html">レポートと SBOM</a><br><span style="font-size:0.85rem;color:#64748b;">HTML レポート・CycloneDX SBOM の生成と活用</span></li>
-      <li><a href="policy.html">ポリシー設定と判定記録</a><br><span style="font-size:0.85rem;color:#64748b;">組織のルールに基づく審査支援・判定理由の可視化（v1.1.0）</span></li>
-      <li><a href="delta-scan.html">差分スキャン（Delta Scan）</a><br><span style="font-size:0.85rem;color:#64748b;">前回との差分を自動検出し、継続審査を支援（v1.2.0 Pro）</span></li>
-      <li><a href="exceptions.html">例外管理</a><br><span style="font-size:0.85rem;color:#64748b;">脆弱性・ライセンス問題の例外承認・期限管理（v1.2.0 Pro）</span></li>
-      <li><a href="ai-governance.html">AI Governance 分析</a><br><span style="font-size:0.85rem;color:#64748b;">AI BOM・Excessive Agency・Data Sovereignty・組織ポリシー照合（v1.5）</span></li>
-      <li><a href="iac-support.html">IaC 対応</a><br><span style="font-size:0.85rem;color:#64748b;">Terraform / Bicep / ARM JSON から AI リソースを検出（v1.5）</span></li>
-      <li><a href="settings.html">設定</a><br><span style="font-size:0.85rem;color:#64748b;">言語・オンライン機能・ライセンス管理</span></li>
-      <li><a href="pro-features.html">Pro 機能ガイド</a><br><span style="font-size:0.85rem;color:#64748b;">Node.js・マルチエコシステム・Delta Scan・例外管理・AI プロンプト</span></li>
+      <li><a href="getting-started.html">はじめに</a><br><span style="font-size:0.85rem;color:#64748b;">インストール・初回起動・画面構成の概要</span></li>
+      <li><a href="scanning.html">SBOM インポートとフォルダスキャン</a><br><span style="font-size:0.85rem;color:#64748b;">CycloneDX / SPDX の自動判別インポート、フォルダスキャンによる依存検出</span></li>
+      <li><a href="vulnerability-analysis.html">脆弱性分析とリスク分析</a><br><span style="font-size:0.85rem;color:#64748b;">CVSS スコア判定・RiskReason・RecommendedAction・Evidence・Confidence</span></li>
+      <li><a href="license-analysis.html">ライセンス分析</a><br><span style="font-size:0.85rem;color:#64748b;">ライセンスリスクを自動分類（High Risk / Risk / Known-Normal）・オンライン補完</span></li>
+      <li><a href="reports.html">レポートと SBOM</a><br><span style="font-size:0.85rem;color:#64748b;">Executive Summary・Action Required・リスク分析・AI セクション・レビュー統計</span></li>
+      <li><a href="policy.html">ポリシー設定と判定記録</a><br><span style="font-size:0.85rem;color:#64748b;">組織ポリシーに基づく審査支援（許可 / 要承認 / 禁止）</span></li>
+      <li><a href="delta-scan.html">差分スキャン（Delta Scan）</a><br><span style="font-size:0.85rem;color:#64748b;">前回との差分を自動検出し、継続審査を支援（Pro）</span></li>
+      <li><a href="exceptions.html">例外管理</a><br><span style="font-size:0.85rem;color:#64748b;">脆弱性・ライセンス問題の例外承認・期限管理（Pro）</span></li>
+      <li><a href="ai-governance.html">AI Governance 分析</a><br><span style="font-size:0.85rem;color:#64748b;">AI BOM・Excessive Agency・Data Sovereignty・ExternalServiceUsage・組織ポリシー照合</span></li>
+      <li><a href="iac-support.html">IaC 対応</a><br><span style="font-size:0.85rem;color:#64748b;">Terraform / Bicep / ARM JSON から AI リソースを検出</span></li>
+      <li><a href="settings.html">設定</a><br><span style="font-size:0.85rem;color:#64748b;">言語・オンライン補完・ライセンス管理</span></li>
+      <li><a href="pro-features.html">Pro 機能ガイド</a><br><span style="font-size:0.85rem;color:#64748b;">無制限レビュー・承認ワークフロー・完全レポート・SBOM 差分・オンライン補完・複数プロジェクト</span></li>
       <li><a href="cli-reference.html">CLI リファレンス</a><br><span style="font-size:0.85rem;color:#64748b;">コマンドライン操作・自動化スクリプト</span></li>
       <li><a href="licensing.html">ライセンスと購入</a><br><span style="font-size:0.85rem;color:#64748b;">Free / Pro プランの比較と購入方法</span></li>
-      <li><a href="troubleshooting.html">トラブルシューティング</a><br><span style="font-size:0.85rem;color:#64748b;">エラーメッセージ対応・設定リセット</span></li>
+      <li><a href="troubleshooting.html">トラブルシューティング</a><br><span style="font-size:0.85rem;color:#64748b;">エラーメッセージ対応・SBOM 形式の問題・設定リセット</span></li>
     </ol>
   </div>
 
@@ -51,25 +51,25 @@
     </div>
 
     <h1>Dependa User Manual</h1>
-    <p class="subtitle">v1.5 — Last updated: March 31, 2026</p>
+    <p class="subtitle">v2.0 — Last updated: April 1, 2026</p>
 
     <h2>Table of Contents</h2>
     <ol>
-      <li><a href="getting-started.html?lang=en">Getting Started</a><br><span style="font-size:0.85rem;color:#64748b;">Installation, first launch, and terms acceptance</span></li>
-      <li><a href="scanning.html?lang=en">Scanning</a><br><span style="font-size:0.85rem;color:#64748b;">Detect and analyze project dependency libraries</span></li>
-      <li><a href="vulnerability-analysis.html?lang=en">Vulnerability Analysis</a><br><span style="font-size:0.85rem;color:#64748b;">Identify known vulnerabilities by CVSS score</span></li>
-      <li><a href="license-analysis.html?lang=en">License Analysis</a><br><span style="font-size:0.85rem;color:#64748b;">Automatically classify license risks</span></li>
-      <li><a href="reports.html?lang=en">Reports &amp; SBOM</a><br><span style="font-size:0.85rem;color:#64748b;">Generate and use HTML reports and CycloneDX SBOM</span></li>
-      <li><a href="policy.html?lang=en">Policy Settings &amp; Judgments</a><br><span style="font-size:0.85rem;color:#64748b;">Organization policy-based review and explainable judgments (v1.1.0)</span></li>
-      <li><a href="delta-scan.html?lang=en">Delta Scan</a><br><span style="font-size:0.85rem;color:#64748b;">Detect changes from previous scan for continuous review (v1.2.0 Pro)</span></li>
-      <li><a href="exceptions.html?lang=en">Exception Management</a><br><span style="font-size:0.85rem;color:#64748b;">Approve and track vulnerability/license exceptions (v1.2.0 Pro)</span></li>
-      <li><a href="ai-governance.html?lang=en">AI Governance Analysis</a><br><span style="font-size:0.85rem;color:#64748b;">AI BOM, Excessive Agency, Data Sovereignty, Organization Policy (v1.5)</span></li>
-      <li><a href="iac-support.html?lang=en">IaC Support</a><br><span style="font-size:0.85rem;color:#64748b;">Detect AI resources from Terraform / Bicep / ARM JSON (v1.5)</span></li>
-      <li><a href="settings.html?lang=en">Settings</a><br><span style="font-size:0.85rem;color:#64748b;">Language, online features, and license management</span></li>
-      <li><a href="pro-features.html?lang=en">Pro Features Guide</a><br><span style="font-size:0.85rem;color:#64748b;">Node.js, multi-ecosystem, Delta Scan, exception management, AI prompts</span></li>
+      <li><a href="getting-started.html?lang=en">Getting Started</a><br><span style="font-size:0.85rem;color:#64748b;">Installation, first launch, and screen overview</span></li>
+      <li><a href="scanning.html?lang=en">SBOM Import &amp; Folder Scan</a><br><span style="font-size:0.85rem;color:#64748b;">Auto-detect CycloneDX / SPDX import, folder scan for dependency detection</span></li>
+      <li><a href="vulnerability-analysis.html?lang=en">Vulnerability &amp; Risk Analysis</a><br><span style="font-size:0.85rem;color:#64748b;">CVSS scoring, RiskReason, RecommendedAction, Evidence, and Confidence</span></li>
+      <li><a href="license-analysis.html?lang=en">License Analysis</a><br><span style="font-size:0.85rem;color:#64748b;">Automatically classify license risks (High Risk / Risk / Known-Normal) with online enrichment</span></li>
+      <li><a href="reports.html?lang=en">Reports &amp; SBOM</a><br><span style="font-size:0.85rem;color:#64748b;">Executive Summary, Action Required, Risk Analysis, AI section, review statistics</span></li>
+      <li><a href="policy.html?lang=en">Policy Settings &amp; Judgments</a><br><span style="font-size:0.85rem;color:#64748b;">Organization policy-based review (Allowed / NeedApproval / Prohibited)</span></li>
+      <li><a href="delta-scan.html?lang=en">Delta Scan</a><br><span style="font-size:0.85rem;color:#64748b;">Detect changes from previous scan for continuous review (Pro)</span></li>
+      <li><a href="exceptions.html?lang=en">Exception Management</a><br><span style="font-size:0.85rem;color:#64748b;">Approve and track vulnerability/license exceptions (Pro)</span></li>
+      <li><a href="ai-governance.html?lang=en">AI Governance Analysis</a><br><span style="font-size:0.85rem;color:#64748b;">AI BOM, Excessive Agency, Data Sovereignty, ExternalServiceUsage, Organization Policy</span></li>
+      <li><a href="iac-support.html?lang=en">IaC Support</a><br><span style="font-size:0.85rem;color:#64748b;">Detect AI resources from Terraform / Bicep / ARM JSON</span></li>
+      <li><a href="settings.html?lang=en">Settings</a><br><span style="font-size:0.85rem;color:#64748b;">Language, online enrichment, and license management</span></li>
+      <li><a href="pro-features.html?lang=en">Pro Features Guide</a><br><span style="font-size:0.85rem;color:#64748b;">Unlimited review, approval workflow, full reports, SBOM diff, online enrichment, multiple projects</span></li>
       <li><a href="cli-reference.html?lang=en">CLI Reference</a><br><span style="font-size:0.85rem;color:#64748b;">Command-line usage and automation scripts</span></li>
       <li><a href="licensing.html?lang=en">Licensing &amp; Purchase</a><br><span style="font-size:0.85rem;color:#64748b;">Free vs Pro plan comparison and how to purchase</span></li>
-      <li><a href="troubleshooting.html?lang=en">Troubleshooting</a><br><span style="font-size:0.85rem;color:#64748b;">Error message reference and settings reset</span></li>
+      <li><a href="troubleshooting.html?lang=en">Troubleshooting</a><br><span style="font-size:0.85rem;color:#64748b;">Error message reference, SBOM format issues, and settings reset</span></li>
     </ol>
   </div>
 
