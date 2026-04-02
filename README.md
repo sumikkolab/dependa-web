@@ -154,7 +154,7 @@ Zero network requests unless you opt in. Risk analysis, license classification, 
 |---|---|---|
 | SBOM Import (CycloneDX / SPDX) | 1 file | Unlimited |
 | Risk Analysis (full detail) | All | All |
-| Review | 5 items | Unlimited |
+| Review | Unlimited | Unlimited |
 | Approval Workflow | View only | Full transitions |
 | Reports | Watermarked | Full |
 | SBOM Diff | — | Yes |
