@@ -3,40 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dependa — Local dependency review for security and compliance</title>
-<meta name="description" content="Dependa analyzes open-source dependencies locally and generates human-readable review reports for security and compliance workflows.">
+<title>Dependa — OSS を使っていいか判断し、記録して、説明できるツール</title>
+<meta name="description" content="Dependa は SBOM を読み込み、OSS のリスクを分類し、レビュー・承認・レポート作成を支援するデスクトップ業務ツールです。">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Segoe UI', 'Yu Gothic UI', sans-serif; line-height: 1.7; color: #1a1a2e; background: #f8f9fa; }
-
-  /* Hero */
   .hero { background: linear-gradient(135deg, #312e81 0%, #4338ca 50%, #6366f1 100%); color: #fff; padding: 60px 24px 48px; text-align: center; }
   .hero h1 { font-size: 2.2rem; margin-bottom: 8px; letter-spacing: 0.5px; }
   .hero .tagline { font-size: 1.15rem; color: #e0e7ff; margin-bottom: 12px; font-weight: 500; }
-  .hero .sub-tagline { font-size: 0.95rem; color: #c7d2fe; margin-bottom: 28px; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .hero .sub-tagline { font-size: 0.95rem; color: #c7d2fe; margin-bottom: 28px; max-width: 600px; margin-left: auto; margin-right: auto; }
   .hero .badge { display: inline-block; background: #818cf8; color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; margin: 0 4px 8px; }
   .hero-buttons { margin-top: 24px; }
   .hero-buttons a { display: inline-block; margin: 6px 8px; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-size: 0.95rem; font-weight: 600; }
   .hero-buttons .store-btn { background: #fff; color: #312e81; }
   .hero-buttons .manual-btn { background: transparent; color: #e0e7ff; border: 1px solid #a5b4fc; }
-
-  /* Container */
   .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
   h2 { font-size: 1.25rem; margin: 36px 0 12px; color: #312e81; border-left: 3px solid #6366f1; padding-left: 10px; }
-
-  /* Problem / Why section */
   .why-section { background: #eef2ff; border-radius: 8px; padding: 24px; margin: 28px 0; }
   .why-section h2 { margin-top: 0; }
   .why-section p { font-size: 0.92rem; color: #374151; margin-bottom: 10px; }
   .why-section p:last-child { margin-bottom: 0; }
   .why-section strong { color: #312e81; }
-
-  /* Screenshots */
-  .screenshots { margin: 28px 0; text-align: center; }
-  .screenshots img { max-width: 100%; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); margin-bottom: 16px; }
-  .screenshots .caption { font-size: 0.8rem; color: #64748b; margin-bottom: 24px; }
-
-  /* Feature cards */
   .features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
   @media (max-width: 600px) { .features { grid-template-columns: 1fr; } }
   .feature-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; }
@@ -45,42 +32,28 @@
   .pro-badge { background: #f59e0b; color: #fff; font-size: 0.7rem; padding: 1px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
   ul { padding-left: 20px; margin: 8px 0 16px; }
   li { font-size: 0.9rem; margin-bottom: 4px; }
-
-  /* Comparison table */
   .compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.85rem; }
   .compare-table th, .compare-table td { border: 1px solid #e2e8f0; padding: 8px 12px; text-align: center; }
   .compare-table th { background: #f1f5f9; color: #312e81; font-weight: 600; }
   .compare-table td { background: #fff; }
   .compare-table td:first-child { text-align: left; font-weight: 500; }
   .compare-note { font-size: 0.82rem; color: #64748b; margin-top: 8px; font-style: italic; }
-
-  /* Ecosystem table */
   .eco-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
   .eco-table th, .eco-table td { border: 1px solid #e2e8f0; padding: 8px 12px; text-align: left; }
   .eco-table th { background: #f1f5f9; color: #312e81; font-weight: 600; }
   .eco-table td { background: #fff; }
-
-  /* Privacy note */
   .privacy-note { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; margin: 24px 0; }
   .privacy-note p { font-size: 0.9rem; color: #166534; }
-
-  /* Store CTA */
   .store-cta { text-align: center; margin: 32px 0; padding: 28px; background: #eef2ff; border-radius: 8px; }
   .store-cta p { font-size: 0.95rem; color: #374151; margin-bottom: 16px; }
   .store-cta a { display: inline-block; }
   .store-cta img { height: 52px; }
-
-  /* Links */
   .links { text-align: center; margin: 32px 0; }
   .links a { display: inline-block; margin: 6px 10px; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; }
   .links .primary { background: #6366f1; color: #fff; }
   .links .secondary { background: #e2e8f0; color: #1e3a5f; }
-
-  /* Footer */
   .footer { text-align: center; padding: 24px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; margin-top: 40px; }
   .footer a { color: #64748b; margin: 0 8px; }
-
-  /* Lang toggle */
   .lang-toggle { text-align: right; padding: 12px 24px 0; }
   .lang-toggle button { background: #e2e8f0; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
   .lang-toggle button.active { background: #6366f1; color: #fff; }
@@ -99,13 +72,14 @@
 <div class="section-ja visible" id="content-ja">
   <div class="hero">
     <h1>Dependa</h1>
-    <p class="tagline">依存関係と AI 構成を、あなたの PC 上でレビュー</p>
-    <p class="sub-tagline">クラウドにコードを送らず、脆弱性・ライセンス・AI ガバナンスを分析。セキュリティレビューや OSS 審査に使えるレポートを生成します。</p>
+    <p class="tagline">OSS を使っていいか判断し、記録して、説明できるツール</p>
+    <p class="sub-tagline">SBOM を読み込み、リスクを分類し、レビュー・承認・レポートを支援します。最終判断は人間が行います。</p>
+    <span class="badge">CycloneDX</span>
+    <span class="badge">SPDX</span>
     <span class="badge">Python</span>
     <span class="badge">Node.js</span>
-    <span class="badge">NuGet (.NET)</span>
-    <span class="badge">CycloneDX SBOM</span>
-    <span class="badge">オフライン優先</span>
+    <span class="badge">NuGet</span>
+    <span class="badge">ローカル完結</span>
     <div class="hero-buttons">
       <a href="https://apps.microsoft.com/detail/9P84RLQQ401D" class="store-btn">Microsoft Store で入手</a>
       <a href="manual/" class="manual-btn">ユーザーマニュアル</a>
@@ -113,142 +87,99 @@
   </div>
 
   <div class="container">
-
-    <!-- Problem → Solution -->
     <div class="why-section">
-      <h2>なぜ Dependa が必要か</h2>
-      <p>現代のソフトウェアは、数十から数百のオープンソースライブラリに依存しています。それらのセキュリティ、ライセンス、互換性のリスクを把握するのは簡単ではありません。</p>
-      <p>多くの SCA（Software Composition Analysis）ツールは CI/CD パイプライン向けに設計されていますが、<strong>リリース前に人間がレビューする工程</strong>では、見やすいレポートが求められます。</p>
-      <p><strong>Dependa は、依存ライブラリのリスクを分析し、チームで共有できるレビューレポートを生成します。</strong>分析はすべてあなたの PC 上で完結します。クラウドへのアップロードは不要です。</p>
+      <h2>Dependa が解決する問題</h2>
+      <p>開発者から「この OSS 使っていいですか？」と聞かれたが、<strong>判断根拠がない</strong>。</p>
+      <p>SBOM を受け取ったが、<strong>中身を確認する手段がない</strong>。</p>
+      <p>OSS 利用の承認記録が残っていない。監査で「OSS をどう管理しているか」を<strong>説明する必要がある</strong>。</p>
+      <p><strong>Dependa は、OSS のリスクを分類し、レビュー・承認・レポートを一つのツールで完結させます。</strong></p>
     </div>
 
-    <!-- Screenshots -->
-    <div class="screenshots">
-      <img src="manual/images/scan-results-ja.png" alt="Dependa スキャン結果" />
-      <div class="caption">スキャン結果 — 脆弱性・ライセンス・ポリシー判定を一覧表示</div>
-      <img src="manual/images/policy-judgments-ja.png" alt="Dependa ポリシー判定記録" />
-      <div class="caption">ポリシー判定記録 — 検出事実・初期評価・ポリシー判定・理由を色分け表示</div>
-      <img src="manual/images/policy-builder-ja.png" alt="Dependa ポリシー設定" />
-      <div class="caption">ポリシー設定 — テンプレートから作成し、組織のルールに合わせてカスタマイズ</div>
-      <img src="manual/images/html-report-ja.png" alt="Dependa HTML レポート" />
-      <div class="caption">HTML レポート — 判定理由を含むレビュー資料をチームで共有</div>
-    </div>
-
-    <!-- v1.5.0 Highlight -->
-    <h2>v1.5.0 新機能: AI Governance + IaC 対応</h2>
-    <div class="why-section">
-      <p>v1.5.0 では、<strong>AI 関連構成の棚卸しと確認</strong>に対応しました。依存関係・ソースコード・環境変数・IaC 定義から AI コンポーネントを統合的に検出し、レポートに出力します。</p>
-      <p><strong>Terraform / Bicep / ARM JSON</strong> からも AI リソースを検出。リージョン設定の確認や組織ポリシーとの照合が可能です。</p>
-      <p>前回スキャンとの<strong>差分比較</strong>で、AI 構成の追加・削除・Finding の新規・解消も検出します（Pro）。</p>
-    </div>
-
-    <h2>AI Governance（Free）</h2>
+    <h2>主な機能</h2>
     <div class="features">
       <div class="feature-card">
-        <h3>AI BOM（部品表）</h3>
-        <p>AI SDK・モデル設定・API キー・エンドポイントを検出して一覧化。依存関係・ソースコード・環境変数・IaC から統合的に棚卸し。</p>
+        <h3>リスク分析</h3>
+        <p>ライセンス不明・コピーレフト・脆弱性・AI 利用を自動分類。すべての判定に理由・推奨対応・根拠・確信度が付きます。</p>
       </div>
       <div class="feature-card">
-        <h3>Excessive Agency 検出</h3>
-        <p>ワイルドカード IAM・自動承認・無制限ループなど、AI エージェントの過大な権限設定の候補を検出。</p>
+        <h3>レビュー支援</h3>
+        <p>「何を確認すべきか」「どう判断すべきか」を提示。凡例・ガイド・判断テンプレート付きで非技術者でも操作できます。</p>
       </div>
       <div class="feature-card">
-        <h3>Data Sovereignty 確認</h3>
-        <p>AI サービスのリージョン設定やデータ送信先を確認。global / auto / 未指定の構成を検出。</p>
+        <h3>承認フロー <span class="pro-badge">PRO</span></h3>
+        <p>レビュー中→完了→承認依頼→差し戻し→再開。レビューの進捗と承認状態を一元管理。</p>
       </div>
       <div class="feature-card">
-        <h3>IaC 対応</h3>
-        <p>Terraform (.tf) / Bicep (.bicep) / ARM JSON (.json) から AI リソースを検出し、AI BOM と Data Sovereignty に反映。</p>
+        <h3>レポート出力</h3>
+        <p>監査・上位層向けの HTML / PDF レポート。エグゼクティブサマリー、リスク分析、レビュー結果、免責文を含みます。</p>
+      </div>
+      <div class="feature-card">
+        <h3>SBOM インポート</h3>
+        <p>CycloneDX / SPDX JSON を自動判定して読み込み。Trivy や Syft で生成した SBOM をそのまま使えます。</p>
+      </div>
+      <div class="feature-card">
+        <h3>オンライン補完 <span class="pro-badge">PRO</span></h3>
+        <p>ライセンス不明の項目をパッケージレジストリ（PyPI / npm / NuGet）から補完。レビューを止めません。</p>
       </div>
     </div>
 
-    <!-- Free Features -->
-    <h2>無料機能</h2>
-    <div class="features">
-      <div class="feature-card">
-        <h3>Python / NuGet スキャン</h3>
-        <p>requirements.txt や .csproj などを自動で検出・解析。脆弱性データを内蔵しているので、ネット接続なしで検出できます。</p>
-      </div>
-      <div class="feature-card">
-        <h3>脆弱性の照合</h3>
-        <p>内蔵データで既知の脆弱性を検出し、深刻度（Critical / High / Medium / Low）ごとに分類します。</p>
-      </div>
-      <div class="feature-card">
-        <h3>ライセンスの分類と信頼度</h3>
-        <p>ライセンスを自動で分類（承認 / 注意 / 禁止 / 不明）。判定の信頼度も表示するので、どこまで信頼できるかがわかります。</p>
-      </div>
-      <div class="feature-card">
-        <h3>レポートとエクスポート</h3>
-        <p>HTML レポート、SBOM（CycloneDX）、OSS 一覧表（CSV）、ライセンス通知文書をワンクリックで生成。</p>
-      </div>
-    </div>
-
-    <!-- Pro Features -->
-    <h2>Pro 機能 <span class="pro-badge">PRO</span></h2>
-    <ul>
-      <li><strong>Node.js 対応</strong> — package.json / package-lock.json のスキャン</li>
-      <li><strong>マルチエコシステム統合</strong> — Python + npm を同時スキャンし、統合結果を表示</li>
-      <li><strong>最新の脆弱性情報</strong> — OSV API で最新の脆弱性データを取得して照合</li>
-      <li><strong>ライセンスのオンライン検証</strong> — PyPI / npm / NuGet の公式情報で判定を照合し、信頼度を引き上げ</li>
-      <li><strong>リスクスコア</strong> — パッケージごとに 0〜100 のスコアでリスクを定量化</li>
-      <li><strong>OSS 利用審査の支援</strong> — 推奨アクション、商用利用の注意点、チェックリストを生成</li>
-      <li><strong>差分比較（Delta Scan）</strong> — 前回のスキャン結果と比較し、変化点を検出。AI BOM / Finding の追加・削除・新規・解消も検出（v1.5）</li>
-      <li><strong>例外管理</strong> — 既知の問題を理由・承認者・期限付きで許容。追跡・取消・延長が可能。監査対応</li>
-      <li><strong>審査レポートの出力</strong> — OSS 一覧表（CSV）や審査レポート（Markdown）をエクスポート</li>
-      <li><strong>AI 向けプロンプト</strong> — 脆弱性の修正やライセンスの確認に使えるプロンプトを生成</li>
-    </ul>
-
-    <!-- Why Dependa — Comparison -->
-    <h2>他のツールとの違い</h2>
-    <p style="font-size:0.9rem; margin-bottom:12px;">Dependa は CI ツールの代替ではなく、<strong>人間がレビューする工程</strong>に特化したツールです。</p>
+    <h2>Free / Pro</h2>
     <table class="compare-table">
-      <tr>
-        <th></th>
-        <th>Snyk</th>
-        <th>Trivy</th>
-        <th>Dependency-Check</th>
-        <th>Dependa</th>
-      </tr>
-      <tr><td>CI/CD 自動化向け</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>optional</td></tr>
-      <tr><td>クラウド不要</td><td>&#8212;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><td>人間が読めるレビューレポート</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>ローカル実行</td><td>&#8212;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><td>デスクトップ GUI</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>ライセンス信頼度スコア</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><th>機能</th><th>Free</th><th>Pro</th></tr>
+      <tr><td>SBOM インポート</td><td>1 ファイル</td><td>無制限</td></tr>
+      <tr><td>リスク分析</td><td>全項目表示</td><td>全項目表示</td></tr>
+      <tr><td>レビュー</td><td>5 件まで</td><td>無制限</td></tr>
+      <tr><td>承認フロー</td><td>表示のみ</td><td>全遷移</td></tr>
+      <tr><td>レポート出力</td><td>透かし付き</td><td>完全版</td></tr>
+      <tr><td>SBOM 差分比較</td><td>—</td><td>&#10003;</td></tr>
+      <tr><td>オンライン補完</td><td>—</td><td>&#10003;</td></tr>
+      <tr><td>プロジェクト管理</td><td>1 件</td><td>無制限</td></tr>
     </table>
-    <p class="compare-note">Dependa は CI ツールと併用できます。CI で自動チェック、Dependa でレビューレポート作成という使い分けが効果的です。</p>
 
-    <!-- Ecosystems -->
-    <h2>対応エコシステム</h2>
+    <h2>他のツールとの違い</h2>
+    <p style="font-size:0.9rem; margin-bottom:12px;">Dependa はスキャナの代替ではなく、<strong>スキャン結果をレビュー・承認・報告する</strong>ためのツールです。</p>
+    <table class="compare-table">
+      <tr><th></th><th>Trivy / Syft</th><th>Snyk / FOSSA</th><th>Excel</th><th>Dependa</th></tr>
+      <tr><td>主な役割</td><td>検出</td><td>検出 + 管理</td><td>記録</td><td>レビュー・承認・記録</td></tr>
+      <tr><td>レビューワークフロー</td><td>—</td><td>一部</td><td>手動</td><td>&#10003;</td></tr>
+      <tr><td>承認フロー</td><td>—</td><td>—</td><td>手動</td><td>&#10003;</td></tr>
+      <tr><td>監査向けレポート</td><td>—</td><td>ダッシュボード</td><td>手動</td><td>HTML / PDF</td></tr>
+      <tr><td>ローカル完結</td><td>&#10003;</td><td>—</td><td>&#10003;</td><td>&#10003;</td></tr>
+    </table>
+    <p class="compare-note">Trivy で SBOM を生成し、Dependa でレビュー。組み合わせて使う設計です。</p>
+
+    <h2>対応フォーマット</h2>
     <table class="eco-table">
-      <tr><th>エコシステム</th><th>対応ファイル</th><th>プラン</th></tr>
-      <tr><td>Python</td><td>requirements.txt, pyproject.toml, poetry.lock, uv.lock</td><td>Free</td></tr>
-      <tr><td>NuGet (.NET)</td><td>.csproj, packages.config</td><td>Free</td></tr>
-      <tr><td>Node.js</td><td>package.json, package-lock.json</td><td>Pro</td></tr>
+      <tr><th>入力形式</th><th>対応バージョン</th></tr>
+      <tr><td>CycloneDX JSON</td><td>1.2 / 1.4 / 1.5 / 1.6</td></tr>
+      <tr><td>SPDX JSON</td><td>2.2 / 2.3</td></tr>
+    </table>
+    <h2>対応エコシステム（フォルダスキャン）</h2>
+    <table class="eco-table">
+      <tr><th>エコシステム</th><th>対応ファイル</th></tr>
+      <tr><td>Python</td><td>requirements.txt, pyproject.toml, poetry.lock</td></tr>
+      <tr><td>NuGet (.NET)</td><td>.csproj, packages.config</td></tr>
+      <tr><td>Node.js</td><td>package.json, package-lock.json</td></tr>
     </table>
 
-    <!-- Privacy -->
     <div class="privacy-note">
-      <p><strong>プライバシー:</strong> 分析はすべて PC 上で完結します。無料版はインターネットに一切接続しません。Pro 版のオンライン機能も、ユーザーが明示的に有効にした場合のみ、公開されている脆弱性データベース等を参照します。個人情報の送信は一切行いません。</p>
+      <p><strong>プライバシー:</strong> 分析はすべて PC 上で完結します。オンライン機能はオプションで、有効にした場合のみ公開データベースを参照します。コードやプロジェクト情報がクラウドに送信されることはありません。</p>
     </div>
 
-    <!-- Store CTA -->
     <div class="store-cta">
-      <p>Microsoft Store からインストールできます。自動更新対応、ランタイムの追加インストールは不要です。</p>
+      <p>Microsoft Store からインストールできます。</p>
       <a href="https://apps.microsoft.com/detail/9P84RLQQ401D">
-        <img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Microsoft Store で入手" />
+        <img src="https://get.microsoft.com/images/ja-jp%20dark.svg" alt="Microsoft Store で入手" />
       </a>
     </div>
 
-    <!-- System Requirements -->
     <h2>システム要件</h2>
     <ul>
-      <li>Windows 10 バージョン 2004 (19041) 以降 / Windows 11</li>
-      <li>WebView2 Runtime（通常は Windows に同梱）</li>
+      <li>Windows 10 (19041) 以降 / Windows 11</li>
+      <li>WebView2 Runtime（PDF 出力に必要）</li>
       <li>ディスク: 約 80 MB / RAM: 512 MB 以上</li>
     </ul>
 
-    <!-- Links -->
     <div class="links">
       <a href="manual/" class="primary">ユーザーマニュアル</a>
       <a href="support.html" class="secondary">サポート</a>
@@ -262,13 +193,14 @@
 <div class="section-en" id="content-en">
   <div class="hero">
     <h1>Dependa</h1>
-    <p class="tagline">Review dependency &amp; AI governance risks locally on your machine</p>
-    <p class="sub-tagline">Analyze vulnerabilities, licenses, and AI governance without uploading code. Generate review reports for security and compliance workflows.</p>
+    <p class="tagline">Decide if OSS is safe to use — review, approve, and report</p>
+    <p class="sub-tagline">Load an SBOM, classify OSS risks, and manage reviews, approvals, and reports. Final decisions are always made by humans.</p>
+    <span class="badge">CycloneDX</span>
+    <span class="badge">SPDX</span>
     <span class="badge">Python</span>
     <span class="badge">Node.js</span>
-    <span class="badge">NuGet (.NET)</span>
-    <span class="badge">CycloneDX SBOM</span>
-    <span class="badge">Offline-first</span>
+    <span class="badge">NuGet</span>
+    <span class="badge">Local-first</span>
     <div class="hero-buttons">
       <a href="https://apps.microsoft.com/detail/9P84RLQQ401D" class="store-btn">Get it from Microsoft Store</a>
       <a href="manual/?lang=en" class="manual-btn">User Manual</a>
@@ -276,142 +208,99 @@
   </div>
 
   <div class="container">
-
-    <!-- Problem → Solution -->
     <div class="why-section">
-      <h2>Why Dependa</h2>
-      <p>Modern applications rely on dozens or hundreds of open-source dependencies. Understanding the security, licensing, and compatibility risks of those dependencies is often difficult.</p>
-      <p>Many SCA (Software Composition Analysis) tools focus on CI/CD automation, but developers and reviewers still need <strong>a clear way to understand dependency risks before release</strong>.</p>
-      <p><strong>Dependa analyzes dependencies and generates a human-readable review report you can share with your team.</strong> All analysis runs locally on your machine. No cloud upload required.</p>
+      <h2>Problems Dependa Solves</h2>
+      <p>A developer asks "Can I use this OSS?" but you have <strong>no basis for the decision</strong>.</p>
+      <p>You received an SBOM but have <strong>no way to review its contents</strong>.</p>
+      <p>There's no record of OSS approvals. Auditors ask how you <strong>manage OSS usage</strong>.</p>
+      <p><strong>Dependa classifies OSS risks and completes the review-approval-report cycle in one tool.</strong></p>
     </div>
 
-    <!-- Screenshots -->
-    <div class="screenshots">
-      <img src="manual/images/scan-results-en.png" alt="Dependa scan results" />
-      <div class="caption">Scan results — vulnerabilities, licenses, and policy judgments at a glance</div>
-      <img src="manual/images/policy-judgments-en.png" alt="Dependa policy judgments" />
-      <div class="caption">Policy Judgments — detected facts, initial status, policy action, and reason with color coding</div>
-      <img src="manual/images/policy-builder-en.png" alt="Dependa Policy Builder" />
-      <div class="caption">Policy Builder — create from templates, customize rules for your organization</div>
-      <img src="manual/images/html-report-en.png" alt="Dependa HTML report" />
-      <div class="caption">HTML report — judgment reasons included, ready for review and sharing</div>
-    </div>
-
-    <!-- v1.5.0 Highlight -->
-    <h2>v1.5.0: AI Governance + IaC Support</h2>
-    <div class="why-section">
-      <p>v1.5.0 adds <strong>AI governance analysis</strong>. Detect AI SDKs, model settings, API keys, and endpoints from dependencies, source code, environment variables, and IaC definitions.</p>
-      <p>Scan <strong>Terraform / Bicep / ARM JSON</strong> for AI service resources. Check region settings and compare against organization policies.</p>
-      <p><strong>Delta Scan</strong> now includes AI BOM and Finding changes — detect what's been added or resolved since the last scan (Pro).</p>
-    </div>
-
-    <h2>AI Governance (Free)</h2>
+    <h2>Key Features</h2>
     <div class="features">
       <div class="feature-card">
-        <h3>AI BOM (Bill of Materials)</h3>
-        <p>Detect AI SDKs, model settings, API keys, and endpoints. Consolidate from dependencies, source code, environment variables, and IaC.</p>
+        <h3>Risk Analysis</h3>
+        <p>Automatically classifies unknown licenses, copyleft, vulnerabilities, and AI usage. Every judgment includes reason, recommended action, evidence, and confidence.</p>
       </div>
       <div class="feature-card">
-        <h3>Excessive Agency Detection</h3>
-        <p>Identify wildcard IAM, auto-approve settings, unlimited loops, and other overly broad permission candidates in AI agent configurations.</p>
+        <h3>Review Support</h3>
+        <p>Shows what to check and how to decide. Includes legends, guides, and decision templates — accessible to non-technical reviewers.</p>
       </div>
       <div class="feature-card">
-        <h3>Data Sovereignty Checks</h3>
-        <p>Review AI service region settings and data destinations. Flag global / auto / unspecified configurations.</p>
+        <h3>Approval Workflow <span class="pro-badge">PRO</span></h3>
+        <p>In Review → Completed → Pending Approval → Returned → Resume. Track review progress and approval status in one place.</p>
       </div>
       <div class="feature-card">
-        <h3>IaC Support</h3>
-        <p>Detect AI resources from Terraform (.tf) / Bicep (.bicep) / ARM JSON (.json) and reflect in AI BOM and Data Sovereignty checks.</p>
+        <h3>Report Export</h3>
+        <p>Audit-ready HTML / PDF reports with executive summary, risk analysis, review results, and disclaimer.</p>
+      </div>
+      <div class="feature-card">
+        <h3>SBOM Import</h3>
+        <p>Auto-detect CycloneDX and SPDX JSON. Works with SBOMs generated by Trivy, Syft, and other tools.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Online Enrichment <span class="pro-badge">PRO</span></h3>
+        <p>Fetch missing license info from package registries (PyPI / npm / NuGet). Keeps your review moving forward.</p>
       </div>
     </div>
 
-    <!-- Free Features -->
-    <h2>Free Features</h2>
-    <div class="features">
-      <div class="feature-card">
-        <h3>Python / NuGet Scanning</h3>
-        <p>Automatically detects requirements.txt, pyproject.toml, .csproj, etc. Bundled vulnerability advisories — no network required.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Vulnerability Matching</h3>
-        <p>Matches against a local database and classifies by severity (Critical / High / Medium / Low).</p>
-      </div>
-      <div class="feature-card">
-        <h3>License Analysis + Confidence</h3>
-        <p>Classifies licenses as Approved / Caution / Prohibited / Unknown. Shows confidence level so you know how reliable each result is.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Reports, SBOM &amp; Export</h3>
-        <p>HTML report, CycloneDX SBOM, CSV inventory, and license notice document generation.</p>
-      </div>
-    </div>
-
-    <!-- Pro Features -->
-    <h2>Pro Features <span class="pro-badge">PRO</span></h2>
-    <ul>
-      <li><strong>Node.js Support</strong> — Scan package.json and package-lock.json</li>
-      <li><strong>Multi-Ecosystem Scanning</strong> — Scan Python + npm simultaneously with unified results</li>
-      <li><strong>Online Vulnerability Lookup</strong> — Fetch latest vulnerability data via OSV API</li>
-      <li><strong>Online License Verification</strong> — Verify local data against PyPI / npm / NuGet registries</li>
-      <li><strong>Risk Score</strong> — Per-package quantitative risk evaluation (0-100)</li>
-      <li><strong>OSS Review Support</strong> — Recommended actions, commercial use guidance, organization checklist</li>
-      <li><strong>Delta Scan</strong> — Detect changes from previous scan results, including AI BOM and Finding additions/removals (v1.5)</li>
-      <li><strong>Exception Management</strong> — Approve known issues with reason, approver, and expiry. Track, revoke, extend. Audit-ready</li>
-      <li><strong>Review Report Export</strong> — CSV inventory and Markdown review report</li>
-      <li><strong>AI Prompts</strong> — Generate prompts for vulnerability fix and license review</li>
-    </ul>
-
-    <!-- Why Dependa — Comparison -->
-    <h2>How Dependa Differs</h2>
-    <p style="font-size:0.9rem; margin-bottom:12px;">Dependa is not a replacement for CI tools. It focuses on <strong>the human review step</strong> in your workflow.</p>
+    <h2>Free / Pro</h2>
     <table class="compare-table">
-      <tr>
-        <th></th>
-        <th>Snyk</th>
-        <th>Trivy</th>
-        <th>Dependency-Check</th>
-        <th>Dependa</th>
-      </tr>
-      <tr><td>CI/CD automation</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>optional</td></tr>
-      <tr><td>No cloud required</td><td>&#8212;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><td>Human-readable review report</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>Local execution</td><td>&#8212;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td></tr>
-      <tr><td>Desktop GUI</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003;</td></tr>
-      <tr><td>License confidence scoring</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><th>Feature</th><th>Free</th><th>Pro</th></tr>
+      <tr><td>SBOM Import</td><td>1 file</td><td>Unlimited</td></tr>
+      <tr><td>Risk Analysis</td><td>Full display</td><td>Full display</td></tr>
+      <tr><td>Review</td><td>Up to 5</td><td>Unlimited</td></tr>
+      <tr><td>Approval Workflow</td><td>View only</td><td>Full transitions</td></tr>
+      <tr><td>Report Export</td><td>With watermark</td><td>Full version</td></tr>
+      <tr><td>SBOM Diff</td><td>—</td><td>&#10003;</td></tr>
+      <tr><td>Online Enrichment</td><td>—</td><td>&#10003;</td></tr>
+      <tr><td>Project Management</td><td>1 project</td><td>Unlimited</td></tr>
     </table>
-    <p class="compare-note">Dependa complements CI-based SCA tools. Use CI for automated checks, Dependa for review reports.</p>
 
-    <!-- Ecosystems -->
-    <h2>Supported Ecosystems</h2>
+    <h2>How Dependa Differs</h2>
+    <p style="font-size:0.9rem; margin-bottom:12px;">Dependa is not a scanner replacement. It turns scan results into <strong>review, approval, and reports</strong>.</p>
+    <table class="compare-table">
+      <tr><th></th><th>Trivy / Syft</th><th>Snyk / FOSSA</th><th>Excel</th><th>Dependa</th></tr>
+      <tr><td>Primary role</td><td>Detection</td><td>Detection + Mgmt</td><td>Recording</td><td>Review / Approval / Record</td></tr>
+      <tr><td>Review workflow</td><td>—</td><td>Partial</td><td>Manual</td><td>&#10003;</td></tr>
+      <tr><td>Approval flow</td><td>—</td><td>—</td><td>Manual</td><td>&#10003;</td></tr>
+      <tr><td>Audit-ready report</td><td>—</td><td>Dashboard</td><td>Manual</td><td>HTML / PDF</td></tr>
+      <tr><td>Fully local</td><td>&#10003;</td><td>—</td><td>&#10003;</td><td>&#10003;</td></tr>
+    </table>
+    <p class="compare-note">Generate SBOMs with Trivy, review with Dependa. They work together by design.</p>
+
+    <h2>Supported Formats</h2>
     <table class="eco-table">
-      <tr><th>Ecosystem</th><th>Supported Files</th><th>Plan</th></tr>
-      <tr><td>Python</td><td>requirements.txt, pyproject.toml, poetry.lock, uv.lock</td><td>Free</td></tr>
-      <tr><td>NuGet (.NET)</td><td>.csproj, packages.config</td><td>Free</td></tr>
-      <tr><td>Node.js</td><td>package.json, package-lock.json</td><td>Pro</td></tr>
+      <tr><th>Input Format</th><th>Versions</th></tr>
+      <tr><td>CycloneDX JSON</td><td>1.2 / 1.4 / 1.5 / 1.6</td></tr>
+      <tr><td>SPDX JSON</td><td>2.2 / 2.3</td></tr>
+    </table>
+    <h2>Supported Ecosystems (Folder Scan)</h2>
+    <table class="eco-table">
+      <tr><th>Ecosystem</th><th>Supported Files</th></tr>
+      <tr><td>Python</td><td>requirements.txt, pyproject.toml, poetry.lock</td></tr>
+      <tr><td>NuGet (.NET)</td><td>.csproj, packages.config</td></tr>
+      <tr><td>Node.js</td><td>package.json, package-lock.json</td></tr>
     </table>
 
-    <!-- Privacy -->
     <div class="privacy-note">
-      <p><strong>Privacy:</strong> All analysis runs locally. Free features are completely offline. Pro features optionally query public vulnerability databases when the user enables online lookup. No personal information is ever sent.</p>
+      <p><strong>Privacy:</strong> All analysis runs locally. Online features are optional and only query public databases when explicitly enabled. No code or project information is ever sent to the cloud.</p>
     </div>
 
-    <!-- Store CTA -->
     <div class="store-cta">
-      <p>Available from the Microsoft Store. Auto-updates, self-contained, no runtime installation needed.</p>
+      <p>Available on Microsoft Store.</p>
       <a href="https://apps.microsoft.com/detail/9P84RLQQ401D">
         <img src="https://get.microsoft.com/images/en-us%20dark.svg" alt="Get it from Microsoft Store" />
       </a>
     </div>
 
-    <!-- System Requirements -->
     <h2>System Requirements</h2>
     <ul>
-      <li>Windows 10 version 2004 (19041) or later / Windows 11</li>
-      <li>WebView2 Runtime (typically bundled with Windows)</li>
-      <li>Disk: ~80 MB / RAM: 512 MB or more</li>
+      <li>Windows 10 (19041) or later / Windows 11</li>
+      <li>WebView2 Runtime (required for PDF export)</li>
+      <li>Disk: ~80 MB / RAM: 512 MB+</li>
     </ul>
 
-    <!-- Links -->
     <div class="links">
       <a href="manual/?lang=en" class="primary">User Manual</a>
       <a href="support.html" class="secondary">Support</a>
@@ -422,9 +311,12 @@
 </div>
 
 <div class="footer">
-  &copy; 2026 SumikkoLab. Dependa.<br>
-  <a href="https://github.com/sumikkolab/dependa-web">GitHub</a>
-  <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  <p>© 2026 Sumikko Lab. All rights reserved.</p>
+  <p>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-of-use.html">Terms of Use</a>
+    <a href="support.html">Support</a>
+  </p>
 </div>
 
 <script>
