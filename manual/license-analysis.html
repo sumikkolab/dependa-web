@@ -66,6 +66,23 @@
       <p>分類は一般的な判断基準に基づいています。組織の法務方針によっては、異なる判断が必要な場合があります。</p>
     </div>
 
+    <h2>v2.0.3 — 「要確認」バッジと理由表示</h2>
+    <p>v2.0.3 から、レビュー時に追加確認が推奨されるライセンスには HTML レポート上で「要確認」バッジと理由ラベルが表示されます。判定軸は変更されていません。レビュアーが判断する際の補助情報として位置づけられます。</p>
+    <table class="manual-table">
+      <tr><th>表示</th><th>意味</th><th>対象例</th></tr>
+      <tr><td>分類 disclaimer（テーブル直前）</td><td>「分類はレビュー時の初期分類であり、最終的な利用可否判断ではありません」</td><td>すべてのレポート</td></tr>
+      <tr><td><strong>要確認</strong> バッジ</td><td>利用形態によって判断が分かれるライセンス。レビュアー確認推奨</td><td>BUSL-1.1 / Elastic-2.0 / CC-BY-4.0 / Zlib / Artistic-2.0 / QuestPDF Community / Microsoft Software License</td></tr>
+      <tr><td>理由: 非 OSI 承認ライセンス</td><td>OSI 承認外（一般的な OSS と異なる利用条件の可能性）</td><td>BUSL-1.1 / Elastic-2.0</td></tr>
+      <tr><td>理由: Source-available（利用形態次第）</td><td>ソースは閲覧可能だが、SaaS 提供等で制約あり</td><td>BUSL-1.1 / Elastic-2.0</td></tr>
+      <tr><td>理由: データ・コンテンツ用ライセンス</td><td>コードへの適用は注意が必要</td><td>CC-BY-4.0</td></tr>
+      <tr><td>理由: 分類の信頼度が低い</td><td>分類自体に揺れがあり、組織方針による判断推奨</td><td>Zlib / Artistic-2.0</td></tr>
+      <tr><td>理由: 商用ライセンス条件あり</td><td>商用利用条件・配布制約等の確認推奨</td><td>QuestPDF Community / Microsoft Software License</td></tr>
+    </table>
+
+    <div class="info-box">
+      <p>これらはすべて「説明」のための補助表示で、Dependa が利用可否を自動判断することはありません。最終判断は常に組織のレビュアーが行います。</p>
+    </div>
+
     <div class="screenshot">
       <img src="images/license-analysis-ja.png" alt="ライセンス分析画面">
       <div class="caption">ライセンス分析 — High Risk / Risk / Known-Normal の 3 段階分類</div>
@@ -146,6 +163,23 @@
 
     <div class="info-box">
       <p>Classifications are based on general criteria. Your organization's legal policies may require different assessments.</p>
+    </div>
+
+    <h2>v2.0.3 — "Review required" Badge and Reason Labels</h2>
+    <p>Starting with v2.0.3, licenses that benefit from additional reviewer confirmation display a "Review required" badge and a reason label in the HTML report. The classification logic itself is unchanged — these labels serve as supporting context for the reviewer's decision.</p>
+    <table class="manual-table">
+      <tr><th>Display</th><th>Meaning</th><th>Examples</th></tr>
+      <tr><td>Classification disclaimer (above the table)</td><td>"Classifications shown here are initial inputs for review, not final judgments."</td><td>All reports</td></tr>
+      <tr><td><strong>Review required</strong> badge</td><td>License whose decision depends on usage. Reviewer confirmation recommended.</td><td>BUSL-1.1 / Elastic-2.0 / CC-BY-4.0 / Zlib / Artistic-2.0 / QuestPDF Community / Microsoft Software License</td></tr>
+      <tr><td>Reason: Not OSI-approved</td><td>Not on the OSI-approved list (terms may differ from common OSS).</td><td>BUSL-1.1 / Elastic-2.0</td></tr>
+      <tr><td>Reason: Source-available (depends on usage)</td><td>Source is viewable but SaaS-style restrictions may apply.</td><td>BUSL-1.1 / Elastic-2.0</td></tr>
+      <tr><td>Reason: Data / content license</td><td>Application to code requires extra attention.</td><td>CC-BY-4.0</td></tr>
+      <tr><td>Reason: Low classification confidence</td><td>Classification itself can vary by organization policy.</td><td>Zlib / Artistic-2.0</td></tr>
+      <tr><td>Reason: Commercial license terms apply</td><td>Commercial terms or distribution restrictions to verify.</td><td>QuestPDF Community / Microsoft Software License</td></tr>
+    </table>
+
+    <div class="info-box">
+      <p>All of these are explanatory aids only. Dependa never auto-decides usability. Final decisions are always made by your organization's reviewers.</p>
     </div>
 
     <div class="screenshot">
