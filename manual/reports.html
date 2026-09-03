@@ -57,8 +57,8 @@
       <div class="caption">レビュー画面の例 — ここから「SBOM レポート (HTML)」ボタンでレポートを出力できます</div>
     </div>
 
-    <h2>v2.0.3 — レビューレポートの説明力強化</h2>
-    <p>v2.0.3 では、SBOM レビュー HTML レポートに「レビュー判断の根拠」を 6 層で構造化しました。判定ロジックや Free / Pro 境界は変更ありません。説明と表示の補強のみです。</p>
+    <h2>レビューレポートの説明力強化</h2>
+    <p>SBOM レビュー HTML レポートでは「レビュー判断の根拠」を 6 層で構造化しています。v2.0.4.0 公開候補でも判定ロジックや Free / Pro 境界は変更ありません。説明と表示の補強のみです。</p>
     <ul>
       <li><strong>分類は最終判断ではない</strong> — ライセンステーブル直前に「分類はレビュー時の初期分類であり、最終的な利用可否判断ではありません」の注意書きを表示します。</li>
       <li><strong>「要確認」バッジ</strong> — 利用形態によって判断が分かれるライセンス（BUSL-1.1 / Elastic-2.0 / CC-BY-4.0 など）に控えめなバッジを表示します。</li>
@@ -69,7 +69,7 @@
     </ul>
     <p>Pro レポート（フォルダスキャン後の HTML）でも、ライセンス分類の disclaimer・要確認バッジ・理由表示が反映されています。さらに「より詳細な内訳・出所・公式リンクは、SBOM ファイル（提供されている場合）を SBOM レビュー機能で読み込むことで確認できます」というガイドが末尾に表示されます。</p>
 
-    <h2>スキャン結果レポートの保存（v2.0.3）</h2>
+    <h2>スキャン結果レポートの保存</h2>
     <p>フォルダスキャン後の「スキャン結果レポート」ボタンをクリックすると、保存先を指定するダイアログが表示されます。デフォルトのファイル名は <code>{年月日}-{プロジェクト名}-{jp または en}.html</code> 形式で、複数プロジェクトを保存しても区別が容易です（例: <code>20260501-myproject-jp.html</code>）。</p>
 
     <h2>Free 版と Pro 版のレポートの違い</h2>
@@ -150,8 +150,8 @@
       <div class="caption">Review screen example — click "SBOM Report (HTML)" to generate a report</div>
     </div>
 
-    <h2>v2.0.3 — Report Explainability Improvements</h2>
-    <p>v2.0.3 adds a 6-layer explainability structure to the SBOM review HTML report. Classification logic and Free / Pro boundaries are unchanged — only display and explanation are enhanced.</p>
+    <h2>Report Explainability Improvements</h2>
+    <p>The SBOM review HTML report includes a 6-layer explainability structure. In the v2.0.4.0 release candidate, classification logic and Free / Pro boundaries are unchanged — only display and explanation are enhanced.</p>
     <ul>
       <li><strong>Classification is not a final judgment</strong> — A note is displayed above the license table: "classifications shown here are initial inputs for review, not final judgments."</li>
       <li><strong>"Review required" badge</strong> — A discreet badge is shown for licenses where decisions depend on usage context (BUSL-1.1 / Elastic-2.0 / CC-BY-4.0 etc.).</li>
@@ -162,7 +162,7 @@
     </ul>
     <p>The Pro report (generated after a folder scan) also reflects the classification disclaimer, "Review required" badge, and reason label. A guide note at the end states: "If a CycloneDX 1.7+ SBOM file is available, the SBOM review feature provides additional detail such as license breakdown, source attribution, and official links."</p>
 
-    <h2>Saving Scan Result Reports (v2.0.3)</h2>
+    <h2>Saving Scan Result Reports</h2>
     <p>Clicking the "Scan Result Report" button after a folder scan now opens a Save dialog. The default file name follows the pattern <code>{yyyyMMdd}-{project-name}-{jp or en}.html</code>, making it easy to keep results from multiple projects organized (for example, <code>20260501-myproject-en.html</code>).</p>
 
     <h2>Free vs Pro Report Differences</h2>
