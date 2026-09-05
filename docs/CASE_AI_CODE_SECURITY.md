@@ -82,7 +82,7 @@ Dependa Delta Scan confirms the fix
 
 ## Free vs Pro
 
-As of the v2.0.4.0 release candidate, Dependa runs on .NET 10 and bundles refreshed vulnerability data (Python 261 / NuGet 81 / Node.js 135, generated 2026-09-01). The core workflow and Free / Pro boundaries are unchanged.
+As of v2.0.5.0, Dependa runs on .NET 10 and bundles refreshed vulnerability data (Python 261 / NuGet 81 / Node.js 135, generated 2026-09-01). The core workflow and Free / Pro boundaries are unchanged.
 
 Free handles Python + NuGet scanning, local vulnerability matching, license classification, HTML reports, SBOM, and basic AI prompts.
 

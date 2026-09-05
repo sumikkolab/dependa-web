@@ -18,7 +18,7 @@
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%2010%2F11-blue" />
   <img alt=".NET 10" src="https://img.shields.io/badge/.NET-10.0-purple" />
   <img alt="Release checks" src="https://img.shields.io/badge/release_checks-passing-brightgreen" />
-  <img alt="Version" src="https://img.shields.io/badge/version-2.0.4.0-orange" />
+  <img alt="Version" src="https://img.shields.io/badge/version-2.0.5.0-brightgreen" />
 </p>
 
 <p align="center">
@@ -47,11 +47,11 @@ Many teams still manage OSS usage reviews using Excel, emails, and Word document
 
 > **Product category**: OSS Governance / SBOM Review Management Tool
 
-## v2.0.4.0 Release Candidate
+## v2.0.5.0
 
-v2.0.4.0 is a maintenance and release-readiness update. It migrates Dependa to .NET 10 and refreshes bundled vulnerability data (Python 261 / NuGet 81 / Node.js 135, generated 2026-09-01).
+v2.0.5.0 is a maintenance update. It migrates Dependa to .NET 10 and refreshes bundled vulnerability data (Python 261 / NuGet 81 / Node.js 135, generated 2026-09-01).
 
-The main review workflow and Free / Pro boundaries are unchanged. Microsoft Store publication is completed only after Store submission and certification.
+The main review workflow and Free / Pro boundaries are unchanged.
 
 ## What Dependa Is — and What It Is Not
 
