@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>トラブルシューティング | Dependa マニュアル — SumikkoLab</title>
+<meta name="description" content="Dependa のFAQとトラブルシューティング。スキャン・分析・レポート・CLI操作の問題解決方法を解説します。">
+<link rel="canonical" href="https://dependa.sumikkolab.com/manual/troubleshooting.html">
+<meta property="og:title" content="トラブルシューティング | Dependa マニュアル — SumikkoLab">
+<meta property="og:description" content="Dependa のFAQとトラブルシューティング。スキャン・分析・レポート・CLI操作の問題解決方法を解説します。">
+<meta property="og:url" content="https://dependa.sumikkolab.com/manual/troubleshooting.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Dependa — SumikkoLab">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>Chapter 15: トラブルシューティング</h1>
+    <p class="subtitle">エラーへの対処方法・v2.0 よくある問題・設定リセット・サポート連絡先</p>
+
+    <h2>エラーメッセージ対応表</h2>
+    <table class="manual-table">
+      <tr><th>エラーメッセージ</th><th>原因</th><th>対処方法</th></tr>
+      <tr>
+        <td><code>No supported files found</code></td>
+        <td>スキャン対象ファイルが見つからない</td>
+        <td>対応ファイル（requirements.txt 等）がフォルダ内に存在するか確認してください。</td>
+      </tr>
+      <tr>
+        <td><code>SBOM format not recognized</code></td>
+        <td>インポートした SBOM ファイルの形式が CycloneDX でも SPDX でもない</td>
+        <td>SBOM ファイルが CycloneDX 1.2〜1.6 JSON または SPDX 2.2〜2.3 JSON 形式であることを確認してください。XML 形式は未対応です。</td>
+      </tr>
+      <tr>
+        <td><code>Pro license required</code></td>
+        <td>Pro 専用機能を Free で使おうとした</td>
+        <td>Pro ライセンスを購入するか、該当機能の使用を中止してください。</td>
+      </tr>
+      <tr>
+        <td><code>Data pack verification failed</code></td>
+        <td>脆弱性データベースの検証に失敗</td>
+        <td>アプリを再インストールするか、サポートにお問い合わせください。</td>
+      </tr>
+      <tr>
+        <td><code>Terms of use not accepted</code></td>
+        <td>利用規約に同意していない</td>
+        <td>GUI: 初回起動時の画面で同意 / CLI: <code>--accept-terms</code> を追加</td>
+      </tr>
+      <tr>
+        <td><code>Integrity verification failed</code></td>
+        <td>アプリファイルの整合性検証に失敗</td>
+        <td>アプリを再インストールしてください。改ざんが疑われる場合はサポートにご連絡ください。</td>
+      </tr>
+      <tr>
+        <td><code>Network error</code></td>
+        <td>オンライン API への接続に失敗</td>
+        <td>インターネット接続を確認してください。プロキシ環境の場合はシステムプロキシ設定を確認してください。</td>
+      </tr>
+      <tr>
+        <td><code>License preload failed</code></td>
+        <td>ライセンスデータベースの事前読み込みに失敗</td>
+        <td>アプリを再起動してください。問題が継続する場合はアプリを再インストールしてください。</td>
+      </tr>
+    </table>
+
+    <h2>v2.0 でよくある問題</h2>
+
+    <h3>SBOM ファイルがインポートできない</h3>
+    <p>以下を確認してください。</p>
+    <ul>
+      <li>ファイル形式が CycloneDX 1.2〜1.6 JSON または SPDX 2.2〜2.3 JSON であること。</li>
+      <li>XML 形式の SBOM は v2.0 では未対応です。JSON 形式に変換してからインポートしてください。</li>
+      <li>ファイルが壊れていないこと。JSON として正しくパースできるか確認してください。</li>
+    </ul>
+
+    <h3>ライセンスプリロードエラー</h3>
+    <p>起動時に「License preload failed」が表示される場合、ライセンスデータベースの読み込みに問題が発生しています。アプリを再起動するか、設定ファイルを削除して再起動してください。</p>
+
+    <h3>レポートにウォーターマークが表示される</h3>
+    <p>Free 版で生成された HTML レポートには「Free Edition」のウォーターマークが表示されます。これは正常な動作です。ウォーターマークなしのレポートが必要な場合は Pro にアップグレードしてください。</p>
+
+    <div class="screenshot">
+      <img src="images/settings-ja.png" alt="設定画面">
+      <div class="caption">設定画面 — トラブル時はここで Pro ライセンス状態やオンライン設定を確認</div>
+    </div>
+
+    <h2>設定のリセット方法</h2>
+    <p>設定を初期状態に戻すには、以下の手順を実行してください。</p>
+    <ol>
+      <li>Dependa を終了します。</li>
+      <li>以下のファイルを削除します。</li>
+    </ol>
+    <pre><code>%LocalAppData%\Dependa\settings.json</code></pre>
+    <p>次回起動時に設定ファイルがデフォルト値で再作成されます。</p>
+    <div class="warn-box">
+      <p>設定ファイルを削除すると、利用規約の同意状態もリセットされます。再度同意が必要になります。</p>
+    </div>
+
+    <h2>WebView2 Runtime が見つからない場合</h2>
+    <p>Dependa は一部の UI 表示に <strong>Microsoft Edge WebView2 Runtime</strong> を使用します。以下のエラーが表示された場合はインストールが必要です。</p>
+    <ul>
+      <li>Windows 11 には標準で含まれています。通常はインストール不要です。</li>
+      <li>Windows 10 で表示された場合は、<a href="https://developer.microsoft.com/en-us/microsoft-edge/webview2/" target="_blank" rel="noopener">Microsoft の公式サイト</a> から「Evergreen Bootstrapper」をダウンロードしてインストールしてください。</li>
+      <li>企業のグループポリシーで WebView2 がブロックされている場合は、IT 管理者にご相談ください。</li>
+    </ul>
+
+    <h2>オンライン機能が動作しない場合</h2>
+    <p>OSV API や PyPI / npm / NuGet への接続がうまくいかない場合、以下を確認してください。</p>
+    <ul>
+      <li><strong>インターネット接続</strong>: ブラウザで通常のウェブサイトにアクセスできるか確認してください。</li>
+      <li><strong>ファイアウォール</strong>: 企業ネットワークの場合、<code>api.osv.dev</code>、<code>pypi.org</code>、<code>registry.npmjs.org</code>、<code>api.nuget.org</code> への HTTPS 通信が許可されているか確認してください。</li>
+      <li><strong>プロキシ</strong>: プロキシ環境では、Windows のシステムプロキシ設定が正しく構成されている必要があります。</li>
+      <li><strong>Pro ライセンス</strong>: オンライン機能は Pro ライセンスが必要です。設定画面でライセンス状態を確認してください。</li>
+    </ul>
+
+    <h2>サポートへの問い合わせ</h2>
+    <p>上記で解決しない場合は、以下の方法でサポートにお問い合わせください。</p>
+    <ul>
+      <li><strong>メール</strong>: <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a></li>
+      <li><strong>サポートページ</strong>: <a href="../support.html">サポート</a></li>
+    </ul>
+    <p>お問い合わせの際は、以下の情報をお知らせください。</p>
+    <ul>
+      <li>Dependa のバージョン（<code>Dependa.exe version</code> で確認可能）</li>
+      <li>Windows のバージョン</li>
+      <li>エラーメッセージの全文（スクリーンショットがあると理想的です）</li>
+      <li>再現手順</li>
+    </ul>
+
+    <div class="chapter-nav">
+      <a href="licensing.html">&larr; ライセンスと購入</a>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Table of Contents</a>
+      <a href="../support.html?lang=en">Support</a>
+    </div>
+
+    <h1>Chapter 15: Troubleshooting</h1>
+    <p class="subtitle">Error resolution, v2.0 common issues, settings reset, and support contact</p>
+
+    <h2>Error Message Reference</h2>
+    <table class="manual-table">
+      <tr><th>Error Message</th><th>Cause</th><th>Solution</th></tr>
+      <tr>
+        <td><code>No supported files found</code></td>
+        <td>No scan target files found</td>
+        <td>Verify that supported files (e.g., requirements.txt) exist in the folder.</td>
+      </tr>
+      <tr>
+        <td><code>SBOM format not recognized</code></td>
+        <td>Imported SBOM file is neither CycloneDX nor SPDX</td>
+        <td>Ensure the SBOM file is CycloneDX 1.2–1.6 JSON or SPDX 2.2–2.3 JSON format. XML format is not supported.</td>
+      </tr>
+      <tr>
+        <td><code>Pro license required</code></td>
+        <td>Attempted to use a Pro-only feature on Free</td>
+        <td>Purchase a Pro license or stop using the feature.</td>
+      </tr>
+      <tr>
+        <td><code>Data pack verification failed</code></td>
+        <td>Vulnerability database verification failed</td>
+        <td>Reinstall the app or contact support.</td>
+      </tr>
+      <tr>
+        <td><code>Terms of use not accepted</code></td>
+        <td>Terms of use not agreed to</td>
+        <td>GUI: Agree on the first-launch screen / CLI: Add <code>--accept-terms</code></td>
+      </tr>
+      <tr>
+        <td><code>Integrity verification failed</code></td>
+        <td>App file integrity check failed</td>
+        <td>Reinstall the app. If tampering is suspected, contact support.</td>
+      </tr>
+      <tr>
+        <td><code>Network error</code></td>
+        <td>Failed to connect to online API</td>
+        <td>Check your internet connection. In proxy environments, verify system proxy settings.</td>
+      </tr>
+      <tr>
+        <td><code>License preload failed</code></td>
+        <td>License database preloading failed</td>
+        <td>Restart the app. If the issue persists, reinstall the app.</td>
+      </tr>
+    </table>
+
+    <h2>Common v2.0 Issues</h2>
+
+    <h3>SBOM File Cannot Be Imported</h3>
+    <p>Check the following:</p>
+    <ul>
+      <li>The file format must be CycloneDX 1.2–1.6 JSON or SPDX 2.2–2.3 JSON.</li>
+      <li>XML format SBOMs are not supported in v2.0. Convert to JSON format before importing.</li>
+      <li>The file is not corrupted. Verify it can be parsed as valid JSON.</li>
+    </ul>
+
+    <h3>License Preload Error</h3>
+    <p>If "License preload failed" appears at startup, there is an issue loading the license database. Restart the app, or delete the settings file and restart.</p>
+
+    <h3>Report Shows Watermark</h3>
+    <p>HTML reports generated in the Free edition include a "Free Edition" watermark. This is expected behavior. Upgrade to Pro for watermark-free reports.</p>
+
+    <div class="screenshot">
+      <img src="images/settings-en.png" alt="Settings Screen">
+      <div class="caption">Settings screen — check Pro license status and online settings when troubleshooting</div>
+    </div>
+
+    <h2>Resetting Settings</h2>
+    <p>To reset settings to their defaults:</p>
+    <ol>
+      <li>Close Dependa.</li>
+      <li>Delete the following file:</li>
+    </ol>
+    <pre><code>%LocalAppData%\Dependa\settings.json</code></pre>
+    <p>The settings file will be recreated with default values on the next launch.</p>
+    <div class="warn-box">
+      <p>Deleting the settings file also resets the terms of use acceptance. You will need to agree again.</p>
+    </div>
+
+    <h2>WebView2 Runtime Not Found</h2>
+    <p>Dependa uses <strong>Microsoft Edge WebView2 Runtime</strong> for parts of its UI. If you see an error about WebView2:</p>
+    <ul>
+      <li>Windows 11 includes it by default. No installation is usually needed.</li>
+      <li>On Windows 10, download the "Evergreen Bootstrapper" from <a href="https://developer.microsoft.com/en-us/microsoft-edge/webview2/" target="_blank" rel="noopener">Microsoft's official site</a> and install it.</li>
+      <li>If WebView2 is blocked by your organization's group policy, contact your IT administrator.</li>
+    </ul>
+
+    <h2>Online Features Not Working</h2>
+    <p>If OSV API or PyPI / npm / NuGet connections fail, check the following:</p>
+    <ul>
+      <li><strong>Internet connection</strong>: Verify you can access regular websites in your browser.</li>
+      <li><strong>Firewall</strong>: In corporate networks, ensure HTTPS access to <code>api.osv.dev</code>, <code>pypi.org</code>, <code>registry.npmjs.org</code>, and <code>api.nuget.org</code> is allowed.</li>
+      <li><strong>Proxy</strong>: In proxy environments, Windows system proxy settings must be correctly configured.</li>
+      <li><strong>Pro license</strong>: Online features require a Pro license. Check your license status in Settings.</li>
+    </ul>
+
+    <h2>Contacting Support</h2>
+    <p>If the above does not resolve your issue, please contact support:</p>
+    <ul>
+      <li><strong>Email</strong>: <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a></li>
+      <li><strong>Support page</strong>: <a href="../support.html?lang=en">Support</a></li>
+    </ul>
+    <p>When contacting support, please provide:</p>
+    <ul>
+      <li>Dependa version (check with <code>Dependa.exe version</code>)</li>
+      <li>Windows version</li>
+      <li>Full error message text (screenshots are ideal)</li>
+      <li>Steps to reproduce the issue</li>
+    </ul>
+
+    <div class="chapter-nav">
+      <a href="licensing.html?lang=en">&larr; Licensing &amp; Purchase</a>
+      <span></span>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. Dependa.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ライセンス | Dependa マニュアル — SumikkoLab</title>
+<meta name="description" content="Dependa のライセンス情報。Free版とPro版の違い、購入方法、ライセンス認証の手順を解説します。">
+<link rel="canonical" href="https://dependa.sumikkolab.com/manual/licensing.html">
+<meta property="og:title" content="ライセンス | Dependa マニュアル — SumikkoLab">
+<meta property="og:description" content="Dependa のライセンス情報。Free版とPro版の違い、購入方法、ライセンス認証の手順を解説します。">
+<meta property="og:url" content="https://dependa.sumikkolab.com/manual/licensing.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Dependa — SumikkoLab">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>Chapter 14: ライセンスと購入</h1>
+    <p class="subtitle">Free / Pro プランの違いと Pro の購入方法（v2.0）</p>
+
+    <h2>Free / Pro プラン比較</h2>
+    <table class="manual-table">
+      <tr><th>機能</th><th>Free</th><th>Pro</th></tr>
+      <tr><td>SBOM インポート（CycloneDX / SPDX 自動判別）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>フォルダスキャン（Python: requirements.txt, pyproject.toml, poetry.lock, uv.lock）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>フォルダスキャン（Node.js: package.json, package-lock.json）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>ローカル脆弱性データベースによる照合</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>ローカルライセンスデータベースによる分類</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>リスク分析（RiskReason / RecommendedAction / Evidence / Confidence）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>ポリシー判定（許可 / 要承認 / 禁止）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>SBOM 生成（CycloneDX 1.5 JSON）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>AI Governance 分析</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>IaC 対応（Terraform / Bicep / ARM JSON）</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>レビュー</td><td>無制限</td><td>無制限</td></tr>
+      <tr><td>HTML レポート</td><td>ウォーターマーク付き</td><td>完全版（ウォーターマークなし）</td></tr>
+      <tr><td>承認ワークフロー（PendingApproval / Returned）</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>SBOM 差分（Diff）</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>オンライン補完（PyPI / npm / NuGet ライセンス取得）</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>OSV API オンライン脆弱性照合</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Delta Scan（差分スキャン）</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>例外管理</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>複数プロジェクト管理</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>AI プロンプト生成</td><td>&#8212;</td><td>&#10003;</td></tr>
+    </table>
+
+    <div class="screenshot">
+      <img src="images/purchase-dialog-ja.png" alt="プラン選択ダイアログ">
+      <div class="caption">Free / Pro プラン選択ダイアログ</div>
+    </div>
+
+    <h2>Pro の購入方法</h2>
+    <ol>
+      <li>Dependa を起動し、<strong>設定画面</strong>（歯車アイコン）を開きます。</li>
+      <li>「<strong>Pro にアップグレード</strong>」ボタンをクリックします。</li>
+      <li>Microsoft Store の購入画面が表示されます。</li>
+      <li>Microsoft アカウントでサインインし、購入を完了します。</li>
+      <li>購入後、アプリを再起動すると Pro 機能が有効になります。</li>
+    </ol>
+    <div class="info-box">
+      <p>Pro ライセンスは Microsoft Store のアプリ内購入（Add-on）として提供されます。</p>
+    </div>
+
+    <div class="screenshot">
+      <img src="images/settings-ja.png" alt="設定画面 — ライセンス確認">
+      <div class="caption">設定画面 — Pro ライセンスの状態確認とアップグレード</div>
+    </div>
+
+    <h2>ライセンスの確認</h2>
+    <p>現在のライセンス状態は設定画面で確認できます。Pro が有効な場合は「Pro」バッジが表示されます。</p>
+
+    <h2>Free 版のウォーターマークについて</h2>
+    <p>Free 版で生成される HTML レポートには「Free Edition」のウォーターマーク（透かし）が表示されます。レポートの内容は閲覧可能ですが、公式な提出用途には Pro 版をご利用ください。</p>
+
+    <div class="chapter-nav">
+      <a href="cli-reference.html">&larr; CLI リファレンス</a>
+      <a href="troubleshooting.html">トラブルシューティング &rarr;</a>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Table of Contents</a>
+      <a href="../support.html?lang=en">Support</a>
+    </div>
+
+    <h1>Chapter 14: Licensing &amp; Purchase</h1>
+    <p class="subtitle">Free vs Pro plan differences and how to purchase Pro (v2.0)</p>
+
+    <h2>Free / Pro Plan Comparison</h2>
+    <table class="manual-table">
+      <tr><th>Feature</th><th>Free</th><th>Pro</th></tr>
+      <tr><td>SBOM Import (CycloneDX / SPDX auto-detection)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Folder Scan (Python: requirements.txt, pyproject.toml, poetry.lock, uv.lock)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Folder Scan (Node.js: package.json, package-lock.json)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Local vulnerability database lookup</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Local license database classification</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Risk Analysis (RiskReason / RecommendedAction / Evidence / Confidence)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Policy verdict (Allowed / NeedApproval / Prohibited)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>SBOM generation (CycloneDX 1.5 JSON)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>AI Governance Analysis</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>IaC Support (Terraform / Bicep / ARM JSON)</td><td>&#10003;</td><td>&#10003;</td></tr>
+      <tr><td>Review</td><td>Unlimited</td><td>Unlimited</td></tr>
+      <tr><td>HTML Reports</td><td>With watermark</td><td>Full (no watermark)</td></tr>
+      <tr><td>Approval Workflow (PendingApproval / Returned)</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>SBOM Diff</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Online Enrichment (PyPI / npm / NuGet license lookup)</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>OSV API online vulnerability lookup</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Delta Scan</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Exception Management</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>Multiple Project Management</td><td>&#8212;</td><td>&#10003;</td></tr>
+      <tr><td>AI Prompt Generation</td><td>&#8212;</td><td>&#10003;</td></tr>
+    </table>
+
+    <div class="screenshot">
+      <img src="images/purchase-dialog-en.png" alt="Plan Selection Dialog">
+      <div class="caption">Free / Pro plan selection dialog</div>
+    </div>
+
+    <h2>How to Purchase Pro</h2>
+    <ol>
+      <li>Open Dependa and go to <strong>Settings</strong> (gear icon).</li>
+      <li>Click the <strong>"Upgrade to Pro"</strong> button.</li>
+      <li>The Microsoft Store purchase page will appear.</li>
+      <li>Sign in with your Microsoft account and complete the purchase.</li>
+      <li>After purchasing, restart the app to activate Pro features.</li>
+    </ol>
+    <div class="info-box">
+      <p>The Pro license is offered as a Microsoft Store in-app purchase (Add-on).</p>
+    </div>
+
+    <div class="screenshot">
+      <img src="images/settings-en.png" alt="Settings — License Check">
+      <div class="caption">Settings screen — check Pro license status and upgrade</div>
+    </div>
+
+    <h2>Checking Your License</h2>
+    <p>You can check your current license status in the Settings panel. If Pro is active, a "Pro" badge will be displayed.</p>
+
+    <h2>Free Edition Watermark</h2>
+    <p>HTML reports generated in the Free edition include a "Free Edition" watermark. The report content is fully readable, but for official submissions, please use the Pro edition.</p>
+
+    <div class="chapter-nav">
+      <a href="cli-reference.html?lang=en">&larr; CLI Reference</a>
+      <a href="troubleshooting.html?lang=en">Troubleshooting &rarr;</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 SumikkoLab. Dependa.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

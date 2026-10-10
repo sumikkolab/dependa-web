@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dependa | OSSを使っていいか判断し、記録して、説明できるツール</title>
+<meta name="description" content="Dependa はSBOMを読み込み、OSSの脆弱性・ライセンスリスクを分類し、レビュー・承認・レポート作成を支援するWindows デスクトップツールです。Free/Pro対応。">
+<link rel="canonical" href="https://dependa.sumikkolab.com/">
+<meta property="og:title" content="Dependa | OSSを使っていいか判断し、記録して、説明できるツール">
+<meta property="og:description" content="Dependa はSBOMを読み込み、OSSの脆弱性・ライセンスリスクを分類し、レビュー・承認・レポート作成を支援するWindows デスクトップツールです。Free/Pro対応。">
+<meta property="og:url" content="https://dependa.sumikkolab.com/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Dependa — SumikkoLab">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Dependa",
+  "description": "SBOMを読み込み、OSSの脆弱性・ライセンスリスクを分類し、レビュー・承認・レポート作成を支援するデスクトップ業務ツール",
+  "url": "https://dependa.sumikkolab.com/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Windows 10, Windows 11",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "JPY"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Sumikko Lab",
+    "url": "https://dependa.sumikkolab.com/"
+  }
+}
+</script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Yu Gothic UI', sans-serif; line-height: 1.7; color: #1a1a2e; background: #f8f9fa; }
+  .hero { background: linear-gradient(135deg, #312e81 0%, #4338ca 50%, #6366f1 100%); color: #fff; padding: 60px 24px 48px; text-align: center; }
+  .hero h1 { font-size: 2.2rem; margin-bottom: 8px; letter-spacing: 0.5px; }
+  .hero .tagline { font-size: 1.15rem; color: #e0e7ff; margin-bottom: 12px; font-weight: 500; }
+  .hero .sub-tagline { font-size: 0.95rem; color: #c7d2fe; margin-bottom: 28px; max-width: 600px; margin-left: auto; margin-right: auto; }
+  .hero .badge { display: inline-block; background: #818cf8; color: #fff; padding: 4px 14px; border-radius: 20px; font-size: 0.8rem; margin: 0 4px 8px; }
+  .hero-buttons { margin-top: 24px; }
+  .hero-buttons a { display: inline-block; margin: 6px 8px; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-size: 0.95rem; font-weight: 600; }
+  .hero-buttons .store-btn { background: #fff; color: #312e81; }
+  .hero-buttons .manual-btn { background: transparent; color: #e0e7ff; border: 1px solid #a5b4fc; }
+  .container { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+  h2 { font-size: 1.25rem; margin: 36px 0 12px; color: #312e81; border-left: 3px solid #6366f1; padding-left: 10px; }
+  .why-section { background: #eef2ff; border-radius: 8px; padding: 24px; margin: 28px 0; }
+  .why-section h2 { margin-top: 0; }
+  .why-section p { font-size: 0.92rem; color: #374151; margin-bottom: 10px; }
+  .why-section p:last-child { margin-bottom: 0; }
+  .why-section strong { color: #312e81; }
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  @media (max-width: 600px) { .features { grid-template-columns: 1fr; } }
+  .feature-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; }
+  .feature-card h3 { font-size: 0.95rem; color: #312e81; margin-bottom: 6px; }
+  .feature-card p { font-size: 0.85rem; color: #475569; }
+  .pro-badge { background: #f59e0b; color: #fff; font-size: 0.7rem; padding: 1px 6px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+  ul { padding-left: 20px; margin: 8px 0 16px; }
+  li { font-size: 0.9rem; margin-bottom: 4px; }
+  .compare-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.85rem; }
+  .compare-table th, .compare-table td { border: 1px solid #e2e8f0; padding: 8px 12px; text-align: center; }
+  .compare-table th { background: #f1f5f9; color: #312e81; font-weight: 600; }
+  .compare-table td { background: #fff; }
+  .compare-table td:first-child { text-align: left; font-weight: 500; }
+  .compare-note { font-size: 0.82rem; color: #64748b; margin-top: 8px; font-style: italic; }
+  .eco-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 0.9rem; }
+  .eco-table th, .eco-table td { border: 1px solid #e2e8f0; padding: 8px 12px; text-align: left; }
+  .eco-table th { background: #f1f5f9; color: #312e81; font-weight: 600; }
+  .eco-table td { background: #fff; }
+  .privacy-note { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 16px; margin: 24px 0; }
+  .privacy-note p { font-size: 0.9rem; color: #166534; }
+  .store-cta { text-align: center; margin: 32px 0; padding: 28px; background: #eef2ff; border-radius: 8px; }
+  .store-cta p { font-size: 0.95rem; color: #374151; margin-bottom: 16px; }
+  .store-cta a { display: inline-block; }
+  .store-cta img { height: 52px; }
+  .links { text-align: center; margin: 32px 0; }
+  .links a { display: inline-block; margin: 6px 10px; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-size: 0.9rem; }
+  .links .primary { background: #6366f1; color: #fff; }
+  .links .secondary { background: #e2e8f0; color: #1e3a5f; }
+  .footer { text-align: center; padding: 24px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; margin-top: 40px; }
+  .footer a { color: #64748b; margin: 0 8px; }
+  .screenshot { text-align: center; margin: 24px 0; }
+  .screenshot img { max-width: 100%; border-radius: 8px; box-shadow: 0 2px 12px rgba(0,0,0,0.12); }
+  .screenshot .caption { font-size: 0.82rem; color: #64748b; margin-top: 8px; }
+  .lang-toggle { text-align: right; padding: 12px 24px 0; }
+  .lang-toggle button { background: #e2e8f0; border: none; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+  .lang-toggle button.active { background: #6366f1; color: #fff; }
+  .section-ja, .section-en { display: none; }
+  .section-ja.visible, .section-en.visible { display: block; }
+</style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+  <button id="btn-en" onclick="switchLang('en')">English</button>
+</div>
+
+<!-- ==================== 日本語 ==================== -->
+<div class="section-ja visible" id="content-ja">
+  <div class="hero">
+    <h1>Dependa</h1>
+    <p class="tagline">OSS を使っていいか判断し、記録して、説明できるツール</p>
+    <p class="sub-tagline">SBOM を読み込み、リスクを分類し、レビュー・承認・レポートを支援します。最終判断は人間が行います。</p>
+    <span class="badge">CycloneDX</span>
+    <span class="badge">SPDX</span>
+    <span class="badge">Python</span>
+    <span class="badge">Node.js</span>
+    <span class="badge">NuGet</span>
+    <span class="badge">ローカル完結</span>
+    <div class="hero-buttons">
+      <a href="https://apps.microsoft.com/detail/9P84RLQQ401D" class="store-btn">Microsoft Store で入手</a>
+      <a href="manual/" class="manual-btn">ユーザーマニュアル</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="why-section">
+      <h2>なぜこのツールが必要か</h2>
+      <p>ソフトウェアはオープンソースで構成される時代です。SBOM 管理・ライセンス追跡・脆弱性対応は<strong>コンプライアンス義務</strong>になりつつあります。</p>
+      <p>既存ツールの多くは「検出・スキャン」に特化しています。しかし実務で難しいのは<strong>レビュー・承認・記録・説明</strong>です。</p>
+      <p>今も Excel やメールで OSS 利用審査を管理していませんか？</p>
+      <p><strong>Dependa は、スキャン結果や SBOM を受け取った「その先」— レビュー・承認・レポートを支援する OSS ガバナンスツールです。</strong></p>
+    </div>
+
+    <div class="screenshot">
+      <img src="manual/images/home-screen-ja.png" alt="Dependa ダッシュボード">
+      <div class="caption">ダッシュボード — レビュー実績・ワークフロー状態・ポリシー状況を一覧</div>
+    </div>
+
+    <h2>こんな方に</h2>
+    <table class="eco-table">
+      <tr><th>役割</th><th>使う場面</th><th>今の方法</th><th>Dependa で</th></tr>
+      <tr><td>情報システム部門</td><td>OSS 利用申請のレビュー</td><td>Excel で一覧管理</td><td>レビュー画面で一元管理</td></tr>
+      <tr><td>セキュリティ担当</td><td>脆弱性・ライセンスの確認</td><td>スキャン結果を目視</td><td>リスク分類 + 推奨対応を自動提示</td></tr>
+      <tr><td>法務・コンプライアンス</td><td>ライセンス利用可否の確認</td><td>ライセンス表を手動照合</td><td>ポリシー設定で組織ルールを適用</td></tr>
+      <tr><td>開発リーダー</td><td>OSS 採用の判断</td><td>個別に調査</td><td>リスク理由 + 根拠で判断材料を整理</td></tr>
+      <tr><td>監査対応</td><td>SBOM 提出・説明</td><td>Word でレポート作成</td><td>HTML レポートを自動出力</td></tr>
+      <tr><td>ベンダー管理</td><td>納品物の SBOM 確認</td><td>確認手段がない</td><td>SBOM インポート → レビュー → 記録</td></tr>
+    </table>
+
+    <h2>いつ使うか</h2>
+    <ul>
+      <li>ベンダーから SBOM を受け取ったとき</li>
+      <li>プロジェクトの OSS 利用状況をレビューするとき</li>
+      <li>監査用の説明資料を準備するとき</li>
+      <li>あるコンポーネントをなぜ承認したか説明する必要があるとき</li>
+      <li>今 Excel で管理している OSS 審査を効率化したいとき</li>
+    </ul>
+
+    <h2>主な機能</h2>
+    <div class="features">
+      <div class="feature-card">
+        <h3>リスク分析</h3>
+        <p>ライセンス不明・コピーレフト・脆弱性・AI 利用をリスクとして分類。すべての判定に理由・推奨対応・根拠・確信度が付きます。</p>
+      </div>
+      <div class="feature-card">
+        <h3>レビュー支援</h3>
+        <p>「何を確認すべきか」「どう判断すべきか」を提示。凡例・ガイド・判断テンプレート付きで非技術者でも操作できます。</p>
+      </div>
+      <div class="feature-card">
+        <h3>承認フロー <span class="pro-badge">PRO</span></h3>
+        <p>レビュー中→完了→承認依頼→差し戻し→再開。レビューの進捗と承認状態を一元管理。</p>
+      </div>
+      <div class="feature-card">
+        <h3>レポート出力</h3>
+        <p>監査・上位層向けの HTML / PDF レポート。エグゼクティブサマリー、リスク分析、レビュー結果、免責文を含みます。</p>
+      </div>
+      <div class="feature-card">
+        <h3>SBOM インポート</h3>
+        <p>CycloneDX / SPDX JSON を自動判定して読み込み。Trivy や Syft で生成した SBOM をそのまま使えます。</p>
+      </div>
+      <div class="feature-card">
+        <h3>オンライン補完 <span class="pro-badge">PRO</span></h3>
+        <p>ライセンス不明の項目をパッケージレジストリ（PyPI / npm / NuGet）から補完。レビューを止めません。</p>
+      </div>
+      <div class="feature-card">
+        <h3>説明責任レイヤ</h3>
+        <p>レビュー判断の根拠を 6 層で構造化。「分類は最終判断ではない」disclaimer、「要確認」バッジ、理由表示、SPDX 複合式の内訳、公式ページへのリンク、「宣言 / 確認済」ラベルが SBOM レビュー HTML に表示されます。判定ロジックは変更ありません。</p>
+      </div>
+      <div class="feature-card">
+        <h3>レポート保存ダイアログ</h3>
+        <p>「スキャン結果レポート」ボタンで保存先を指定可能に。デフォルトファイル名は <code>{年月日}-{プロジェクト名}-{言語}.html</code>（例: <code>20260501-myproject-jp.html</code>）。複数プロジェクトの管理が容易になりました。</p>
+      </div>
+      <div class="feature-card">
+        <h3>v2.0.5.0</h3>
+        <p>.NET 10 への移行と、同梱脆弱性データ（Python 261 / NuGet 81 / Node.js 135、2026-09-01 生成）の更新を反映したメンテナンス更新です。主要ワークフローと Free / Pro 境界は変更ありません。</p>
+      </div>
+    </div>
+
+    <div class="screenshot">
+      <img src="manual/images/scan-results-ja.png" alt="レビュー画面">
+      <div class="caption">レビュー画面 — リスク分類・ガイドパネル・進捗バー・レビュー結果を統合表示</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="manual/images/review-detail-enriched-ja.png" alt="レビュー詳細">
+      <div class="caption">レビュー詳細 — オンライン補完でライセンス解決、レビュー結果を選択して保存</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="manual/images/html-report-ja.png" alt="SBOM レビューレポート">
+      <div class="caption">SBOM レビューレポート — リスク内訳・レビュー統計・要対応項目</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="manual/images/policy-builder-ja.png" alt="組織ポリシー">
+      <div class="caption">組織ポリシー — ライセンスごとに許可 / 要承認 / 禁止を設定</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="manual/images/projects-ja.png" alt="プロジェクト管理">
+      <div class="caption">プロジェクト管理 — 複数プロジェクトのレビュー履歴を一元管理</div>
+    </div>
+
+    <h2>Free / Pro</h2>
+    <table class="compare-table">
+      <tr><th>機能</th><th>Free</th><th>Pro</th></tr>
+      <tr><td>SBOM インポート</td><td>1 ファイル</td><td>無制限</td></tr>
+      <tr><td>リスク分析</td><td>全項目表示</td><td>全項目表示</td></tr>
+      <tr><td>レビュー</td><td>無制限</td><td>無制限</td></tr>
+      <tr><td>承認フロー</td><td>表示のみ</td><td>全遷移</td></tr>
+      <tr><td>レポート出力</td><td>透かし付き</td><td>完全版</td></tr>
+      <tr><td>SBOM 差分比較</td><td>—</td><td>&#10003;</td></tr>
+      <tr><td>オンライン補完</td><td>—</td><td>&#10003;</td></tr>
+      <tr><td>AI Governance レポート</td><td>表示のみ</td><td>レポート含む</td></tr>
+      <tr><td>プロジェクト管理</td><td>1 件</td><td>無制限</td></tr>
+    </table>
+
+    <p class="compare-note">Free はリスクを理解するため。Pro は組織として判断を管理・記録するため。</p>
+
+    <h2>他のツールとの違い</h2>
+    <p style="font-size:0.9rem; margin-bottom:12px;">Dependa はスキャナの代替ではなく、<strong>分析結果をレビュー・承認・報告する</strong>ためのツールです。</p>
+    <table class="compare-table">
+      <tr><th></th><th>Trivy / Syft</th><th>Snyk / FOSSA</th><th>Excel</th><th>Dependa</th></tr>
+      <tr><td>主な役割</td><td>検出</td><td>検出 + 管理</td><td>記録</td><td>レビュー・承認・記録</td></tr>
+      <tr><td>レビューワークフロー</td><td>—</td><td>一部</td><td>手動</td><td>&#10003;</td></tr>
+      <tr><td>承認フロー</td><td>—</td><td>—</td><td>手動</td><td>&#10003;</td></tr>
+      <tr><td>監査向けレポート</td><td>—</td><td>ダッシュボード</td><td>手動</td><td>HTML / PDF</td></tr>
+      <tr><td>ローカル完結</td><td>&#10003;</td><td>—</td><td>&#10003;</td><td>&#10003;</td></tr>
+    </table>
+    <p class="compare-note">Trivy で SBOM を生成し、Dependa でレビュー。組み合わせて使う設計です。</p>
+
+    <h2>対応フォーマット</h2>
+    <table class="eco-table">
+      <tr><th>入力形式</th><th>対応バージョン</th></tr>
+      <tr><td>CycloneDX JSON</td><td>1.2 / 1.4 / 1.5 / 1.6</td></tr>
+      <tr><td>SPDX JSON</td><td>2.2 / 2.3</td></tr>
+    </table>
+    <h2>対応エコシステム（フォルダスキャン）</h2>
+    <table class="eco-table">
+      <tr><th>エコシステム</th><th>対応ファイル</th></tr>
+      <tr><td>Python</td><td>requirements.txt, pyproject.toml, poetry.lock</td></tr>
+      <tr><td>NuGet (.NET)</td><td>.csproj, packages.config</td></tr>
+      <tr><td>Node.js</td><td>package.json, package-lock.json</td></tr>
+    </table>
+
+    <div class="privacy-note">
+      <p><strong>プライバシー:</strong> 分析はすべて PC 上で完結します。オンライン機能はオプションで、有効にした場合のみ公開データベースを参照します。コードやプロジェクト情報がクラウドに送信されることはありません。</p>
+    </div>
+
+    <div class="store-cta">
+      <p>Microsoft Store からインストールできます。</p>
+      <a href="https://apps.microsoft.com/detail/9P84RLQQ401D">
+        <span style="display:inline-block;background:#0078d4;color:#fff;padding:10px 24px;border-radius:6px;font-size:0.95rem;font-weight:600;">&#9654; Microsoft Store で入手</span>
+      </a>
+    </div>
+
+    <h2>システム要件</h2>
+    <ul>
+      <li>Windows 10 (19041) 以降 / Windows 11</li>
+      <li>WebView2 Runtime（PDF 出力に必要）</li>
+      <li>ディスク: 約 80 MB / RAM: 512 MB 以上</li>
+    </ul>
+
+    <div class="privacy-note" style="background:#fff7ed;border-color:#fed7aa;">
+      <p><strong>免責事項:</strong> Dependa はレビュー業務に必要な情報を整理するツールです。法的助言、ライセンスコンプライアンスの保証、専門的なセキュリティ評価の代替を提供するものではありません。最終的な利用判断はユーザーおよび所属組織の責任で行ってください。</p>
+    </div>
+
+    <div class="links">
+      <a href="manual/" class="primary">ユーザーマニュアル</a>
+      <a href="manual/pro-features.html" class="secondary">Pro 機能ガイド</a>
+      <a href="manual/licensing.html" class="secondary">ライセンスと購入</a>
+      <a href="support.html" class="secondary">サポート</a>
+      <a href="privacy-policy.html" class="secondary">プライバシーポリシー</a>
+      <a href="terms-of-use.html" class="secondary">利用規約</a>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== English ==================== -->
+<div class="section-en" id="content-en">
+  <div class="hero">
+    <h1>Dependa</h1>
+    <p class="tagline">Decide if OSS is safe to use — review, approve, and report</p>
+    <p class="sub-tagline">Load an SBOM, classify OSS risks, and manage reviews, approvals, and reports. Final decisions are always made by humans.</p>
+    <span class="badge">CycloneDX</span>
+    <span class="badge">SPDX</span>
+    <span class="badge">Python</span>
+    <span class="badge">Node.js</span>
+    <span class="badge">NuGet</span>
+    <span class="badge">Local-first</span>
+    <div class="hero-buttons">
+      <a href="https://apps.microsoft.com/detail/9P84RLQQ401D" class="store-btn">Get it from Microsoft Store</a>
+      <a href="manual/?lang=en" class="manual-btn">User Manual</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="why-section">
+      <h2>Why This Tool Exists</h2>
+      <p>Software is built on open source. SBOM management, license tracking, and vulnerability response are becoming <strong>compliance obligations</strong>.</p>
+      <p>Most tools focus on detection and scanning. But the harder part is <strong>review, approval, documentation, and explanation</strong>.</p>
+      <p>Still managing OSS reviews in Excel, email, and Word documents?</p>
+      <p><strong>Dependa picks up where scanners leave off — an OSS Governance tool for review, approval, and reporting.</strong></p>
+    </div>
+
+    <div class="screenshot">
+      <img src="manual/images/dashboard-en.png" alt="Dependa Dashboard">
+      <div class="caption">Dashboard — review counts, workflow status, policy compliance at a glance</div>
+    </div>
+
+    <h2>Who Is This Tool For?</h2>
+    <table class="eco-table">
+      <tr><th>Role</th><th>Use Case</th><th>Current Method</th><th>With Dependa</th></tr>
+      <tr><td>IT / Security</td><td>OSS usage review</td><td>Excel spreadsheets</td><td>Unified review screen</td></tr>
+      <tr><td>Security teams</td><td>Vulnerability & license check</td><td>Manual scan review</td><td>Risk classification + recommended actions</td></tr>
+      <tr><td>Legal / Compliance</td><td>License usage decisions</td><td>Manual license lookup</td><td>Organization policy rules</td></tr>
+      <tr><td>Engineering leads</td><td>OSS adoption decisions</td><td>Ad-hoc research</td><td>Risk reasons + evidence</td></tr>
+      <tr><td>Audit preparation</td><td>SBOM documentation</td><td>Word reports</td><td>Auto-generated HTML reports</td></tr>
+      <tr><td>Vendor management</td><td>Reviewing delivered SBOMs</td><td>No standard tool</td><td>Import → Review → Record</td></tr>
+    </table>
+
+    <h2>When Do You Use Dependa?</h2>
+    <ul>
+      <li>When you receive an SBOM from a vendor</li>
+      <li>When reviewing OSS usage in a project</li>
+      <li>When preparing documentation for audits</li>
+      <li>When explaining why a component was approved</li>
+      <li>When managing OSS reviews currently tracked in Excel</li>
+    </ul>
+
+    <h2>Key Features</h2>
+    <div class="features">
+      <div class="feature-card">
+        <h3>Risk Analysis</h3>
+        <p>Classifies unknown licenses, copyleft, vulnerabilities, and AI usage as risks. Every classification includes reason, recommended action, evidence, and confidence.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Review Support</h3>
+        <p>Shows what to check and how to decide. Includes legends, guides, and decision templates — accessible to non-technical reviewers.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Approval Workflow <span class="pro-badge">PRO</span></h3>
+        <p>In Review → Completed → Pending Approval → Returned → Resume. Track review progress and approval status in one place.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Report Export</h3>
+        <p>Audit-ready HTML / PDF reports with executive summary, risk analysis, review results, and disclaimer.</p>
+      </div>
+      <div class="feature-card">
+        <h3>SBOM Import</h3>
+        <p>Auto-detect CycloneDX and SPDX JSON. Works with SBOMs generated by Trivy, Syft, and other tools.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Online Enrichment <span class="pro-badge">PRO</span></h3>
+        <p>Fetch missing license info from package registries (PyPI / npm / NuGet). Keeps your review moving forward.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Explainability Layers</h3>
+        <p>Six structured layers of reviewer-facing context: classification disclaimer, "Review required" badge, reason labels, SPDX expression breakdown, official-page links, and "Declared / Concluded" labels. Classification logic is unchanged.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Report Save Dialog</h3>
+        <p>The "Scan Result Report" button now opens a Save dialog. The default file name follows <code>{yyyyMMdd}-{project}-{lang}.html</code> (e.g., <code>20260501-myproject-en.html</code>), making multi-project archives easy to manage.</p>
+      </div>
+      <div class="feature-card">
+        <h3>v2.0.5.0</h3>
+        <p>A maintenance update that migrates Dependa to .NET 10 and refreshes bundled vulnerability data (Python 261 / NuGet 81 / Node.js 135, generated 2026-09-01). Core workflow and Free / Pro boundaries are unchanged.</p>
+      </div>
+    </div>
+
+    <div class="screenshot">
+      <img src="manual/images/scan-results-en.png" alt="Review Screen">
+      <div class="caption">Review Screen — risk classification, guide panel, progress bar, review controls</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="manual/images/review-all-items-en.png" alt="Review Detail">
+      <div class="caption">Component details — license info, risk level, PURL, review result selection</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="manual/images/html-report-en.png" alt="SBOM Review Report">
+      <div class="caption">SBOM Review Report — risk breakdown, review statistics, action items</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="manual/images/policy-builder-en.png" alt="Organization Policy">
+      <div class="caption">Organization Policy — Allowed / Need Approval / Prohibited per license</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="manual/images/projects-en.png" alt="Project Management">
+      <div class="caption">Project Management — track review history across multiple projects</div>
+    </div>
+
+    <h2>Free / Pro</h2>
+    <table class="compare-table">
+      <tr><th>Feature</th><th>Free</th><th>Pro</th></tr>
+      <tr><td>SBOM Import</td><td>1 file</td><td>Unlimited</td></tr>
+      <tr><td>Risk Analysis</td><td>Full display</td><td>Full display</td></tr>
+      <tr><td>Review</td><td>Unlimited</td><td>Unlimited</td></tr>
+      <tr><td>Approval Workflow</td><td>View only</td><td>Full transitions</td></tr>
+      <tr><td>Report Export</td><td>With watermark</td><td>Full version</td></tr>
+      <tr><td>SBOM Diff</td><td>—</td><td>&#10003;</td></tr>
+      <tr><td>Online Enrichment</td><td>—</td><td>&#10003;</td></tr>
+      <tr><td>AI Governance Report</td><td>View only</td><td>Included in report</td></tr>
+      <tr><td>Project Management</td><td>1 project</td><td>Unlimited</td></tr>
+    </table>
+
+    <p class="compare-note">Free helps you understand the risks. Pro helps your organization manage and document decisions.</p>
+
+    <h2>How Dependa Differs</h2>
+    <p style="font-size:0.9rem; margin-bottom:12px;">Dependa is not a scanner replacement. It turns analysis results into <strong>review, approval, and reports</strong>.</p>
+    <table class="compare-table">
+      <tr><th></th><th>Trivy / Syft</th><th>Snyk / FOSSA</th><th>Excel</th><th>Dependa</th></tr>
+      <tr><td>Primary role</td><td>Detection</td><td>Detection + Mgmt</td><td>Recording</td><td>Review / Approval / Record</td></tr>
+      <tr><td>Review workflow</td><td>—</td><td>Partial</td><td>Manual</td><td>&#10003;</td></tr>
+      <tr><td>Approval flow</td><td>—</td><td>—</td><td>Manual</td><td>&#10003;</td></tr>
+      <tr><td>Audit-ready report</td><td>—</td><td>Dashboard</td><td>Manual</td><td>HTML / PDF</td></tr>
+      <tr><td>Fully local</td><td>&#10003;</td><td>—</td><td>&#10003;</td><td>&#10003;</td></tr>
+    </table>
+    <p class="compare-note">Generate SBOMs with Trivy, review with Dependa. They work together by design.</p>
+
+    <h2>Supported Formats</h2>
+    <table class="eco-table">
+      <tr><th>Input Format</th><th>Versions</th></tr>
+      <tr><td>CycloneDX JSON</td><td>1.2 / 1.4 / 1.5 / 1.6</td></tr>
+      <tr><td>SPDX JSON</td><td>2.2 / 2.3</td></tr>
+    </table>
+    <h2>Supported Ecosystems (Folder Scan)</h2>
+    <table class="eco-table">
+      <tr><th>Ecosystem</th><th>Supported Files</th></tr>
+      <tr><td>Python</td><td>requirements.txt, pyproject.toml, poetry.lock</td></tr>
+      <tr><td>NuGet (.NET)</td><td>.csproj, packages.config</td></tr>
+      <tr><td>Node.js</td><td>package.json, package-lock.json</td></tr>
+    </table>
+
+    <div class="privacy-note">
+      <p><strong>Privacy:</strong> All analysis runs locally. Online features are optional and only query public databases when explicitly enabled. No code or project information is ever sent to the cloud.</p>
+    </div>
+
+    <div class="store-cta">
+      <p>Available on Microsoft Store.</p>
+      <a href="https://apps.microsoft.com/detail/9P84RLQQ401D">
+        <span style="display:inline-block;background:#0078d4;color:#fff;padding:10px 24px;border-radius:6px;font-size:0.95rem;font-weight:600;">&#9654; Get it from Microsoft Store</span>
+      </a>
+    </div>
+
+    <h2>System Requirements</h2>
+    <ul>
+      <li>Windows 10 (19041) or later / Windows 11</li>
+      <li>WebView2 Runtime (required for PDF export)</li>
+      <li>Disk: ~80 MB / RAM: 512 MB+</li>
+    </ul>
+
+    <div class="privacy-note" style="background:#fff7ed;border-color:#fed7aa;">
+      <p><strong>Disclaimer:</strong> Dependa organizes information for review purposes. It does not provide legal advice, guarantee license compliance, or substitute for professional security assessments. Final usage decisions are the responsibility of the user and their organization.</p>
+    </div>
+
+    <div class="links">
+      <a href="manual/?lang=en" class="primary">User Manual</a>
+      <a href="manual/pro-features.html?lang=en" class="secondary">Pro Features</a>
+      <a href="manual/licensing.html?lang=en" class="secondary">Licensing & Purchase</a>
+      <a href="support.html" class="secondary">Support</a>
+      <a href="privacy-policy.html" class="secondary">Privacy Policy</a>
+      <a href="terms-of-use.html" class="secondary">Terms of Use</a>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>© 2026 Sumikko Lab. All rights reserved.</p>
+  <p>
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-of-use.html">Terms of Use</a>
+    <a href="support.html">Support</a>
+  </p>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+</body>
+</html>
