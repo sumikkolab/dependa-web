@@ -17,7 +17,7 @@
 <p align="center">
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%2010%2F11-blue" />
   <img alt=".NET 10" src="https://img.shields.io/badge/.NET-10.0-purple" />
-  <img alt="Version" src="https://img.shields.io/badge/version-2.0.5.0-brightgreen" />
+  <img alt="Version" src="https://img.shields.io/badge/version-2.0.6.0-brightgreen" />
 </p>
 
 <p align="center">
@@ -45,6 +45,10 @@ Most existing tools focus on **detection and scanning**. But in real organizatio
 Many teams still manage OSS usage reviews using Excel, emails, and Word documents. There is no standard tool for this workflow. Dependa was created to fill that gap.
 
 > **Product category**: OSS Governance / SBOM Review Management Tool
+
+## v2.0.6.0
+
+v2.0.6.0 refreshes the screen design (colors and keyboard focus indication), adds Policy Builder and Exceptions entries to the navigation, shows a data freshness warning on the dashboard, improves the input file size limit and the display of reasons for items that could not be examined, makes Markdown reports safe against symbols being interpreted as formatting, and updates the third-party license notices. The format of saved data is unchanged.
 
 ## v2.0.5.0
 
