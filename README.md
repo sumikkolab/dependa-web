@@ -17,7 +17,6 @@
 <p align="center">
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%2010%2F11-blue" />
   <img alt=".NET 10" src="https://img.shields.io/badge/.NET-10.0-purple" />
-  <img alt="Release checks" src="https://img.shields.io/badge/release_checks-passing-brightgreen" />
   <img alt="Version" src="https://img.shields.io/badge/version-2.0.5.0-brightgreen" />
 </p>
 
@@ -70,7 +69,7 @@ Dependa is not a scanner. It is a tool for reviewing, documenting, and explainin
 
 ## Import & Risk Analysis
 
-Import **CycloneDX** (1.2–1.6) and **SPDX** (2.2–2.3) JSON — auto-detected. Or scan a local folder (Python / NuGet / Node.js).
+Import **CycloneDX** (1.2–1.7) and **SPDX** (2.2–2.3) JSON — auto-detected. Or scan a local folder (Python / NuGet / Node.js).
 
 Every component gets a **Risk Level** (High Risk / Risk / Known-Normal) with Risk Reason, Recommended Action, Evidence, and Confidence.
 
@@ -158,7 +157,7 @@ Zero network requests unless you opt in. Risk analysis, license classification, 
 
 | | Free | Pro |
 |---|---|---|
-| SBOM Import (CycloneDX / SPDX) | 1 file | Unlimited |
+| SBOM Import (CycloneDX / SPDX) | No limit | No limit |
 | Risk Analysis (full detail) | All | All |
 | Review | Unlimited | Unlimited |
 | Approval Workflow | View only | Full transitions |
@@ -198,4 +197,4 @@ No telemetry. No analytics. No account. [Privacy Policy](https://dependa.sumikko
 
 ## License
 
-Proprietary. Free edition at no cost. [Sumikko Lab](https://dependa.sumikkolab.com). Third-party licenses: see [ThirdPartyNotices](https://dependa.sumikkolab.com/manual/licensing.html).
+Proprietary. Free edition at no cost. [Sumikko Lab](https://dependa.sumikkolab.com).

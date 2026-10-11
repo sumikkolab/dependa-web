@@ -35,44 +35,29 @@
     <table class="manual-table">
       <tr><th>エラーメッセージ</th><th>原因</th><th>対処方法</th></tr>
       <tr>
-        <td><code>No supported files found</code></td>
+        <td><code>No supported dependency files found in the target directory.</code></td>
         <td>スキャン対象ファイルが見つからない</td>
         <td>対応ファイル（requirements.txt 等）がフォルダ内に存在するか確認してください。</td>
       </tr>
       <tr>
-        <td><code>SBOM format not recognized</code></td>
+        <td><code>unsupported SBOM format</code></td>
         <td>インポートした SBOM ファイルの形式が CycloneDX でも SPDX でもない</td>
-        <td>SBOM ファイルが CycloneDX 1.2〜1.6 JSON または SPDX 2.2〜2.3 JSON 形式であることを確認してください。XML 形式は未対応です。</td>
+        <td>SBOM ファイルが CycloneDX 1.2〜1.7 JSON または SPDX 2.2〜2.3 JSON 形式であることを確認してください。XML 形式は未対応です。</td>
       </tr>
       <tr>
-        <td><code>Pro license required</code></td>
+        <td><code>requires Dependa Pro.</code></td>
         <td>Pro 専用機能を Free で使おうとした</td>
         <td>Pro ライセンスを購入するか、該当機能の使用を中止してください。</td>
       </tr>
       <tr>
-        <td><code>Data pack verification failed</code></td>
-        <td>脆弱性データベースの検証に失敗</td>
-        <td>アプリを再インストールするか、サポートにお問い合わせください。</td>
-      </tr>
-      <tr>
-        <td><code>Terms of use not accepted</code></td>
+        <td><code>Terms acceptance required. --accept-terms is not specified.</code></td>
         <td>利用規約に同意していない</td>
         <td>GUI: 初回起動時の画面で同意 / CLI: <code>--accept-terms</code> を追加</td>
       </tr>
       <tr>
-        <td><code>Integrity verification failed</code></td>
+        <td><code>Integrity check failed for required data files.</code></td>
         <td>アプリファイルの整合性検証に失敗</td>
         <td>アプリを再インストールしてください。改ざんが疑われる場合はサポートにご連絡ください。</td>
-      </tr>
-      <tr>
-        <td><code>Network error</code></td>
-        <td>オンライン API への接続に失敗</td>
-        <td>インターネット接続を確認してください。プロキシ環境の場合はシステムプロキシ設定を確認してください。</td>
-      </tr>
-      <tr>
-        <td><code>License preload failed</code></td>
-        <td>ライセンスデータベースの事前読み込みに失敗</td>
-        <td>アプリを再起動してください。問題が継続する場合はアプリを再インストールしてください。</td>
       </tr>
     </table>
 
@@ -81,16 +66,13 @@
     <h3>SBOM ファイルがインポートできない</h3>
     <p>以下を確認してください。</p>
     <ul>
-      <li>ファイル形式が CycloneDX 1.2〜1.6 JSON または SPDX 2.2〜2.3 JSON であること。</li>
+      <li>ファイル形式が CycloneDX 1.2〜1.7 JSON または SPDX 2.2〜2.3 JSON であること。</li>
       <li>XML 形式の SBOM は v2.0 では未対応です。JSON 形式に変換してからインポートしてください。</li>
       <li>ファイルが壊れていないこと。JSON として正しくパースできるか確認してください。</li>
     </ul>
 
-    <h3>ライセンスプリロードエラー</h3>
-    <p>起動時に「License preload failed」が表示される場合、ライセンスデータベースの読み込みに問題が発生しています。アプリを再起動するか、設定ファイルを削除して再起動してください。</p>
-
     <h3>レポートにウォーターマークが表示される</h3>
-    <p>Free 版で生成された HTML レポートには「Free Edition」のウォーターマークが表示されます。これは正常な動作です。ウォーターマークなしのレポートが必要な場合は Pro にアップグレードしてください。</p>
+    <p>Free 版で生成された HTML レポートには「Dependa Free」のウォーターマークが表示されます。これは正常な動作です。ウォーターマークなしのレポートが必要な場合は Pro にアップグレードしてください。</p>
 
     <div class="screenshot">
       <img src="images/settings-ja.png" alt="設定画面">
@@ -160,44 +142,29 @@
     <table class="manual-table">
       <tr><th>Error Message</th><th>Cause</th><th>Solution</th></tr>
       <tr>
-        <td><code>No supported files found</code></td>
+        <td><code>No supported dependency files found in the target directory.</code></td>
         <td>No scan target files found</td>
         <td>Verify that supported files (e.g., requirements.txt) exist in the folder.</td>
       </tr>
       <tr>
-        <td><code>SBOM format not recognized</code></td>
+        <td><code>unsupported SBOM format</code></td>
         <td>Imported SBOM file is neither CycloneDX nor SPDX</td>
-        <td>Ensure the SBOM file is CycloneDX 1.2–1.6 JSON or SPDX 2.2–2.3 JSON format. XML format is not supported.</td>
+        <td>Ensure the SBOM file is CycloneDX 1.2–1.7 JSON or SPDX 2.2–2.3 JSON format. XML format is not supported.</td>
       </tr>
       <tr>
-        <td><code>Pro license required</code></td>
+        <td><code>requires Dependa Pro.</code></td>
         <td>Attempted to use a Pro-only feature on Free</td>
         <td>Purchase a Pro license or stop using the feature.</td>
       </tr>
       <tr>
-        <td><code>Data pack verification failed</code></td>
-        <td>Vulnerability database verification failed</td>
-        <td>Reinstall the app or contact support.</td>
-      </tr>
-      <tr>
-        <td><code>Terms of use not accepted</code></td>
+        <td><code>Terms acceptance required. --accept-terms is not specified.</code></td>
         <td>Terms of use not agreed to</td>
         <td>GUI: Agree on the first-launch screen / CLI: Add <code>--accept-terms</code></td>
       </tr>
       <tr>
-        <td><code>Integrity verification failed</code></td>
+        <td><code>Integrity check failed for required data files.</code></td>
         <td>App file integrity check failed</td>
         <td>Reinstall the app. If tampering is suspected, contact support.</td>
-      </tr>
-      <tr>
-        <td><code>Network error</code></td>
-        <td>Failed to connect to online API</td>
-        <td>Check your internet connection. In proxy environments, verify system proxy settings.</td>
-      </tr>
-      <tr>
-        <td><code>License preload failed</code></td>
-        <td>License database preloading failed</td>
-        <td>Restart the app. If the issue persists, reinstall the app.</td>
       </tr>
     </table>
 
@@ -206,16 +173,13 @@
     <h3>SBOM File Cannot Be Imported</h3>
     <p>Check the following:</p>
     <ul>
-      <li>The file format must be CycloneDX 1.2–1.6 JSON or SPDX 2.2–2.3 JSON.</li>
+      <li>The file format must be CycloneDX 1.2–1.7 JSON or SPDX 2.2–2.3 JSON.</li>
       <li>XML format SBOMs are not supported in v2.0. Convert to JSON format before importing.</li>
       <li>The file is not corrupted. Verify it can be parsed as valid JSON.</li>
     </ul>
 
-    <h3>License Preload Error</h3>
-    <p>If "License preload failed" appears at startup, there is an issue loading the license database. Restart the app, or delete the settings file and restart.</p>
-
     <h3>Report Shows Watermark</h3>
-    <p>HTML reports generated in the Free edition include a "Free Edition" watermark. This is expected behavior. Upgrade to Pro for watermark-free reports.</p>
+    <p>HTML reports generated in the Free edition include a "Dependa Free" watermark. This is expected behavior. Upgrade to Pro for watermark-free reports.</p>
 
     <div class="screenshot">
       <img src="images/settings-en.png" alt="Settings Screen">

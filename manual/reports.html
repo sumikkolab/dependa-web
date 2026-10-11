@@ -75,7 +75,7 @@
     <h2>Free 版と Pro 版のレポートの違い</h2>
     <table class="manual-table">
       <tr><th>項目</th><th>Free</th><th>Pro</th></tr>
-      <tr><td>ウォーターマーク</td><td>「Free Edition」の透かしあり</td><td>なし</td></tr>
+      <tr><td>ウォーターマーク</td><td>「Dependa Free」の透かしあり</td><td>なし</td></tr>
       <tr><td>Executive Summary</td><td>基本情報のみ</td><td>レビュー統計付き</td></tr>
       <tr><td>Action Required</td><td>&#10003;</td><td>&#10003;</td></tr>
       <tr><td>リスク分析詳細</td><td>簡易版</td><td>完全版（Evidence / Confidence 含む）</td></tr>
@@ -98,14 +98,14 @@
     </ul>
 
     <h2>出力先</h2>
-    <p>レポートと SBOM はスキャン対象プロジェクトの <code>reports/</code> フォルダに出力されます。</p>
-    <pre><code>{スキャン対象パス}/
+    <p>レポートと SBOM は出力先フォルダに固定名のファイルとして出力されます。画面からの実行では <code>%LocalAppData%\Dependa\reports</code>、CLI では <code>--output</code> で指定したフォルダ（省略時はカレントフォルダの <code>reports</code>）です。スキャン対象フォルダの下には書き込みません。</p>
+    <pre><code>{出力先フォルダ}/
   reports/
-    dependa-report-2026-04-01.html    ← HTML レポート
-    dependa-sbom-2026-04-01.json      ← CycloneDX SBOM</code></pre>
+    index.html                        ← HTML レポート
+    sbom.cdx.json                     ← CycloneDX SBOM</code></pre>
 
     <div class="info-box">
-      <p>スキャンのたびにタイムスタンプ付きの新しいファイルが生成されます。過去のレポートも残るため、変化の比較に活用できます。</p>
+      <p>出力ファイルの名前は固定です（<code>index.html</code>、<code>sbom.cdx.json</code> など）。過去のレポートを残したい場合は、出力先を分けるか、ファイルを別の場所へ移してください。</p>
     </div>
 
     <div class="chapter-nav">
@@ -168,7 +168,7 @@
     <h2>Free vs Pro Report Differences</h2>
     <table class="manual-table">
       <tr><th>Item</th><th>Free</th><th>Pro</th></tr>
-      <tr><td>Watermark</td><td>"Free Edition" watermark present</td><td>None</td></tr>
+      <tr><td>Watermark</td><td>"Dependa Free" watermark present</td><td>None</td></tr>
       <tr><td>Executive Summary</td><td>Basic information only</td><td>Includes review statistics</td></tr>
       <tr><td>Action Required</td><td>&#10003;</td><td>&#10003;</td></tr>
       <tr><td>Risk Analysis Detail</td><td>Simplified</td><td>Full (includes Evidence / Confidence)</td></tr>
@@ -191,14 +191,14 @@
     </ul>
 
     <h2>Output Location</h2>
-    <p>Reports and SBOM files are saved in the <code>reports/</code> folder within the scanned project directory.</p>
-    <pre><code>{Target Path}/
+    <p>Reports and SBOM files are written to the output folder with fixed file names. From the GUI this is <code>%LocalAppData%\Dependa\reports</code>; from the CLI it is the folder given with <code>--output</code> (default: <code>reports</code> in the current folder). Nothing is written under the scanned folder.</p>
+    <pre><code>{Output Folder}/
   reports/
-    dependa-report-2026-04-01.html    ← HTML Report
-    dependa-sbom-2026-04-01.json      ← CycloneDX SBOM</code></pre>
+    index.html                        ← HTML Report
+    sbom.cdx.json                     ← CycloneDX SBOM</code></pre>
 
     <div class="info-box">
-      <p>Each scan generates new timestamped files. Previous reports are preserved, making it easy to compare changes over time.</p>
+      <p>Output file names are fixed (<code>index.html</code>, <code>sbom.cdx.json</code>, and so on). To keep earlier reports, use a different output folder or move the files elsewhere.</p>
     </div>
 
     <div class="chapter-nav">

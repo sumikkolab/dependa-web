@@ -43,7 +43,7 @@
       <tr><td>OSV API オンライン脆弱性照合</td><td>Google OSV データベースにリアルタイムで問い合わせ、最新の脆弱性情報を取得します。</td></tr>
       <tr><td>Delta Scan（差分スキャン）</td><td>前回分析結果と比較し、依存・脆弱性・ライセンス・ポリシーの変化を検出します。</td></tr>
       <tr><td>例外管理</td><td>脆弱性・ライセンス問題の例外承認・期限管理を行います。</td></tr>
-      <tr><td>AI プロンプト生成</td><td>ChatGPT 等の AI に貼り付けて使える修正支援プロンプトを生成します。</td></tr>
+      <tr><td>AI プロンプト生成（差分スキャン用）</td><td>差分スキャン結果の確認用プロンプトを生成します。脆弱性・ライセンス用のプロンプトは Free でも利用できます。</td></tr>
     </table>
 
     <div class="screenshot">
@@ -130,12 +130,12 @@
       <div class="caption">例外管理画面 — 例外の登録・期限管理・監査証跡</div>
     </div>
 
-    <h2>AI プロンプト生成 <span class="pro-badge">Pro</span></h2>
+    <h2>AI プロンプト生成（差分スキャン用は <span class="pro-badge">Pro</span>）</h2>
     <p>分析結果をもとに、ChatGPT 等の AI チャットに貼り付けて使える <strong>修正支援プロンプト</strong> を生成します。</p>
     <ul>
-      <li><strong>VulnerabilityRemediation</strong> — 脆弱性修正の相談プロンプト</li>
-      <li><strong>LicenseReview</strong> — ライセンスリスクの相談プロンプト</li>
-      <li><strong>DeltaScanReview</strong> — 差分結果のリスク評価プロンプト</li>
+      <li><strong>VulnerabilityRemediation</strong> — 脆弱性修正の相談プロンプト（Free）</li>
+      <li><strong>LicenseReview</strong> — ライセンスリスクの相談プロンプト（Free）</li>
+      <li><strong>DeltaScanReview</strong> — 差分結果のリスク評価プロンプト（Pro）</li>
     </ul>
 
     <div class="info-box">
@@ -174,7 +174,7 @@
       <tr><td>OSV API Vulnerability Lookup</td><td>Query the Google OSV database in real time for the latest vulnerability data.</td></tr>
       <tr><td>Delta Scan</td><td>Compare with previous analysis results to detect changes in dependencies, vulnerabilities, licenses, and policy.</td></tr>
       <tr><td>Exception Management</td><td>Track approved exceptions for vulnerabilities and license issues with expiration management.</td></tr>
-      <tr><td>AI Prompt Generation</td><td>Generate remediation prompts to paste into AI chatbots like ChatGPT.</td></tr>
+      <tr><td>AI Prompt Generation (delta scan)</td><td>Generate a review prompt for delta scan results. Vulnerability and license prompts are available in Free.</td></tr>
     </table>
 
     <div class="screenshot">
@@ -261,12 +261,12 @@
       <div class="caption">Exception management screen — register, track expiration, and audit trail</div>
     </div>
 
-    <h2>AI Prompt Generation <span class="pro-badge">Pro</span></h2>
+    <h2>AI Prompt Generation (delta scan prompt is <span class="pro-badge">Pro</span>)</h2>
     <p>Generate <strong>remediation prompts</strong> based on analysis results for use with AI chatbots like ChatGPT:</p>
     <ul>
-      <li><strong>VulnerabilityRemediation</strong> — Consult AI about fixing detected vulnerabilities</li>
-      <li><strong>LicenseReview</strong> — Consult AI about license risk implications</li>
-      <li><strong>DeltaScanReview</strong> — Consult AI about delta scan risk assessment</li>
+      <li><strong>VulnerabilityRemediation</strong> — Consult AI about fixing detected vulnerabilities (Free)</li>
+      <li><strong>LicenseReview</strong> — Consult AI about license risk implications (Free)</li>
+      <li><strong>DeltaScanReview</strong> — Consult AI about delta scan risk assessment (Pro)</li>
     </ul>
 
     <div class="info-box">

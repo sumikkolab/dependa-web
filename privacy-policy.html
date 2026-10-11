@@ -68,10 +68,10 @@
     <p>本アプリは以下の情報をお使いの端末にローカル保存します。外部サーバーへの送信は行いません。</p>
     <ul>
       <li><strong>アプリ設定</strong>: 言語設定、オンライン機能の有効/無効、利用規約の同意状態</li>
-      <li><strong>ライセンス状態</strong>: Free / Pro の状態</li>
+      <li><strong>ライセンス状態</strong>: Free / Pro の状態</li>      <li><strong>プロジェクト・レビュー・ポリシー・例外の記録</strong>: プロジェクト情報、レビュー状態、組織ポリシー、例外、前回スキャンのスナップショット</li>
       <li><strong>スキャン結果</strong>: SBOM ファイル、HTML レポート（いずれもユーザーが指定した出力先に保存）</li>
     </ul>
-    <p>保存先: <code>%LocalAppData%\Dependa\settings.json</code></p>
+    <p>保存先: <code>%LocalAppData%\Dependa\</code> 以下（<code>settings.json</code>、<code>dependa.db</code>、<code>snapshots\</code>、<code>sbom-reviews\</code>、<code>policies\</code>、<code>dependa-exceptions.json</code> など）</p>
 
     <h2>4. オンライン機能利用時の通信</h2>
     <p>本アプリにはオプションのオンライン機能があります。いずれも<strong>ユーザーが明示的に有効化した場合のみ</strong>動作します。</p>
@@ -92,7 +92,7 @@
       <li>個人情報の送信: なし</li>
     </ul>
 
-    <h3>4.3 通信の無効化</h3>
+    <h3>4.3 npm レジストリ・NuGet API（ライセンス情報補完）</h3><ul><li>通信先: <code>https://registry.npmjs.org/</code>、<code>https://api.nuget.org/</code></li><li>送信内容: パッケージ名（NuGet ではバージョン番号を含む場合があります）</li><li>目的: ライセンス情報の補完取得</li><li>個人情報の送信: なし</li></ul><h3>4.4 通信の無効化</h3>
     <p>上記のオンライン機能はいずれも設定画面から無効化できます。無効時はインターネット通信を一切行いません。</p>
 
     <h2>5. 課金に関する情報</h2>
@@ -142,10 +142,10 @@
     <p>The App stores the following information locally on your device. No data is sent to external servers.</p>
     <ul>
       <li><strong>App settings</strong>: Language preference, online feature toggle, terms acceptance status</li>
-      <li><strong>License state</strong>: Free / Pro status</li>
+      <li><strong>License state</strong>: Free / Pro status</li>      <li><strong>Project, review, policy and exception records</strong>: project information, review status, organization policies, exceptions, and snapshots of the previous scan</li>
       <li><strong>Scan results</strong>: SBOM files and HTML reports (saved to user-specified output locations)</li>
     </ul>
-    <p>Storage location: <code>%LocalAppData%\Dependa\settings.json</code></p>
+    <p>Storage location: under <code>%LocalAppData%\Dependa\</code> (<code>settings.json</code>, <code>dependa.db</code>, <code>snapshots\</code>, <code>sbom-reviews\</code>, <code>policies\</code>, <code>dependa-exceptions.json</code>, and so on)</p>
 
     <h2>4. Network Communication for Online Features</h2>
     <p>The App includes optional online features. All online features operate <strong>only when explicitly enabled by the user</strong>.</p>
@@ -166,7 +166,7 @@
       <li>Personal information sent: None</li>
     </ul>
 
-    <h3>4.3 Disabling Online Features</h3>
+    <h3>4.3 npm Registry and NuGet API (License Metadata)</h3><ul><li>Endpoints: <code>https://registry.npmjs.org/</code>, <code>https://api.nuget.org/</code></li><li>Data sent: Package name (for NuGet, the version number may be included)</li><li>Purpose: Supplemental license information retrieval</li><li>Personal information sent: None</li></ul><h3>4.4 Disabling Online Features</h3>
     <p>All online features listed above can be disabled from the Settings screen. When disabled, the App makes no internet connections whatsoever.</p>
 
     <h2>5. Billing Information</h2>

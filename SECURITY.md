@@ -23,4 +23,4 @@ Third-party services (OSV API, PyPI, npm registry, NuGet API) are out of scope.
 
 | Version | Supported |
 |---------|-----------|
-| 1.0.x   | Yes       |
+| 2.0.x   | Yes       |

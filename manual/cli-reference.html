@@ -33,51 +33,63 @@
 
     <h2>基本構文</h2>
     <pre><code>Dependa.exe &lt;command&gt; [options]</code></pre>
+    <p>引数なしで <code>Dependa.exe</code> を起動すると GUI が開きます。標準出力には結果のみが出力され、エラー・警告・通知は標準エラーに出力されます。</p>
 
     <h2>コマンド一覧</h2>
     <table class="manual-table">
       <tr><th>コマンド</th><th>説明</th></tr>
-      <tr><td><code>help</code></td><td>ヘルプを表示します。</td></tr>
-      <tr><td><code>version</code></td><td>バージョン情報を表示します。</td></tr>
+      <tr><td><code>help</code></td><td>ヘルプを表示します（<code>--help</code> / <code>-h</code> も可）。</td></tr>
+      <tr><td><code>version</code></td><td>バージョンとライセンス状態を表示します（<code>--version</code> / <code>-v</code> も可）。</td></tr>
       <tr><td><code>scan</code></td><td>指定したパスのプロジェクトをスキャンします。</td></tr>
-      <tr><td><code>import</code></td><td>SBOM ファイル（CycloneDX / SPDX）をインポートします。</td></tr>
-      <tr><td><code>review</code></td><td>レビューセッションのステータスを表示・更新します。</td></tr>
+      <tr><td><code>sbom</code></td><td>CycloneDX / SPDX の SBOM ファイルを分析します。<span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>release-check</code></td><td>同梱の脆弱性データの鮮度を確認します（<code>--max-age-warn</code> 既定 30 日 / <code>--max-age-block</code> 既定 60 日）。</td></tr>
+      <tr><td><code>data-inventory</code></td><td>保存先の一覧（移行計画用）を表示します。</td></tr>
+      <tr><td><code>release-readiness</code></td><td>Store 更新に必要な証跡の状態を表示します。</td></tr>
     </table>
 
     <h2>scan コマンドのオプション</h2>
     <table class="manual-table">
       <tr><th>オプション</th><th>説明</th></tr>
-      <tr><td><code>--path &lt;path&gt;</code></td><td>スキャン対象のプロジェクトフォルダまたはファイルのパス（必須）。</td></tr>
-      <tr><td><code>--output &lt;path&gt;</code></td><td>結果の出力先パス。JSON ファイルとして保存されます。</td></tr>
-      <tr><td><code>--lang &lt;ja|en&gt;</code></td><td>レポートの言語を指定します（デフォルト: 設定に従う）。</td></tr>
-      <tr><td><code>--accept-terms</code></td><td>利用規約に同意します（初回実行時に必要）。</td></tr>
-      <tr><td><code>--verbose</code></td><td>詳細なログを出力します。</td></tr>
+      <tr><td><code>--path &lt;path&gt;</code></td><td>スキャン対象のプロジェクトフォルダのパス（必須）。</td></tr>
+      <tr><td><code>--output &lt;dir&gt;</code></td><td>レポートの出力先フォルダ。省略時はカレントフォルダの <code>reports</code> です（スキャン対象フォルダの下には書き込みません）。</td></tr>
+      <tr><td><code>--lang &lt;ja|en&gt;</code></td><td>この実行だけの表示言語を指定します（設定は変更されません）。</td></tr>
+      <tr><td><code>--accept-terms</code></td><td>利用規約に同意します（未同意のときに必要。同意済みなら何も書き込みません）。</td></tr>
+      <tr><td><code>--verbose</code></td><td>依存関係の詳細一覧などを出力します。</td></tr>
       <tr><td><code>--use-online-vuln</code></td><td>OSV API によるオンライン脆弱性照合を有効にします。<span class="pro-badge">Pro</span></td></tr>
-      <tr><td><code>--use-online-enrichment</code></td><td>PyPI / npm / NuGet によるオンライン補完を有効にします。<span class="pro-badge">Pro</span></td></tr>
-      <tr><td><code>--ai-prompt &lt;type&gt;</code></td><td>AI プロンプトを生成します。type: <code>VulnerabilityRemediation</code>, <code>LicenseReview</code>, <code>DeltaScanReview</code></td></tr>
+      <tr><td><code>--use-online-license-metadata</code></td><td>PyPI / npm / NuGet によるオンラインのライセンス情報補完を有効にします。<span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--ai-prompt &lt;type&gt;</code></td><td>AI プロンプトを生成します。type: <code>vuln</code>, <code>license</code>, <code>delta</code>（<code>delta</code> は <span class="pro-badge">Pro</span>）</td></tr>
+      <tr><td><code>--export &lt;type&gt;</code></td><td>文書を出力します。type: <code>review</code>（<span class="pro-badge">Pro</span>）, <code>notice</code>, <code>inventory</code>, <code>all</code></td></tr>
+      <tr><td><code>--format &lt;fmt&gt;</code></td><td><code>json</code>: 結果を JSON として標準出力へ。<code>md</code> / <code>txt</code> / <code>csv</code>: 出力文書の形式。</td></tr>
+      <tr><td><code>--overwrite</code></td><td>既存の出力文書を上書きします。</td></tr>
+      <tr><td><code>--exceptions &lt;file&gt;</code></td><td>適用する例外ファイル（<code>dependa-exceptions.json</code> 形式）。<span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--policy &lt;file&gt;</code></td><td>適用するポリシーファイル（<code>dependa-policy.json</code> 形式）。<span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--trust-repo-files</code></td><td>スキャン対象フォルダにある例外・ポリシーファイルを適用します。<span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--fail-on &lt;values&gt;</code></td><td>終了コード 2 にする条件（カンマ区切りまたは繰り返し。指定すると既定を置き換えます）。値: <code>critical</code>, <code>high</code>, <code>medium</code>, <code>low</code>（その重大度以上）, <code>prohibited-license</code>, <code>unknown-license</code>, <code>policy-fail</code>, <code>range-hit</code>, <code>not-assessed</code>, <code>none</code>。既定: <code>policy-fail</code></td></tr>
+      <tr><td><code>--help</code>, <code>-h</code></td><td><code>scan</code> のヘルプを表示します。</td></tr>
     </table>
 
-    <h2>import コマンドのオプション</h2>
+    <h2>sbom コマンドのオプション <span class="pro-badge">Pro</span></h2>
+    <p><code>Dependa.exe sbom &lt;file&gt; [options]</code>（またはファイルを <code>--path</code> で指定）。CycloneDX / SPDX の JSON を分析します。</p>
     <table class="manual-table">
       <tr><th>オプション</th><th>説明</th></tr>
-      <tr><td><code>--file &lt;path&gt;</code></td><td>インポートする SBOM ファイルのパス（必須）。CycloneDX / SPDX 形式を自動判別します。</td></tr>
-      <tr><td><code>--output &lt;path&gt;</code></td><td>結果の出力先パス。</td></tr>
-      <tr><td><code>--lang &lt;ja|en&gt;</code></td><td>レポートの言語を指定します。</td></tr>
+      <tr><td><code>--format &lt;text|json&gt;</code></td><td><code>text</code>（既定）: 短い要約。<code>json</code>: 結果を JSON として標準出力へ。</td></tr>
+      <tr><td><code>--output &lt;dir&gt;</code></td><td><code>dependa-sbom-result.json</code> もこのフォルダに書き込みます。</td></tr>
+      <tr><td><code>--fail-on &lt;values&gt;</code></td><td>終了コード 2 にする条件。値: <code>critical</code>, <code>high</code>, <code>medium</code>, <code>low</code>, <code>review-high</code>, <code>not-examined</code>, <code>none</code>。既定: <code>critical,high</code></td></tr>
+      <tr><td><code>--lang &lt;ja|en&gt;</code></td><td>この実行だけの表示言語を指定します。</td></tr>
       <tr><td><code>--accept-terms</code></td><td>利用規約に同意します。</td></tr>
     </table>
 
     <h2>終了コード</h2>
     <table class="manual-table">
       <tr><th>コード</th><th>意味</th></tr>
-      <tr><td><code>0</code></td><td>成功（ポリシー違反なし）</td></tr>
-      <tr><td><code>1</code></td><td>一般エラー</td></tr>
-      <tr><td><code>2</code></td><td>ポリシー違反が検出された（High Risk アイテムまたは Prohibited ライセンス）</td></tr>
+      <tr><td><code>0</code></td><td>成功</td></tr>
+      <tr><td><code>1</code></td><td>一般エラー（SBOM を読み取れなかった場合を含む）</td></tr>
+      <tr><td><code>2</code></td><td><code>--fail-on</code> の条件に該当した（<code>release-check</code> では鮮度が関門の基準を超えた）</td></tr>
       <tr><td><code>3</code></td><td>Pro ライセンスが必要な機能が使用された</td></tr>
-      <tr><td><code>4</code></td><td>データパック検証失敗</td></tr>
-      <tr><td><code>5</code></td><td>不正な引数</td></tr>
+      <tr><td><code>4</code></td><td>予約（現在のバージョンでは返されません）</td></tr>
+      <tr><td><code>5</code></td><td>不正な引数（存在しない SBOM ファイルを含む）</td></tr>
       <tr><td><code>6</code></td><td>利用規約に未同意</td></tr>
-      <tr><td><code>7</code></td><td>Integrity 検証失敗</td></tr>
-      <tr><td><code>8</code></td><td>SBOM 形式が認識できない</td></tr>
+      <tr><td><code>7</code></td><td>整合性検証失敗</td></tr>
     </table>
 
     <h2>使用例</h2>
@@ -85,17 +97,17 @@
     <h3>基本スキャン</h3>
     <pre><code>Dependa.exe scan --path C:\my-project --accept-terms</code></pre>
 
-    <h3>SBOM インポート</h3>
-    <pre><code>Dependa.exe import --file C:\sbom\cyclonedx.json --output C:\reports\result.json</code></pre>
+    <h3>結果を JSON で受け取り、重大度 High 以上で失敗させる</h3>
+    <pre><code>Dependa.exe scan --path C:\my-project --format json --fail-on high --lang ja</code></pre>
 
-    <h3>結果を JSON に出力</h3>
-    <pre><code>Dependa.exe scan --path C:\my-project --output C:\reports\result.json --lang ja</code></pre>
+    <h3>SBOM の分析（Pro）</h3>
+    <pre><code>Dependa.exe sbom C:\sbom\cyclonedx.json --format json --output C:\reports</code></pre>
 
     <h3>Pro 機能付きスキャン</h3>
-    <pre><code>Dependa.exe scan --path C:\my-project --use-online-vuln --use-online-enrichment --verbose</code></pre>
+    <pre><code>Dependa.exe scan --path C:\my-project --use-online-vuln --use-online-license-metadata --verbose</code></pre>
 
     <h3>AI プロンプト生成付きスキャン</h3>
-    <pre><code>Dependa.exe scan --path C:\my-project --ai-prompt VulnerabilityRemediation</code></pre>
+    <pre><code>Dependa.exe scan --path C:\my-project --ai-prompt vuln</code></pre>
 
     <div class="chapter-nav">
       <a href="pro-features.html">&larr; Pro 機能ガイド</a>
@@ -115,51 +127,63 @@
 
     <h2>Basic Syntax</h2>
     <pre><code>Dependa.exe &lt;command&gt; [options]</code></pre>
+    <p>Starting <code>Dependa.exe</code> without arguments opens the GUI. Standard output holds the result only; errors, warnings and notices go to standard error.</p>
 
     <h2>Commands</h2>
     <table class="manual-table">
       <tr><th>Command</th><th>Description</th></tr>
-      <tr><td><code>help</code></td><td>Display help information.</td></tr>
-      <tr><td><code>version</code></td><td>Display version information.</td></tr>
+      <tr><td><code>help</code></td><td>Display help information (<code>--help</code> / <code>-h</code> also work).</td></tr>
+      <tr><td><code>version</code></td><td>Display the version and license state (<code>--version</code> / <code>-v</code> also work).</td></tr>
       <tr><td><code>scan</code></td><td>Scan a project at the specified path.</td></tr>
-      <tr><td><code>import</code></td><td>Import an SBOM file (CycloneDX / SPDX).</td></tr>
-      <tr><td><code>review</code></td><td>Display or update review session status.</td></tr>
+      <tr><td><code>sbom</code></td><td>Analyze a CycloneDX / SPDX SBOM file. <span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>release-check</code></td><td>Check the freshness of the bundled vulnerability data (<code>--max-age-warn</code> default 30 days / <code>--max-age-block</code> default 60 days).</td></tr>
+      <tr><td><code>data-inventory</code></td><td>List storage locations (for migration planning).</td></tr>
+      <tr><td><code>release-readiness</code></td><td>List the status of Store update readiness evidence.</td></tr>
     </table>
 
     <h2>Scan Command Options</h2>
     <table class="manual-table">
       <tr><th>Option</th><th>Description</th></tr>
-      <tr><td><code>--path &lt;path&gt;</code></td><td>Path to the project folder or file to scan (required).</td></tr>
-      <tr><td><code>--output &lt;path&gt;</code></td><td>Output path for results. Saved as a JSON file.</td></tr>
-      <tr><td><code>--lang &lt;ja|en&gt;</code></td><td>Specify the report language (default: follows settings).</td></tr>
-      <tr><td><code>--accept-terms</code></td><td>Accept the terms of use (required on first run).</td></tr>
-      <tr><td><code>--verbose</code></td><td>Output detailed logs.</td></tr>
+      <tr><td><code>--path &lt;path&gt;</code></td><td>Path to the project folder to scan (required).</td></tr>
+      <tr><td><code>--output &lt;dir&gt;</code></td><td>Output folder for reports. Default: <code>reports</code> in the current folder (nothing is written under the scanned folder).</td></tr>
+      <tr><td><code>--lang &lt;ja|en&gt;</code></td><td>Language for this run only (the settings are not changed).</td></tr>
+      <tr><td><code>--accept-terms</code></td><td>Accept the terms of use (required when not yet accepted; nothing is written when already accepted).</td></tr>
+      <tr><td><code>--verbose</code></td><td>Show the detailed dependency list and more.</td></tr>
       <tr><td><code>--use-online-vuln</code></td><td>Enable online vulnerability lookup via OSV API. <span class="pro-badge">Pro</span></td></tr>
-      <tr><td><code>--use-online-enrichment</code></td><td>Enable online enrichment via PyPI / npm / NuGet. <span class="pro-badge">Pro</span></td></tr>
-      <tr><td><code>--ai-prompt &lt;type&gt;</code></td><td>Generate an AI prompt. Types: <code>VulnerabilityRemediation</code>, <code>LicenseReview</code>, <code>DeltaScanReview</code></td></tr>
+      <tr><td><code>--use-online-license-metadata</code></td><td>Enable online license metadata lookup via PyPI / npm / NuGet. <span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--ai-prompt &lt;type&gt;</code></td><td>Generate an AI prompt. Types: <code>vuln</code>, <code>license</code>, <code>delta</code> (<code>delta</code> is <span class="pro-badge">Pro</span>)</td></tr>
+      <tr><td><code>--export &lt;type&gt;</code></td><td>Export a document. Types: <code>review</code> (<span class="pro-badge">Pro</span>), <code>notice</code>, <code>inventory</code>, <code>all</code></td></tr>
+      <tr><td><code>--format &lt;fmt&gt;</code></td><td><code>json</code>: the result as JSON on standard output. <code>md</code> / <code>txt</code> / <code>csv</code>: export format.</td></tr>
+      <tr><td><code>--overwrite</code></td><td>Overwrite existing export files.</td></tr>
+      <tr><td><code>--exceptions &lt;file&gt;</code></td><td>Exceptions file to apply (<code>dependa-exceptions.json</code> format). <span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--policy &lt;file&gt;</code></td><td>Policy file to apply (<code>dependa-policy.json</code> format). <span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--trust-repo-files</code></td><td>Apply the exceptions and policy files found in the scanned folder. <span class="pro-badge">Pro</span></td></tr>
+      <tr><td><code>--fail-on &lt;values&gt;</code></td><td>What makes the scan exit with code 2 (comma separated or repeated; giving it replaces the default). Values: <code>critical</code>, <code>high</code>, <code>medium</code>, <code>low</code> (that severity or higher), <code>prohibited-license</code>, <code>unknown-license</code>, <code>policy-fail</code>, <code>range-hit</code>, <code>not-assessed</code>, <code>none</code>. Default: <code>policy-fail</code></td></tr>
+      <tr><td><code>--help</code>, <code>-h</code></td><td>Show the help for <code>scan</code>.</td></tr>
     </table>
 
-    <h2>Import Command Options</h2>
+    <h2>sbom Command Options <span class="pro-badge">Pro</span></h2>
+    <p><code>Dependa.exe sbom &lt;file&gt; [options]</code> (or give the file with <code>--path</code>). Analyzes a CycloneDX or SPDX JSON SBOM.</p>
     <table class="manual-table">
       <tr><th>Option</th><th>Description</th></tr>
-      <tr><td><code>--file &lt;path&gt;</code></td><td>Path to the SBOM file to import (required). Auto-detects CycloneDX / SPDX format.</td></tr>
-      <tr><td><code>--output &lt;path&gt;</code></td><td>Output path for results.</td></tr>
-      <tr><td><code>--lang &lt;ja|en&gt;</code></td><td>Specify the report language.</td></tr>
+      <tr><td><code>--format &lt;text|json&gt;</code></td><td><code>text</code> (default): a short summary. <code>json</code>: the result as JSON on standard output.</td></tr>
+      <tr><td><code>--output &lt;dir&gt;</code></td><td>Also write <code>dependa-sbom-result.json</code> into this folder.</td></tr>
+      <tr><td><code>--fail-on &lt;values&gt;</code></td><td>What makes the command exit with code 2. Values: <code>critical</code>, <code>high</code>, <code>medium</code>, <code>low</code>, <code>review-high</code>, <code>not-examined</code>, <code>none</code>. Default: <code>critical,high</code></td></tr>
+      <tr><td><code>--lang &lt;ja|en&gt;</code></td><td>Language for this run only.</td></tr>
       <tr><td><code>--accept-terms</code></td><td>Accept the terms of use.</td></tr>
     </table>
 
     <h2>Exit Codes</h2>
     <table class="manual-table">
       <tr><th>Code</th><th>Meaning</th></tr>
-      <tr><td><code>0</code></td><td>Success (no policy violations)</td></tr>
-      <tr><td><code>1</code></td><td>General error</td></tr>
-      <tr><td><code>2</code></td><td>Policy violation detected (High Risk items or Prohibited license)</td></tr>
+      <tr><td><code>0</code></td><td>Success</td></tr>
+      <tr><td><code>1</code></td><td>General error (including an SBOM that could not be read)</td></tr>
+      <tr><td><code>2</code></td><td>A <code>--fail-on</code> value was triggered (for <code>release-check</code>: the data is older than the blocking threshold)</td></tr>
       <tr><td><code>3</code></td><td>Pro license required for the requested feature</td></tr>
-      <tr><td><code>4</code></td><td>Data pack verification failed</td></tr>
-      <tr><td><code>5</code></td><td>Invalid arguments</td></tr>
+      <tr><td><code>4</code></td><td>Reserved (not returned by the current version)</td></tr>
+      <tr><td><code>5</code></td><td>Invalid arguments (including an SBOM file that does not exist)</td></tr>
       <tr><td><code>6</code></td><td>Terms of use not accepted</td></tr>
       <tr><td><code>7</code></td><td>Integrity verification failed</td></tr>
-      <tr><td><code>8</code></td><td>SBOM format not recognized</td></tr>
     </table>
 
     <h2>Usage Examples</h2>
@@ -167,17 +191,17 @@
     <h3>Basic Scan</h3>
     <pre><code>Dependa.exe scan --path C:\my-project --accept-terms</code></pre>
 
-    <h3>SBOM Import</h3>
-    <pre><code>Dependa.exe import --file C:\sbom\cyclonedx.json --output C:\reports\result.json</code></pre>
+    <h3>Get the result as JSON and fail on High or above</h3>
+    <pre><code>Dependa.exe scan --path C:\my-project --format json --fail-on high --lang en</code></pre>
 
-    <h3>Output Results to JSON</h3>
-    <pre><code>Dependa.exe scan --path C:\my-project --output C:\reports\result.json --lang en</code></pre>
+    <h3>Analyze an SBOM (Pro)</h3>
+    <pre><code>Dependa.exe sbom C:\sbom\cyclonedx.json --format json --output C:\reports</code></pre>
 
     <h3>Scan with Pro Features</h3>
-    <pre><code>Dependa.exe scan --path C:\my-project --use-online-vuln --use-online-enrichment --verbose</code></pre>
+    <pre><code>Dependa.exe scan --path C:\my-project --use-online-vuln --use-online-license-metadata --verbose</code></pre>
 
     <h3>Scan with AI Prompt Generation</h3>
-    <pre><code>Dependa.exe scan --path C:\my-project --ai-prompt VulnerabilityRemediation</code></pre>
+    <pre><code>Dependa.exe scan --path C:\my-project --ai-prompt vuln</code></pre>
 
     <div class="chapter-nav">
       <a href="pro-features.html?lang=en">&larr; Pro Features Guide</a>
