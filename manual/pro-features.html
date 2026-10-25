@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pro機能 | Dependa マニュアル — Sumikko Lab</title>
+<meta name="description" content="Dependa Pro版の機能詳細。レビューワークフロー、承認管理、高度なレポート、ポリシーカスタマイズ、CLI対応。">
+<link rel="canonical" href="https://dependa.sumikkolab.com/manual/pro-features.html">
+<meta property="og:title" content="Pro機能 | Dependa マニュアル — Sumikko Lab">
+<meta property="og:description" content="Dependa Pro版の機能詳細。レビューワークフロー、承認管理、高度なレポート、ポリシーカスタマイズ、CLI対応。">
+<meta property="og:url" content="https://dependa.sumikkolab.com/manual/pro-features.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Dependa — Sumikko Lab">
+<meta property="og:image" content="https://dependa.sumikkolab.com/assets/dependa-icon.png">
+<meta property="og:image:alt" content="Dependa のアイコン">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>Chapter 12: Pro 機能ガイド</h1>
+    <p class="subtitle">Pro ライセンスで利用できる高度な機能（v2.0）</p>
+
+    <h2>Pro でできること</h2>
+    <table class="manual-table">
+      <tr><th>機能</th><th>説明</th></tr>
+      <tr><td>レビュー</td><td>Free 版でも無制限にレビューできます。Pro では承認ワークフロー・完全版レポートと組み合わせて業務を完結できます。</td></tr>
+      <tr><td>承認ワークフロー</td><td>レビュー結果に対する承認・差し戻しワークフロー（PendingApproval / Returned）が利用できます。</td></tr>
+      <tr><td>完全レポート</td><td>透かし（ウォーターマーク）なしの完全な HTML レポートを出力します。Free 版はウォーターマーク付きです。</td></tr>
+      <tr><td>SBOM 差分（Diff）</td><td>2 つの SBOM を比較し、依存関係・脆弱性・ライセンスの変化を検出します。</td></tr>
+      <tr><td>オンライン補完</td><td>PyPI / npm / NuGet のライセンス情報をオンラインで取得し、Unknown を大幅に削減します。</td></tr>
+      <tr><td>複数プロジェクト管理</td><td>複数のプロジェクトを切り替えて管理できます。</td></tr>
+      <tr><td>OSV API オンライン脆弱性照合</td><td>Google OSV データベースにリアルタイムで問い合わせ、最新の脆弱性情報を取得します。</td></tr>
+      <tr><td>Delta Scan（差分スキャン）</td><td>前回分析結果と比較し、依存・脆弱性・ライセンス・ポリシーの変化を検出します。</td></tr>
+      <tr><td>例外管理</td><td>脆弱性・ライセンス問題の例外承認・期限管理を行います。</td></tr>
+      <tr><td>AI プロンプト生成（差分スキャン用）</td><td>差分スキャン結果の確認用プロンプトを生成します。脆弱性・ライセンス用のプロンプトは Free でも利用できます。</td></tr>
+    </table>
+
+    <div class="screenshot">
+      <img src="images/advanced-report-ja.png" alt="Pro レポート">
+      <div class="caption">Pro 版レポート — ウォーターマークなし・完全な分析セクション</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="images/oss-review-ja.png" alt="オンライン補完後のレビュー">
+      <div class="caption">オンライン補完によるレビュー結果 — Unknown が大幅に削減</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="images/settings-ja.png" alt="設定画面">
+      <div class="caption">設定画面 — Pro 機能（オンライン補完・脆弱性照合）の有効化</div>
+    </div>
+
+    <h2>無制限レビュー <span class="pro-badge">Pro</span></h2>
+    <p>レビュー自体は Free 版でも無制限に行えます。Pro では承認ワークフロー・完全版レポート・複数プロジェクト管理と組み合わせて、レビュー業務全体を完結させることができます。</p>
+
+    <h2>承認ワークフロー <span class="pro-badge">Pro</span></h2>
+    <p>Pro ライセンスで利用できる承認ワークフローにより、レビュー結果を正式に承認する運用が可能になります。</p>
+    <table class="manual-table">
+      <tr><th>ステータス</th><th>説明</th></tr>
+      <tr><td>NotStarted</td><td>レビュー未開始</td></tr>
+      <tr><td>InReview</td><td>レビュー実施中</td></tr>
+      <tr><td>Completed</td><td>レビュー完了</td></tr>
+      <tr><td>PendingApproval</td><td>承認者による承認待ち（Pro）</td></tr>
+      <tr><td>Returned</td><td>承認者から差し戻し（Pro）</td></tr>
+    </table>
+    <p>レビュー完了後、「承認申請」をクリックすると PendingApproval 状態に遷移します。承認者は内容を確認し、承認または差し戻しを行います。</p>
+
+    <h2>完全レポート <span class="pro-badge">Pro</span></h2>
+    <p>Free 版の HTML レポートにはウォーターマーク（透かし）が表示されます。Pro 版ではウォーターマークが除去され、以下の詳細セクションも含まれます。</p>
+    <ul>
+      <li>Executive Summary（レビュー統計付き）</li>
+      <li>Action Required セクション</li>
+      <li>リスク分析セクション（RiskReason / RecommendedAction / Evidence）</li>
+      <li>AI セクション</li>
+      <li>免責事項（Disclaimer）</li>
+    </ul>
+
+    <h2>SBOM 差分（Diff） <span class="pro-badge">Pro</span></h2>
+    <p>2 つの SBOM ファイルを比較し、追加・削除・変更されたパッケージ、新規・解消された脆弱性、ライセンスの変化を検出します。Delta Scan と組み合わせることで、継続的なレビューを効率化できます。</p>
+
+    <h2>オンライン補完 <span class="pro-badge">Pro</span></h2>
+    <p>設定画面で「オンライン補完」を有効にすると、以下のパッケージレジストリからライセンス情報を自動取得します。</p>
+    <table class="manual-table">
+      <tr><th>レジストリ</th><th>対象</th></tr>
+      <tr><td>PyPI</td><td>Python パッケージのライセンス情報</td></tr>
+      <tr><td>npm</td><td>Node.js パッケージのライセンス情報</td></tr>
+      <tr><td>NuGet</td><td>.NET パッケージのライセンス情報</td></tr>
+    </table>
+    <ul>
+      <li>Unknown と判定されるパッケージが大幅に減少します。</li>
+      <li>SPDX ID に正規化して分類するため、正確なリスク判定が行われます。</li>
+      <li>インターネット接続が必要です。オフライン環境ではローカル DB のみ使用されます。</li>
+    </ul>
+
+    <h2>複数プロジェクト管理 <span class="pro-badge">Pro</span></h2>
+    <p>Pro ライセンスでは、複数のプロジェクトを登録し、プロジェクト間を切り替えてレビュー・レポートを管理できます。Free 版は 1 プロジェクトのみです。</p>
+
+    <div class="screenshot">
+      <img src="images/projects-ja.png" alt="プロジェクト管理画面">
+      <div class="caption">プロジェクト管理画面 — 複数プロジェクトの切り替え</div>
+    </div>
+
+    <h2>OSV API オンライン脆弱性照合 <span class="pro-badge">Pro</span></h2>
+    <p>設定画面で「オンライン脆弱性照合」を有効にすると、ローカル JSON データベースだけでなく <strong>OSV API</strong> にもリアルタイムで問い合わせます。</p>
+    <ul>
+      <li>ローカル DB は定期更新ですが、OSV API は常に最新のデータを返します。</li>
+      <li>ローカル DB に含まれない新しい脆弱性も検出可能です。</li>
+      <li>インターネット接続が必要です。オフライン環境ではローカル DB のみ使用されます。</li>
+    </ul>
+
+    <h2>Delta Scan（差分スキャン） <span class="pro-badge">Pro</span></h2>
+    <p>Delta Scan は、前回の分析結果と今回の結果を比較して <strong>変化点</strong> を自動検出する機能です。AI Governance の差分も検出されます。詳しくは <a href="delta-scan.html">差分スキャン</a> をご覧ください。</p>
+
+    <h2>例外管理 <span class="pro-badge">Pro</span></h2>
+    <p>脆弱性やライセンス問題に対して「例外として承認済み」の記録を管理します。詳しくは <a href="exceptions.html">例外管理</a> をご覧ください。</p>
+
+    <div class="screenshot">
+      <img src="images/exception-management-ja.png" alt="例外管理画面">
+      <div class="caption">例外管理画面 — 例外の登録・期限管理・監査証跡</div>
+    </div>
+
+    <h2>AI プロンプト生成（差分スキャン用は <span class="pro-badge">Pro</span>）</h2>
+    <p>分析結果をもとに、ChatGPT 等の AI チャットに貼り付けて使える <strong>修正支援プロンプト</strong> を生成します。</p>
+    <ul>
+      <li><strong>VulnerabilityRemediation</strong> — 脆弱性修正の相談プロンプト（Free）</li>
+      <li><strong>LicenseReview</strong> — ライセンスリスクの相談プロンプト（Free）</li>
+      <li><strong>DeltaScanReview</strong> — 差分結果のリスク評価プロンプト（Pro）</li>
+    </ul>
+
+    <div class="info-box">
+      <p>AI プロンプトはクリップボードにコピーできます。お使いの AI チャットサービスに貼り付けてご利用ください。</p>
+    </div>
+
+    <div class="info-box">
+      <p>Pro の購入方法については <a href="licensing.html">ライセンスと購入</a> をご覧ください。</p>
+    </div>
+
+    <div class="chapter-nav">
+      <a href="settings.html">&larr; 設定</a>
+      <a href="cli-reference.html">CLI リファレンス &rarr;</a>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html?lang=en">Table of Contents</a>
+      <a href="../support.html?lang=en">Support</a>
+    </div>
+
+    <h1>Chapter 12: Pro Features Guide</h1>
+    <p class="subtitle">Advanced features available with the Pro license (v2.0)</p>
+
+    <h2>What Pro Offers</h2>
+    <table class="manual-table">
+      <tr><th>Feature</th><th>Description</th></tr>
+      <tr><td>Unlimited Review</td><td>Free is limited to 5 review items; Pro allows unlimited reviews.</td></tr>
+      <tr><td>Approval Workflow</td><td>Formal approval/return workflow for review results (PendingApproval / Returned).</td></tr>
+      <tr><td>Full Reports</td><td>Generate watermark-free HTML reports. Free edition includes a watermark.</td></tr>
+      <tr><td>SBOM Diff</td><td>Compare two SBOMs to detect changes in dependencies, vulnerabilities, and licenses.</td></tr>
+      <tr><td>Online Enrichment</td><td>Retrieve license info from PyPI / npm / NuGet online, significantly reducing Unknown results.</td></tr>
+      <tr><td>Multiple Projects</td><td>Manage and switch between multiple projects.</td></tr>
+      <tr><td>OSV API Vulnerability Lookup</td><td>Query the Google OSV database in real time for the latest vulnerability data.</td></tr>
+      <tr><td>Delta Scan</td><td>Compare with previous analysis results to detect changes in dependencies, vulnerabilities, licenses, and policy.</td></tr>
+      <tr><td>Exception Management</td><td>Track approved exceptions for vulnerabilities and license issues with expiration management.</td></tr>
+      <tr><td>AI Prompt Generation (delta scan)</td><td>Generate a review prompt for delta scan results. Vulnerability and license prompts are available in Free.</td></tr>
+    </table>
+
+    <div class="screenshot">
+      <img src="images/advanced-report-en.png" alt="Pro Report">
+      <div class="caption">Pro report — no watermark, complete analysis sections</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="images/oss-review-en.png" alt="Online Enrichment Review">
+      <div class="caption">Review results with online enrichment — significantly fewer Unknown items</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="images/settings-en.png" alt="Settings Screen">
+      <div class="caption">Settings screen — enable Pro features (online enrichment, vulnerability lookup)</div>
+    </div>
+
+    <h2>Unlimited Review <span class="pro-badge">Pro</span></h2>
+    <p>Reviews are unlimited in all editions. Pro enables approval workflow, full reports, and multi-project management to complete the entire review process.</p>
+
+    <h2>Approval Workflow <span class="pro-badge">Pro</span></h2>
+    <p>The Pro approval workflow enables formal approval of review results.</p>
+    <table class="manual-table">
+      <tr><th>Status</th><th>Description</th></tr>
+      <tr><td>NotStarted</td><td>Review not yet started</td></tr>
+      <tr><td>InReview</td><td>Review in progress</td></tr>
+      <tr><td>Completed</td><td>Review completed</td></tr>
+      <tr><td>PendingApproval</td><td>Awaiting approver review (Pro)</td></tr>
+      <tr><td>Returned</td><td>Returned by approver for revision (Pro)</td></tr>
+    </table>
+    <p>After completing a review, click "Request Approval" to transition to PendingApproval. The approver can then approve or return the review.</p>
+
+    <h2>Full Reports <span class="pro-badge">Pro</span></h2>
+    <p>Free edition HTML reports include a watermark. Pro removes the watermark and includes additional detailed sections:</p>
+    <ul>
+      <li>Executive Summary (with review statistics)</li>
+      <li>Action Required section</li>
+      <li>Risk Analysis section (RiskReason / RecommendedAction / Evidence)</li>
+      <li>AI section</li>
+      <li>Disclaimer</li>
+    </ul>
+
+    <h2>SBOM Diff <span class="pro-badge">Pro</span></h2>
+    <p>Compare two SBOM files to detect added, removed, and changed packages, new and resolved vulnerabilities, and license changes. Combine with Delta Scan for efficient continuous review.</p>
+
+    <h2>Online Enrichment <span class="pro-badge">Pro</span></h2>
+    <p>Enable "Online Enrichment" in Settings to automatically retrieve license information from the following package registries:</p>
+    <table class="manual-table">
+      <tr><th>Registry</th><th>Target</th></tr>
+      <tr><td>PyPI</td><td>Python package license information</td></tr>
+      <tr><td>npm</td><td>Node.js package license information</td></tr>
+      <tr><td>NuGet</td><td>.NET package license information</td></tr>
+    </table>
+    <ul>
+      <li>Significantly reduces the number of packages classified as Unknown.</li>
+      <li>Normalizes to SPDX IDs for accurate risk classification.</li>
+      <li>Requires an internet connection. In offline environments, only the local DB is used.</li>
+    </ul>
+
+    <h2>Multiple Projects <span class="pro-badge">Pro</span></h2>
+    <p>With Pro, you can register and switch between multiple projects for review and reporting. The Free edition supports only one project.</p>
+
+    <div class="screenshot">
+      <img src="images/projects-en.png" alt="Project Management Screen">
+      <div class="caption">Project management screen — switch between multiple projects</div>
+    </div>
+
+    <h2>OSV API Online Vulnerability Lookup <span class="pro-badge">Pro</span></h2>
+    <p>Enable "Online Vulnerability Lookup" in Settings to query the <strong>OSV API</strong> in real time alongside the local JSON database.</p>
+    <ul>
+      <li>The local DB is periodically updated, but the OSV API always returns the latest data.</li>
+      <li>Detects new vulnerabilities not yet included in the local DB.</li>
+      <li>Requires an internet connection. In offline environments, only the local DB is used.</li>
+    </ul>
+
+    <h2>Delta Scan <span class="pro-badge">Pro</span></h2>
+    <p>Delta Scan compares previous analysis results with current results to automatically detect <strong>changes</strong>, including AI Governance deltas. See <a href="delta-scan.html?lang=en">Delta Scan</a> for details.</p>
+
+    <h2>Exception Management <span class="pro-badge">Pro</span></h2>
+    <p>Track approved exceptions for vulnerability and license issues with full audit trail. See <a href="exceptions.html?lang=en">Exception Management</a> for details.</p>
+
+    <div class="screenshot">
+      <img src="images/exception-management-en.png" alt="Exception Management Screen">
+      <div class="caption">Exception management screen — register, track expiration, and audit trail</div>
+    </div>
+
+    <h2>AI Prompt Generation (delta scan prompt is <span class="pro-badge">Pro</span>)</h2>
+    <p>Generate <strong>remediation prompts</strong> based on analysis results for use with AI chatbots like ChatGPT:</p>
+    <ul>
+      <li><strong>VulnerabilityRemediation</strong> — Consult AI about fixing detected vulnerabilities (Free)</li>
+      <li><strong>LicenseReview</strong> — Consult AI about license risk implications (Free)</li>
+      <li><strong>DeltaScanReview</strong> — Consult AI about delta scan risk assessment (Pro)</li>
+    </ul>
+
+    <div class="info-box">
+      <p>AI prompts can be copied to your clipboard. Paste them into your preferred AI chat service.</p>
+    </div>
+
+    <div class="info-box">
+      <p>For purchasing details, see <a href="licensing.html?lang=en">Licensing &amp; Purchase</a>.</p>
+    </div>
+
+    <div class="chapter-nav">
+      <a href="settings.html?lang=en">&larr; Settings</a>
+      <a href="cli-reference.html?lang=en">CLI Reference &rarr;</a>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 Sumikko Lab. Dependa.<br>
+    <a href="mailto:support@sumikkolab.com">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'en') switchLang('en');
+})();
+</script>
+</body>
+</html>

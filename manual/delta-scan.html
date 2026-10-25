@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>差分スキャン | Dependa マニュアル — Sumikko Lab</title>
+<meta name="description" content="Dependa の差分スキャン機能。前回スキャンとの比較で新規追加・削除・変更されたOSSコンポーネントを検出します。">
+<link rel="canonical" href="https://dependa.sumikkolab.com/manual/delta-scan.html">
+<meta property="og:title" content="差分スキャン | Dependa マニュアル — Sumikko Lab">
+<meta property="og:description" content="Dependa の差分スキャン機能。前回スキャンとの比較で新規追加・削除・変更されたOSSコンポーネントを検出します。">
+<meta property="og:url" content="https://dependa.sumikkolab.com/manual/delta-scan.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Dependa — Sumikko Lab">
+<meta property="og:image" content="https://dependa.sumikkolab.com/assets/dependa-icon.png">
+<meta property="og:image:alt" content="Dependa のアイコン">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">目次</a>
+      <a href="../support.html">サポート</a>
+    </div>
+
+    <h1>差分スキャン（Delta Scan）</h1>
+    <p class="subtitle">前回スキャンとの変更を自動検出し、継続審査を支援します。<span class="pro-badge">Pro</span></p>
+
+    <h2>概要</h2>
+    <p>差分スキャンは、前回の分析結果と今回の分析結果を自動比較し、以下の変更を検出します。</p>
+    <ul>
+      <li><strong>追加された依存関係</strong> — 新しく追加されたパッケージ</li>
+      <li><strong>削除された依存関係</strong> — 削除されたパッケージ</li>
+      <li><strong>新規脆弱性</strong> — 新たに検出された脆弱性</li>
+      <li><strong>解消された脆弱性</strong> — 修正されたバージョンへの更新等で解消された脆弱性</li>
+      <li><strong>ライセンス変更</strong> — ライセンス分類が変化したパッケージ</li>
+      <li><strong>ポリシー判定変化</strong> — 全体のポリシー判定が変わった場合</li>
+      <li><strong>AI Governance 差分</strong> — AI コンポーネントの追加・削除・変更（v2.0）</li>
+    </ul>
+
+    <h2>使い方</h2>
+    <ol>
+      <li>Pro ライセンスが有効であることを確認します。</li>
+      <li>通常どおりスキャンを実行します。</li>
+      <li>初回スキャン時はスナップショットが保存され、「初回スキャンです」と表示されます。</li>
+      <li>2 回目以降のスキャンで、前回との差分が自動的に表示されます。</li>
+    </ol>
+
+    <div class="screenshot">
+      <img src="images/scan-results-ja.png" alt="分析結果画面">
+      <div class="caption">分析結果画面 — 差分スキャンは前回のこの結果と比較して変化を検出します</div>
+    </div>
+
+    <h2>差分詳細</h2>
+    <p>変更が検出された場合、差分詳細テーブルに以下が表示されます。</p>
+    <ul>
+      <li><strong>変更種別</strong> — Added / Removed / VulnerabilityNew / VulnerabilityResolved / LicenseChanged / PolicyChanged / AiGovernanceChanged</li>
+      <li><strong>種別</strong> — エコシステム名（Python / Node.js）</li>
+      <li><strong>名前</strong> — パッケージ名</li>
+      <li><strong>バージョン</strong> — 対象バージョン</li>
+      <li><strong>詳細</strong> — 脆弱性の重要度や Advisory ID、ライセンス変更の前後、AI コンポーネントの変更内容など</li>
+    </ul>
+
+    <h2>マルチエコシステム対応</h2>
+    <p>差分比較はエコシステムごとに独立して行われます。Python パッケージと npm パッケージが同名でも、異なるエコシステムとして正しく追跡されます。</p>
+
+    <h2>HTML レポート・CSV</h2>
+    <p>差分結果は HTML レポートと差分専用 CSV（<code>oss-delta.csv</code>）にも出力されます。</p>
+
+    <div class="chapter-nav">
+      <a href="policy.html">&larr; 前: ポリシー設定と判定記録</a>
+      <a href="exceptions.html">次: 例外管理 &rarr;</a>
+    </div>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html">Table of Contents</a>
+      <a href="../support.html">Support</a>
+    </div>
+
+    <h1>Delta Scan</h1>
+    <p class="subtitle">Automatically detect changes from your previous scan for continuous review. <span class="pro-badge">Pro</span></p>
+
+    <h2>Overview</h2>
+    <p>Delta Scan compares your current analysis results with the previous scan and detects the following changes:</p>
+    <ul>
+      <li><strong>Added dependencies</strong> — newly added packages</li>
+      <li><strong>Removed dependencies</strong> — packages that were removed</li>
+      <li><strong>New vulnerabilities</strong> — newly detected vulnerabilities</li>
+      <li><strong>Resolved vulnerabilities</strong> — vulnerabilities fixed by version updates</li>
+      <li><strong>License changes</strong> — packages whose license classification changed</li>
+      <li><strong>Policy changes</strong> — changes in the overall policy evaluation</li>
+      <li><strong>AI Governance delta</strong> — AI component additions, removals, or changes (v2.0)</li>
+    </ul>
+
+    <h2>How to Use</h2>
+    <ol>
+      <li>Ensure your Pro license is active.</li>
+      <li>Run a scan as usual.</li>
+      <li>The first scan saves a snapshot and shows "First scan".</li>
+      <li>Subsequent scans automatically display differences from the previous scan.</li>
+    </ol>
+
+    <div class="screenshot">
+      <img src="images/scan-results-en.png" alt="Analysis Results Screen">
+      <div class="caption">Analysis results screen — Delta Scan compares against these previous results to detect changes</div>
+    </div>
+
+    <h2>Delta Details</h2>
+    <p>When changes are detected, the Delta Details table shows:</p>
+    <ul>
+      <li><strong>Change Type</strong> — Added / Removed / VulnerabilityNew / VulnerabilityResolved / LicenseChanged / PolicyChanged / AiGovernanceChanged</li>
+      <li><strong>Ecosystem</strong> — Python / Node.js</li>
+      <li><strong>Package Name</strong></li>
+      <li><strong>Version</strong></li>
+      <li><strong>Details</strong> — Severity, Advisory ID, license change details, AI component change details</li>
+    </ul>
+
+    <h2>Multi-Ecosystem Support</h2>
+    <p>Delta comparison is performed independently per ecosystem. Same-named packages in Python and npm are tracked separately.</p>
+
+    <h2>HTML Report & CSV</h2>
+    <p>Delta results are also included in the HTML report and a dedicated CSV file (<code>oss-delta.csv</code>).</p>
+
+    <div class="chapter-nav">
+      <a href="policy.html?lang=en">&larr; Previous: Policy Settings</a>
+      <a href="exceptions.html?lang=en">Next: Exception Management &rarr;</a>
+    </div>
+  </div>
+</div>
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').className = lang === 'ja' ? 'section-ja visible' : 'section-ja';
+  document.getElementById('content-en').className = lang === 'en' ? 'section-en visible' : 'section-en';
+  document.getElementById('btn-ja').className = lang === 'ja' ? 'active' : '';
+  document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+}
+</script>
+</body>
+</html>
