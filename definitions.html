@@ -110,13 +110,24 @@
     </table>
 
     <h2>出典と帰属</h2>
-    <p>助言データは、OSV(Open Source Vulnerabilities。<a href="https://osv.dev">https://osv.dev</a>)を経由して取得した、公開の脆弱性データベースに由来します。出典ごとのライセンスは CC-BY-4.0 です。各ファイルの出典・ライセンス・帰属は、ダウンロードするファイルの内容一覧に書かれ、取り込み後はアプリの「使用中の定義」に表示されます。</p>
-    <p>帰属の表示(原文):</p>
+    <!--
+      未確定の項目(推測で書かない):
+      - 著作権表示: 原典(GitHub Advisory Database・PyPI Advisory Database)が示す文言を確認できていない。確認が済むまで、著作権表示の行は載せない。原典の表示に従う。
+      - GHSA-・PYSEC- の接頭辞が、下の出典に当たるという対応は、確認が済んでいない。
+    -->
+    <p>助言データは、OSV(Open Source Vulnerabilities。<a href="https://osv.dev">https://osv.dev</a>)を経由して取得した、次の 2 つの公開データベースに由来します。</p>
     <ul>
-      <li lang="en">Advisory records are derived from the GitHub Advisory Database (CC-BY 4.0), via OSV.</li>
-      <li lang="en">Advisory records are derived from the PyPI Advisory Database (CC-BY 4.0), via OSV.</li>
+      <li>GitHub Advisory Database(作者: GitHub, Inc.): <a href="https://github.com/github/advisory-database">https://github.com/github/advisory-database</a></li>
+      <li>PyPI Advisory Database(作者: Python Packaging Authority): <a href="https://github.com/pypa/advisory-database">https://github.com/pypa/advisory-database</a></li>
     </ul>
-    <p>CC-BY-4.0: <a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></p>
+    <p>ライセンスは、どちらも CC BY 4.0 です: <a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></p>
+    <p>加工の表示: Dependa が OSV の形式から、件数と項目を絞り、重大度などを計算して作成したもので、原典のままではありません。</p>
+    <p>免責: データは現状のまま提供され、保証はありません。</p>
+    <p>各ファイルの出典・ライセンス・帰属は、ダウンロードするファイルの内容一覧に書かれ、取り込み後はアプリの「使用中の定義」に表示されます。帰属の表示(原文):</p>
+    <ul>
+      <li lang="en">Advisory records are derived from the GitHub Advisory Database by GitHub, Inc. (https://github.com/github/advisory-database), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), obtained via OSV (https://osv.dev). Dependa created these records from the OSV format by narrowing the number of records and fields and calculating severity and other values, so they are not the original data. The data is provided as is, without warranties of any kind.</li>
+      <li lang="en">Advisory records are derived from the PyPI Advisory Database by the Python Packaging Authority (https://github.com/pypa/advisory-database), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), obtained via OSV (https://osv.dev). Dependa created these records from the OSV format by narrowing the number of records and fields and calculating severity and other values, so they are not the original data. The data is provided as is, without warranties of any kind.</li>
+    </ul>
 
     <h2>確認できる範囲の限界</h2>
     <div class="warn-box">
@@ -187,13 +198,24 @@
     </table>
 
     <h2>Sources and attribution</h2>
-    <p>The advisory data derives from public vulnerability databases obtained via OSV (Open Source Vulnerabilities, <a href="https://osv.dev">https://osv.dev</a>). The license of each source is CC-BY-4.0. The source, license, and attribution of each file are written in the manifest of the file you download, and are shown in "Definitions in use" in the app after the import.</p>
-    <p>Attribution notices:</p>
+    <!--
+      Open items (not yet confirmed; nothing is guessed here):
+      - Copyright notice: the wording shown by the original databases (GitHub Advisory Database, PyPI Advisory Database) has not been confirmed. No copyright line is shown until it is. The original's notice is to be followed.
+      - Whether the prefixes GHSA- and PYSEC- always mean the sources below is unconfirmed.
+    -->
+    <p>The advisory data derives from the following two public databases, obtained via OSV (Open Source Vulnerabilities, <a href="https://osv.dev">https://osv.dev</a>).</p>
     <ul>
-      <li>Advisory records are derived from the GitHub Advisory Database (CC-BY 4.0), via OSV.</li>
-      <li>Advisory records are derived from the PyPI Advisory Database (CC-BY 4.0), via OSV.</li>
+      <li>GitHub Advisory Database (author: GitHub, Inc.): <a href="https://github.com/github/advisory-database">https://github.com/github/advisory-database</a></li>
+      <li>PyPI Advisory Database (author: Python Packaging Authority): <a href="https://github.com/pypa/advisory-database">https://github.com/pypa/advisory-database</a></li>
     </ul>
-    <p>CC-BY-4.0: <a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></p>
+    <p>The license of both is CC BY 4.0: <a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></p>
+    <p>Modification notice: Dependa created these records from the OSV format by narrowing the number of records and fields and calculating severity and other values, so they are not the original data.</p>
+    <p>Disclaimer: the data is provided as is, without warranties of any kind.</p>
+    <p>The source, license, and attribution of each file are written in the manifest of the file you download, and are shown in "Definitions in use" in the app after the import. Attribution notices:</p>
+    <ul>
+      <li>Advisory records are derived from the GitHub Advisory Database by GitHub, Inc. (https://github.com/github/advisory-database), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), obtained via OSV (https://osv.dev). Dependa created these records from the OSV format by narrowing the number of records and fields and calculating severity and other values, so they are not the original data. The data is provided as is, without warranties of any kind.</li>
+      <li>Advisory records are derived from the PyPI Advisory Database by the Python Packaging Authority (https://github.com/pypa/advisory-database), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/), obtained via OSV (https://osv.dev). Dependa created these records from the OSV format by narrowing the number of records and fields and calculating severity and other values, so they are not the original data. The data is provided as is, without warranties of any kind.</li>
+    </ul>
 
     <h2>Limits of what is checked</h2>
     <div class="warn-box">
