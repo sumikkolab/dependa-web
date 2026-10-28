@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>定義データ | Dependa — Sumikko Lab</title>
-<meta name="description" content="Dependa の定義データ(脆弱性の助言データ)を、ダウンロードして手動で取り込む方法、出典と帰属、確認できる範囲の限界をご案内します。">
+<meta name="description" content="Dependa の定義データ(脆弱性情報)を、ダウンロードして手動で取り込む方法、出典と帰属、確認できる範囲の限界をご案内します。">
 <link rel="canonical" href="https://dependa.sumikkolab.com/definitions.html">
 <meta property="og:title" content="定義データ | Dependa — Sumikko Lab">
-<meta property="og:description" content="Dependa の定義データ(脆弱性の助言データ)を、ダウンロードして手動で取り込む方法、出典と帰属、確認できる範囲の限界をご案内します。">
+<meta property="og:description" content="Dependa の定義データ(脆弱性情報)を、ダウンロードして手動で取り込む方法、出典と帰属、確認できる範囲の限界をご案内します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/definitions.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
@@ -65,7 +65,7 @@
     <p class="subtitle">Dependa — Sumikko Lab(最終更新: 2026-10-28)</p>
 
     <h2>定義データとは</h2>
-    <p>定義データは、Dependa が依存関係を調べるときに使う、脆弱性の助言データです。部品(パッケージ)ごとに、どの版に既知の脆弱性があり、どの版で修正されたかを記録しています。</p>
+    <p>定義データは、Dependa が依存関係を調べるときに使う、脆弱性情報です。部品(パッケージ)ごとに、どの版に既知の脆弱性があり、どの版で修正されたかを記録しています。</p>
     <p>Dependa には、あらかじめ定義データが同梱されています。アプリは定義データを取得するための通信をしません。同梱のデータとは別の定義データを使いたい場合は、このページからファイル(zip)をダウンロードし、アプリで取り込みます。</p>
 
     <h2>取り込み手順</h2>
@@ -79,7 +79,7 @@
     </div>
     <div class="step-box">
       <h3>Step 3: 確認</h3>
-      <p>助言の件数が、いま使われている定義データより大きく減っている場合は、確認のメッセージが出ます。「はい」を選んだときだけ取り込みます。取り込み後は、次の調査から新しい定義データが使われます。画面とレポートの「使用中の定義」で、版と生成日を確認できます。</p>
+      <p>脆弱性情報の件数が、いま使われている定義データより大きく減っている場合は、確認のメッセージが出ます。「はい」を選んだときだけ取り込みます。取り込み後は、次の調査から新しい定義データが使われます。画面とレポートの「使用中の定義」で、版と生成日を確認できます。</p>
     </div>
 
     <h2>同梱の定義データに戻す手順</h2>
@@ -115,7 +115,7 @@
       - 著作権表示: 原典(GitHub Advisory Database・PyPI Advisory Database)が示す文言を確認できていない。確認が済むまで、著作権表示の行は載せない。原典の表示に従う。
       - GHSA-・PYSEC- の接頭辞が、下の出典に当たるという対応は、確認が済んでいない。
     -->
-    <p>助言データは、OSV(Open Source Vulnerabilities。<a href="https://osv.dev">https://osv.dev</a>)を経由して取得した、次の 2 つの公開データベースに由来します。</p>
+    <p>定義データの脆弱性情報は、OSV(Open Source Vulnerabilities。<a href="https://osv.dev">https://osv.dev</a>)を経由して取得した、次の 2 つの公開データベースに由来します。</p>
     <ul>
       <li>GitHub Advisory Database(作者: GitHub, Inc.): <a href="https://github.com/github/advisory-database">https://github.com/github/advisory-database</a></li>
       <li>PyPI Advisory Database(作者: Python Packaging Authority): <a href="https://github.com/pypa/advisory-database">https://github.com/pypa/advisory-database</a></li>
@@ -153,7 +153,7 @@
     <p class="subtitle">Dependa — Sumikko Lab (Last updated: 2026-10-28)</p>
 
     <h2>What is definition data?</h2>
-    <p>Definition data is the vulnerability advisory data that Dependa uses when it checks dependencies. For each package, it records which versions have known vulnerabilities and which version fixes them.</p>
+    <p>Definition data is the vulnerability information that Dependa uses when it checks dependencies. For each package, it records which versions have known vulnerabilities and which version fixes them.</p>
     <p>Dependa ships with definition data. The app does not use the network to fetch definition data. To use definition data other than the bundled one, download a file (zip) from this page and import it in the app.</p>
 
     <h2>How to import</h2>
@@ -163,15 +163,15 @@
     </div>
     <div class="step-box">
       <h3>Step 2: Import</h3>
-      <p>In the app, open <strong>Settings</strong>, go to "<strong>Definition data</strong>", click "<strong>Import definition data</strong>", and select the zip you downloaded.</p>
+      <p>In the app, open <strong>Settings</strong>, go to "<strong>Definition data</strong>", select "<strong>Import definition data</strong>", and select the zip you downloaded.</p>
     </div>
     <div class="step-box">
       <h3>Step 3: Confirm</h3>
-      <p>If the number of advisories is much lower than in the definition data in use, a confirmation message appears. The data is imported only if you choose "Yes". After the import, the new definition data is used from the next scan. You can check the version and generation date in "Definitions in use" on the screen and in reports.</p>
+      <p>If the number of vulnerability records is much lower than in the definition data in use, a confirmation message appears. The data is imported only if you choose "Yes". After the import, the new definition data is used from the next scan. You can check the version and generation date in "Definitions in use" on the screen and in reports.</p>
     </div>
 
     <h2>How to revert to the bundled definition data</h2>
-    <p>Click "<strong>Revert to bundled</strong>" under "Definition data" in Settings. Files from the imported data that have not been changed since the import are removed, and the definition data bundled with the app is used. Files you changed after the import are not removed. In that case a confirmation message appears, and if you choose "Yes", those files are also set aside and reverted to the bundled ones.</p>
+    <p>Select "<strong>Revert to bundled</strong>" under "Definition data" in Settings. Files from the imported data that have not been changed since the import are removed, and the definition data bundled with the app is used. Files you changed after the import are not removed. In that case a confirmation message appears, and if you choose "Yes", those files are also set aside and reverted to the bundled ones.</p>
     <div class="warn-box">
       <p><strong>Note:</strong> When you update the app and the bundled definition data becomes newer, imported definition data is not switched automatically. Even if the imported data is older, it stays in use until you run "Revert to bundled".</p>
     </div>
@@ -203,7 +203,7 @@
       - Copyright notice: the wording shown by the original databases (GitHub Advisory Database, PyPI Advisory Database) has not been confirmed. No copyright line is shown until it is. The original's notice is to be followed.
       - Whether the prefixes GHSA- and PYSEC- always mean the sources below is unconfirmed.
     -->
-    <p>The advisory data derives from the following two public databases, obtained via OSV (Open Source Vulnerabilities, <a href="https://osv.dev">https://osv.dev</a>).</p>
+    <p>The vulnerability information in the definition data derives from the following two public databases, obtained via OSV (Open Source Vulnerabilities, <a href="https://osv.dev">https://osv.dev</a>).</p>
     <ul>
       <li>GitHub Advisory Database (author: GitHub, Inc.): <a href="https://github.com/github/advisory-database">https://github.com/github/advisory-database</a></li>
       <li>PyPI Advisory Database (author: Python Packaging Authority): <a href="https://github.com/pypa/advisory-database">https://github.com/pypa/advisory-database</a></li>
@@ -224,7 +224,7 @@
     <ul>
       <li>This page does not guarantee that the definition data is correct or sufficient.</li>
       <li>If the source data (OSV) is wrong, this cannot be detected.</li>
-      <li>The app does not use the network, so it does not know by itself whether other definition data exists. Please check this page.</li>
+      <li>The app does not use the network, so it does not know by itself whether other definition data exists. Check this page for other definition data.</li>
     </ul>
   </div>
 
