@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>定義データ | Dependa — Sumikko Lab</title>
+<meta name="description" content="Dependa の定義データ(脆弱性の助言データ)を、ダウンロードして手動で取り込む方法、出典と帰属、確認できる範囲の限界をご案内します。">
+<link rel="canonical" href="https://dependa.sumikkolab.com/definitions.html">
+<meta property="og:title" content="定義データ | Dependa — Sumikko Lab">
+<meta property="og:description" content="Dependa の定義データ(脆弱性の助言データ)を、ダウンロードして手動で取り込む方法、出典と帰属、確認できる範囲の限界をご案内します。">
+<meta property="og:url" content="https://dependa.sumikkolab.com/definitions.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Dependa — Sumikko Lab">
+<meta property="og:image" content="https://dependa.sumikkolab.com/assets/dependa-icon.png">
+<meta property="og:image:alt" content="Dependa のアイコン">
+<meta name="twitter:card" content="summary">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', 'Yu Gothic UI', sans-serif; line-height: 1.7; color: #1a1a2e; background: #f8f9fa; }
+  .container { max-width: 720px; margin: 0 auto; padding: 40px 24px; }
+  h1 { font-size: 1.5rem; margin-bottom: 8px; color: #0f172a; }
+  .subtitle { font-size: 0.85rem; color: #64748b; margin-bottom: 32px; }
+  h2 { font-size: 1.1rem; margin: 28px 0 8px; color: #312e81; border-left: 3px solid #6366f1; padding-left: 10px; }
+  p, li { font-size: 0.95rem; margin-bottom: 8px; }
+  ol { padding-left: 20px; margin-bottom: 12px; }
+  ul { padding-left: 20px; margin-bottom: 12px; }
+  .lang-toggle { text-align: right; margin-bottom: 20px; }
+  .lang-toggle button { background: #e2e8f0; border: none; padding: 6px 14px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; }
+  .lang-toggle button.active { background: #6366f1; color: #fff; }
+  .section-ja, .section-en { display: none; }
+  .section-ja.visible, .section-en.visible { display: block; }
+  .warn-box { background: #fff7ed; border: 1px solid #fed7aa; border-radius: 8px; padding: 16px; margin: 16px 0; }
+  .warn-box p { font-size: 0.9rem; color: #9a3412; margin-bottom: 0; }
+  .step-box { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px; margin: 12px 0; }
+  .step-box h3 { font-size: 1rem; color: #312e81; margin-bottom: 8px; }
+  .step-box p { font-size: 0.9rem; }
+  table { width: 100%; border-collapse: collapse; background: #fff; margin: 12px 0; font-size: 0.85rem; }
+  th, td { border: 1px solid #e2e8f0; padding: 8px 10px; text-align: left; }
+  th { background: #eef2ff; color: #312e81; }
+  .nav-links { margin-bottom: 24px; font-size: 0.85rem; }
+  .nav-links a { color: #6366f1; text-decoration: none; margin-right: 16px; }
+  .nav-links a:hover { text-decoration: underline; }
+  .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; text-align: center; }
+  code { background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="lang-toggle">
+    <button id="btn-ja" class="active" onclick="switchLang('ja')">日本語</button>
+    <button id="btn-en" onclick="switchLang('en')">English</button>
+  </div>
+
+  <!-- 日本語 -->
+  <div class="section-ja visible" id="content-ja">
+    <div class="nav-links">
+      <a href="index.html">製品情報</a>
+      <a href="support.html">サポート</a>
+      <a href="privacy-policy.html">プライバシーポリシー</a>
+      <a href="manual/">マニュアル</a>
+    </div>
+
+    <h1>定義データ</h1>
+    <p class="subtitle">Dependa — Sumikko Lab(最終更新: 2026-10-28)</p>
+
+    <h2>定義データとは</h2>
+    <p>定義データは、Dependa が依存関係を調べるときに使う、脆弱性の助言データです。部品(パッケージ)ごとに、どの版に既知の脆弱性があり、どの版で修正されたかを記録しています。</p>
+    <p>Dependa には、あらかじめ定義データが同梱されています。アプリは定義データを取得するための通信をしません。同梱のデータとは別の定義データを使いたい場合は、このページからファイル(zip)をダウンロードし、アプリで取り込みます。</p>
+
+    <h2>取り込み手順</h2>
+    <div class="step-box">
+      <h3>Step 1: ダウンロード</h3>
+      <p>下の「現在公開中の定義データ」の表から、取り込むファイル(<code>dependa-definitions-&lt;版&gt;.zip</code>)をダウンロードします。</p>
+    </div>
+    <div class="step-box">
+      <h3>Step 2: 取り込み</h3>
+      <p>アプリの <strong>設定</strong> 画面の「<strong>定義データ</strong>」にある「<strong>定義データを取り込む</strong>」ボタンを押し、ダウンロードした zip を選択します。</p>
+    </div>
+    <div class="step-box">
+      <h3>Step 3: 確認</h3>
+      <p>助言の件数が、いま使われている定義データより大きく減っている場合は、確認のメッセージが出ます。「はい」を選んだときだけ取り込みます。取り込み後は、次の調査から新しい定義データが使われます。画面とレポートの「使用中の定義」で、版と生成日を確認できます。</p>
+    </div>
+
+    <h2>同梱の定義データに戻す手順</h2>
+    <p>設定画面の「定義データ」にある「<strong>同梱に戻す</strong>」ボタンを押します。取り込んだ定義データのうち、取り込み後に変更されていないファイルが外れ、アプリに同梱の定義データが使われます。取り込み後に変更したファイルは外れずに残ります。その場合は確認のメッセージが出て、「はい」を選ぶと、そのファイルも退避して同梱に戻せます。</p>
+    <div class="warn-box">
+      <p><strong>ご注意:</strong> アプリを更新して同梱の定義データが新しくなっても、取り込み済みの定義データは自動では切り替わりません。取り込み済みのほうが古い場合でも、「同梱に戻す」を実行するまで、取り込み済みの定義データが使われます。</p>
+    </div>
+
+    <h2>現在公開中の定義データ</h2>
+    <p><strong>現在、公開中の定義データはありません。</strong>公開できる状態になったら、下の表に掲載します。</p>
+    <table>
+      <thead>
+        <tr><th>版</th><th>生成日</th><th>SHA-256</th><th>出典</th><th>件数</th></tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="5">現在、公開中の定義データはありません。</td></tr>
+      </tbody>
+    </table>
+
+    <h2>更新の履歴</h2>
+    <table>
+      <thead>
+        <tr><th>公開日</th><th>版</th><th>変更の内容</th></tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="3">現在、公開中の定義データはありません。履歴はありません。</td></tr>
+      </tbody>
+    </table>
+
+    <h2>出典と帰属</h2>
+    <p>助言データは、OSV(Open Source Vulnerabilities。<a href="https://osv.dev">https://osv.dev</a>)を経由して取得した、公開の脆弱性データベースに由来します。出典ごとのライセンスは CC-BY-4.0 です。各ファイルの出典・ライセンス・帰属は、ダウンロードするファイルの内容一覧に書かれ、取り込み後はアプリの「使用中の定義」に表示されます。</p>
+    <p>帰属の表示(原文):</p>
+    <ul>
+      <li lang="en">Advisory records are derived from the GitHub Advisory Database (CC-BY 4.0), via OSV.</li>
+      <li lang="en">Advisory records are derived from the PyPI Advisory Database (CC-BY 4.0), via OSV.</li>
+    </ul>
+    <p>CC-BY-4.0: <a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></p>
+
+    <h2>確認できる範囲の限界</h2>
+    <div class="warn-box">
+      <p>アプリが取り込み時に確認するのは、ファイルの内容が、同じ zip に入っている内容一覧と一致することまでです。発行元は確認しません(署名はありません)。このページに掲載する SHA-256 は、同じサイトから取得した値のため、発行元の認証にはなりません。ダウンロード中の破損の確認と、サイトとは別の経路で得た値との照合にだけ使えます。</p>
+    </div>
+    <ul>
+      <li>定義データの内容が正しいこと、十分であることを保証するものではありません。</li>
+      <li>元データ(OSV)が誤っている場合は、その誤りを判定できません。</li>
+      <li>アプリは通信しないため、別の定義データがあるかどうかを自分では知りません。このページで確認してください。</li>
+    </ul>
+  </div>
+
+  <!-- English -->
+  <div class="section-en" id="content-en">
+    <div class="nav-links">
+      <a href="index.html">Product Info</a>
+      <a href="support.html">Support</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="manual/?lang=en">Manual</a>
+    </div>
+
+    <h1>Definition Data</h1>
+    <p class="subtitle">Dependa — Sumikko Lab (Last updated: 2026-10-28)</p>
+
+    <h2>What is definition data?</h2>
+    <p>Definition data is the vulnerability advisory data that Dependa uses when it checks dependencies. For each package, it records which versions have known vulnerabilities and which version fixes them.</p>
+    <p>Dependa ships with definition data. The app does not use the network to fetch definition data. To use definition data other than the bundled one, download a file (zip) from this page and import it in the app.</p>
+
+    <h2>How to import</h2>
+    <div class="step-box">
+      <h3>Step 1: Download</h3>
+      <p>Download the file (<code>dependa-definitions-&lt;version&gt;.zip</code>) from the "Definition data currently published" table below.</p>
+    </div>
+    <div class="step-box">
+      <h3>Step 2: Import</h3>
+      <p>In the app, open <strong>Settings</strong>, go to "<strong>Definition data</strong>", click "<strong>Import definition data</strong>", and select the zip you downloaded.</p>
+    </div>
+    <div class="step-box">
+      <h3>Step 3: Confirm</h3>
+      <p>If the number of advisories is much lower than in the definition data in use, a confirmation message appears. The data is imported only if you choose "Yes". After the import, the new definition data is used from the next scan. You can check the version and generation date in "Definitions in use" on the screen and in reports.</p>
+    </div>
+
+    <h2>How to revert to the bundled definition data</h2>
+    <p>Click "<strong>Revert to bundled</strong>" under "Definition data" in Settings. Files from the imported data that have not been changed since the import are removed, and the definition data bundled with the app is used. Files you changed after the import are not removed. In that case a confirmation message appears, and if you choose "Yes", those files are also set aside and reverted to the bundled ones.</p>
+    <div class="warn-box">
+      <p><strong>Note:</strong> When you update the app and the bundled definition data becomes newer, imported definition data is not switched automatically. Even if the imported data is older, it stays in use until you run "Revert to bundled".</p>
+    </div>
+
+    <h2>Definition data currently published</h2>
+    <p><strong>No definition data is currently published.</strong> It will be listed in the table below once it is ready.</p>
+    <table>
+      <thead>
+        <tr><th>Version</th><th>Generated</th><th>SHA-256</th><th>Source</th><th>Count</th></tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="5">No definition data is currently published.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Update history</h2>
+    <table>
+      <thead>
+        <tr><th>Published</th><th>Version</th><th>Changes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="3">No definition data is currently published. There is no history.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Sources and attribution</h2>
+    <p>The advisory data derives from public vulnerability databases obtained via OSV (Open Source Vulnerabilities, <a href="https://osv.dev">https://osv.dev</a>). The license of each source is CC-BY-4.0. The source, license, and attribution of each file are written in the manifest of the file you download, and are shown in "Definitions in use" in the app after the import.</p>
+    <p>Attribution notices:</p>
+    <ul>
+      <li>Advisory records are derived from the GitHub Advisory Database (CC-BY 4.0), via OSV.</li>
+      <li>Advisory records are derived from the PyPI Advisory Database (CC-BY 4.0), via OSV.</li>
+    </ul>
+    <p>CC-BY-4.0: <a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></p>
+
+    <h2>Limits of what is checked</h2>
+    <div class="warn-box">
+      <p>At import, the app checks only that the contents of the files match the manifest in the same zip. It does not confirm the publisher (there is no signature). The SHA-256 values on this page come from the same site, so they do not authenticate the publisher. They can only be used to check for corruption during download, and to compare with a value obtained by a different route.</p>
+    </div>
+    <ul>
+      <li>This page does not guarantee that the definition data is correct or sufficient.</li>
+      <li>If the source data (OSV) is wrong, this cannot be detected.</li>
+      <li>The app does not use the network, so it does not know by itself whether other definition data exists. Please check this page.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 Sumikko Lab. Dependa.<br>
+    <a href="mailto:support@sumikkolab.com" style="color:#64748b;">support@sumikkolab.com</a>
+  </div>
+</div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('content-ja').classList.toggle('visible', lang === 'ja');
+  document.getElementById('content-en').classList.toggle('visible', lang === 'en');
+  document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+}
+</script>
+</body>
+</html>
