@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dependa.sumikkolab.com/</loc>
-    <lastmod>2026-10-25</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -17,7 +17,7 @@
   </url>
   <url>
     <loc>https://dependa.sumikkolab.com/definitions.html</loc>
-    <lastmod>2026-10-28</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -27,7 +27,7 @@
   </url>
   <url>
     <loc>https://dependa.sumikkolab.com/manual/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://dependa.sumikkolab.com/manual/vulnerability-analysis.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -87,7 +87,7 @@
   </url>
   <url>
     <loc>https://dependa.sumikkolab.com/manual/cli-reference.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
