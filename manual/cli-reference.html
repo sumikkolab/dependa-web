@@ -116,7 +116,7 @@
     </table>
 
     <div class="info-box">
-      <p>重大度を読み取れない脆弱性があると、<code>scan</code> は既定の設定で終了コード 2 を返します。<code>--fail-on</code> に <code>critical</code>、<code>high</code>、<code>medium</code>、<code>low</code> のどれを指定したときも同じです。<code>sbom</code> コマンドでも、この 4 つの値で同じように扱います。<code>scan</code> では、例外を承認した脆弱性と、CVSS の計算で点数が 0.0 になった脆弱性は対象外です。</p>
+      <p>重大度を読み取れない脆弱性があると、<code>scan</code> は既定の設定で終了コード 2 を返します。<code>--fail-on</code> に <code>critical</code>、<code>high</code>、<code>medium</code>、<code>low</code> のどれを指定したときも同じです。<code>sbom</code> コマンドでも、この 4 つの値で同じように扱います。ただし、<code>sbom</code> は、同じコンポーネントで High または Medium の脆弱性と重大度を読み取れない脆弱性が混在するとき、最上位の重大度だけを残します。そのため、<code>--fail-on critical</code> を指定しても終了コード 2 になりません。<code>scan</code> では、例外を承認した脆弱性と、CVSS の計算で点数が 0.0 になった脆弱性は対象外です。</p>
       <p>Store 版の CLI は、Pro の判定の前に Microsoft Store での確認を待ちます。確認できないときは、保存済みのライセンス状態を変更しません。</p>
     </div>
 
@@ -217,7 +217,7 @@
     </table>
 
     <div class="info-box">
-      <p>If the severity of a vulnerability cannot be read, <code>scan</code> exits with code 2 by default. The same applies when <code>--fail-on</code> is set to <code>critical</code>, <code>high</code>, <code>medium</code>, or <code>low</code>. The <code>sbom</code> command treats these four values the same way. For <code>scan</code>, this does not apply to vulnerabilities with an approved exception or to vulnerabilities whose CVSS score is computed as 0.0.</p>
+      <p>If the severity of a vulnerability cannot be read, <code>scan</code> exits with code 2 by default. The same applies when <code>--fail-on</code> is set to <code>critical</code>, <code>high</code>, <code>medium</code>, or <code>low</code>. The <code>sbom</code> command treats these four values the same way. However, when a component has both High or Medium vulnerabilities and vulnerabilities whose severity cannot be read, <code>sbom</code> keeps only the highest severity. In that case, <code>--fail-on critical</code> does not trigger exit code 2. For <code>scan</code>, this does not apply to vulnerabilities with an approved exception or to vulnerabilities whose CVSS score is computed as 0.0.</p>
       <p>The Store version of the CLI waits for the Microsoft Store check before it determines Pro. If the check cannot complete, the saved license state does not change.</p>
     </div>
 
