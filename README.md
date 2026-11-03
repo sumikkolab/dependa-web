@@ -17,7 +17,7 @@
 <p align="center">
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%2010%2F11-blue" />
   <img alt=".NET 10" src="https://img.shields.io/badge/.NET-10.0-purple" />
-  <img alt="Version" src="https://img.shields.io/badge/version-2.0.6.0-brightgreen" />
+  <img alt="Version" src="https://img.shields.io/badge/version-2.1.0.0-brightgreen" />
 </p>
 
 <p align="center">
@@ -45,6 +45,10 @@ Most existing tools focus on **detection and scanning**. But in real organizatio
 Many teams still manage OSS usage reviews using Excel, emails, and Word documents. There is no standard tool for this workflow. Dependa was created to fill that gap.
 
 > **Product category**: OSS Governance / SBOM Review Management Tool
+
+## v2.1.0.0
+
+v2.1.0.0 adds the known-exploited check (CISA KEV) and the exploit prediction score (EPSS) (Pro, off by default), adds import of signed definition data, updates the bundled definition data (version 2026.11.02, generated 2026-11-02), and makes the appearance of buttons consistent.
 
 ## v2.0.6.0
 

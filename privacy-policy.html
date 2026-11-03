@@ -52,7 +52,7 @@
     </div>
 
     <h1>プライバシーポリシー</h1>
-    <p class="subtitle">Dependa — Sumikko Lab｜最終更新日: 2026-03-13</p>
+    <p class="subtitle">Dependa — Sumikko Lab｜最終更新日: 2026-11-03</p>
 
     <h2>1. はじめに</h2>
     <p>本プライバシーポリシーは、デスクトップアプリケーション「Dependa」（以下「本アプリ」）における情報の取り扱いについて説明します。</p>
@@ -95,7 +95,36 @@
       <li>個人情報の送信: なし</li>
     </ul>
 
-    <h3>4.3 npm レジストリ・NuGet API（ライセンス情報補完）</h3><ul><li>通信先: <code>https://registry.npmjs.org/</code>、<code>https://api.nuget.org/</code></li><li>送信内容: パッケージ名（NuGet ではバージョン番号を含む場合があります）</li><li>目的: ライセンス情報の補完取得</li><li>個人情報の送信: なし</li></ul><h3>4.4 通信の無効化</h3>
+    <h3>4.3 npm レジストリ・NuGet API（ライセンス情報補完）</h3><ul><li>通信先: <code>https://registry.npmjs.org/</code>、<code>https://api.nuget.org/</code></li><li>送信内容: パッケージ名（NuGet ではバージョン番号を含む場合があります）</li><li>目的: ライセンス情報の補完取得</li><li>個人情報の送信: なし</li></ul>
+    <h3>4.4 CISA KEV カタログ（既知の悪用の確認）</h3>
+    <ul>
+      <li>通信先: <code>https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json</code>（米国 CISA の公開カタログ）</li>
+      <li>送信内容: なし（公開カタログをダウンロードするだけです。パッケージ名、ファイルの内容、SBOM は送信しません）</li>
+      <li>接続先に見える情報: 通信元の IP アドレス、アプリの識別名（Dependa/版）</li>
+      <li>目的: 検出された脆弱性がカタログに掲載されているかの確認</li>
+      <li>既定の状態: 無効</li>
+      <li>有効にする方法: 設定画面の「既知の悪用の確認(CISA KEV)を使う」をオンにします。CLI では <code>scan</code> に <code>--use-kev</code> を指定します。</li>
+      <li>利用の条件: Pro ライセンスが必要です。</li>
+      <li>通信の時期: スキャンの実行時です。既定では、取得から 24 時間以内のカタログが保存されている場合は通信しません。</li>
+      <li>保存先: <code>%LocalAppData%\Dependa\cache\kev-catalog.json</code></li>
+      <li>消去の方法: 設定画面の「KEV のキャッシュを消去」を押します。</li>
+    </ul>
+
+    <h3>4.5 FIRST EPSS API（悪用予測スコア）</h3>
+    <ul>
+      <li>通信先: <code>https://api.first.org/data/v1/epss</code>（FIRST の公開 API）</li>
+      <li>送信内容: 検出された CVE 番号だけ（パッケージ名、バージョン番号、ファイルのパス、ファイルの内容、SBOM は送信しません）</li>
+      <li>接続先に見える情報: 通信元の IP アドレス、アプリの識別名（Dependa/版）</li>
+      <li>目的: 今後 30 日以内に悪用される確率の推定値（参考情報）の取得</li>
+      <li>既定の状態: 無効</li>
+      <li>有効にする方法: 設定画面の「悪用予測スコア(EPSS)を使う」をオンにします。CLI では <code>scan</code> に <code>--use-epss</code> を指定します。</li>
+      <li>利用の条件: Pro ライセンスが必要です。</li>
+      <li>通信の時期: スキャンの実行時です。CVE 番号が検出されない場合は通信しません。取得から 24 時間以内のデータが保存されている CVE 番号は送信しません。</li>
+      <li>保存先: <code>%LocalAppData%\Dependa\cache\epss-cache.json</code></li>
+      <li>消去の方法: 設定画面の「EPSS のキャッシュを消去」を押します。</li>
+    </ul>
+
+    <h3>4.6 通信の無効化</h3>
     <p>上記のオンライン機能はいずれも設定画面から無効化できます。無効時はインターネット通信を一切行いません。</p>
 
     <h2>5. 課金に関する情報</h2>
@@ -108,7 +137,7 @@
     <p>不具合調査のために提供されたデータは、調査目的以外に使用せず、調査完了後速やかに破棄するよう努めます。</p>
 
     <h2>8. ローカル処理</h2>
-    <p>Dependa は解析をローカル環境で実行し、ソースコードやプロジェクトファイルを外部サーバーへ送信することはありません。Free 機能は完全にオフラインで動作します。Pro 機能ではユーザーがオンライン照合を有効化した場合のみ、OSV などの公開脆弱性データベースを参照します。</p>
+    <p>Dependa は解析をローカル環境で実行し、ソースコードやプロジェクトファイルを外部サーバーへ送信することはありません。Free 機能は完全にオフラインで動作します。Pro 機能ではユーザーが該当のオンライン機能を有効化した場合のみ、OSV、CISA KEV カタログ、FIRST EPSS API などの公開脆弱性データを参照します。</p>
 
     <h2>9. 変更について</h2>
     <p>本プライバシーポリシーは必要に応じて更新される場合があります。重要な変更がある場合はアプリ内で通知します。</p>
@@ -126,7 +155,7 @@
     </div>
 
     <h1>Privacy Policy</h1>
-    <p class="subtitle">Dependa — Sumikko Lab | Last updated: March 13, 2026</p>
+    <p class="subtitle">Dependa — Sumikko Lab | Last updated: November 3, 2026</p>
 
     <h2>1. Introduction</h2>
     <p>This Privacy Policy explains how information is handled in the desktop application "Dependa" (hereinafter "the App").</p>
@@ -169,7 +198,36 @@
       <li>Personal information sent: None</li>
     </ul>
 
-    <h3>4.3 npm Registry and NuGet API (License Metadata)</h3><ul><li>Endpoints: <code>https://registry.npmjs.org/</code>, <code>https://api.nuget.org/</code></li><li>Data sent: Package name (for NuGet, the version number may be included)</li><li>Purpose: Supplemental license information retrieval</li><li>Personal information sent: None</li></ul><h3>4.4 Disabling Online Features</h3>
+    <h3>4.3 npm Registry and NuGet API (License Metadata)</h3><ul><li>Endpoints: <code>https://registry.npmjs.org/</code>, <code>https://api.nuget.org/</code></li><li>Data sent: Package name (for NuGet, the version number may be included)</li><li>Purpose: Supplemental license information retrieval</li><li>Personal information sent: None</li></ul>
+    <h3>4.4 CISA KEV Catalog (Known-Exploited Check)</h3>
+    <ul>
+      <li>Endpoint: <code>https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json</code> (public catalog of the US CISA)</li>
+      <li>Data sent: None (the App only downloads the public catalog; package names, file contents, and SBOMs are not sent)</li>
+      <li>Visible to the server: The IP address the connection comes from and the App identifier (Dependa/version)</li>
+      <li>Purpose: Checking whether detected vulnerabilities are listed in the catalog</li>
+      <li>Default state: Off</li>
+      <li>How to turn on: In the Settings screen, turn on "Use the known-exploited check (CISA KEV)". In the CLI, add <code>--use-kev</code> to <code>scan</code>.</li>
+      <li>Requirement: A Pro license is required.</li>
+      <li>When the App connects: When a scan runs. By default, the App does not connect if it has a stored catalog fetched within the last 24 hours.</li>
+      <li>Storage location: <code>%LocalAppData%\Dependa\cache\kev-catalog.json</code></li>
+      <li>How to delete: In the Settings screen, select "Clear the KEV cache".</li>
+    </ul>
+
+    <h3>4.5 FIRST EPSS API (Exploit Prediction Score)</h3>
+    <ul>
+      <li>Endpoint: <code>https://api.first.org/data/v1/epss</code> (public API of FIRST)</li>
+      <li>Data sent: Only the detected CVE IDs (package names, version numbers, file paths, file contents, and SBOMs are not sent)</li>
+      <li>Visible to the server: The IP address the connection comes from and the App identifier (Dependa/version)</li>
+      <li>Purpose: Getting an estimate of the probability of exploitation within the next 30 days (for reference)</li>
+      <li>Default state: Off</li>
+      <li>How to turn on: In the Settings screen, turn on "Use the exploit prediction score (EPSS)". In the CLI, add <code>--use-epss</code> to <code>scan</code>.</li>
+      <li>Requirement: A Pro license is required.</li>
+      <li>When the App connects: When a scan runs. The App does not connect if no CVE ID is detected. CVE IDs with stored data fetched within the last 24 hours are not sent.</li>
+      <li>Storage location: <code>%LocalAppData%\Dependa\cache\epss-cache.json</code></li>
+      <li>How to delete: In the Settings screen, select "Clear the EPSS cache".</li>
+    </ul>
+
+    <h3>4.6 Disabling Online Features</h3>
     <p>All online features listed above can be disabled from the Settings screen. When disabled, the App makes no internet connections whatsoever.</p>
 
     <h2>5. Billing Information</h2>
@@ -182,7 +240,7 @@
     <p>Data provided for investigation purposes will not be used for any other purpose and will be promptly deleted after the investigation is complete.</p>
 
     <h2>8. Local Processing</h2>
-    <p>Dependa performs analysis locally and does not transmit source code or project files to external servers. Free features run completely offline. Pro features optionally query public vulnerability databases such as OSV when the user enables online lookup.</p>
+    <p>Dependa performs analysis locally and does not transmit source code or project files to external servers. Free features run completely offline. Pro features query public vulnerability data sources such as OSV, the CISA KEV catalog, and the FIRST EPSS API only when the user enables the matching online feature.</p>
 
     <h2>9. Changes to This Policy</h2>
     <p>This Privacy Policy may be updated as needed. Users will be notified within the App of any significant changes.</p>
