@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>IaCサポート | Dependa マニュアル — Sumikko Lab</title>
 <meta name="description" content="Dependa のIaC（Infrastructure as Code）サポート機能。Terraform/Bicepファイルの依存関係分析を解説します。">
-<link rel="canonical" href="https://dependa.sumikkolab.com/manual/iac-support.html">
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/iac-support.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/iac-support.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/iac-support.html">
-<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/manual/iac-support.html?lang=en';</script>
 <meta property="og:title" content="IaCサポート | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa のIaC（Infrastructure as Code）サポート機能。Terraform/Bicepファイルの依存関係分析を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/iac-support.html">
@@ -20,6 +18,22 @@
 <meta property="og:image:alt" content="Dependa のアイコン">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="styles.css">
+<script>
+(function () {
+  var en = new URLSearchParams(location.search).get('lang') === 'en';
+  var canonical = document.createElement('link');
+  canonical.rel = 'canonical';
+  canonical.href = en ? 'https://dependa.sumikkolab.com/manual/iac-support.html?lang=en' : 'https://dependa.sumikkolab.com/manual/iac-support.html';
+  document.head.appendChild(canonical);
+  if (!en) return;
+  document.title = 'IaC Support | Dependa Manual — Sumikko Lab';
+  document.querySelector('meta[name="description"]').content = 'IaC (Infrastructure as Code) support in Dependa: dependency analysis of Terraform and Bicep files.';
+  document.querySelector('meta[property="og:title"]').content = 'IaC Support | Dependa Manual — Sumikko Lab';
+  document.querySelector('meta[property="og:description"]').content = 'IaC (Infrastructure as Code) support in Dependa: dependency analysis of Terraform and Bicep files.';
+  document.querySelector('meta[property="og:url"]').content = 'https://dependa.sumikkolab.com/manual/iac-support.html?lang=en';
+  document.querySelector('meta[property="og:locale"]').content = 'en_US';
+})();
+</script>
 </head>
 <body>
 <div class="container">
@@ -99,7 +113,7 @@
       <li>Bicep: module / var 解決、existing リソースの属性追跡は未対応</li>
       <li>ARM JSON: nested deployment、linked template、variables 解決、copy / condition 評価は未対応</li>
       <li>10 MB を超えるファイルはスキップされます。</li>
-      <li>読み取れない形を含むファイルは、AI Governance の結果に「読み込めなかった、または解析できなかったファイル」の件数として記録します（Terraform の引用符のないラベルや 1 行に並んだブロック、Bicep の <code>if</code>・<code>for</code> の resource、ARM の配列でもオブジェクトでもない <code>resources</code> など）。</li>
+      <li>解析できない形式を含むファイルは、AI Governance の結果に「読み込めなかった、または解析できなかったファイル」の件数として記録します（Terraform の引用符のないラベルや 1 行に並んだブロック、Bicep の <code>if</code>・<code>for</code> の resource、ARM の配列でもオブジェクトでもない <code>resources</code> など）。</li>
     </ul>
 
     <div class="info-box">
@@ -183,7 +197,7 @@
       <li>Bicep: module / var resolution, existing resource attribute tracking not supported</li>
       <li>ARM JSON: nested deployment, linked template, variables resolution, copy / condition evaluation not supported</li>
       <li>Files larger than 10 MB are skipped.</li>
-      <li>A file that contains a form Dependa cannot read is recorded in the AI Governance result as a file that could not be read or parsed. Examples are Terraform labels without quotes or several blocks on one line, Bicep resources with <code>if</code> or <code>for</code>, and ARM <code>resources</code> that is neither an array nor an object.</li>
+      <li>A file that contains a format Dependa cannot parse is recorded in the AI Governance result as a file that could not be read or parsed. Examples are Terraform labels without quotes or several blocks on one line, Bicep resources with <code>if</code> or <code>for</code>, and ARM <code>resources</code> that is neither an array nor an object.</li>
     </ul>
 
     <div class="info-box">

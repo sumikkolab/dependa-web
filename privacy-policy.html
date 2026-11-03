@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>プライバシーポリシー | Dependa — Sumikko Lab</title>
 <meta name="description" content="Dependa のプライバシーポリシー。データの取得範囲・保存場所・外部通信の有無・同意撤回方法を記載しています。">
-<link rel="canonical" href="https://dependa.sumikkolab.com/privacy-policy.html">
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/privacy-policy.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/privacy-policy.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/privacy-policy.html">
-<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/privacy-policy.html?lang=en';</script>
 <meta property="og:title" content="プライバシーポリシー | Dependa — Sumikko Lab">
 <meta property="og:description" content="Dependa のプライバシーポリシー。データの取得範囲・保存場所・外部通信の有無・同意撤回方法を記載しています。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/privacy-policy.html">
@@ -40,6 +38,22 @@
   .nav-links a { color: #6366f1; text-decoration: none; margin-right: 16px; }
   .nav-links a:hover { text-decoration: underline; }
 </style>
+<script>
+(function () {
+  var en = new URLSearchParams(location.search).get('lang') === 'en';
+  var canonical = document.createElement('link');
+  canonical.rel = 'canonical';
+  canonical.href = en ? 'https://dependa.sumikkolab.com/privacy-policy.html?lang=en' : 'https://dependa.sumikkolab.com/privacy-policy.html';
+  document.head.appendChild(canonical);
+  if (!en) return;
+  document.title = 'Privacy Policy | Dependa — Sumikko Lab';
+  document.querySelector('meta[name="description"]').content = 'The Dependa privacy policy: the scope of data obtained, where it is stored, whether it is sent externally, and how to withdraw consent.';
+  document.querySelector('meta[property="og:title"]').content = 'Privacy Policy | Dependa — Sumikko Lab';
+  document.querySelector('meta[property="og:description"]').content = 'The Dependa privacy policy: the scope of data obtained, where it is stored, whether it is sent externally, and how to withdraw consent.';
+  document.querySelector('meta[property="og:url"]').content = 'https://dependa.sumikkolab.com/privacy-policy.html?lang=en';
+  document.querySelector('meta[property="og:locale"]').content = 'en_US';
+})();
+</script>
 </head>
 <body>
 <div class="container">
@@ -94,7 +108,7 @@
     <h3>4.2 PyPI API（ライセンス情報補完）</h3>
     <ul>
       <li>通信先: <code>https://pypi.org/</code>（Python Package Index）</li>
-      <li>送信内容: パッケージ名</li>
+      <li>送信内容: パッケージ名、バージョン番号</li>
       <li>目的: ライセンス情報の補完取得</li>
       <li>個人情報の送信: なし</li>
     </ul>
@@ -129,7 +143,7 @@
     </ul>
 
     <h3>4.6 通信の無効化</h3>
-    <p>上記のオンライン機能はいずれも設定画面から無効化できます。無効時はインターネット通信を一切行いません。</p>
+    <p>上記のオンライン機能はいずれも設定画面から無効化できます。無効時は、これらの機能による通信を行いません。Store 版では、Pro の所有の確認を Microsoft Store を通じて行います（5 章）。この確認は、オンライン機能の設定にかかわらず行います。</p>
 
     <h2>5. 課金に関する情報</h2>
     <p>Pro 機能の購入は Microsoft Store の仕組みを通じて行われます。決済情報は Microsoft が管理し、本アプリの開発者が直接取得することはありません。</p>
@@ -141,7 +155,7 @@
     <p>不具合調査のために提供されたデータは、調査目的以外に使用せず、調査完了後速やかに破棄するよう努めます。</p>
 
     <h2>8. ローカル処理</h2>
-    <p>Dependa は解析をローカル環境で実行し、ソースコードやプロジェクトファイルを外部サーバーへ送信することはありません。Free 機能は完全にオフラインで動作します。Pro 機能ではユーザーが該当のオンライン機能を有効化した場合のみ、OSV、CISA KEV カタログ、FIRST EPSS API などの公開脆弱性データを参照します。</p>
+    <p>Dependa は解析をローカル環境で実行し、ソースコードやプロジェクトファイルを外部サーバーへ送信することはありません。Free 機能はオフラインで動作します。ただし、Store 版では、Pro の所有の確認を Microsoft Store を通じて行います（4.6 節・5 章）。Pro 機能ではユーザーが該当のオンライン機能を有効化した場合のみ、OSV、CISA KEV カタログ、FIRST EPSS API などの公開脆弱性データを参照します。</p>
 
     <h2>9. 変更について</h2>
     <p>本プライバシーポリシーは必要に応じて更新される場合があります。重要な変更がある場合はアプリ内で通知します。</p>
@@ -197,7 +211,7 @@
     <h3>4.2 PyPI API (License Metadata)</h3>
     <ul>
       <li>Endpoint: <code>https://pypi.org/</code> (Python Package Index)</li>
-      <li>Data sent: Package name</li>
+      <li>Data sent: Package name, version number</li>
       <li>Purpose: Supplemental license information retrieval</li>
       <li>Personal information sent: None</li>
     </ul>
@@ -232,7 +246,7 @@
     </ul>
 
     <h3>4.6 Disabling Online Features</h3>
-    <p>All online features listed above can be disabled from the Settings screen. When disabled, the App makes no internet connections whatsoever.</p>
+    <p>All online features listed above can be disabled from the Settings screen. When disabled, these features make no network connections. The Store version checks Pro ownership through the Microsoft Store (see Section 5). This check runs whether or not the online features are on.</p>
 
     <h2>5. Billing Information</h2>
     <p>Pro feature purchases are processed through the Microsoft Store platform. Payment information is managed by Microsoft, and the App developer does not directly access any billing data.</p>
@@ -244,7 +258,7 @@
     <p>Data provided for investigation purposes will not be used for any other purpose and will be promptly deleted after the investigation is complete.</p>
 
     <h2>8. Local Processing</h2>
-    <p>Dependa performs analysis locally and does not transmit source code or project files to external servers. Free features run completely offline. Pro features query public vulnerability data sources such as OSV, the CISA KEV catalog, and the FIRST EPSS API only when the user enables the matching online feature.</p>
+    <p>Dependa performs analysis locally and does not transmit source code or project files to external servers. Free features run offline. However, the Store version checks Pro ownership through the Microsoft Store (see Sections 4.6 and 5). Pro features query public vulnerability data sources such as OSV, the CISA KEV catalog, and the FIRST EPSS API only when the user enables the matching online feature.</p>
 
     <h2>9. Changes to This Policy</h2>
     <p>This Privacy Policy may be updated as needed. Users will be notified within the App of any significant changes.</p>

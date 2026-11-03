@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>利用規約 | Dependa — Sumikko Lab</title>
 <meta name="description" content="Dependa の利用規約。本製品の利用条件・禁止事項・責任制限を記載しています。">
-<link rel="canonical" href="https://dependa.sumikkolab.com/terms-of-use.html">
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/terms-of-use.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/terms-of-use.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/terms-of-use.html">
-<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/terms-of-use.html?lang=en';</script>
 <meta property="og:title" content="利用規約 | Dependa — Sumikko Lab">
 <meta property="og:description" content="Dependa の利用規約。本製品の利用条件・禁止事項・責任制限を記載しています。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/terms-of-use.html">
@@ -42,6 +40,22 @@
   .disclaimer-box h3 { color: #991b1b; }
   .disclaimer-box p, .disclaimer-box li { color: #7f1d1d; }
 </style>
+<script>
+(function () {
+  var en = new URLSearchParams(location.search).get('lang') === 'en';
+  var canonical = document.createElement('link');
+  canonical.rel = 'canonical';
+  canonical.href = en ? 'https://dependa.sumikkolab.com/terms-of-use.html?lang=en' : 'https://dependa.sumikkolab.com/terms-of-use.html';
+  document.head.appendChild(canonical);
+  if (!en) return;
+  document.title = 'Terms of Use | Dependa — Sumikko Lab';
+  document.querySelector('meta[name="description"]').content = 'The Dependa terms of use: conditions of use, prohibited actions, and limitation of liability.';
+  document.querySelector('meta[property="og:title"]').content = 'Terms of Use | Dependa — Sumikko Lab';
+  document.querySelector('meta[property="og:description"]').content = 'The Dependa terms of use: conditions of use, prohibited actions, and limitation of liability.';
+  document.querySelector('meta[property="og:url"]').content = 'https://dependa.sumikkolab.com/terms-of-use.html?lang=en';
+  document.querySelector('meta[property="og:locale"]').content = 'en_US';
+})();
+</script>
 </head>
 <body>
 <div class="container">

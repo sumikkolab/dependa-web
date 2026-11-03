@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>定義データ | Dependa — Sumikko Lab</title>
 <meta name="description" content="Dependa の定義データ(脆弱性情報)を、ダウンロードして手動で取り込む方法、出典と帰属、確認できる範囲の限界をご案内します。">
-<link rel="canonical" href="https://dependa.sumikkolab.com/definitions.html">
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/definitions.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/definitions.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/definitions.html">
-<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/definitions.html?lang=en';</script>
 <meta property="og:title" content="定義データ | Dependa — Sumikko Lab">
 <meta property="og:description" content="Dependa の定義データ(脆弱性情報)を、ダウンロードして手動で取り込む方法、出典と帰属、確認できる範囲の限界をご案内します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/definitions.html">
@@ -48,6 +46,22 @@
   .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; font-size: 0.8rem; color: #94a3b8; text-align: center; }
   code { background: #f1f5f9; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
 </style>
+<script>
+(function () {
+  var en = new URLSearchParams(location.search).get('lang') === 'en';
+  var canonical = document.createElement('link');
+  canonical.rel = 'canonical';
+  canonical.href = en ? 'https://dependa.sumikkolab.com/definitions.html?lang=en' : 'https://dependa.sumikkolab.com/definitions.html';
+  document.head.appendChild(canonical);
+  if (!en) return;
+  document.title = 'Definition Data | Dependa — Sumikko Lab';
+  document.querySelector('meta[name="description"]').content = 'How to download and manually import Dependa definition data (vulnerability information), with its sources, attribution, and the limits of what can be confirmed.';
+  document.querySelector('meta[property="og:title"]').content = 'Definition Data | Dependa — Sumikko Lab';
+  document.querySelector('meta[property="og:description"]').content = 'How to download and manually import Dependa definition data (vulnerability information), with its sources, attribution, and the limits of what can be confirmed.';
+  document.querySelector('meta[property="og:url"]').content = 'https://dependa.sumikkolab.com/definitions.html?lang=en';
+  document.querySelector('meta[property="og:locale"]').content = 'en_US';
+})();
+</script>
 </head>
 <body>
 <div class="container">
@@ -139,7 +153,7 @@
     <h2>確認できる範囲の限界</h2>
     <div class="warn-box">
       <p>アプリは取り込みのとき、アプリに埋め込んだ公開鍵で、zip の署名を検証します。署名の無いファイルや、検証できないファイルは取り込みません。あわせて、ファイルの内容が、同じ zip に入っている内容一覧と一致することも確認します。このページに掲載する SHA-256 は、ダウンロード中の破損の確認に使えます。</p>
-      <p>取り込み済みの定義データが読み込み時の検証に通らないときは、その定義データを使わず、同梱の定義データを使います。内容一覧のないファイルを手動で配置したときは検証されず、通知を表示したうえで使います。</p>
+      <p>取り込み済みの定義データが読み込み時の検証に失敗したときは、その定義データを使わず、同梱の定義データを使います。内容一覧のないファイルを手動で配置したときは検証されず、通知を表示したうえで使います。</p>
     </div>
     <ul>
       <li>署名の検証は、Sumikko Lab の署名鍵で署名されたファイルであることの確認です。定義データの内容が正しいこと、十分であることを保証するものではありません。</li>

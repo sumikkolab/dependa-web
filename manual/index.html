@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>マニュアル | Dependa — Sumikko Lab</title>
 <meta name="description" content="Dependa のユーザーマニュアル。SBOMインポート・脆弱性分析・ライセンス分析・レビュー・レポート・CLI操作方法を解説します。">
-<link rel="canonical" href="https://dependa.sumikkolab.com/manual/">
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/">
-<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/manual/?lang=en';</script>
 <meta property="og:title" content="マニュアル | Dependa — Sumikko Lab">
 <meta property="og:description" content="Dependa のユーザーマニュアル。SBOMインポート・脆弱性分析・ライセンス分析・レビュー・レポート・CLI操作方法を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/">
@@ -20,6 +18,22 @@
 <meta property="og:image:alt" content="Dependa のアイコン">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="styles.css">
+<script>
+(function () {
+  var en = new URLSearchParams(location.search).get('lang') === 'en';
+  var canonical = document.createElement('link');
+  canonical.rel = 'canonical';
+  canonical.href = en ? 'https://dependa.sumikkolab.com/manual/?lang=en' : 'https://dependa.sumikkolab.com/manual/';
+  document.head.appendChild(canonical);
+  if (!en) return;
+  document.title = 'User Manual | Dependa — Sumikko Lab';
+  document.querySelector('meta[name="description"]').content = 'The Dependa user manual: how to import SBOMs, analyze vulnerabilities and licenses, review, report, and use the CLI.';
+  document.querySelector('meta[property="og:title"]').content = 'User Manual | Dependa — Sumikko Lab';
+  document.querySelector('meta[property="og:description"]').content = 'The Dependa user manual: how to import SBOMs, analyze vulnerabilities and licenses, review, report, and use the CLI.';
+  document.querySelector('meta[property="og:url"]').content = 'https://dependa.sumikkolab.com/manual/?lang=en';
+  document.querySelector('meta[property="og:locale"]').content = 'en_US';
+})();
+</script>
 </head>
 <body>
 <div class="container">
@@ -39,7 +53,7 @@
     <p class="subtitle">v2.1.0.0 — 最終更新: 2026-11-03</p>
 
     <h2>v2.1.0.0 について</h2>
-    <p>この更新では、既知の悪用の確認（CISA KEV）と悪用予測スコア（EPSS）の追加（Pro。既定で無効）、定義データの署名つき取り込みの追加、同梱の定義データの更新、ボタンの見た目の統一を行いました。同梱の定義データは版 2026.11.02、2026-11-02 生成（脆弱性情報 Python 8161 / NuGet 5272 / Node.js 8242）です。判定の改善も行いました。重大度を読み取れない脆弱性は不合格に、コピーレフトを含むライセンス式は要確認になるため、これまでより不合格になる場面が増えます。</p>
+    <p>この更新では、既知の悪用の確認（CISA KEV）と悪用予測スコア（EPSS）の追加（Pro。既定で無効）、定義データの署名つき取り込みの追加、同梱の定義データの更新、ボタンの見た目の統一を行いました。同梱の定義データはバージョン 2026.11.02、2026-11-02 生成（脆弱性情報 Python 8161 / NuGet 5272 / Node.js 8242）です。判定の改善も行いました。重大度を読み取れない脆弱性は不合格に、コピーレフトを含むライセンス式は要確認になるため、これまでより不合格になる場面が増えます。</p>
 
     <h2>目次</h2>
     <ol>

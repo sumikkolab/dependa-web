@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SBOMインポート・フォルダスキャン | Dependa マニュアル — Sumikko Lab</title>
 <meta name="description" content="Dependa のSBOMインポートとフォルダスキャン機能。CycloneDX/SPDX形式のSBOM読み込みとプロジェクトフォルダのスキャン方法を解説します。">
-<link rel="canonical" href="https://dependa.sumikkolab.com/manual/scanning.html">
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/scanning.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/scanning.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/scanning.html">
-<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/manual/scanning.html?lang=en';</script>
 <meta property="og:title" content="SBOMインポート・フォルダスキャン | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa のSBOMインポートとフォルダスキャン機能。CycloneDX/SPDX形式のSBOM読み込みとプロジェクトフォルダのスキャン方法を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/scanning.html">
@@ -20,6 +18,22 @@
 <meta property="og:image:alt" content="Dependa のアイコン">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="styles.css">
+<script>
+(function () {
+  var en = new URLSearchParams(location.search).get('lang') === 'en';
+  var canonical = document.createElement('link');
+  canonical.rel = 'canonical';
+  canonical.href = en ? 'https://dependa.sumikkolab.com/manual/scanning.html?lang=en' : 'https://dependa.sumikkolab.com/manual/scanning.html';
+  document.head.appendChild(canonical);
+  if (!en) return;
+  document.title = 'SBOM Import & Folder Scan | Dependa Manual — Sumikko Lab';
+  document.querySelector('meta[name="description"]').content = 'SBOM import and folder scan in Dependa: how to read CycloneDX and SPDX SBOMs and how to scan a project folder.';
+  document.querySelector('meta[property="og:title"]').content = 'SBOM Import & Folder Scan | Dependa Manual — Sumikko Lab';
+  document.querySelector('meta[property="og:description"]').content = 'SBOM import and folder scan in Dependa: how to read CycloneDX and SPDX SBOMs and how to scan a project folder.';
+  document.querySelector('meta[property="og:url"]').content = 'https://dependa.sumikkolab.com/manual/scanning.html?lang=en';
+  document.querySelector('meta[property="og:locale"]').content = 'en_US';
+})();
+</script>
 </head>
 <body>
 <div class="container">
@@ -59,9 +73,9 @@
     </div>
 
     <div class="info-box">
-      <p>CycloneDX の SBOM で <code>components</code> または <code>vulnerabilities</code> が配列でないときは、読み込みに失敗します。部品 0 件の結果としては扱いません。</p>
-      <p>審査の記録は、プロジェクトを選択しているときはプロジェクトごとに引き継ぎます。選択していないときは SBOM の内容ごとに引き継ぎます。ファイル名では引き継がないため、以前の版がファイル名ごとに保存した記録は読み込まれず、未確認になります。</p>
-      <p>記録された版から版が変わった部品は未確認に数え、「版が変わりました」と表示します。以前の判断の記録は残ります。</p>
+      <p>CycloneDX の SBOM で <code>components</code> または <code>vulnerabilities</code> が配列でないときは、読み込みに失敗します。コンポーネント 0 件の結果としては扱いません。</p>
+      <p>レビューの記録は、プロジェクトを選択しているときはプロジェクトごとに引き継ぎます。選択していないときは SBOM の内容ごとに引き継ぎます。ファイル名では引き継がないため、以前のバージョンがファイル名ごとに保存した記録は読み込まれず、未確認になります。</p>
+      <p>記録されたバージョンから変わったコンポーネントは未確認に数え、「版が変わりました」と表示します。以前の判断の記録は残ります。</p>
     </div>
 
     <h2>フォルダスキャンの実行方法</h2>
@@ -91,7 +105,7 @@
     <div class="info-box">
       <p>次のものは読み取らず、スキャン結果の「読み取れなかった入力(調べていません)」に記録します。<code>--fail-on not-assessed</code> を指定すると、記録があるときに CLI は終了コード 2 を返します。</p>
       <ul>
-        <li>Python でロックファイルを使わないときの、ルートフォルダにある別の依存ファイル</li>
+        <li>Python で解析元にしなかった、ルートフォルダにある別の依存ファイル（ロックファイルを解析元にしたときのプロジェクト定義ファイルを除きます）</li>
         <li>Node.js の依存定義にある <code>npm:</code>、<code>workspace:</code>、<code>github:</code> の参照と、読まない節（<code>optionalDependencies</code>、<code>peerDependencies</code>）</li>
         <li>Python のプロジェクト定義で読まない節（開発用の依存グループ、ビルド時に決まる依存など）</li>
       </ul>
@@ -205,7 +219,7 @@
     <div class="info-box">
       <p>Dependa does not read the following items and records them in the scan result under "Entries that could not be read (not examined)". With <code>--fail-on not-assessed</code>, the CLI exits with code 2 when such a record exists.</p>
       <ul>
-        <li>For Python without a lock file, other dependency files in the root folder</li>
+        <li>For Python, other dependency files in the root folder that were not used as the source (except the project definition file when a lock file is the source)</li>
         <li>In the Node.js dependency definition, <code>npm:</code>, <code>workspace:</code>, and <code>github:</code> references, and the sections that are not read (<code>optionalDependencies</code> and <code>peerDependencies</code>)</li>
         <li>Sections not read in the Python project definition, such as development dependency groups and dependencies set at build time</li>
       </ul>
