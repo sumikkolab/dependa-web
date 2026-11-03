@@ -48,7 +48,7 @@ Many teams still manage OSS usage reviews using Excel, emails, and Word document
 
 ## v2.1.0.0
 
-v2.1.0.0 adds the known-exploited check (CISA KEV) and the exploit prediction score (EPSS) (Pro, off by default), adds import of signed definition data, updates the bundled definition data (version 2026.11.02, generated 2026-11-02), and makes the appearance of buttons consistent.
+v2.1.0.0 adds the known-exploited check (CISA KEV) and the exploit prediction score (EPSS) (Pro, off by default), adds import of signed definition data, updates the bundled definition data (version 2026.11.02, generated 2026-11-02), and makes the appearance of buttons consistent. This update also improves the checks. A vulnerability whose severity cannot be read now fails, and a license expression that includes copyleft now needs review, so more scans fail than before.
 
 ## v2.0.6.0
 

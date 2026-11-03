@@ -6,6 +6,10 @@
 <title>利用規約 | Dependa — Sumikko Lab</title>
 <meta name="description" content="Dependa の利用規約。本製品の利用条件・禁止事項・責任制限を記載しています。">
 <link rel="canonical" href="https://dependa.sumikkolab.com/terms-of-use.html">
+<link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/terms-of-use.html">
+<link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/terms-of-use.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/terms-of-use.html">
+<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/terms-of-use.html?lang=en';</script>
 <meta property="og:title" content="利用規約 | Dependa — Sumikko Lab">
 <meta property="og:description" content="Dependa の利用規約。本製品の利用条件・禁止事項・責任制限を記載しています。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/terms-of-use.html">
@@ -202,6 +206,7 @@ function switchLang(lang) {
   document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 }
+if (new URLSearchParams(location.search).get('lang') === 'en') switchLang('en');
 </script>
 </body>
 </html>

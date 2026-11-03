@@ -6,6 +6,10 @@
 <title>SBOMインポート・フォルダスキャン | Dependa マニュアル — Sumikko Lab</title>
 <meta name="description" content="Dependa のSBOMインポートとフォルダスキャン機能。CycloneDX/SPDX形式のSBOM読み込みとプロジェクトフォルダのスキャン方法を解説します。">
 <link rel="canonical" href="https://dependa.sumikkolab.com/manual/scanning.html">
+<link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/scanning.html">
+<link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/scanning.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/scanning.html">
+<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/manual/scanning.html?lang=en';</script>
 <meta property="og:title" content="SBOMインポート・フォルダスキャン | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa のSBOMインポートとフォルダスキャン機能。CycloneDX/SPDX形式のSBOM読み込みとプロジェクトフォルダのスキャン方法を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/scanning.html">
@@ -54,6 +58,12 @@
       <p>対応 SBOM 形式: <strong>CycloneDX 1.2〜1.7 JSON</strong> および <strong>SPDX 2.2〜2.3 JSON</strong>。形式は自動検出されるため、手動で指定する必要はありません。</p>
     </div>
 
+    <div class="info-box">
+      <p>CycloneDX の SBOM で <code>components</code> または <code>vulnerabilities</code> が配列でないときは、読み込みに失敗します。部品 0 件の結果としては扱いません。</p>
+      <p>審査の記録は、プロジェクトを選択しているときはプロジェクトごとに引き継ぎます。選択していないときは SBOM の内容ごとに引き継ぎます。ファイル名では引き継がないため、以前の版がファイル名ごとに保存した記録は読み込まれず、未確認になります。</p>
+      <p>記録された版から版が変わった部品は未確認に数え、「版が変わりました」と表示します。以前の判断の記録は残ります。</p>
+    </div>
+
     <h2>フォルダスキャンの実行方法</h2>
     <ol>
       <li>左側のナビゲーションから「SBOM / スキャン」画面を開きます。</li>
@@ -77,6 +87,15 @@
       <tr><td>SBOM</td><td>CycloneDX JSON（<code>.cdx.json</code> / <code>.json</code>）</td><td>Free</td></tr>
       <tr><td>SBOM</td><td>SPDX JSON（<code>.spdx.json</code> / <code>.json</code>）</td><td>Free</td></tr>
     </table>
+
+    <div class="info-box">
+      <p>次のものは読み取らず、スキャン結果の「読み取れなかった入力(調べていません)」に記録します。<code>--fail-on not-assessed</code> を指定すると、記録があるときに CLI は終了コード 2 を返します。</p>
+      <ul>
+        <li>Python でロックファイルを使わないときの、ルートフォルダにある別の依存ファイル</li>
+        <li>Node.js の依存定義にある <code>npm:</code>、<code>workspace:</code>、<code>github:</code> の参照と、読まない節（<code>optionalDependencies</code>、<code>peerDependencies</code>）</li>
+        <li>Python のプロジェクト定義で読まない節（開発用の依存グループ、ビルド時に決まる依存など）</li>
+      </ul>
+    </div>
 
     <h2>分析結果の見方</h2>
 
@@ -153,6 +172,12 @@
       <p>Supported SBOM formats: <strong>CycloneDX 1.2–1.7 JSON</strong> and <strong>SPDX 2.2–2.3 JSON</strong>. Format is auto-detected; no manual selection is needed.</p>
     </div>
 
+    <div class="info-box">
+      <p>A CycloneDX SBOM fails to import when <code>components</code> or <code>vulnerabilities</code> is not an array. The result is not treated as zero components.</p>
+      <p>Review records carry over by project when a project is selected. When no project is selected, they carry over by SBOM content. They do not carry over by file name, so records that earlier versions saved by file name are not read and the items show as not reviewed.</p>
+      <p>A component whose version differs from the recorded version counts as not reviewed and shows "Version changed". The earlier decision stays on record.</p>
+    </div>
+
     <h2>How to Run a Folder Scan</h2>
     <ol>
       <li>Open the "SBOM / Scan" screen from the navigation bar on the left.</li>
@@ -176,6 +201,15 @@
       <tr><td>SBOM</td><td>CycloneDX JSON (<code>.cdx.json</code> / <code>.json</code>)</td><td>Free</td></tr>
       <tr><td>SBOM</td><td>SPDX JSON (<code>.spdx.json</code> / <code>.json</code>)</td><td>Free</td></tr>
     </table>
+
+    <div class="info-box">
+      <p>Dependa does not read the following items and records them in the scan result under "Entries that could not be read (not examined)". With <code>--fail-on not-assessed</code>, the CLI exits with code 2 when such a record exists.</p>
+      <ul>
+        <li>For Python without a lock file, other dependency files in the root folder</li>
+        <li>In the Node.js dependency definition, <code>npm:</code>, <code>workspace:</code>, and <code>github:</code> references, and the sections that are not read (<code>optionalDependencies</code> and <code>peerDependencies</code>)</li>
+        <li>Sections not read in the Python project definition, such as development dependency groups and dependencies set at build time</li>
+      </ul>
+    </div>
 
     <h2>Understanding Analysis Results</h2>
 

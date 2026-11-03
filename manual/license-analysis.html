@@ -6,6 +6,10 @@
 <title>ライセンス分析 | Dependa マニュアル — Sumikko Lab</title>
 <meta name="description" content="Dependa のライセンス分析機能。OSSライセンスの分類、互換性チェック、リスク判定の操作方法を解説します。">
 <link rel="canonical" href="https://dependa.sumikkolab.com/manual/license-analysis.html">
+<link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/license-analysis.html">
+<link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/license-analysis.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/license-analysis.html">
+<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/manual/license-analysis.html?lang=en';</script>
 <meta property="og:title" content="ライセンス分析 | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa のライセンス分析機能。OSSライセンスの分類、互換性チェック、リスク判定の操作方法を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/license-analysis.html">
@@ -105,7 +109,8 @@
       <tr><td>NuGet</td><td>.NET パッケージ</td></tr>
     </table>
     <ul>
-      <li>ローカルのファイルにライセンス情報がないパッケージに対して自動的に問い合わせます。</li>
+      <li>依存関係ごとに、指定の版のライセンス情報を照会します。ローカルに情報があるパッケージでは照会結果を検証に使い、情報がないパッケージでは補完に使います。</li>
+      <li>版が確定しない依存関係は、別の版の情報で断定しないように照会せず、失敗の件数に数えます。ローカルにも情報がなければ、ライセンスは Unknown になります。NuGet のワイルドカード指定だけは、公開されている版から解決して照会します。</li>
       <li>Unknown の数を減らし、より正確な分析結果を得られます。</li>
       <li>設定画面の「オンライン補完」を ON にすると有効になります。</li>
     </ul>
@@ -116,6 +121,7 @@
       <p><strong>High Risk になる条件:</strong> High Risk に分類されるライセンスが 1 件でも検出された場合、そのパッケージは High Risk と判定されます。</p>
     </div>
     <p>Risk のライセンスがある場合は Risk となりますが、利用条件を確認した上での使用を推奨します。</p>
+    <p>コピーレフトの語（GPL・AGPL・LGPL・MPL）を含むライセンス式は、<code>AND</code> と <code>OR</code> のどちらでも要確認（REVIEW）と判定します。<code>BSD-GPL</code> のような名前も同じです。禁止に分類されたライセンスはブロック（BLOCK）と判定します。<code>MIT</code>、<code>Apache-2.0</code> など単独の許容 ID は合格（PASS）と判定します。</p>
 
     <div class="chapter-nav">
       <a href="vulnerability-analysis.html">&larr; 前へ: 脆弱性分析とリスク分析</a>
@@ -204,7 +210,8 @@
       <tr><td>NuGet</td><td>.NET packages</td></tr>
     </table>
     <ul>
-      <li>Automatically queries packages that have no license information in local files.</li>
+      <li>Queries the license information of the specified version of each dependency. Packages with local information use the result for verification. Packages without local information use it to fill the gap.</li>
+      <li>A dependency without a confirmed version is not queried, so that information from another version is not applied to it, and it counts as a failed query. Without local information, its license is Unknown. Only NuGet wildcard versions are resolved from the published versions and then queried.</li>
       <li>Reduces the number of Unknown results for more accurate analysis.</li>
       <li>Enable "Online Enrichment" in the Settings screen to activate.</li>
     </ul>
@@ -215,6 +222,7 @@
       <p><strong>High Risk condition:</strong> If even one High Risk license is detected, the package is classified as High Risk.</p>
     </div>
     <p>If Risk licenses are present, the package is classified as Risk. However, reviewing the specific license terms before use is recommended.</p>
+    <p>A license expression that includes a copyleft term (GPL, AGPL, LGPL, or MPL) is judged as needing review (REVIEW), with either <code>AND</code> or <code>OR</code>. The same applies to a name such as <code>BSD-GPL</code>. A license classified as prohibited is judged as BLOCK. A single permissive ID such as <code>MIT</code> or <code>Apache-2.0</code> is judged as PASS.</p>
 
     <div class="chapter-nav">
       <a href="vulnerability-analysis.html?lang=en">&larr; Previous: Vulnerability &amp; Risk Analysis</a>

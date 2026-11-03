@@ -6,6 +6,10 @@
 <title>設定 | Dependa マニュアル — Sumikko Lab</title>
 <meta name="description" content="Dependa の設定画面の操作方法。言語切替、データベース管理、プロキシ設定、ライセンス管理を解説します。">
 <link rel="canonical" href="https://dependa.sumikkolab.com/manual/settings.html">
+<link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/settings.html">
+<link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/settings.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/settings.html">
+<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/manual/settings.html?lang=en';</script>
 <meta property="og:title" content="設定 | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa の設定画面の操作方法。言語切替、データベース管理、プロキシ設定、ライセンス管理を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/settings.html">
@@ -59,6 +63,8 @@
       <p>この機能を利用するにはインターネット接続と Pro ライセンスが必要です。</p>
     </div>
 
+    <p>照会では依存関係の指定の版を使い、版が確定しない依存関係は照会しません。応答が複数のページに分かれるときは、全ページを読みます。読み切れなかった照会は失敗に数え、読めた分の脆弱性は結果に含めます。</p>
+
     <h3>オンライン補完 <span class="pro-badge">Pro</span></h3>
     <p>有効にすると、ローカルデータベースにライセンス情報がないパッケージについて <strong>PyPI / npm / NuGet</strong> からライセンス情報を自動補完します。Unknown と判定されるパッケージが減り、ライセンス分析の精度が向上します。</p>
     <table class="manual-table">
@@ -89,6 +95,7 @@
     <pre><code>%LocalAppData%\Dependa\settings.json</code></pre>
     <p>通常は以下のようなパスになります。</p>
     <pre><code>C:\Users\&lt;ユーザー名&gt;\AppData\Local\Dependa\settings.json</code></pre>
+    <p>Store 版では、環境変数 <code>DEPENDA_DATA_DIR</code> で保存先を変更できません。</p>
     <div class="warn-box">
       <p>設定ファイルを手動で編集する場合は、アプリケーションを終了してから行ってください。アプリ起動中に編集すると変更が上書きされる場合があります。</p>
     </div>
@@ -134,6 +141,8 @@
       <p>This feature requires an internet connection and a Pro license.</p>
     </div>
 
+    <p>Each query uses the specified version of the dependency. A dependency without a confirmed version is not queried. When a response spans several pages, Dependa reads all of them. A query that cannot be read to the end counts as failed, and the vulnerabilities read up to that point stay in the result.</p>
+
     <h3>Online Enrichment <span class="pro-badge">Pro</span></h3>
     <p>When enabled, automatically supplements license information from <strong>PyPI / npm / NuGet</strong> for packages missing from the local database. This reduces the number of packages classified as Unknown and improves license analysis accuracy.</p>
     <table class="manual-table">
@@ -164,6 +173,7 @@
     <pre><code>%LocalAppData%\Dependa\settings.json</code></pre>
     <p>Typically this resolves to:</p>
     <pre><code>C:\Users\&lt;username&gt;\AppData\Local\Dependa\settings.json</code></pre>
+    <p>In the Store version, the <code>DEPENDA_DATA_DIR</code> environment variable does not change this location.</p>
     <div class="warn-box">
       <p>If you edit the settings file manually, close the application first. Changes may be overwritten if the app is running.</p>
     </div>

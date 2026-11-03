@@ -6,6 +6,10 @@
 <title>マニュアル | Dependa — Sumikko Lab</title>
 <meta name="description" content="Dependa のユーザーマニュアル。SBOMインポート・脆弱性分析・ライセンス分析・レビュー・レポート・CLI操作方法を解説します。">
 <link rel="canonical" href="https://dependa.sumikkolab.com/manual/">
+<link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/">
+<link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/">
+<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/manual/?lang=en';</script>
 <meta property="og:title" content="マニュアル | Dependa — Sumikko Lab">
 <meta property="og:description" content="Dependa のユーザーマニュアル。SBOMインポート・脆弱性分析・ライセンス分析・レビュー・レポート・CLI操作方法を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/">
@@ -35,7 +39,7 @@
     <p class="subtitle">v2.1.0.0 — 最終更新: 2026-11-03</p>
 
     <h2>v2.1.0.0 について</h2>
-    <p>この更新では、既知の悪用の確認（CISA KEV）と悪用予測スコア（EPSS）の追加（Pro。既定で無効）、定義データの署名つき取り込みの追加、同梱の定義データの更新、ボタンの見た目の統一を行いました。同梱の定義データは版 2026.11.02、2026-11-02 生成（脆弱性情報 Python 8161 / NuGet 5272 / Node.js 8242）です。</p>
+    <p>この更新では、既知の悪用の確認（CISA KEV）と悪用予測スコア（EPSS）の追加（Pro。既定で無効）、定義データの署名つき取り込みの追加、同梱の定義データの更新、ボタンの見た目の統一を行いました。同梱の定義データは版 2026.11.02、2026-11-02 生成（脆弱性情報 Python 8161 / NuGet 5272 / Node.js 8242）です。判定の改善も行いました。重大度を読み取れない脆弱性は不合格に、コピーレフトを含むライセンス式は要確認になるため、これまでより不合格になる場面が増えます。</p>
 
     <h2>目次</h2>
     <ol>
@@ -68,7 +72,7 @@
     <p class="subtitle">v2.1.0.0 — Last updated: November 3, 2026</p>
 
     <h2>About v2.1.0.0</h2>
-    <p>This update adds the known-exploited check (CISA KEV) and the exploit prediction score (EPSS) (Pro, off by default), adds import of signed definition data, updates the bundled definition data, and makes the appearance of buttons consistent. The bundled definition data is version 2026.11.02, generated on 2026-11-02 (vulnerability records: Python 8161 / NuGet 5272 / Node.js 8242).</p>
+    <p>This update adds the known-exploited check (CISA KEV) and the exploit prediction score (EPSS) (Pro, off by default), adds import of signed definition data, updates the bundled definition data, and makes the appearance of buttons consistent. The bundled definition data is version 2026.11.02, generated on 2026-11-02 (vulnerability records: Python 8161 / NuGet 5272 / Node.js 8242). This update also improves the checks. A vulnerability whose severity cannot be read now fails, and a license expression that includes copyleft now needs review, so more scans fail than before.</p>
 
     <h2>Table of Contents</h2>
     <ol>

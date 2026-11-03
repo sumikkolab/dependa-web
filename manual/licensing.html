@@ -6,6 +6,10 @@
 <title>ライセンス | Dependa マニュアル — Sumikko Lab</title>
 <meta name="description" content="Dependa のライセンス情報。Free版とPro版の違い、購入方法、ライセンス認証の手順を解説します。">
 <link rel="canonical" href="https://dependa.sumikkolab.com/manual/licensing.html">
+<link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/licensing.html">
+<link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/licensing.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/licensing.html">
+<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/manual/licensing.html?lang=en';</script>
 <meta property="og:title" content="ライセンス | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa のライセンス情報。Free版とPro版の違い、購入方法、ライセンス認証の手順を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/licensing.html">
@@ -83,6 +87,13 @@
 
     <h2>ライセンスの確認</h2>
     <p>現在のライセンス状態は設定画面で確認できます。Pro が有効な場合は「Pro」バッジが表示されます。</p>
+    <p>Store 版では、Microsoft Store での所有の確認によって Pro かどうかを判定します。CLI も、判定の前にこの確認を待ちます。</p>
+    <ul>
+      <li>オフラインなどで確認できないときは、保存済みの状態を変更しません。</li>
+      <li>以前の形式の Pro の記録は、次に Store で所有を確認するまで Free として扱います。</li>
+      <li>Store が所有していないと応答したときは、確認済みの Pro は最初の応答から 7 日後に Free になります。</li>
+      <li>Store 版をパッケージの外で起動したときは、常に Free です。</li>
+    </ul>
 
     <h2>Free 版のウォーターマークについて</h2>
     <p>Free 版で生成される HTML レポートには「Dependa Free」のウォーターマーク（透かし）が表示されます。レポートの内容は閲覧可能ですが、公式な提出用途には Pro 版をご利用ください。</p>
@@ -152,6 +163,13 @@
 
     <h2>Checking Your License</h2>
     <p>You can check your current license status in the Settings panel. If Pro is active, a "Pro" badge will be displayed.</p>
+    <p>In the Store version, Pro is determined by the ownership check with the Microsoft Store. The CLI also waits for this check first.</p>
+    <ul>
+      <li>If the check cannot complete, for example when offline, the saved state does not change.</li>
+      <li>A Pro record in the earlier format counts as Free until the next time the Store confirms ownership.</li>
+      <li>If the Store reports that Pro is not owned, a confirmed Pro becomes Free 7 days after the first such report.</li>
+      <li>The Store version started outside its package always runs as Free.</li>
+    </ul>
 
     <h2>Free Edition Watermark</h2>
     <p>HTML reports generated in the Free edition include a "Dependa Free" watermark. The report content is fully readable, but for official submissions, please use the Pro edition.</p>

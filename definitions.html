@@ -6,6 +6,10 @@
 <title>定義データ | Dependa — Sumikko Lab</title>
 <meta name="description" content="Dependa の定義データ(脆弱性情報)を、ダウンロードして手動で取り込む方法、出典と帰属、確認できる範囲の限界をご案内します。">
 <link rel="canonical" href="https://dependa.sumikkolab.com/definitions.html">
+<link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/definitions.html">
+<link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/definitions.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/definitions.html">
+<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/definitions.html?lang=en';</script>
 <meta property="og:title" content="定義データ | Dependa — Sumikko Lab">
 <meta property="og:description" content="Dependa の定義データ(脆弱性情報)を、ダウンロードして手動で取り込む方法、出典と帰属、確認できる範囲の限界をご案内します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/definitions.html">
@@ -135,6 +139,7 @@
     <h2>確認できる範囲の限界</h2>
     <div class="warn-box">
       <p>アプリは取り込みのとき、アプリに埋め込んだ公開鍵で、zip の署名を検証します。署名の無いファイルや、検証できないファイルは取り込みません。あわせて、ファイルの内容が、同じ zip に入っている内容一覧と一致することも確認します。このページに掲載する SHA-256 は、ダウンロード中の破損の確認に使えます。</p>
+      <p>取り込み済みの定義データが読み込み時の検証に通らないときは、その定義データを使わず、同梱の定義データを使います。内容一覧のないファイルを手動で配置したときは検証されず、通知を表示したうえで使います。</p>
     </div>
     <ul>
       <li>署名の検証は、Sumikko Lab の署名鍵で署名されたファイルであることの確認です。定義データの内容が正しいこと、十分であることを保証するものではありません。</li>
@@ -226,6 +231,7 @@
     <h2>Limits of what is checked</h2>
     <div class="warn-box">
       <p>At import, the app verifies the signature of the zip with the public key built into the app. It does not import a file that has no signature or whose signature cannot be verified. It also checks that the contents of the files match the manifest in the same zip. The SHA-256 values on this page can be used to check for corruption during download.</p>
+      <p>If imported definition data fails verification when it is loaded, the app does not use it and uses the bundled definition data. Files placed by hand without a manifest are not verified. The app uses them and shows a notice.</p>
     </div>
     <ul>
       <li>Signature verification confirms that the file was signed with the Sumikko Lab signing key. It does not guarantee that the definition data is correct or sufficient.</li>
@@ -247,6 +253,7 @@ function switchLang(lang) {
   document.getElementById('btn-ja').classList.toggle('active', lang === 'ja');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
 }
+if (new URLSearchParams(location.search).get('lang') === 'en') switchLang('en');
 
 var DEFS_BASE = 'https://raw.githubusercontent.com/sumikkolab/dependa-defs/main/';
 var DEFS_LATEST_URL = DEFS_BASE + 'latest.json';

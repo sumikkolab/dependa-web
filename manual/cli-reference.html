@@ -6,6 +6,10 @@
 <title>CLIリファレンス | Dependa マニュアル — Sumikko Lab</title>
 <meta name="description" content="Dependa のCLIコマンドリファレンス。コマンドライン操作によるスキャン・レポート・ポリシー適用の方法を解説します。">
 <link rel="canonical" href="https://dependa.sumikkolab.com/manual/cli-reference.html">
+<link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/cli-reference.html">
+<link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/cli-reference.html?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/cli-reference.html">
+<script>if (new URLSearchParams(location.search).get('lang') === 'en') document.querySelector('link[rel="canonical"]').href = 'https://dependa.sumikkolab.com/manual/cli-reference.html?lang=en';</script>
 <meta property="og:title" content="CLIリファレンス | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa のCLIコマンドリファレンス。コマンドライン操作によるスキャン・レポート・ポリシー適用の方法を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/cli-reference.html">
@@ -96,6 +100,11 @@
       <tr><td><code>6</code></td><td>利用規約に未同意</td></tr>
       <tr><td><code>7</code></td><td>整合性検証失敗</td></tr>
     </table>
+
+    <div class="info-box">
+      <p>重大度を読み取れない脆弱性があると、<code>scan</code> は既定の設定で終了コード 2 を返します。<code>--fail-on</code> に <code>critical</code>、<code>high</code>、<code>medium</code>、<code>low</code> のどれを指定したときも同じです。<code>sbom</code> コマンドでも、この 4 つの値で同じように扱います。<code>scan</code> では、例外を承認した脆弱性と、CVSS の計算で点数が 0.0 になった脆弱性は対象外です。</p>
+      <p>Store 版の CLI は、Pro の判定の前に Microsoft Store での確認を待ちます。確認できないときは、保存済みのライセンス状態を変更しません。</p>
+    </div>
 
     <h2>使用例</h2>
 
@@ -192,6 +201,11 @@
       <tr><td><code>6</code></td><td>Terms of use not accepted</td></tr>
       <tr><td><code>7</code></td><td>Integrity verification failed</td></tr>
     </table>
+
+    <div class="info-box">
+      <p>If the severity of a vulnerability cannot be read, <code>scan</code> exits with code 2 by default. The same applies when <code>--fail-on</code> is set to <code>critical</code>, <code>high</code>, <code>medium</code>, or <code>low</code>. The <code>sbom</code> command treats these four values the same way. For <code>scan</code>, this does not apply to vulnerabilities with an approved exception or to vulnerabilities whose CVSS score is computed as 0.0.</p>
+      <p>The Store version of the CLI waits for the Microsoft Store check before it determines Pro. If the check cannot complete, the saved license state does not change.</p>
+    </div>
 
     <h2>Usage Examples</h2>
 
