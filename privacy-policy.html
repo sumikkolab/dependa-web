@@ -100,7 +100,7 @@
     <ul>
       <li>通信先: <code>https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json</code>（米国 CISA の公開カタログ）</li>
       <li>送信内容: なし（公開カタログをダウンロードするだけです。パッケージ名、ファイルの内容、SBOM は送信しません）</li>
-      <li>接続先に見える情報: 通信元の IP アドレス、アプリの識別名（Dependa/版）</li>
+      <li>接続先に伝わる情報: 通信元の IP アドレス、アプリの識別名（Dependa/バージョン番号）</li>
       <li>目的: 検出された脆弱性がカタログに掲載されているかの確認</li>
       <li>既定の状態: 無効</li>
       <li>有効にする方法: 設定画面の「既知の悪用の確認(CISA KEV)を使う」をオンにします。CLI では <code>scan</code> に <code>--use-kev</code> を指定します。</li>
@@ -114,7 +114,7 @@
     <ul>
       <li>通信先: <code>https://api.first.org/data/v1/epss</code>（FIRST の公開 API）</li>
       <li>送信内容: 検出された CVE 番号だけ（パッケージ名、バージョン番号、ファイルのパス、ファイルの内容、SBOM は送信しません）</li>
-      <li>接続先に見える情報: 通信元の IP アドレス、アプリの識別名（Dependa/版）</li>
+      <li>接続先に伝わる情報: 通信元の IP アドレス、アプリの識別名（Dependa/バージョン番号）</li>
       <li>目的: 今後 30 日以内に悪用される確率の推定値（参考情報）の取得</li>
       <li>既定の状態: 無効</li>
       <li>有効にする方法: 設定画面の「悪用予測スコア(EPSS)を使う」をオンにします。CLI では <code>scan</code> に <code>--use-epss</code> を指定します。</li>
@@ -203,7 +203,7 @@
     <ul>
       <li>Endpoint: <code>https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json</code> (public catalog of the US CISA)</li>
       <li>Data sent: None (the App only downloads the public catalog; package names, file contents, and SBOMs are not sent)</li>
-      <li>Visible to the server: The IP address the connection comes from and the App identifier (Dependa/version)</li>
+      <li>Visible to the server: Your IP address and the App identifier (Dependa/version number)</li>
       <li>Purpose: Checking whether detected vulnerabilities are listed in the catalog</li>
       <li>Default state: Off</li>
       <li>How to turn on: In the Settings screen, turn on "Use the known-exploited check (CISA KEV)". In the CLI, add <code>--use-kev</code> to <code>scan</code>.</li>
@@ -217,7 +217,7 @@
     <ul>
       <li>Endpoint: <code>https://api.first.org/data/v1/epss</code> (public API of FIRST)</li>
       <li>Data sent: Only the detected CVE IDs (package names, version numbers, file paths, file contents, and SBOMs are not sent)</li>
-      <li>Visible to the server: The IP address the connection comes from and the App identifier (Dependa/version)</li>
+      <li>Visible to the server: Your IP address and the App identifier (Dependa/version number)</li>
       <li>Purpose: Getting an estimate of the probability of exploitation within the next 30 days (for reference)</li>
       <li>Default state: Off</li>
       <li>How to turn on: In the Settings screen, turn on "Use the exploit prediction score (EPSS)". In the CLI, add <code>--use-epss</code> to <code>scan</code>.</li>
