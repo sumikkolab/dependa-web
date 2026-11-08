@@ -17,7 +17,7 @@
 <p align="center">
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%2010%2F11-blue" />
   <img alt=".NET 10" src="https://img.shields.io/badge/.NET-10.0-purple" />
-  <img alt="Version" src="https://img.shields.io/badge/version-2.1.0.0-brightgreen" />
+  <img alt="Version" src="https://img.shields.io/badge/version-2.1.1.0-brightgreen" />
 </p>
 
 <p align="center">
@@ -46,9 +46,13 @@ Many teams still manage OSS usage reviews using Excel, emails, and Word document
 
 > **Product category**: OSS Governance / SBOM Review Management Tool
 
+## v2.1.1.0 (2026-11-09)
+
+Updated the bundled definition data to the 2026-11-08 version (includes a fix for missed detections). The bundled definition data is version 2026.11.08 (vulnerability records: Python 8233 / NuGet 5354 / Node.js 8363).
+
 ## v2.1.0.0
 
-v2.1.0.0 adds the known-exploited check (CISA KEV) and the exploit prediction score (EPSS) (Pro, off by default), adds import of signed definition data, updates the bundled definition data (version 2026.11.02, generated 2026-11-02), and makes the appearance of buttons consistent. This update also improves the checks. A vulnerability whose severity cannot be read now fails, and a license expression that includes copyleft now needs review, so more scans fail than before.
+v2.1.0.0 adds the known-exploited check (CISA KEV) and the exploit prediction score (EPSS) (Pro, off by default), adds import of signed definition data, and makes the appearance of buttons consistent. This update also improves the checks. A vulnerability whose severity cannot be read now fails, and a license expression that includes copyleft now needs review, so more scans fail than before.
 
 ## v2.0.6.0
 
