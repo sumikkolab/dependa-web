@@ -8,6 +8,7 @@
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/delta-scan.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/delta-scan.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/delta-scan.html">
+<link rel="canonical" href="https://dependa.sumikkolab.com/manual/delta-scan.html">
 <meta property="og:title" content="差分スキャン | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa の差分スキャン機能。前回スキャンとの比較で新規追加・削除・変更されたOSSコンポーネントを検出します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/delta-scan.html">
@@ -21,10 +22,6 @@
 <script>
 (function () {
   var en = new URLSearchParams(location.search).get('lang') === 'en';
-  var canonical = document.createElement('link');
-  canonical.rel = 'canonical';
-  canonical.href = en ? 'https://dependa.sumikkolab.com/manual/delta-scan.html?lang=en' : 'https://dependa.sumikkolab.com/manual/delta-scan.html';
-  document.head.appendChild(canonical);
   if (!en) return;
   document.title = 'Delta Scan | Dependa Manual — Sumikko Lab';
   document.querySelector('meta[name="description"]').content = 'Delta scan in Dependa: compares with the previous scan to detect OSS components that were added, removed, or changed.';

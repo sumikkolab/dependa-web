@@ -8,6 +8,7 @@
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/reports.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/reports.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/reports.html">
+<link rel="canonical" href="https://dependa.sumikkolab.com/manual/reports.html">
 <meta property="og:title" content="レポート・SBOM | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa のレポート出力とSBOM生成機能。PDF/CSV/JSONレポート、CycloneDX/SPDX形式のSBOMエクスポートを解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/reports.html">
@@ -21,10 +22,6 @@
 <script>
 (function () {
   var en = new URLSearchParams(location.search).get('lang') === 'en';
-  var canonical = document.createElement('link');
-  canonical.rel = 'canonical';
-  canonical.href = en ? 'https://dependa.sumikkolab.com/manual/reports.html?lang=en' : 'https://dependa.sumikkolab.com/manual/reports.html';
-  document.head.appendChild(canonical);
   if (!en) return;
   document.title = 'Reports & SBOM | Dependa Manual — Sumikko Lab';
   document.querySelector('meta[name="description"]').content = 'Report output and SBOM generation in Dependa, including HTML reports.';

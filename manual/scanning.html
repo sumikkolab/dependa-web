@@ -8,6 +8,7 @@
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/scanning.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/scanning.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/scanning.html">
+<link rel="canonical" href="https://dependa.sumikkolab.com/manual/scanning.html">
 <meta property="og:title" content="SBOMインポート・フォルダスキャン | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa のSBOMインポートとフォルダスキャン機能。CycloneDX/SPDX形式のSBOM読み込みとプロジェクトフォルダのスキャン方法を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/scanning.html">
@@ -21,10 +22,6 @@
 <script>
 (function () {
   var en = new URLSearchParams(location.search).get('lang') === 'en';
-  var canonical = document.createElement('link');
-  canonical.rel = 'canonical';
-  canonical.href = en ? 'https://dependa.sumikkolab.com/manual/scanning.html?lang=en' : 'https://dependa.sumikkolab.com/manual/scanning.html';
-  document.head.appendChild(canonical);
   if (!en) return;
   document.title = 'SBOM Import & Folder Scan | Dependa Manual — Sumikko Lab';
   document.querySelector('meta[name="description"]').content = 'SBOM import and folder scan in Dependa: how to read CycloneDX and SPDX SBOMs and how to scan a project folder.';

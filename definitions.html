@@ -8,6 +8,7 @@
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/definitions.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/definitions.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/definitions.html">
+<link rel="canonical" href="https://dependa.sumikkolab.com/definitions.html">
 <meta property="og:title" content="定義データ | Dependa — Sumikko Lab">
 <meta property="og:description" content="Dependa の定義データ(脆弱性情報)を、ダウンロードして手動で取り込む方法、出典と帰属、確認できる範囲の限界をご案内します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/definitions.html">
@@ -49,10 +50,6 @@
 <script>
 (function () {
   var en = new URLSearchParams(location.search).get('lang') === 'en';
-  var canonical = document.createElement('link');
-  canonical.rel = 'canonical';
-  canonical.href = en ? 'https://dependa.sumikkolab.com/definitions.html?lang=en' : 'https://dependa.sumikkolab.com/definitions.html';
-  document.head.appendChild(canonical);
   if (!en) return;
   document.title = 'Definition Data | Dependa — Sumikko Lab';
   document.querySelector('meta[name="description"]').content = 'How to download and manually import Dependa definition data (vulnerability information), with its sources, attribution, and the limits of what can be confirmed.';

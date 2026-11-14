@@ -8,6 +8,7 @@
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/">
+<link rel="canonical" href="https://dependa.sumikkolab.com/manual/">
 <meta property="og:title" content="マニュアル | Dependa — Sumikko Lab">
 <meta property="og:description" content="Dependa のユーザーマニュアル。SBOMインポート・脆弱性分析・ライセンス分析・レビュー・レポート・CLI操作方法を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/">
@@ -21,10 +22,6 @@
 <script>
 (function () {
   var en = new URLSearchParams(location.search).get('lang') === 'en';
-  var canonical = document.createElement('link');
-  canonical.rel = 'canonical';
-  canonical.href = en ? 'https://dependa.sumikkolab.com/manual/?lang=en' : 'https://dependa.sumikkolab.com/manual/';
-  document.head.appendChild(canonical);
   if (!en) return;
   document.title = 'User Manual | Dependa — Sumikko Lab';
   document.querySelector('meta[name="description"]').content = 'The Dependa user manual: how to import SBOMs, analyze vulnerabilities and licenses, review, report, and use the CLI.';

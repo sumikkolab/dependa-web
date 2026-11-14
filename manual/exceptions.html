@@ -8,6 +8,7 @@
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/exceptions.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/exceptions.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/exceptions.html">
+<link rel="canonical" href="https://dependa.sumikkolab.com/manual/exceptions.html">
 <meta property="og:title" content="例外管理 | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa の例外管理機能。脆弱性やライセンスリスクの例外登録・承認・期限管理の操作方法を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/exceptions.html">
@@ -21,10 +22,6 @@
 <script>
 (function () {
   var en = new URLSearchParams(location.search).get('lang') === 'en';
-  var canonical = document.createElement('link');
-  canonical.rel = 'canonical';
-  canonical.href = en ? 'https://dependa.sumikkolab.com/manual/exceptions.html?lang=en' : 'https://dependa.sumikkolab.com/manual/exceptions.html';
-  document.head.appendChild(canonical);
   if (!en) return;
   document.title = 'Exception Management | Dependa Manual — Sumikko Lab';
   document.querySelector('meta[name="description"]').content = 'Exception management in Dependa: how to register and approve exceptions for vulnerability and license risks and manage their expiry.';

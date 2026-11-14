@@ -8,6 +8,7 @@
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/privacy-policy.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/privacy-policy.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/privacy-policy.html">
+<link rel="canonical" href="https://dependa.sumikkolab.com/privacy-policy.html">
 <meta property="og:title" content="プライバシーポリシー | Dependa — Sumikko Lab">
 <meta property="og:description" content="Dependa のプライバシーポリシー。データの取得範囲・保存場所・外部通信の有無・同意撤回方法を記載しています。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/privacy-policy.html">
@@ -41,10 +42,6 @@
 <script>
 (function () {
   var en = new URLSearchParams(location.search).get('lang') === 'en';
-  var canonical = document.createElement('link');
-  canonical.rel = 'canonical';
-  canonical.href = en ? 'https://dependa.sumikkolab.com/privacy-policy.html?lang=en' : 'https://dependa.sumikkolab.com/privacy-policy.html';
-  document.head.appendChild(canonical);
   if (!en) return;
   document.title = 'Privacy Policy | Dependa — Sumikko Lab';
   document.querySelector('meta[name="description"]').content = 'The Dependa privacy policy: the scope of data obtained, where it is stored, whether it is sent externally, and how to withdraw consent.';

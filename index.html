@@ -8,6 +8,7 @@
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/">
+<link rel="canonical" href="https://dependa.sumikkolab.com/">
 <meta property="og:title" content="Dependa | OSSを使っていいか判断し、記録して、説明できるツール">
 <meta property="og:description" content="Dependa はSBOMを読み込み、OSSの脆弱性・ライセンスリスクを分類し、レビュー・承認・レポート作成を支援するWindows デスクトップツールです。Free/Pro対応。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/">
@@ -105,10 +106,6 @@
 <script>
 (function () {
   var en = new URLSearchParams(location.search).get('lang') === 'en';
-  var canonical = document.createElement('link');
-  canonical.rel = 'canonical';
-  canonical.href = en ? 'https://dependa.sumikkolab.com/?lang=en' : 'https://dependa.sumikkolab.com/';
-  document.head.appendChild(canonical);
   if (!en) return;
   document.title = 'Dependa | Decide whether to use OSS, record the decision, and explain it';
   document.querySelector('meta[name="description"]').content = 'Dependa reads SBOMs, classifies OSS vulnerability and license risks, and supports review, approval, and reporting. A Windows desktop tool with Free and Pro.';

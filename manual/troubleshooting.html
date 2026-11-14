@@ -8,6 +8,7 @@
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/troubleshooting.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/troubleshooting.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/troubleshooting.html">
+<link rel="canonical" href="https://dependa.sumikkolab.com/manual/troubleshooting.html">
 <meta property="og:title" content="トラブルシューティング | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa のFAQとトラブルシューティング。スキャン・分析・レポート・CLI操作の問題解決方法を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/troubleshooting.html">
@@ -21,10 +22,6 @@
 <script>
 (function () {
   var en = new URLSearchParams(location.search).get('lang') === 'en';
-  var canonical = document.createElement('link');
-  canonical.rel = 'canonical';
-  canonical.href = en ? 'https://dependa.sumikkolab.com/manual/troubleshooting.html?lang=en' : 'https://dependa.sumikkolab.com/manual/troubleshooting.html';
-  document.head.appendChild(canonical);
   if (!en) return;
   document.title = 'Troubleshooting | Dependa Manual — Sumikko Lab';
   document.querySelector('meta[name="description"]').content = 'Dependa FAQ and troubleshooting: how to resolve problems with scans, analysis, reports, and CLI operations.';

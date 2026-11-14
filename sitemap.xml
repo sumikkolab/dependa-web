@@ -6,17 +6,7 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://dependa.sumikkolab.com/?lang=en</loc>
-    <lastmod>2026-11-09</lastmod>
-    <priority>1.0</priority>
-  </url>
-  <url>
     <loc>https://dependa.sumikkolab.com/privacy-policy.html</loc>
-    <lastmod>2026-11-03</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://dependa.sumikkolab.com/privacy-policy.html?lang=en</loc>
     <lastmod>2026-11-03</lastmod>
     <priority>0.8</priority>
   </url>
@@ -26,17 +16,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dependa.sumikkolab.com/support.html?lang=en</loc>
-    <lastmod>2026-10-11</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://dependa.sumikkolab.com/definitions.html</loc>
-    <lastmod>2026-11-03</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dependa.sumikkolab.com/definitions.html?lang=en</loc>
     <lastmod>2026-11-03</lastmod>
     <priority>0.7</priority>
   </url>
@@ -46,17 +26,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://dependa.sumikkolab.com/terms-of-use.html?lang=en</loc>
-    <lastmod>2026-10-28</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://dependa.sumikkolab.com/manual/</loc>
-    <lastmod>2026-11-09</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://dependa.sumikkolab.com/manual/?lang=en</loc>
     <lastmod>2026-11-09</lastmod>
     <priority>0.7</priority>
   </url>
@@ -66,17 +36,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dependa.sumikkolab.com/manual/getting-started.html?lang=en</loc>
-    <lastmod>2026-10-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://dependa.sumikkolab.com/manual/scanning.html</loc>
-    <lastmod>2026-11-03</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dependa.sumikkolab.com/manual/scanning.html?lang=en</loc>
     <lastmod>2026-11-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -86,17 +46,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dependa.sumikkolab.com/manual/vulnerability-analysis.html?lang=en</loc>
-    <lastmod>2026-11-09</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://dependa.sumikkolab.com/manual/license-analysis.html</loc>
-    <lastmod>2026-11-03</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dependa.sumikkolab.com/manual/license-analysis.html?lang=en</loc>
     <lastmod>2026-11-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -106,17 +56,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dependa.sumikkolab.com/manual/reports.html?lang=en</loc>
-    <lastmod>2026-10-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://dependa.sumikkolab.com/manual/policy.html</loc>
-    <lastmod>2026-10-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dependa.sumikkolab.com/manual/policy.html?lang=en</loc>
     <lastmod>2026-10-11</lastmod>
     <priority>0.6</priority>
   </url>
@@ -126,17 +66,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dependa.sumikkolab.com/manual/delta-scan.html?lang=en</loc>
-    <lastmod>2026-10-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://dependa.sumikkolab.com/manual/exceptions.html</loc>
-    <lastmod>2026-10-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dependa.sumikkolab.com/manual/exceptions.html?lang=en</loc>
     <lastmod>2026-10-11</lastmod>
     <priority>0.6</priority>
   </url>
@@ -146,17 +76,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dependa.sumikkolab.com/manual/iac-support.html?lang=en</loc>
-    <lastmod>2026-11-03</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://dependa.sumikkolab.com/manual/settings.html</loc>
-    <lastmod>2026-11-03</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dependa.sumikkolab.com/manual/settings.html?lang=en</loc>
     <lastmod>2026-11-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -166,17 +86,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dependa.sumikkolab.com/manual/pro-features.html?lang=en</loc>
-    <lastmod>2026-10-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://dependa.sumikkolab.com/manual/cli-reference.html</loc>
-    <lastmod>2026-11-03</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dependa.sumikkolab.com/manual/cli-reference.html?lang=en</loc>
     <lastmod>2026-11-03</lastmod>
     <priority>0.6</priority>
   </url>
@@ -186,27 +96,12 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dependa.sumikkolab.com/manual/licensing.html?lang=en</loc>
-    <lastmod>2026-11-03</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://dependa.sumikkolab.com/manual/troubleshooting.html</loc>
     <lastmod>2026-10-11</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://dependa.sumikkolab.com/manual/troubleshooting.html?lang=en</loc>
-    <lastmod>2026-10-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://dependa.sumikkolab.com/manual/ai-governance.html</loc>
-    <lastmod>2026-10-11</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://dependa.sumikkolab.com/manual/ai-governance.html?lang=en</loc>
     <lastmod>2026-10-11</lastmod>
     <priority>0.6</priority>
   </url>

@@ -8,6 +8,7 @@
 <link rel="alternate" hreflang="ja" href="https://dependa.sumikkolab.com/manual/policy.html">
 <link rel="alternate" hreflang="en" href="https://dependa.sumikkolab.com/manual/policy.html?lang=en">
 <link rel="alternate" hreflang="x-default" href="https://dependa.sumikkolab.com/manual/policy.html">
+<link rel="canonical" href="https://dependa.sumikkolab.com/manual/policy.html">
 <meta property="og:title" content="ポリシー設定・判定 | Dependa マニュアル — Sumikko Lab">
 <meta property="og:description" content="Dependa のポリシー設定と判定機能。組織のOSS利用ポリシーに基づく自動判定ルールの設定方法を解説します。">
 <meta property="og:url" content="https://dependa.sumikkolab.com/manual/policy.html">
@@ -21,10 +22,6 @@
 <script>
 (function () {
   var en = new URLSearchParams(location.search).get('lang') === 'en';
-  var canonical = document.createElement('link');
-  canonical.rel = 'canonical';
-  canonical.href = en ? 'https://dependa.sumikkolab.com/manual/policy.html?lang=en' : 'https://dependa.sumikkolab.com/manual/policy.html';
-  document.head.appendChild(canonical);
   if (!en) return;
   document.title = 'Policy Settings & Judgments | Dependa Manual — Sumikko Lab';
   document.querySelector('meta[name="description"]').content = 'Policy settings and judgments in Dependa: how to set automatic judgment rules based on the OSS usage policy of an organization.';
